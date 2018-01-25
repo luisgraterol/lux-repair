@@ -24,7 +24,7 @@ Una vez que hayas hecho todo esto, finalmente puedes correr la aplicación. Para
 
 2. Correr ```ng serve``` en otra ventana del *command line* situada dentro de la carpeta *"angular-src"*.
 
-###### Happy coding! 👨🏽‍💻
+##### Happy coding! 👨🏽‍💻
 
 ## Documentación de Librerías y Otras Herramientas
 * [Github Docs](https://guides.github.com)
