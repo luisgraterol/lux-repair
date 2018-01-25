@@ -1,0 +1,8 @@
+.rol {
+    padding-right: .5rem;
+}
+
+.dropdown-item:hover {
+    background: rgb(211, 218, 229) !important;
+    cursor: default;
+}

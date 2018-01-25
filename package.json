@@ -1,0 +1,24 @@
+{
+  "name": "LuxRepair",
+  "version": "1.0.0",
+  "description": "Sistema de Gestion de Talleres Mecanicos",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app"
+  },
+  "dependencies": {
+    "bcryptjs": "*",
+    "body-parser": "*",
+    "cors": "*",
+    "express": "*",
+    "jsonwebtoken": "*",
+    "mysql": "*",
+    "mysql2": "^1.5.1",
+    "passport": "*",
+    "passport-jwt": "*",
+    "sequelize": "^4.31.0"
+  },
+  "author": "Luis Graterol",
+  "license": "ISC"
+}

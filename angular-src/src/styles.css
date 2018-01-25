@@ -1,0 +1,24 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body {
+  height: 100%;
+}
+
+.body {
+    background: #f2f2f2;
+}
+
+.alert.flash-message.custom-success {
+    margin: 1rem;
+    background: #4aa05f;
+}
+
+.alert.flash-message.custom-danger {
+    margin: 1rem;
+    background: #f57676;
+}
+
+.alert.flash-message > p {
+  color: white;
+  margin: 0;
+}
