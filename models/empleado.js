@@ -20,6 +20,7 @@ const Empleado = connection.define('Empleado',
             isIn: [['Masculino', 'Femenino', 'Otro']]
         }
     }
+},
 {
     freezeTableName: true
 });
