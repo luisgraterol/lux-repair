@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 
 // Create the connection to the database
-const connection = new Sequelize('tallerDB', 'root', 'password', {
+const connection = new Sequelize('luxrepairDB', 'root', 'password', {
   host: 'localhost',
   dialect: 'mysql',
   operatorsAliases: false

@@ -4,16 +4,7 @@ const bcrypt = require('bcryptjs');
 
 // Modelo de un Usuario
 const User = connection.define('Usuario', {
-    nombre: {
-        type: Sequelize.STRING,
-        allowNull: false,
-
-        validate: {
-        isAlpha: true,
-        notEmpty: true
-        }
-    },
-    apellido: {
+    Nombre: {
         type: Sequelize.STRING,
         allowNull: false,
 
@@ -22,7 +13,25 @@ const User = connection.define('Usuario', {
             notEmpty: true
         }
     },
-    email: {
+    Snombre: {
+        type: Sequelize.STRING,
+        allowNull: false,
+
+        validate: {
+            isAlpha: true,
+            notEmpty: true
+        }
+    },
+    Apellido: {
+        type: Sequelize.STRING,
+        allowNull: false,
+
+        validate: {
+            isAlpha: true,
+            notEmpty: true
+        }
+    },
+    Email: {
         type: Sequelize.STRING,
         allowNull: false,
 
@@ -31,7 +40,7 @@ const User = connection.define('Usuario', {
             notEmpty: true
         }
     },
-    username: {
+    Username: {
         type: Sequelize.STRING,
         allowNull: false,
 
@@ -39,7 +48,7 @@ const User = connection.define('Usuario', {
             notEmpty: true
         }
     },
-    password: {
+    Password: {
         type: Sequelize.STRING,
         allowNull: false,
 
@@ -47,6 +56,16 @@ const User = connection.define('Usuario', {
             notEmpty: true
         }
     },
+    Cedula: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+
+        validate: {
+            isInt: {
+                msg: 'La cedula ingresada es inválida.'
+            }
+        }
+    }
 },
 
 {
