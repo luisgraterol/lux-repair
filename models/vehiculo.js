@@ -2,7 +2,7 @@ const Sequelize = require('sequelize');
 const connection = require('../config/database');
 
 // Modelo de un Usuario
-const Empleado = connection.define('Vehiculo', 
+const Vehiculo = connection.define('Vehiculo', 
 {
     Serial: {
         type: Sequelize.STRING,
