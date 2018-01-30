@@ -11,7 +11,7 @@ const Orden = connection.define('Orden',
         allowNull: false,
 
         validate: {
-            isAlpha: true,
+            isAlphanumeric: true,
             notEmpty: true
         }
     },
@@ -20,7 +20,7 @@ const Orden = connection.define('Orden',
         allowNull: false,
 
         validate: {
-            isAlpha: true,
+            isAlphanumeric: true,
             notEmpty: true
         }
     },

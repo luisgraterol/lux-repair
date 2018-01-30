@@ -9,7 +9,7 @@ const Respuesto = connection.define('Repuesto',
         allowNull: false,
 
         validate: {
-            isAlpha: true,
+            isAlphanumeric: true,
             notEmpty: true
         }
     },
@@ -18,7 +18,7 @@ const Respuesto = connection.define('Repuesto',
         allowNull: false,
 
         validate: {
-            isAlpha: true,
+            isAlphanumeric: true,
             notEmpty: true
         }
     },
@@ -37,7 +37,7 @@ const Respuesto = connection.define('Repuesto',
         allowNull: false,
 
         validate: {
-            isAlpha: true,
+            isAlphanumeric: true,
             notEmpty: true
         }
     },
