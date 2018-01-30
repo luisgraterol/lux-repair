@@ -8,7 +8,7 @@ const Modelo = connection.define('Modelo',
             type: Sequelize.STRING,
             allowNull: false,
             validate: {
-                isAlpha: true
+                isAlphanumeric: true
             }
         }
     },
