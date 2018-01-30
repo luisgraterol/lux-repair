@@ -3,7 +3,8 @@ const connection = require('../config/database');
 const bcrypt = require('bcryptjs');
 
 // Modelo de un Usuario
-const User = connection.define('Usuario', {
+const User = connection.define('Usuario', 
+{
     Nombre: {
         type: Sequelize.STRING,
         allowNull: false,
@@ -67,7 +68,6 @@ const User = connection.define('Usuario', {
         }
     }
 },
-
 {
     timestamps: false,
     freezeTableName: true
