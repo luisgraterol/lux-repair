@@ -23,7 +23,7 @@ const Respuesto = connection.define('Repuesto',
         }
     },
     Cantidad: {
-        type: Sequelize.INTERGER,
+        type: Sequelize.INTEGER,
         allowNull: false,
 
         validate: {
