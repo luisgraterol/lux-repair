@@ -22,3 +22,7 @@ html, body {
   color: white;
   margin: 0;
 }
+
+.required {
+    color: #d12d2d;
+}
