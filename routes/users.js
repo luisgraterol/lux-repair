@@ -7,6 +7,9 @@ const connection = require('../config/database');
 // Models
 const User = require('../models/user');
 
+// Controllers
+const con_User = require('../controllers/user');
+
 // Sincroniza los cambios en los modelos
 connection.sync({ logging: false })
 
@@ -15,15 +18,17 @@ router.post('/register', (req, res, next) => {
 
     // Create a non-persistent instance of User (it is persisted in addUser())
     let newUser = User.build({
-        nombre: req.body.nombre,
-        apellido: req.body.apellido,
-        email: req.body.email,
-        username: req.body.username,
-        password: req.body.password
+        Nombre: req.body.nombre,
+        Snombre: req.body.seg_nombre,
+        Apellido: req.body.apellido,
+        Cedula: req.body.cedula,
+        Email: req.body.email,
+        Username: req.body.username,
+        Password: req.body.password
     });
 
-    // Custom method implemented in models/user.js
-    User.addUser(newUser, (user, err) => {
+    // Custom method implemented in controllers/user.js
+    con_User.addUser(newUser, req.body.rol, (user, err) => {
         if (err)
             res.json({success: false, msg: 'Failed to register user'});
         else {
@@ -37,20 +42,20 @@ router.post('/authenticate', (req, res, next) => {
     const username = req.body.username;
     const password = req.body.password;
 
-    User.getUserByUsername(username, (err, user) => {
+    con_User.getUserByUsername(username, (err, user) => {
         if (err) throw err;
 
         if (!user)
             return res.json({success: false, msg: 'Usuario no registrado.'});
 
         // If there is a user
-        User.comparePassword(password, user.password, (err, isMatch) => {
+        con_User.comparePassword(password, user.password, (err, isMatch) => {
             if (err) throw err;
 
             console.log(user);
 
             if (isMatch) {
-                const token = jwt.sign(user, connection.config.password, {
+                const token = jwt.sign(user, 'password', {
                     expiresIn: 604800 // 1 week in seconds
                 });
 
