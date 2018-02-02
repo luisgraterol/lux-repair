@@ -49,7 +49,7 @@ router.post('/authenticate', (req, res, next) => {
             return res.json({success: false, msg: 'Usuario no registrado.'});
 
         // If there is a user
-        con_User.comparePassword(password, user.password, (err, isMatch) => {
+        con_User.comparePassword(password, user.Password, (err, isMatch) => {
             if (err) throw err;
 
             console.log(user);
@@ -64,9 +64,12 @@ router.post('/authenticate', (req, res, next) => {
                     token: 'Bearer '+token,
                     user: {
                         id: user.id,
-                        nombre: user.nombre,
-                        apellido: user.apellido,
-                        email: user.email
+                        nombre: user.Nombre,
+                        seg_nombre: user.Snombre,
+                        apellido: user.Apellido,
+                        cedula: user.Cedula,
+                        email: user.Email,
+                        username: user.Username
                     }
                 });
             
@@ -79,7 +82,7 @@ router.post('/authenticate', (req, res, next) => {
 
 // Profile
 router.get('/profile', passport.authenticate('jwt', {session: false}), (req, res, next) => {
-    res.json({user: req.user})
+    res.json({user: req.user});
 });
 
 module.exports = router;
