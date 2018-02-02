@@ -9,6 +9,7 @@ const connection = require('./config/database');
 // Models
 const User = require('./models/user');
 const Empleado = require('./models/empleado');
+const Cliente = require('./models/cliente');
 const Vehiculo = require('./models/vehiculo');
 const Orden = require('./models/orden');
 const Servicio = require('./models/servicio');
