@@ -6,7 +6,18 @@ const passport = require('passport');
 const mysql = require('mysql');
 const connection = require('./config/database');
 
-connection.sync();
+// Models
+const User = require('./models/user');
+const Empleado = require('./models/empleado');
+const Vehiculo = require('./models/vehiculo');
+const Orden = require('./models/orden');
+const Servicio = require('./models/servicio');
+const Repuesto = require('./models/repuesto');
+const Marca = require('./models/marca');
+const Modelo = require('./models/modelo');
+
+// Sincroniza los cambios en los modelos
+connection.sync({ logging: false });
 
 const app = express();
 
@@ -37,9 +48,9 @@ app.get('/', (req, res) => {
     res.send('Invalid Endpoint');
 });
 
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public/index.html'));
-});
+// app.get('*', (req, res) => {
+//     res.sendFile(path.join(__dirname, 'public/index.html'));
+// });
 
 // Start the server
 app.listen(port, () => console.log(`Server started on port ${port}.`));

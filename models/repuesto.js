@@ -1,8 +1,8 @@
 const Sequelize = require('sequelize');
 const connection = require('../config/database');
 
-// Modelo de un Repuesto
-const Respuesto = connection.define('Repuesto', 
+// Modelo de Repuesto
+const Repuesto = connection.define('Repuesto', 
 {
     Nombre: {
         type: Sequelize.STRING,
@@ -13,12 +13,11 @@ const Respuesto = connection.define('Repuesto',
             notEmpty: true
         }
     },
-   Descripcion: {
+    Descripcion: {
         type: Sequelize.STRING(1500),
         allowNull: false,
 
         validate: {
-            isAlphanumeric: true,
             notEmpty: true
         }
     },
@@ -44,16 +43,13 @@ const Respuesto = connection.define('Repuesto',
 
     Disponibilidad: {
         type: Sequelize.BOOLEAN,
-        defaultValue:true,
+        defaultValue: true,
         allowNull: false,
 
         validate: {
-            
             notEmpty: true
         }
-    },
-
-
+    }
 },
 {
     timestamps: false,

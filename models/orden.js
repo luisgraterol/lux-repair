@@ -1,17 +1,16 @@
 const Sequelize = require('sequelize');
 const connection = require('../config/database');
 
-// Modelo de una Orden
+// Modelo de Orden
 const Orden = connection.define('Orden', 
 {
 
     //AQUI FALTA COLOCAR EL  CODIGO QR 
-    Condicion: {
+    CondicionVehiculo: {
         type: Sequelize.STRING(1500),
         allowNull: false,
 
         validate: {
-            isAlphanumeric: true,
             notEmpty: true
         }
     },
@@ -20,12 +19,11 @@ const Orden = connection.define('Orden',
         allowNull: false,
 
         validate: {
-            isAlphanumeric: true,
             notEmpty: true
         }
     },
   
-    Fecha_solicitud: {
+    FechaSolicitud: {
         type: Sequelize.DATE ,
         allowNull: false,
 
@@ -35,7 +33,7 @@ const Orden = connection.define('Orden',
         }
     },
 
-    Fecha_admision: {
+    FechaAdmision: {
         type: Sequelize.DATE ,
         allowNull: false,
 
@@ -44,7 +42,7 @@ const Orden = connection.define('Orden',
             notEmpty: true
         }
     },
-    Fecha_finalizacion: {
+    FechaFinalizacion: {
         type: Sequelize.DATE ,
         allowNull: false,
 
@@ -52,7 +50,7 @@ const Orden = connection.define('Orden',
             isDate: true,
             notEmpty: true
         }
-    },
+    }
 },
 {
     timestamps: false,

@@ -1,12 +1,13 @@
 const Sequelize = require('sequelize');
 const connection = require('../config/database');
 
-// Modelo de un Usuario
+// Modelo de Vehiculo
 const Vehiculo = connection.define('Vehiculo', 
 {
     Serial: {
         type: Sequelize.STRING,
         allowNull: false,
+        unique: true,
 
         validate: {
             isAlphanumeric: true,
@@ -34,7 +35,7 @@ const Vehiculo = connection.define('Vehiculo',
     esAutomatico: {
         type: Sequelize.BOOLEAN,
         allowNull: false,
-        defaultValue: 1,
+        defaultValue: true,
 
         validate: {
             notEmpty: true
@@ -43,7 +44,7 @@ const Vehiculo = connection.define('Vehiculo',
     esUnicoDueno: {
         type: Sequelize.BOOLEAN,
         allowNull: false,
-        defaultValue: 1,
+        defaultValue: true,
 
         validate: {
             notEmpty: true
@@ -72,7 +73,7 @@ const Vehiculo = connection.define('Vehiculo',
     Activo: {
         type: Sequelize.BOOLEAN,
         allowNull: false,
-        defaultValue: 1,
+        defaultValue: true,
 
         validate: {
             notEmpty: true
@@ -82,7 +83,7 @@ const Vehiculo = connection.define('Vehiculo',
     //     type: Sequelize.'fotacha',
     //     allowNull: true,
 
-    // },
+    // }
 },
 {
     timestamps: false,

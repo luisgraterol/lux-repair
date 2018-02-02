@@ -7,6 +7,9 @@ const connection = require('../config/database');
 // Models
 const User = require('../models/user');
 
+// Sincroniza los cambios en los modelos
+connection.sync({ logging: false })
+
 // Register
 router.post('/register', (req, res, next) => {
 

@@ -2,7 +2,7 @@ const Sequelize = require('sequelize');
 const connection = require('../config/database');
 const bcrypt = require('bcryptjs');
 
-// Modelo de un Usuario
+// Modelo de Usuario
 const User = connection.define('Usuario', 
 {
     Nombre: {
@@ -16,7 +16,7 @@ const User = connection.define('Usuario',
     },
     Snombre: {
         type: Sequelize.STRING,
-        allowNull: false,
+        allowNull: true,
 
         validate: {
             isAlpha: true,
@@ -60,6 +60,7 @@ const User = connection.define('Usuario',
     Cedula: {
         type: Sequelize.INTEGER,
         allowNull: false,
+        unique: true,
 
         validate: {
             isInt: {

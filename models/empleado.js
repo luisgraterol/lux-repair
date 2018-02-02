@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const connection = require('../config/database');
 
-// Modelo de un Empleado
+// Modelo de Empleado
 const Empleado = connection.define('Empleado', 
 {
     FechaNacimiento: {
