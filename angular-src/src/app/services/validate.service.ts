@@ -6,7 +6,7 @@ export class ValidateService {
   constructor() {}
 
   validateRegister(user) {
-    if (user.nombre == undefined || user.apellido == undefined || user.email == undefined || user.username == undefined || user.password == undefined) {
+    if (user.nombre == undefined || user.apellido == undefined || user.cedula == undefined || user.email == undefined || user.username == undefined || user.password == undefined) {
       return false;
     } else {
       return true;

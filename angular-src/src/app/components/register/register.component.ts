@@ -13,10 +13,13 @@ import { Router } from '@angular/router';
 export class RegisterComponent implements OnInit {
 
   nombre: String;
+  seg_nombre: String;
   apellido: String;
+  cedula: String;
   username: String;
   email: String;
   password: String;
+  rol: String;
 
   constructor(
     private validateService: ValidateService, 
@@ -30,10 +33,13 @@ export class RegisterComponent implements OnInit {
   onRegisterSubmit() {
     const user = {
       nombre: this.nombre,
+      seg_nombre: this.seg_nombre,
       apellido: this.apellido,
+      cedula: this.cedula,
       username: this.username,
       email: this.email,
-      password: this.password
+      password: this.password,
+      rol: this.rol
     };
 
     // Require all fields
@@ -58,7 +64,6 @@ export class RegisterComponent implements OnInit {
         this.router.navigate(['/register']);
       }
     });
-
   }
 
 }
