@@ -1,15 +1,19 @@
 <div class="row main">
   <div class="col-6 mx-auto mb-5">
     <div class="pt-5" *ngIf="user">
-      <h2 class="page-header pb-3">{{user.nombre}} {{user.apellido}}</h2>
+      <h2 class="page-header pb-3">{{user.Nombre}} {{user.Snombre}} {{user.Apellido}}</h2>
       <ul class="list-group">
         <li class="list-group-item d-flex justify-content-left pt-4">
           <h5 class="pr-3">Usuario:</h5>
-          <p>{{user.username}}</p>
+          <p>{{user.Username}}</p>
         </li>
         <li class="list-group-item d-flex justify-content-left pt-4">
           <h5 class="pr-3">Correo:</h5>
-          <p>{{user.email}}</p>
+          <p>{{user.Email}}</p>
+        </li>
+        <li class="list-group-item d-flex justify-content-left pt-4">
+          <h5 class="pr-3">Cedula:</h5>
+          <p>{{user.Cedula}}</p>
         </li>
       </ul>
     </div>

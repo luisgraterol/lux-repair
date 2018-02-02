@@ -1,61 +1,49 @@
 const Sequelize = require('sequelize');
 const connection = require('../config/database');
 
-// Modelo de Usuario
-const User = connection.define('Usuario', 
+// Modelo de Repuesto
+const Repuesto = connection.define('Repuesto', 
 {
     Nombre: {
         type: Sequelize.STRING,
         allowNull: false,
 
         validate: {
-            isAlpha: true,
+            isAlphanumeric: true,
             notEmpty: true
         }
     },
-    Snombre: {
-        type: Sequelize.STRING,
-        allowNull: true,
-    },
-    Apellido: {
-        type: Sequelize.STRING,
+    Descripcion: {
+        type: Sequelize.STRING(1500),
         allowNull: false,
 
         validate: {
-            isAlpha: true,
             notEmpty: true
         }
     },
-    Cedula: {
+    Cantidad: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        unique: true,
 
         validate: {
-            isInt: {
-                msg: 'La cedula ingresada es inválida.'
-            }
+            isInt: true,
+            notEmpty: true
         }
     },
-    Email: {
+
+    Tipo: {
         type: Sequelize.STRING,
         allowNull: false,
 
         validate: {
-            isEmail: true,
+            isAlphanumeric: true,
             notEmpty: true
         }
     },
-    Username: {
-        type: Sequelize.STRING,
-        allowNull: false,
 
-        validate: {
-            notEmpty: true
-        }
-    },
-    Password: {
-        type: Sequelize.STRING,
+    Disponibilidad: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: true,
         allowNull: false,
 
         validate: {
@@ -68,4 +56,4 @@ const User = connection.define('Usuario',
     freezeTableName: true
 });
 
-module.exports = User;
+module.exports = Repuesto;

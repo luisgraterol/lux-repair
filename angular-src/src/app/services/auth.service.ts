@@ -32,8 +32,8 @@ export class AuthService {
     // Fetches the token of the currently logged in user from localStorage
     this.loadToken();
     headers.append('Authorization', this.authToken);
-
     headers.append('Content-Type', 'application/json');
+    
     return this.http.get('http://localhost:3000/users/profile', { headers: headers })
       .map(res => res.json());
   }
