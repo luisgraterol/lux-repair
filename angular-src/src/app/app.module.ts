@@ -12,7 +12,6 @@ import { HomeComponent } from './components/home/home.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { DocsComponent } from './components/docs/docs.component';
 
 import { ValidateService } from './services/validate.service';
 import { AuthService } from './services/auth.service';
@@ -26,8 +25,7 @@ const appRoutes: Routes = [
   {path:'register', component: RegisterComponent},
   {path:'login', component: LoginComponent},
   {path:'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
-  {path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
-  {path:'docs', component: DocsComponent}
+  {path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]}
 ];
 
 
@@ -40,8 +38,7 @@ const appRoutes: Routes = [
     HomeComponent,
     DashboardComponent,
     ProfileComponent,
-    FooterComponent,
-    DocsComponent
+    FooterComponent
   ],
   imports: [
     BrowserModule,
