@@ -1,7 +1,10 @@
-<div class="row main">
+<div class="row">
   <div class="col-6 mx-auto mb-5">
     <div class="pt-5" *ngIf="user">
+      <!-- Nombre Completo -->
       <h2 class="page-header pb-3">{{user.Nombre}} {{user.Snombre}} {{user.Apellido}}</h2>
+
+      <!-- Lista de Datos -->
       <ul class="list-group">
         <li class="list-group-item d-flex justify-content-left pt-4">
           <h5 class="pr-3">Usuario:</h5>
@@ -15,7 +18,22 @@
           <h5 class="pr-3">Cedula:</h5>
           <p>{{user.Cedula}}</p>
         </li>
-      </ul>
+      </ul>  
     </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-4 mx-auto my-auto">
+      <!-- Tarjeta -->
+      <div class="card text-center">
+        <div class="card-header">
+          <h5 class="pt-3">Complete el formulario</h5>
+        </div>
+        <div class="card-body">
+          <p>Nos faltan algunos de sus datos personales. Tómese un momento para llenarlos.</p>
+          <a class="btn btn-primary"  [routerLink]="['/form-empleado']">Ir al formulario</a>
+        </div>
+      </div>
   </div>
 </div>
