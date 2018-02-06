@@ -1,6 +1,7 @@
 # LuxRepair
 Un sistema de gestión de talleres mecánicos para autos de lujo desarrollado con NodeJS, Express, Angular y SequelizeJS.
 
+
 ## Importante
 > Es necesario correr el archivo *fk-setup.sql* una vez que estén creadas todas las tablas de la base de datos para configurar todas las claves foráneas correspondientes a alguna relación de herencia.
 
