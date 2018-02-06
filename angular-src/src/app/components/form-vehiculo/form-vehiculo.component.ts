@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Text } from '@angular/compiler';
 
 @Component({
   selector: 'app-form-vehiculo',
@@ -7,14 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FormVehiculoComponent implements OnInit {
 
-  marca: String;
+  marca: Text;
 
   constructor() { }
 
   ngOnInit() { }
 
   registrarVehiculo() {
-    
+
   }
 
 }
