@@ -24,11 +24,8 @@ export class ProfileComponent implements OnInit {
       this.rol = profile.user.rol;
       console.log(this.user);
     }, err => {
-      console.log('Error while getting the profile: ',err);
+      console.log('Error while getting the profile in ProfileComponent: ',err);
       return false;
     });
   }
-
-
-
 }
