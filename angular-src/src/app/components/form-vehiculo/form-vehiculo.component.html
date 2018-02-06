@@ -1,0 +1,101 @@
+<div class="container-fluid">
+  <div class="row">
+          <!-- Form de Registro para Vehiculos -->          
+          <div class="container pt-5">
+              <h2>Registro de Vehículo</h2>
+              <form (submit)="registrarVehiculo()">
+                  <div class="form-row">
+                      <div class="form-group col-md-3">
+                          <label for="marcaV">Marca</label>
+                          <input type="text" class="form-control" id="marcaV" placeholder="Toyota, Chevrolet, Ford, Etc" [(ngModule)]="marca" name="marca">
+                      </div>
+                      <div class="form-group col-md-3">
+                          <label for="modeloV">Modelo</label>
+                          <input type="text" class="form-control" id="modeloV" placeholder="Corolla, Aveo, Fiesta, Etc">
+                      </div>
+                      <div class="form-group col-md-3">
+                          <label for="anoV">Año</label>
+                          <input type="text" class="form-control" id="anoV" placeholder="2012, 2015, Etc">
+                      </div>
+                      <div class="form-group col-md-3">
+                          <label for="placaV">Placa</label>
+                          <input type="text" class="form-control" id="placaV" placeholder="AA000AA">
+                      </div>
+                  </div>
+                  <div class="form-row">
+                      <div class="form-group col-md-3">
+                          <label for="serialV">Serial</label>
+                          <input type="text" class="form-control" id="serialV" placeholder="123789456987321">
+                      </div>
+                      <div class="form-group col-md-3">
+                          <label for="colorV">Color</label>
+                          <input type="text" class="form-control" id="colorV" placeholder="Plata, Arena, Negro, Etc">
+                      </div>
+                      <div class="form-group col-md-3">
+                          <label for="puertasV">Puertas</label>
+                          <select id="puertasV" class="form-control">
+                              <option selected>...</option>
+                              <option>3</option>
+                              <option>5</option>
+                          </select>
+                      </div>
+                  </div>
+                  <div class="form-row">
+                      <div class="form-group col-md-3">
+                          <legend class="col-form-label">Caja</legend>
+                          <div class="form-check">
+                              <input class="form-check-input" type="radio" name="cajaV" id="cajaV1" value="option1" checked>
+                              <label class="form-check-label" for="cajaV1">
+                                  Automático
+                              </label>
+                          </div>
+                          <div class="form-check">
+                              <input class="form-check-input" type="radio" name="cajaV" id="cajaV2" value="option2">
+                              <label class="form-check-label" for="cajaV2">
+                                  Sincrónico
+                              </label>
+                          </div>
+                      </div>
+                      <div class="form-group col-md-3">
+                          <legend class="col-form-label">Condición</legend>
+                          <div class="form-check">
+                              <input class="form-check-input" type="radio" name="condicionV" id="condicionV1" value="option1" checked>
+                              <label class="form-check-label" for="condicionV1">
+                                  Nuevo
+                              </label>
+                          </div>
+                          <div class="form-check">
+                              <input class="form-check-input" type="radio" name="condicionV" id="condicionV2" value="option2">
+                              <label class="form-check-label" for="condicionV2">
+                                  Segunda Mano
+                              </label>
+                          </div>
+                      </div>
+                  </div>
+                 
+                  <br>
+                  <hr class="style1">
+                  <br>
+
+                  <div class="form-row">
+                      <div class="form-group col-md-3">
+                          <label for="serviciolV">Servicio a Solicitar</label>
+                          <select id="inputState" class="form-control">
+                              <option selected>...</option>
+                              <option>Revisión General</option>
+                              <option>Cambio de Aceite</option>
+                              <option>Carrocería</option>
+                              <option>Alineación</option>
+                          </select>
+                      </div>
+                      <div class="form-group col-md-9">
+                          <label for="notasV">Detalle de Situación</label>
+                          <input type="text" class="form-control" id="notasV" placeholder="Se presentó falla al arrancar. No prenden las luces delanteras. Etc">
+                      </div>
+                  </div>
+                  
+                  <button type="submit" class="btn btn-primary">Registrar Vehículo</button>
+              </form>
+          </div>
+      </div>
+  </div>

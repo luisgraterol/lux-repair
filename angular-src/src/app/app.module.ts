@@ -20,6 +20,7 @@ import { AuthService } from './services/auth.service';
 import { FlashMessagesModule } from 'angular2-flash-messages';
 
 import { AuthGuard } from './guards/auth.guard';
+import { FormVehiculoComponent } from './components/form-vehiculo/form-vehiculo.component';
 
 const appRoutes: Routes = [
   {path:'', component: HomeComponent},
@@ -27,7 +28,8 @@ const appRoutes: Routes = [
   {path:'login', component: LoginComponent},
   {path:'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
   {path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
-  {path: 'form-empleado', component: FormEmpleadoComponent, canActivate: [AuthGuard]}
+  {path: 'form-empleado', component: FormEmpleadoComponent, canActivate: [AuthGuard]},
+  {path: 'form-vehiculo', component: FormVehiculoComponent, canActivate: [AuthGuard]}
 ];
 
 
@@ -41,7 +43,8 @@ const appRoutes: Routes = [
     DashboardComponent,
     ProfileComponent,
     FooterComponent,
-    FormEmpleadoComponent
+    FormEmpleadoComponent,
+    FormVehiculoComponent
   ],
   imports: [
     BrowserModule,
