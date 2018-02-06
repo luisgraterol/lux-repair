@@ -9,6 +9,7 @@ const User = require('../models/user');
 
 // Controllers
 const con_User = require('../controllers/user');
+const con_Empleado = require('../controllers/empleado');
 
 // Sincroniza los cambios en los modelos
 connection.sync({ logging: false })
@@ -81,7 +82,18 @@ router.post('/authenticate', (req, res, next) => {
 // Profile
 // Autentica al usuario y retorna un objeto con todos sus datos corriendo la funcion de passport.
 router.get('/profile', passport.authenticate('jwt', {session: false}), (req, res, next) => {
-        res.json({ user: req.user });
+    res.json({ user: req.user });
+});
+
+router.post('/datos-empleado', (req, res, next) => {
+    console.log('Datos en Backend: ', req.body);
+    con_Empleado.actualizarDatos(req.body, (user, err) => {
+        if (err)
+            res.json({ success: false, msg: 'Failed to update the users data.' });
+        else {
+            res.json({ success: true, msg: 'Success updating the users data.' });
+        }
+    });
 });
 
 module.exports = router;
