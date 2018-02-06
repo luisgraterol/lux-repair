@@ -1,6 +1,6 @@
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark">
-  <a class="navbar-brand" [routerLink]="['/']">Mi Taller</a>
+  <a class="navbar-brand" [routerLink]="['/']">Lux Repair</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
     aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -16,35 +16,18 @@
       <li *ngIf="authService.loggedIn()" class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">
         <a class="nav-link" [routerLink]="['/profile']">Perfil</a>
       </li>
-      <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">
-        <a class="nav-link" [routerLink]="['/docs']">Documentación</a>
-      </li>
     </ul>
 
     <ul class="navbar-nav ml-auto">
-      <li *ngIf="authService.loggedIn()" class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true"
-          aria-expanded="false">
-          Rol
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">Cliente</a>
-          <!-- <div class="dropdown-divider"></div> -->
-          <a class="dropdown-item" href="#">Mecánico</a>
-        </div>
-      </li>
       <li *ngIf="!authService.loggedIn()" class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">
         <a class="nav-link" [routerLink]="['/login']">Login</a>
       </li>
       <li *ngIf="!authService.loggedIn()" class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">
         <a class="nav-link" [routerLink]="['/register']">Register</a>
       </li>
-      <li *ngIf="authService.loggedIn()" class="nav-item">
+      <li *ngIf="authService.loggedIn()" class="btn btn-sm btn-outline-secondary">
         <a class="nav-link" (click)="onLogoutClick()" href="#">Logout</a>
       </li>
-      <!-- <li class="nav-item">
-        <button (click)="onLogoutClick()" class="btn btn-md align-middle btn-outline-secondary" type="button">Logout</button>
-      </li> -->
     </ul>
   </div>
 </nav>

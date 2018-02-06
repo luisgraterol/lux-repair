@@ -6,7 +6,7 @@ const Empleado = connection.define('Empleado',
 {
     FechaNacimiento: {
         type: Sequelize.DATE,
-        allowNull: false,
+        defaultValue: null,
         validate: {
             isDate: true,
             isAfter: '1900-01-01'
@@ -14,7 +14,7 @@ const Empleado = connection.define('Empleado',
     },
     Sexo: {
         type: Sequelize.STRING,
-        allowNull: false,
+        defaultValue: null,
         validate: {
             isAlpha: true,
             isIn: [['Masculino', 'Femenino', 'Otro']]

@@ -16,7 +16,7 @@ connection.sync({ logging: false })
 // Register
 router.post('/register', (req, res, next) => {
 
-    // Create a non-persistent instance of User (it is persisted in addUser())
+    // Create a non-persistent instance of User (it is persisted in addUser() at 'controllers/user.js')
     let newUser = User.build({
         Nombre: req.body.nombre,
         Snombre: req.body.seg_nombre,
@@ -52,8 +52,6 @@ router.post('/authenticate', (req, res, next) => {
         con_User.comparePassword(password, user.Password, (err, isMatch) => {
             if (err) throw err;
 
-            console.log(user);
-
             if (isMatch) {
                 const token = jwt.sign(user, 'password', {
                     expiresIn: 604800 // 1 week in seconds
@@ -81,8 +79,9 @@ router.post('/authenticate', (req, res, next) => {
 });
 
 // Profile
+// Autentica al usuario y retorna un objeto con todos sus datos corriendo la funcion de passport.
 router.get('/profile', passport.authenticate('jwt', {session: false}), (req, res, next) => {
-    res.json({user: req.user});
+        res.json({ user: req.user });
 });
 
 module.exports = router;

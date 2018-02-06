@@ -2,7 +2,7 @@
 Un sistema de gestión de talleres mecánicos para autos de lujo desarrollado con NodeJS, Express, Angular y SequelizeJS.
 
 
-### Importante
+## Importante
 > Es necesario correr el archivo *fk-setup.sql* una vez que estén creadas todas las tablas de la base de datos para configurar todas las claves foráneas correspondientes a alguna relación de herencia.
 
 ## Guía de Instalación
@@ -30,6 +30,13 @@ Una vez que hayas hecho todo esto, finalmente puedes correr la aplicación. Para
 
 ##### Happy coding! 👨🏽‍💻
 
-## Documentación de Librerías y Otras Herramientas
-* [Github Docs](https://guides.github.com)
-* [Sequelize Docs](http://docs.sequelizejs.com)
+## Librerías y Otras Herramientas
+* [Angular](https://angular.io) Frontend Framework
+* [Express](http://expressjs.com/) Backend Framework
+* [Node](https://nodejs.org) JavaScript Enviroment
+* [Sequelize](http://docs.sequelizejs.com/) SQL ORM 
+* [Passport](http://www.passportjs.org/) Auth Library
+* [QRcode](https://github.com/soldair/node-qrcode) QR Code Generation Code
+* [NodeMailer](https://nodemailer.com/about/) Mail Sender Library
+* [Bootstrap](https://getbootstrap.com/docs/4.0/getting-started/introduction/) CSS Framework
+* [Github](https://guides.github.com) Version Control

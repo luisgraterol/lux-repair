@@ -1,9 +1,9 @@
 <div class="jumbotron text-center main">
-  <h1>Mi Taller</h1>
-  <p class="lead">¡Bienvenido a Mi Taller!</p>
+  <h1>LuxRepair</h1>
+  <p class="lead">¡Bienvenido a LuxRepair!</p>
   <div>
-    <a class="btn btn-primary" [routerLink]="['/register']">Register</a>
-    <a class="btn btn-primary" [routerLink]="['/login']">Login</a>
+    <a *ngIf="!authService.loggedIn()" class="btn btn-primary" [routerLink]="['/register']">Register</a>
+    <a *ngIf="!authService.loggedIn()" class="btn btn-primary" [routerLink]="['/login']">Login</a>
   </div>
 </div>
 

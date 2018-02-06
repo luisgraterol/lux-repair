@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 export class ProfileComponent implements OnInit {
 
   user: Object;
+  rol: String;
 
   constructor(
     private authService: AuthService,
@@ -17,7 +18,12 @@ export class ProfileComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.authService.getProfile().subscribe(profile => { this.user = profile.user }, err => {
+    this.authService.getProfile().subscribe(profile => 
+    {
+      this.user = profile.user;
+      this.rol = profile.user.rol;
+      console.log(this.user);
+    }, err => {
       console.log('Error while getting the profile: ',err);
       return false;
     });
