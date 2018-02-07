@@ -18,11 +18,10 @@ controller.actualizarDatos = function(data, callback) {
         { where: { id: data.id } }
     )
     .then(result => {
-        console.log('Se actualizaron los datos del empleado de id: ', data.id);
-        console.log('El resultado fue: ', result);
+        callback(null);
     })
     .catch(err => {
-        callback(null, err);
+        callback(err);
     }
 )};
 
