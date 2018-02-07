@@ -11,8 +11,8 @@ import { Router } from '@angular/router';
 })
 export class FormEmpleadoComponent implements OnInit {
 
-  sexo: String;
-  fechaNacimiento: String;
+  sexo: string;
+  fechaNacimiento: string;
 
   constructor(
     private authService: AuthService,
@@ -24,6 +24,19 @@ export class FormEmpleadoComponent implements OnInit {
   ngOnInit() { }
 
   agregarDatos() {
+
+    // Validacion de las Casillas
+    if (this.sexo == undefined || this.fechaNacimiento == undefined) {
+      this.flashMessage.show('Por favor llene todas las casillas.', { cssClass: 'custom-danger', timeout: 5000 });
+      return false;
+    }
+
+    // Validar de la Fecha de Nacimiento
+    if (new Date(this.fechaNacimiento) > new Date()) {
+      this.flashMessage.show('La fecha ingresada es invalida.', { cssClass: 'custom-danger', timeout: 5000 });
+      return false;
+    }
+
     this.apiService.setEmployeeData({ sexo: this.sexo, fechaNacimiento: this.fechaNacimiento }).subscribe(response => {
       if (response.success) {
         this.flashMessage.show(response.msg, { cssClass: 'custom-success', timeout: 3000 });
