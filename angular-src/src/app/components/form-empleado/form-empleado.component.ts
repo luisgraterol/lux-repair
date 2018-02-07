@@ -9,7 +9,6 @@ export class FormEmpleadoComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
 }
