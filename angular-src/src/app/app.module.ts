@@ -16,6 +16,7 @@ import { FormEmpleadoComponent } from './components/form-empleado/form-empleado.
 
 import { ValidateService } from './services/validate.service';
 import { AuthService } from './services/auth.service';
+import { ApiService } from './services/api.service';
 
 import { FlashMessagesModule } from 'angular2-flash-messages';
 
@@ -56,7 +57,8 @@ const appRoutes: Routes = [
   providers: [
     ValidateService,
     AuthService,
-    AuthGuard
+    AuthGuard,
+    ApiService
   ],
   bootstrap: [AppComponent]
 })

@@ -4,7 +4,7 @@
     <form (submit)="agregarDatos()">
       <div class="form-group">
         <label for="sexo">Sexo</label>
-        <select class="form-control" id="sexo">
+        <select class="form-control" [(ngModel)]="sexo" name="sexo" id="sexo">
           <option>Masculino</option>
           <option>Femenino</option>
           <option>Otro</option>
