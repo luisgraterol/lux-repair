@@ -1,101 +1,150 @@
 <div class="container-fluid">
-  <div class="row">
-          <!-- Form de Registro para Vehiculos -->          
-          <div class="container pt-5">
-              <h2>Registro de Vehículo</h2>
-              <form (submit)="registrarVehiculo()">
-                  <div class="form-row">
-                      <div class="form-group col-md-3">
-                          <label for="marcaV">Marca</label>
-                          <input type="text" class="form-control"  placeholder="Toyota, Chevrolet, Ford, Etc" [(ngModel)]="marca" name="marca">
-                      </div>
-                      <div class="form-group col-md-3">
-                          <label for="modeloV">Modelo</label>
-                          <input type="text" class="form-control" id="modeloV" placeholder="Corolla, Aveo, Fiesta, Etc" [(ngModel)]="modelo" name="modelo">>
-                      </div>
-                      <div class="form-group col-md-3">
-                          <label for="anoV">Año</label>
-                          <input type="text" class="form-control" id="anoV" placeholder="2012, 2015, Etc" [(ngModel)]="ano" name="ano">>
-                      </div>
-                      <div class="form-group col-md-3">
-                          <label for="placaV">Placa</label>
-                          <input type="text" class="form-control" id="placaV" placeholder="AA000AA" [(ngModel)]="placa" name="placa">
-                      </div>
-                  </div>
-                  <div class="form-row">
-                      <div class="form-group col-md-3">
-                          <label for="serialV">Serial</label>
-                          <input type="text" class="form-control" id="serialV" placeholder="123789456987321" [(ngModel)]="serial" name="serial">
-                      </div>
-                      <div class="form-group col-md-3">
-                          <label for="colorV">Color</label>
-                          <input type="text" class="form-control" id="colorV" placeholder="Plata, Arena, Negro, Etc" [(ngModel)]="color" name="color">
-                      </div>
-                      <div class="form-group col-md-3">
-                          <label for="puertasV">Puertas</label>
-                          <select id="puertasV" class="form-control" [(ngModel)]="puertas" name="puertas">
-                              <option selected>...</option>
-                              <option>3</option>
-                              <option>5</option>
-                          </select>
-                      </div>
-                  </div>
-                  <div class="form-row">
-                      <div class="form-group col-md-3">
-                          <legend class="col-form-label">Caja</legend>
-                          <div class="form-check">
-                              <input class="form-check-input" type="radio" name="cajaV" id="cajaV1" value="option1" checked [(ngModel)]="caja" name="caja">
-                              <label class="form-check-label" for="cajaV1">
-                                  Automático
-                              </label>
-                          </div>
-                          <div class="form-check">
-                              <input class="form-check-input" type="radio" name="cajaV" id="cajaV2" value="option2" [(ngModel)]="caja" name="caja">
-                              <label class="form-check-label" for="cajaV2">
-                                  Sincrónico
-                              </label>
-                          </div>
-                      </div>
-                      <div class="form-group col-md-3">
-                          <legend class="col-form-label">Condición</legend>
-                          <div class="form-check">
-                              <input class="form-check-input" type="radio" name="condicionV" id="condicionV1" value="option1" checked [(ngModel)]="condicion" name="condicion">
-                              <label class="form-check-label" for="condicionV1">
-                                  Nuevo
-                              </label>
-                          </div>
-                          <div class="form-check">
-                              <input class="form-check-input" type="radio" name="condicionV" id="condicionV2" value="option2" [(ngModel)]="condicion" name="condicion">
-                              <label class="form-check-label" for="condicionV2">
-                                  Segunda Mano
-                              </label>
-                          </div>
-                      </div>
-                  </div>
-                 
-                  <br>
-                  <hr class="style1">
-                  <br>
+    <div class="row">
+        <!-- Form de Registro para Vehiculos -->          
+        <div class="container pt-5">
+            <h2>Registro de Vehículo</h2>
+            <form (submit)="registrarVehiculo()">
+                <div class="form-row">
+                    <div class="form-group col-md-3">
+                        <label for="marcaV">Marca</label>
+                        <input type="text" class="form-control"  placeholder="Toyota, Chevrolet, Ford, Etc" [(ngModel)]="marca" name="marca">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="modeloV">Modelo</label>
+                        <input type="text" class="form-control" id="modeloV" placeholder="Corolla, Aveo, Fiesta, Etc" [(ngModel)]="modelo" name="modelo">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="anoV">Año</label>
+                        <select id="anoV" class="form-control" placeholder="2018" [(ngModel)]="ano" name="ano">
+                            <option selected>2018</option>
+                            <option>2017</option>
+                            <option>2016</option>
+                            <option>2015</option>
+                            <option>2014</option>
+                            <option>2013</option>
+                            <option>2012</option>
+                            <option>2011</option>
+                            <option>2010</option>
+                            <option>2009</option>
+                            <option>2008</option>
+                            <option>2007</option>
+                            <option>2006</option>
+                            <option>2005</option>
+                            <option>2004</option>
+                            <option>2003</option>
+                            <option>2002</option>
+                            <option>2001</option>
+                            <option>2000</option>
+                            <option>1999</option>
+                            <option>1998</option>
+                            <option>1997</option>
+                            <option>1996</option>
+                            <option>1995</option>
+                            <option>1994</option>
+                            <option>1993</option>
+                            <option>1992</option>
+                            <option>1991</option>
+                            <option>1990</option>
+                            <option>1989</option>
+                            <option>1988</option>
+                            <option>1987</option>
+                            <option>1986</option>
+                            <option>1985</option>
+                            <option>1984</option>
+                            <option>1983</option>
+                            <option>1982</option>
+                            <option>1981</option>
+                            <option>1980</option>
+                            <option>1979</option>
+                            <option>1978</option>
+                            <option>1977</option>
+                            <option>1976</option>
+                            <option>1975</option>
+                            <option>1974</option>
+                            <option>1973</option>
+                            <option>1972</option>
+                            <option>1971</option>
+                            <option>1970</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="placaV">Placa</label>
+                        <input type="text" class="form-control" id="placaV" placeholder="AA000AA" [(ngModel)]="placa" name="placa">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-3">
+                        <label for="serialV">Serial</label>
+                        <input type="text" class="form-control" id="serialV" placeholder="123789456987321" [(ngModel)]="serial" name="serial">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="colorV">Color</label>
+                        <input type="text" class="form-control" id="colorV" placeholder="Plata, Arena, Negro, Etc" [(ngModel)]="color" name="color">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="puertasV">Puertas</label>
+                        <select id="puertasV" class="form-control" [(ngModel)]="puertas" name="puertas">
+                            <option selected>3</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-3">
+                        <legend class="col-form-label">Caja</legend>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="cajaV" id="cajaV1" value="Automático" checked [(ngModel)]="caja" name="caja">
+                            <label class="form-check-label" for="cajaV1">
+                                Automático
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="cajaV" id="cajaV2" value="Sincrónico" [(ngModel)]="caja" name="caja">
+                            <label class="form-check-label" for="cajaV2">
+                                Sincrónico
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <legend class="col-form-label">Condición</legend>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="condicionV" id="condicionV1" value="Nuevo" checked [(ngModel)]="condicion" name="condicion">
+                            <label class="form-check-label" for="condicionV1">
+                                Nuevo
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="condicionV" id="condicionV2" value="Segunda Mano" [(ngModel)]="condicion" name="condicion">
+                            <label class="form-check-label" for="condicionV2">
+                                Segunda Mano
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                
+                <br>
+                <hr class="style1">
+                <br>
 
-                  <div class="form-row">
-                      <div class="form-group col-md-3">
-                          <label for="serviciolV">Servicio a Solicitar</label>
-                          <select id="inputState" class="form-control" [(ngModel)]="servicio" name="servicio">
-                              <option selected>...</option>
-                              <option>Revisión General</option>
-                              <option>Cambio de Aceite</option>
-                              <option>Carrocería</option>
-                              <option>Alineación</option>
-                          </select>
-                      </div>
-                      <div class="form-group col-md-9">
-                          <label for="notasV">Detalle de Situación</label>
-                          <input type="text" class="form-control" id="notasV" placeholder="Se presentó falla al arrancar. No prenden las luces delanteras. Etc" [(ngModel)]="detalles" name="detalles">
-                      </div>
-                  </div>
-                  
-                  <button type="submit" class="btn btn-primary">Registrar Vehículo</button>
-              </form>
-          </div>
-      </div>
-  </div>
+                <div class="form-row">
+                    <div class="form-group col-md-3">
+                        <label for="serviciolV">Servicio a Solicitar</label>
+                        <select id="inputState" class="form-control" [(ngModel)]="servicio" name="servicio">
+                            <option selected>Revisión General</option>
+                            <option>Cambio de Aceite</option>
+                            <option>Carrocería</option>
+                            <option>Alineación</option>
+                            <option>Otro</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-9">
+                        <label for="notasV">Detalle de Situación</label>
+                        <input type="text" class="form-control" id="notasV" placeholder="Se presentó falla al arrancar. No prenden las luces delanteras. Etc" [(ngModel)]="detalles" name="detalles">
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Registrar Vehículo</button>
+            </form>
+        </div>
+    </div>
+</div>
