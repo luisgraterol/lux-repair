@@ -1,45 +1,40 @@
-<div class="container-fluid">
-  <div class="row">
-      <!-- Alert -->
-     
-  </div>
-  <div class="row">
-      <div class="col mx-0 mx-sm-4 mx-md-5 mx-lg-5 mx-xl-5 mt-4 mb-2">
-          <h3>Dashboard</h3>
-      </div>
-  </div>
-  <div class="row">
-      <div class="col d-flex justify-content-center">
-          <div class="card-deck">
-              <div class="card text-center" style="max-width: 18rem;">
-                  <img class="card-img-top" src="assets/dashboard-cliente/ferrari.jpg" alt="Card image cap">
-                  <div class="card-body px-sm-1 px-md-2 px-lg-3 px-xl-3">
-                      <h5 class="card-title">Registro</h5>
-                      <p class="card-text">Registra un nuevo vehiculo para poder solicitar citas.</p>
-                      <a class="btn btn-outline-primary mx-0 mx-sm-0 mx-md-0"  [routerLink]="['/form-vehiculo']">Registrar</a>
-                      
-                  </div>
-              </div>
-              <div class="card text-center" style="max-width: 18rem;">
-                  <img class="card-img-top" src="assets/dashboard-cliente/coleccion.jpg" alt="Card image cap">
-                  <div class="card-body px-sm-1 px-md-2 px-lg-3 px-xl-3">
-                      <h5 class="card-title">Garage</h5>
-                      <p class="card-text">Gestiona todas los vehiculos asociados,solicita citas, edita la informacion o eliminalos</p>
-                      <a href="#" class="btn btn-outline-primary">Ir a Garage</a>
-                  </div>
-              </div>
-              <div class="card text-center" style="max-width: 18rem;">
-                  <img class="card-img-top" src="assets/dashboard-cliente/image.png" alt="what">
-                  <div class="card-body px-sm-1 px-md-2 px-lg-3 px-xl-3">
-                      <h5 class="card-title">Mi Perfil</h5>
-                      <p class="card-text">Edita la informacion correspondiente a tu perfil</p>
-                      <a href="#" class="btn btn-outline-primary">Perfil</a>
-                  </div>
-              </div>
+<div class="row">
+    <div class="col mx-0 mx-sm-4 mx-md-5 mx-lg-5 mx-xl-5 mt-4 mb-2">
+        <h3>Dashboard</h3>
+    </div>
+</div>
+<div class="row mt-5 pb-5">
+    <div class="col d-flex justify-content-center">
+        <div class="card-deck">
+            <div class="card text-center" style="max-width: 18rem;">
+                <img class="img-responsive mx-auto mt-4 mb-2" src="assets/dashboard-cliente/vehiculo-agregar.png" alt="Imagen Agregar Vehiculo" width="130" height="140">
+
+                <div class="card-body px-sm-1 px-md-2 px-lg-3 px-xl-3 mt-3">
+                    <h5 class="card-title">Registro</h5>
+                    <p class="card-text">Registra un nuevo vehiculo para poder solicitar citas.</p>
+                    <a class="btn btn-outline-primary mx-0 mx-sm-0 mx-md-0"  [routerLink]="['/form-vehiculo']">Registrar</a>
+                    
+                </div>
+            </div>
+            <div class="card text-center" style="max-width: 18rem;">
+                <img class="img-responsive mx-auto mt-4 mb-2" src="assets/dashboard-cliente/vehiculo-ver.png" alt="Imagen Ver Vehiculos" width="130" height="140">
+                <div class="card-body px-sm-1 px-md-2 px-lg-3 px-xl-3">
+                    <h5 class="card-title">Garage</h5>
+                    <p class="card-text">Gestiona todas los vehiculos asociados,solicita citas, edita la informacion o eliminalos</p>
+                    <a href="#" class="btn btn-outline-primary">Ir a Garage</a>
+                </div>
+            </div>
+            <div class="card text-center" style="max-width: 18rem;">
+                <img class="img-responsive mx-auto mt-4 mb-2" src="assets/dashboard-cliente/resume.png" alt="Imagen Perfil" width="130" height="140">
+                <div class="card-body px-sm-1 px-md-2 px-lg-3 px-xl-3 mt-3">
+                    <h5 class="card-title">Mi Perfil</h5>
+                    <p class="card-text">Edita la informacion correspondiente a tu perfil</p>
+                    <a href="#" class="btn btn-outline-primary">Perfil</a>
+                </div>
+            </div>
 
 
 
-          </div>
-      </div>
-  </div>
+        </div>
+    </div>
 </div>
