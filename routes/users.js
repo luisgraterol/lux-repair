@@ -86,13 +86,11 @@ router.get('/profile', passport.authenticate('jwt', {session: false}), (req, res
 });
 
 router.post('/datos-empleado', (req, res, next) => {
-    console.log('Datos en Backend: ', req.body);
-    con_Empleado.actualizarDatos(req.body, (user, err) => {
-        if (err)
-            res.json({ success: false, msg: 'Failed to update the users data.' });
-        else {
-            res.json({ success: true, msg: 'Success updating the users data.' });
-        }
+    con_Empleado.actualizarDatos(req.body, (err) => {
+        if (err) 
+            res.json({ success: false, msg: 'Se produjo un error al actualizar sus datos.' });
+        else 
+            res.json({ success: true, msg: 'Se actualizaron sus datos exitosamente.' });
     });
 });
 

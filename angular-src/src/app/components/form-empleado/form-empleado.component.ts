@@ -24,18 +24,14 @@ export class FormEmpleadoComponent implements OnInit {
   ngOnInit() { }
 
   agregarDatos() {
-    this.apiService.setEmployeeData({ sexo: this.sexo, fechaNacimiento: this.fechaNacimiento }).subscribe(data => {
-
-      console.log('Estado: ', data.success);
-
-      // Esto aun no funciona:
-      // if (data.success) {
-      //   this.flashMessage.show('Usted fue registrado exitosamente.', { cssClass: 'custom-success', timeout: 3000 });
-      //   this.router.navigate(['/profile']);
-      // } else {
-      //   this.flashMessage.show('Se produjo un error al actualizar sus datos.', { cssClass: 'custom-danger', timeout: 3000 });
-      //   this.router.navigate(['/form-empleado']);
-      // }
+    this.apiService.setEmployeeData({ sexo: this.sexo, fechaNacimiento: this.fechaNacimiento }).subscribe(response => {
+      if (response.success) {
+        this.flashMessage.show(response.msg, { cssClass: 'custom-success', timeout: 3000 });
+        this.router.navigate(['/profile']);
+      } else {
+        this.flashMessage.show(response.msg, { cssClass: 'custom-danger', timeout: 3000 });
+        this.router.navigate(['/form-empleado']);
+      }
     });
   }
 }
