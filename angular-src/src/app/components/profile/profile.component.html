@@ -18,20 +18,34 @@
           <h5 class="pr-3">Cedula:</h5>
           <p>{{user.Cedula}}</p>
         </li>
+        <li *ngIf="this.rol != 'Cliente'" class="list-group-item d-flex justify-content-left pt-4">
+          <h5 class="pr-3">Rol:</h5>
+          <p>{{this.rol}}</p>
+        </li>
+        <li *ngIf="this.rol != 'Cliente' && this.fechaNacimiento != null" class="list-group-item d-flex justify-content-left pt-4">
+          <h5 class="pr-3">Fecha de Nacimiento:</h5>
+          <p>{{formatearFecha()}}</p>
+        </li>
+        <li *ngIf="this.rol != 'Cliente' && this.sexo != null" class="list-group-item d-flex justify-content-left pt-4">
+          <h5 class="pr-3">Sexo:</h5>
+          <p>{{this.sexo}}</p>
+        </li>
       </ul>  
     </div>
   </div>
 </div>
 
-<div *ngIf="rol == 'empleado'" class="row">
+<div *ngIf="rol != 'Cliente'" class="row">
   <div class="col-4 mx-auto my-auto">
       <!-- Tarjeta -->
       <div class="card text-center">
         <div class="card-header">
-          <h5 class="pt-3">Complete el formulario</h5>
+          <h5 *ngIf="completoFormulario()" class="pt-3">Actualiza tus datos</h5>
+          <h5 *ngIf="!completoFormulario()" class="pt-3">Complete el formulario</h5>
         </div>
         <div class="card-body">
-          <p>Nos faltan algunos de sus datos personales. Tómese un momento para llenarlos.</p>
+          <p *ngIf="completoFormulario()">Si quiere hacer alguna modificación a sus datos personales puede hacerlo aquí.</p>
+          <p *ngIf="!completoFormulario()">Nos faltan algunos de sus datos personales. Por favor, tómese un momento para llenarlos.</p>
           <a class="btn btn-primary"  [routerLink]="['/form-empleado']">Ir al formulario</a>
         </div>
       </div>
