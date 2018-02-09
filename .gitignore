@@ -44,3 +44,4 @@ angular-src/e2e/*.map
 # System Files
 angular-src/.DS_Store
 angular-src/Thumbs.db
+.env
