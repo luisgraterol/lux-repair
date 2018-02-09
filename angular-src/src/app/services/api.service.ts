@@ -20,7 +20,7 @@ export class ApiService {
 
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.post('http://localhost:3000/users/datos-empleado', data, { headers: headers })
+    return this.http.post('users/datos-empleado', data, { headers: headers })
       .map(res => res.json());
   }
 
