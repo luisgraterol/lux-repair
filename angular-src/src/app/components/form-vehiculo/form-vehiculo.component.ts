@@ -88,10 +88,10 @@ export class FormVehiculoComponent implements OnInit {
       this.ano == undefined || 
       this.puertas == undefined || 
       this.condicion == undefined || 
-      this.caja == undefined || 
-      this.servicio == undefined || 
-      this.detalles == undefined || 
-      this.detalles == ''
+      this.caja == undefined
+      // this.servicio == undefined || 
+      // this.detalles == undefined || 
+      // this.detalles == ''
     );
   }
 
