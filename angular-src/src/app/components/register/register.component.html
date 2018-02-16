@@ -1,75 +1,95 @@
 <div class="row">
-  <div class="col-6 mx-auto my-auto">
+  <div class="col-8 col-md-8 col-lg-6 mx-auto my-auto">
     <!-- Title -->
-    <h2 class="pt-5">Register</h2>
+    <h2 class="mt-4 pt-5 pb-4">Register</h2>
 
     <!-- Form -->
-    <form (submit)="onRegisterSubmit()">
-      <div class="form-group">
-        <label>
-          Nombre 
-          <span class="required">*</span>
-        </label>
-        <input type="text" [(ngModel)]="nombre" name="nombre" class="form-control">
-      </div>
-      <div class="form-group">
-        <label>
-          Segundo Nombre
-        </label>
-        <input type="text" [(ngModel)]="seg_nombre" name="seg_nombre" class="form-control">
-      </div>
-      <div class="form-group">
-        <label>
-          Apellido 
-          <span class="required">*</span>
-        </label>
-        <input type="text" [(ngModel)]="apellido" name="apellido" class="form-control">
-      </div>
-      <div class="form-group">
-        <label>
-          Cedula 
-          <span class="required">*</span>
-        </label>
-        <input type="text" [(ngModel)]="cedula" name="cedula" class="form-control">
-      </div>
-      <div class="form-group">
-        <label>
-          Usuario 
-          <span class="required">*</span>
-        </label>
-        <input type="text" [(ngModel)]="username" name="username" class="form-control">
-      </div>
-      <div class="form-group">
-        <label>
-          Correo Electrónico 
-        <span class="required">*</span>
-        </label>
-        <input type="text" [(ngModel)]="email" name="email" class="form-control">
-      </div>
-      <div class="form-group">
-        <label>
-          Clave 
-          <span class="required">*</span>
-        </label>
-        <input type="password" [(ngModel)]="password" name="password" class="form-control">
-      </div>
+    <form (submit)="onRegisterSubmit()" class="wrapper">
 
-      <div class="form-group">
-        <legend class="col-form-label">Elija su rol</legend>
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="rol" id="rol-cliente" [(ngModel)]="rol" value="cliente" checked>
-          <label class="form-check-label pt-1 pl-1" for="rol-cliente">
-            Cliente
-          </label>
+      <div class="row">
+        <div class="col-12 col-md-6">
+          <div class="form-group">
+            <label>Nombre
+              <span class="required">*</span>
+            </label>
+            <input type="text" [(ngModel)]="nombre" name="nombre" class="form-control">
+          </div>
         </div>
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="rol" id="rol-empleado" [(ngModel)]="rol" value="empleado">
-          <label class="form-check-label pt-1 pl-1" for="rol-empleado">
-            Empleado
-          </label>
+        <div class="col-12 col-md-6">
+          <div class="form-group">
+            <label>Segundo Nombre</label>
+            <input type="text" [(ngModel)]="seg_nombre" name="seg_nombre" class="form-control">
+          </div>
         </div>
       </div>
 
+      <div class="row">
+        <div class="col-12 col-md-6">
+          <div class="form-group">
+            <label>Apellido <span class="required">*</span></label>
+            <input type="text" [(ngModel)]="apellido" name="apellido" class="form-control">
+          </div>
+        </div>
+        <div class="col-12 col-md-6">
+          <div class="form-group">
+            <label>
+              Cedula
+              <span class="required">*</span>
+            </label>
+            <input type="text" [(ngModel)]="cedula" name="cedula" class="form-control">
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12 col-md-6">
+          <div class="form-group">
+            <label>
+              Usuario
+              <span class="required">*</span>
+            </label>
+            <input type="text" [(ngModel)]="username" name="username" class="form-control">
+          </div>
+        </div>
+        <div class="col-12 col-md-6">
+          <div class="form-group">
+            <label>
+              Correo Electrónico
+              <span class="required">*</span>
+            </label>
+            <input type="text" [(ngModel)]="email" name="email" class="form-control">
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12 col-md-6">
+          <div class="form-group">
+            <label>
+              Clave
+              <span class="required">*</span>
+            </label>
+            <input type="password" [(ngModel)]="password" name="password" class="form-control">
+          </div>
+        </div>
+        <div class="col-12 col-md-6">
+          <div class="form-group">
+            <legend class="col-form-label">Elija su rol</legend>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="rol" id="rol-cliente" [(ngModel)]="rol" value="cliente" checked>
+              <label class="form-check-label pt-1 pl-1" for="rol-cliente">
+                Cliente
+              </label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="rol" id="rol-empleado" [(ngModel)]="rol" value="empleado">
+              <label class="form-check-label pt-1 pl-1" for="rol-empleado">
+                Empleado
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <!-- Submit Button -->
       <div class="container">
@@ -84,4 +104,3 @@
     </form>
   </div>
 </div>
-

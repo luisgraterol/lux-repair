@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 })
 export class DashboardComponent implements OnInit {
 
-  rol: String;
+  rol: any;
 
   constructor(
     private authService: AuthService,
