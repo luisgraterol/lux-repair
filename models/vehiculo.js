@@ -79,6 +79,14 @@ const Vehiculo = connection.define('Vehiculo',
             notEmpty: true
         }
     },
+    Marca: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+    },
+    Modelo: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+    }
     // Foto: {
     //     type: Sequelize.'fotacha',
     //     allowNull: true,

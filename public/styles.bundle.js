@@ -35,7 +35,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "/* You can add global styles to this file, and also import other style files */\n\nhtml, body {\n  height: 100%;\n}\n\n.body {\n    background: #f2f2f2;\n}\n\n.alert.flash-message.custom-success {\n    margin: 1rem;\n    background: #4aa05f;\n}\n\n.alert.flash-message.custom-danger {\n    margin: 1rem;\n    background: #f57676;\n}\n\n.alert.flash-message > p {\n  color: white;\n  margin: 0;\n}\n\n.required {\n    color: #d12d2d;\n}", ""]);
+exports.push([module.i, "/* You can add global styles to this file, and also import other style files */\n\nhtml, body {\n  height: 100%;\n}\n\n.body {\n    background: #f2f2f2;\n}\n\n.alert.flash-message.custom-success {\n    margin: 1rem;\n    background: #4aa05f;\n}\n\n.alert.flash-message.custom-danger {\n    margin: 1rem;\n    background: #f57676;\n}\n\n.alert.flash-message > p {\n  color: white;\n  margin: 0;\n}\n\n.required {\n    color: #d12d2d;\n}\n\n.scrolling-wrapper {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-wrap: nowrap;\n      flex-wrap: nowrap;\n  overflow-x: auto;\n  -webkit-overflow-scrolling: touch;\n}\n\n.scrolling-wrapper>.card {\n  -webkit-box-flex: 0;\n      -ms-flex: 0 0 auto;\n          flex: 0 0 auto;\n  width: 18rem;\n  height: 10rem;\n}\n\n::-webkit-scrollbar {\n  width: 0px;\n  background: transparent;\n}\n\n", ""]);
 
 // exports
 
