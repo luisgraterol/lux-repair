@@ -1,23 +1,56 @@
-<div class="jumbotron text-center main">
-  <h1>LuxRepair</h1>
-  <p class="lead">¡Bienvenido a LuxRepair!</p>
-  <div>
-    <a *ngIf="!authService.loggedIn()" class="btn btn-primary" [routerLink]="['/register']">Register</a>
-    <a *ngIf="!authService.loggedIn()" class="btn btn-primary" [routerLink]="['/login']">Login</a>
+
+<!-- Main -->
+<!-- Parallax de Intro-->
+<div class="parallax mx-0 bg-intro d-flex flex-column justify-content-center">
+  <p class="display-4 text-light text-center mx-4 mb-4 pb-4">¡Bienvenido a LuxRepair!</p>
+  <div *ngIf="!authService.loggedIn()" class="card wrapper-intro text-center text-dark mx-auto p-0">
+    <div class="card-header">
+      <h4 class="pt-2">Repare su carro con nosotros</h4>
+    </div>
+    <div class="card-body d-flex flex-column align-items-center">
+      <p class="lead">Sin importar cual sea la reparación, estamos listos para brindarle el mejor servicio.</p>
+      <a [routerLink]="['/register']" class="btn btn-primary">Regístrese Ya</a>
+      <a [routerLink]="['/login']" class="btn btn-link btn-sm mt-1">¿Ya posee una cuenta? Ingrese Aquí</a>
+    </div>
   </div>
 </div>
 
-<div class="row">
-  <div class="col-4">
-    <h3>Express Backend</h3>
-    <p>A rock solid Node.js/Express server using Mongoose to organize models and query the database</p>
+<!-- Divisor -->
+<div class="container-fluid">
+  <div class="row">
+    <div class="col h-100 my-5 py-5 p-4 p-lg-5 mx-lg-5">
+      <p class="h3 text-center mx-3">Su vehículo solo merece el mejor de los cuidados</p>
+      <p class="lead text-center mt-3">
+        Nuestro equipo se especializa en la reparación de vehículos de alta gama y utiliza únicamente repuestos de primera. No deje
+        que una mano inexperta servicie sus automóviles más preciados.
+      </p>
+    </div>
   </div>
-  <div class="col-4">
-    <h3>Angular-CLI</h3>
-    <p>Angular-CLI to generate components, services and more. Local dev server and easy compilation</p>
-  </div>
-  <div class="col-4">
-    <h3>JWT Tokens</h3>
-    <p>Full featured authentication using JSON web tokens. Login and store user data</p>
+</div>
+
+<!-- Parallax de Contact Form -->
+<div class="parallax bg-contactform d-flex flex-column justify-content-center">
+  <div class="card wrapper-contact text-center text-dark mx-auto p-0">
+    <div class="card-header">
+      <h4 class="pt-2">Contáctanos</h4>
+    </div>
+    <div class="card-body p-4 bg-light">
+      <p class="lead">¿Tienes alguna pregunta? Nos encantaría escucharla. Escríbenos un mensaje y te responderemos lo antes posible.</p>
+      <form>
+        <div class="form-group text-left">
+          <label for="nombre">Nombre y Apellido</label>
+          <input type="email" class="form-control" id="nombre">
+        </div>
+        <div class="form-group text-left">
+          <label for="email">Correo Electrónico</label>
+          <input type="email" class="form-control" id="email">
+        </div>
+        <div class="form-group text-left">
+          <label for="mensaje">Mensaje</label>
+          <textarea class="form-control" name="mensaje" id="mensaje" rows="5"></textarea>
+        </div>
+        <a href="#" class="btn btn-primary text-center">Enviar</a>
+      </form>
+    </div>
   </div>
 </div>
