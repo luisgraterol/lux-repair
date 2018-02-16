@@ -4,14 +4,15 @@
 
 USE luxrepairDB;
 
--- Herencia de Empleado y Cliente a Usuario
+-- Herencia de Empleado a Usuario
 ALTER TABLE `luxrepairDB`.`Empleado` 
 ADD CONSTRAINT `id_Empleado`
   FOREIGN KEY (`id`)
   REFERENCES `luxrepairDB`.`Usuario` (`id`)
   ON DELETE NO ACTION
   ON UPDATE NO ACTION;
-  
+
+-- Herencia de Cliente a Usuario
 ALTER TABLE `luxrepairDB`.`Cliente` 
 ADD CONSTRAINT `id_Cliente`
   FOREIGN KEY (`id`)
@@ -19,14 +20,15 @@ ADD CONSTRAINT `id_Cliente`
   ON DELETE NO ACTION
   ON UPDATE NO ACTION;
 
--- Herencia de Gerente, Mecanico y Administrador a Empleado
+-- Herencia de Gerente a Empleado
 ALTER TABLE `luxrepairDB`.`Gerente` 
 ADD CONSTRAINT `id_Gerente`
   FOREIGN KEY (`id`)
   REFERENCES `luxrepairDB`.`Empleado` (`id`)
   ON DELETE NO ACTION
   ON UPDATE NO ACTION;
-  
+
+-- Herencia de Mecanico a Empleado
 ALTER TABLE `luxrepairDB`.`Mecanico` 
 ADD CONSTRAINT `id_Mecanico`
   FOREIGN KEY (`id`)
@@ -34,9 +36,28 @@ ADD CONSTRAINT `id_Mecanico`
   ON DELETE NO ACTION
   ON UPDATE NO ACTION;
 
+-- Herencia de Administrador a Empleado
 ALTER TABLE `luxrepairDB`.`Administrador` 
 ADD CONSTRAINT `id_Administrador`
   FOREIGN KEY (`id`)
   REFERENCES `luxrepairDB`.`Empleado` (`id`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
+-- Setup de Claves Foraneas de la Marca y el Modelo en la tabla Vehiculo
+ALTER TABLE `luxrepairDB`.`Vehiculo` 
+ADD COLUMN `Marca` INT(11) NOT NULL AFTER `Activo`,
+ADD COLUMN `Modelo` INT(11) NOT NULL AFTER `Marca`,
+ADD INDEX `Marca_idx` (`Marca` ASC),
+ADD INDEX `Modelo_idx` (`Modelo` ASC);
+ALTER TABLE `luxrepairDB`.`Vehiculo` 
+ADD CONSTRAINT `Marca`
+  FOREIGN KEY (`Marca`)
+  REFERENCES `luxrepairDB`.`Marca` (`id`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION,
+ADD CONSTRAINT `Modelo`
+  FOREIGN KEY (`Modelo`)
+  REFERENCES `luxrepairDB`.`Modelo` (`id`)
   ON DELETE NO ACTION
   ON UPDATE NO ACTION;
