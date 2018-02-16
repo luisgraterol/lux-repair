@@ -1,3 +1,63 @@
-.main {
+/* .main {
     min-height: 28rem;
+} */
+
+.wrapper-contact {
+  width: 18rem;
+}
+
+.wrapper-intro {
+  width: 18rem;
+}
+
+.bg-intro {
+  background-image: url("/assets/home/home-1.jpg");
+}
+
+.bg-contactform {
+  background-image: url("/assets/home/home-2.jpg");
+}
+
+.parallax {
+  height: 48rem;
+  width: 100% !important;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* RESPONSIVE BREAKPOINTS */
+
+/* Small devices (landscape phones, 576px and up) */
+
+@media (min-width: 576px) {
+  .wrapper-contact {
+    width: 28rem;
+  }
+  .wrapper-intro {
+    width: 26rem;
+  }
+}
+
+/* Medium devices (tablets, 768px and up) */
+
+@media (min-width: 768px) {
+  .wrapper-contact {
+    width: 38rem;
+  }
+  .wrapper-intro {
+    width: 28rem;
+  }
+}
+
+/* Large devices (desktops, 992px and up) */
+
+@media (min-width: 992px) {
+  .wrapper-contact {
+    width: 38rem;
+  }
+  .wrapper-intro {
+    width: 28rem;
+  }
 }

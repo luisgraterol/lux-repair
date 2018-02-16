@@ -26,3 +26,22 @@ html, body {
 .required {
     color: #d12d2d;
 }
+
+.scrolling-wrapper {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.scrolling-wrapper>.card {
+  flex: 0 0 auto;
+  width: 18rem;
+  height: 10rem;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+
