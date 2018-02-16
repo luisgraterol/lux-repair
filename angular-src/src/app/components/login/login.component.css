@@ -13,3 +13,12 @@
     width: 24rem;
   }
 }
+
+hr {
+  height: 1px;
+  width: 100%;
+  z-index: 10000;
+  background: linear-gradient(to right, var(--dark), var(--dark), white, var(--dark), var(--dark));
+  border: 0;
+  margin: 0;
+}
