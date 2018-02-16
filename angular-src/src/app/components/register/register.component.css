@@ -1,0 +1,11 @@
+.wrapper {
+    min-height: 36rem;
+}
+
+/* Breakpoint in the other direction */
+/* Small devices (landscape phones, less than 768px) */
+@media (max-width: 767.98px) {
+  .wrapper {
+    min-height: 54rem;
+  }
+}
