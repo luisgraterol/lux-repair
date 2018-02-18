@@ -1,17 +1,48 @@
 <div class="container-fluid">
     <div class="row">
         <!-- Form de Registro para Vehiculos -->          
-        <div class="container pt-5">
+        <div class="container py-5 mt-3 mb-5">
             <h2>Registro de Vehículo</h2>
             <form (submit)="registrarVehiculo()">
                 <div class="form-row">
                     <div class="form-group col-md-3">
                         <label for="marcaV">Marca</label>
-                        <input type="text" class="form-control"  placeholder="Toyota, Chevrolet, Ford, Etc" [(ngModel)]="marca" name="marca">
+                        <select id="marcaV" class="form-control" [(ngModel)]="marca" name="marca">
+                            <option selected>Alfa Romeo</option>
+                            <option>Aston Martin</option>
+                            <option>Audi</option>
+                            <option>Chery</option>
+                            <option>Chevrolet</option>
+                            <option>Dodge</option>
+                            <option>Ferrari</option>
+                            <option>Ford</option>
+                            <option>Honda</option>
+                            <option>Lamborghini</option>
+                            <option>Lexus</option>
+                            <option>Mazda</option>
+                            <option>Mercedez Benz</option>
+                            <option>Mitsubishi</option>
+                            <option>Nissan</option>
+                            <option>Toyota</option>
+                            <option>Volvo</option>
+                        </select>
                     </div>
                     <div class="form-group col-md-3">
                         <label for="modeloV">Modelo</label>
-                        <input type="text" class="form-control" id="modeloV" placeholder="Corolla, Aveo, Fiesta, Etc" [(ngModel)]="modelo" name="modelo">
+                        <select id="modeloV" class="form-control" [(ngModel)]="modelo" name="modelo">
+                            <option selected>4Runner</option>
+                            <option>Aveo</option>
+                            <option>Camaro</option>
+                            <option>Camry</option>
+                            <option>Corolla</option>
+                            <option>Cruze</option>
+                            <option>Fortuner</option>
+                            <option>Optra</option>
+                            <option>Orinoco</option>
+                            <option>Spark</option>
+                            <option>Tiggo</option>
+                            <option>Yaris</option>
+                        </select>
                     </div>
                     <div class="form-group col-md-3">
                         <label for="anoV">Año</label>
@@ -79,7 +110,16 @@
                     </div>
                     <div class="form-group col-md-3">
                         <label for="colorV">Color</label>
-                        <input type="text" class="form-control" id="colorV" placeholder="Plata, Arena, Negro, Etc" [(ngModel)]="color" name="color">
+                        <select id="colorV" class="form-control" [(ngModel)]="color" name="color">
+                            <option selected>Arena</option>
+                            <option>Azul</option>
+                            <option>Blanco</option>
+                            <option>Gris</option>
+                            <option>Negro</option>
+                            <option>Plata</option>
+                            <option>Rojo</option>
+                            <option>Verde</option>
+                        </select>
                     </div>
                     <div class="form-group col-md-3">
                         <label for="puertasV">Puertas</label>
