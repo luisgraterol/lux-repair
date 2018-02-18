@@ -64,10 +64,10 @@ ADD CONSTRAINT `Modelo`
 
 -- Setup de Clave Foranea de la Marca en la tabla Modelo
 ALTER TABLE `luxrepairDB`.`Modelo` 
-ADD INDEX `Marca_idx` (`Marca` ASC);
-ALTER TABLE `luxrepairDB`.`Modelo` 
-ADD CONSTRAINT `Marca`
+ADD CONSTRAINT `fk_Marca`
   FOREIGN KEY (`Marca`)
   REFERENCES `luxrepairDB`.`Marca` (`id`)
   ON DELETE NO ACTION
   ON UPDATE NO ACTION;
+ 
+
