@@ -89,7 +89,7 @@ INSERT INTO Marca (id, Nombre) VALUES (14, 'Mitsubishi');
 INSERT INTO Marca (id, Nombre) VALUES (15, 'Nissan');
 INSERT INTO Marca (id, Nombre) VALUES (16, 'Toyoya');
 INSERT INTO Marca (id, Nombre) VALUES (17, 'Volvo');
-INSERT INTO Marca (id, Nombre) VALUES (999, 'OTROS');
+INSERT INTO Marca (id, Nombre) VALUES (999, 'Otros');
 
 
 -- Agregar Modelos de Vehiculos
