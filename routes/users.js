@@ -92,8 +92,6 @@ router.get('/vehiculos', passport.authenticate('jwt', { session: false }), (req,
     console.log('En el backend el request es: ', req.user);
 
     con_Cliente.getVehiculos(req.user.id, (vehiculos, err) => {
-        console.log('El arreglo en el backend es: ', vehiculos);
-
         if (err) throw err;
 
         if (vehiculos) {
