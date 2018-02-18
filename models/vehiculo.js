@@ -79,11 +79,20 @@ const Vehiculo = connection.define('Vehiculo',
             notEmpty: true
         }
     },
-    // Foto: {
-    //     type: Sequelize.'fotacha',
-    //     allowNull: true,
-
-    // }
+    Marca: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        validate: {
+            notEmpty: true
+        }
+    },
+    Modelo: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        validate: {
+            notEmpty: true
+        }
+    }
 },
 {
     timestamps: false,
