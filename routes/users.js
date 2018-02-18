@@ -10,6 +10,7 @@ const User = require('../models/user');
 // Controllers
 const con_User = require('../controllers/user');
 const con_Empleado = require('../controllers/empleado');
+const con_Vehiculo = require('../controllers/vehiculo');
 
 // Sincroniza los cambios en los modelos
 connection.sync({ logging: false })
@@ -91,6 +92,19 @@ router.post('/datos-empleado', (req, res, next) => {
             res.json({ success: false, msg: 'Se produjo un error al actualizar sus datos.' });
         else 
             res.json({ success: true, msg: 'Se actualizaron sus datos exitosamente.' });
+    });
+});
+
+router.post('/registrar-vehiculo', (req, res, next) => {
+
+    console.log('Al backend está llegando:\n', req.body);
+
+
+    con_Vehiculo.registrar(req.body, (err) => {
+        if (err)
+            res.json({ success: false, msg: 'Se produjo un error al registrar el vehículo, inténtelo de nuevo.' });
+        else
+            res.json({ success: true, msg: 'Se registró el vehículo exitosamente.' });
     });
 });
 
