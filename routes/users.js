@@ -115,10 +115,6 @@ router.post('/datos-empleado', (req, res, next) => {
 });
 
 router.post('/registrar-vehiculo', (req, res, next) => {
-
-    console.log('Al backend está llegando:\n', req.body);
-
-
     con_Vehiculo.registrar(req.body, (err) => {
         if (err)
             res.json({ success: false, msg: 'Se produjo un error al registrar el vehículo, inténtelo de nuevo.' });

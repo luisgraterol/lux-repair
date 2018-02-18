@@ -28,8 +28,7 @@ export class ApiService {
 
   setVehicleData(data) {
     // Pedir el ID del usuario al cual corresponden los datos a actualizar y agregarlo a los datos
-    data.id = JSON.parse(localStorage.getItem('user')).id;
-    console.log('Datos: ', data);
+    data.idCliente = JSON.parse(localStorage.getItem('user')).id;
 
     // Settear los encabezados para la petición al API
     let headers = new Headers();
