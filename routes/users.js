@@ -10,6 +10,7 @@ const User = require('../models/user');
 // Controllers
 const con_User = require('../controllers/user');
 const con_Empleado = require('../controllers/empleado');
+const con_Cliente = require('../controllers/cliente');
 
 // Sincroniza los cambios en los modelos
 connection.sync({ logging: false })
@@ -80,9 +81,27 @@ router.post('/authenticate', (req, res, next) => {
 });
 
 // Profile
-// Autentica al usuario y retorna un objeto con todos sus datos corriendo la funcion de passport.
+// Autentica al usuario y retorna un objeto de usuario con todos sus datos corriendo la 
+// funcion de passport y insertando los datos en req.user.
 router.get('/profile', passport.authenticate('jwt', {session: false}), (req, res, next) => {
     res.json({ user: req.user });
+});
+
+router.get('/vehiculos', passport.authenticate('jwt', { session: false }), (req, res, next) => {
+    console.log('En el backend el request es: ', req.user);
+
+    con_Cliente.getVehiculos((vehiculos, err) => {
+        console.log('El arreglo en el backend es: ', vehiculos);
+
+        if (err) throw err;
+
+        if (vehiculos) {
+            res.json({
+                userId: req.user.id,
+                vehiculos: vehiculos
+            });
+        }
+    });
 });
 
 router.post('/datos-empleado', (req, res, next) => {
