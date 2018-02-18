@@ -22,14 +22,37 @@ controller.registrar = function (data, callback) {
             // Si no se ha registrado ningun vehiculo con esa serial
             if (resultados == null) {
 
+                Marca.findOne({ where: { Marca: data.Marca } })
+        .then(resultadoMarca => {
+            console.log('Los resultados el findOne que busca marca es:\n', resultadoMarca);})
+
+            Modelo.findOne({ where: { Modelo: data.Modelo } })
+        .then(resultadoModelo => {
+            console.log('Los resultados el findOne que busca modelo es:\n', resultadoModelo);})
+
+
+              /*  vehiculo.update(
+                    {
+                        Serial: data.serial,
+                        Placa: data.placa,
+                        Color: data.color,
+                        esAutomatico: data.esAutomatico,
+                        esUnicoDueno: data.esUnicoDueno,
+                        Ano: data.ano,
+                        NroPuertas: data.nroPuertas,
+                        Marca=resultadoMarca.id,
+                        Modelo=resultadoModelo.id
+                    }
+                )
+                  */
                 /* 
                 LOGICA DE MANEJO DEL REGISTRO DEL VEHICULO
-                    1. Primero, se debe revisar si la marca ingresada ya esta registrada en la tabla Marca.
+                    
                         1.1 En caso de estar registrada, simplemente se obtiene su ID y se guarda en una variable idMarca.
-                        1.2 En caso de no estar registrada, se agrega la marca nueva en la tabla Marca y se obtiene su ID.
-                    2. Segundo, se debe revisar si el modelo ingresado ya esta registrado en la tabla Modelo.
+                        
+                    
                         2.1 En caso de estar registrado, simplemente se obtiene su ID y se guarda en una variable idModelo.
-                        2.2 En caso de no estar registrado, se agrega el nuevo modelo en la tabla Modelo y se obtiene su ID.
+                      
                     3. Luego, una vez que ya se tienen guardados los ID de la marca y del modelo, se deben insertar los datos
                        del nuevo vehiculo en la DB.
 
