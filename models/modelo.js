@@ -22,6 +22,7 @@ const Modelo = connection.define('Modelo',
         }
     },
     {
+        timestamps: false,
         freezeTableName: true
     });
 

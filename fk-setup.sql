@@ -69,5 +69,8 @@ ADD CONSTRAINT `fk_Marca`
   REFERENCES `luxrepairDB`.`Marca` (`id`)
   ON DELETE NO ACTION
   ON UPDATE NO ACTION;
- 
-
+  
+  
+-- Agregar Vehiculos
+INSERT INTO Marca (id, Nombre) VALUES (1, 'Chevrolet');
+INSERT INTO Modelo (id, Nombre, Marca) VALUES (1, 'Aveo', 1);
