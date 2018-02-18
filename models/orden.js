@@ -4,8 +4,13 @@ const connection = require('../config/database');
 // Modelo de Orden
 const Orden = connection.define('Orden', 
 {
-
-    //AQUI FALTA COLOCAR EL  CODIGO QR 
+    Vehiculo: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        validate: {
+            notEmpty: true
+        }
+    },
     CondicionVehiculo: {
         type: Sequelize.STRING(1500),
         allowNull: false,

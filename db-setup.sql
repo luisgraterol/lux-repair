@@ -46,11 +46,6 @@ ADD CONSTRAINT `id_Administrador`
 
 -- Setup de Claves Foraneas de la Marca y el Modelo en la tabla Vehiculo
 ALTER TABLE `luxrepairDB`.`Vehiculo` 
-ADD COLUMN `Marca` INT(11) NOT NULL AFTER `Activo`,
-ADD COLUMN `Modelo` INT(11) NOT NULL AFTER `Marca`,
-ADD INDEX `Marca_idx` (`Marca` ASC),
-ADD INDEX `Modelo_idx` (`Modelo` ASC);
-ALTER TABLE `luxrepairDB`.`Vehiculo` 
 ADD CONSTRAINT `Marca`
   FOREIGN KEY (`Marca`)
   REFERENCES `luxrepairDB`.`Marca` (`id`)
@@ -69,6 +64,17 @@ ADD CONSTRAINT `fk_Marca`
   REFERENCES `luxrepairDB`.`Marca` (`id`)
   ON DELETE NO ACTION
   ON UPDATE NO ACTION;
+  
+-- Setup de Clave Foranea del Vehiculo en la tabla Orden
+ALTER TABLE `luxrepairDB`.`Orden` 
+ADD INDEX `id_Vehiculo_idx` (`Vehiculo` ASC);
+ALTER TABLE `luxrepairDB`.`Orden` 
+ADD CONSTRAINT `id_Vehiculo`
+  FOREIGN KEY (`Vehiculo`)
+  REFERENCES `luxrepairDB`.`Vehiculo` (`id`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
   
   
 -- Agregar Marcas de Vehiculos
