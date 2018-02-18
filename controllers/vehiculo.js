@@ -23,15 +23,17 @@ controller.registrar = function (data, callback) {
             if (resultados == null) {
 
                 Marca.findOne({ where: { Marca: data.Marca } })
-        .then(resultadoMarca => {
-            console.log('Los resultados el findOne que busca marca es:\n', resultadoMarca);})
+                    .then(resultadoMarca => {
+                        console.log('Los resultados del findOne que busca marca es:\n', resultadoMarca);
+                });
 
-            Modelo.findOne({ where: { Modelo: data.Modelo } })
-        .then(resultadoModelo => {
-            console.log('Los resultados el findOne que busca modelo es:\n', resultadoModelo);})
+                Modelo.findOne({ where: { Modelo: data.Modelo } })
+                    .then(resultadoModelo => {
+                        console.log('Los resultados del findOne que busca modelo es:\n', resultadoModelo);
+                });
 
 
-              /*  vehiculo.update(
+              /*  vehiculo.create(
                     {
                         Serial: data.serial,
                         Placa: data.placa,
