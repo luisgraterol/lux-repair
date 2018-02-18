@@ -93,7 +93,7 @@ INSERT INTO Marca (id, Nombre) VALUES (12, 'Mazda');
 INSERT INTO Marca (id, Nombre) VALUES (13, 'Mercedez Benz');
 INSERT INTO Marca (id, Nombre) VALUES (14, 'Mitsubishi');
 INSERT INTO Marca (id, Nombre) VALUES (15, 'Nissan');
-INSERT INTO Marca (id, Nombre) VALUES (16, 'Toyoya');
+INSERT INTO Marca (id, Nombre) VALUES (16, 'Toyota');
 INSERT INTO Marca (id, Nombre) VALUES (17, 'Volvo');
 INSERT INTO Marca (id, Nombre) VALUES (999, 'Otros');
 
