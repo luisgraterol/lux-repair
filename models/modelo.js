@@ -11,6 +11,14 @@ const Modelo = connection.define('Modelo',
                 isAlphanumeric: true,
                 notEmpty: true
             }
+        },
+        Marca: {
+            type: Sequelize.INTEGER,
+            allowNull: false,
+            validate: {
+                isAlphanumeric: true,
+                notEmpty: true
+            }
         }
     },
     {
