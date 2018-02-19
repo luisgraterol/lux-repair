@@ -22,7 +22,7 @@ export class GarageComponent implements OnInit {
     this.apiService.getVehicles().subscribe(data => {
       console.log(data);
       this.vehiculos = data.vehiculos;
-      this.apiService.guardarVehiculos(data.vehiculos);
+      localStorage.setItem('vehiculos', JSON.stringify(data.vehiculos));
     }, err => {
       console.log('Error al pedir los vehiculos desde GarageComponent: ', err);
       return false;

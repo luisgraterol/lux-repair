@@ -52,11 +52,6 @@ export class ApiService {
       .map(res => res.json());
   }
 
-  guardarVehiculos(vehiculos) {
-    localStorage.setItem('vehiculos', JSON.stringify(vehiculos));
-    this.vehiculos = vehiculos;
-  }
-
   eliminarVehiculo(id) {
     // Settear los encabezados para la petición al API
     let headers = new Headers();
