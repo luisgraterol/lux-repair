@@ -7,7 +7,7 @@
   <!-- Table -->
   <div class="container">
     <div class="table-responsive">
-      <table class="table table-hover bg-light">
+      <table class="table table-hover bg-light text-dark">
         <thead class="thead-light">
           <tr>
             <th scope="col">ID</th>
@@ -26,9 +26,13 @@
             <td>{{vehiculo.Marca}} {{vehiculo.Modelo}}</td>
             <td>{{vehiculo.Placa}}</td>
             <td>{{vehiculo.Color}}</td>
-            <td>FALTA</td>
             <td>
-              <span class="badge badge-pill badge-success text-white">FALTA</span>
+              <span *ngIf="vehiculo.Servicio == undefined">Sin Servicio</span>
+              <span *ngIf="vehiculo.Servicio != undefined">{{vehiculo.Servicio}}</span>
+            </td>
+            <td>
+              <span *ngIf="vehiculo.Servicio == undefined" class="badge badge-pill badge-primary">Sin Cita</span>
+              <span  *ngIf="vehiculo.Servicio != undefined" class="badge badge-pill badge-success text-white">{{vehiculo.Servicio}}</span>
             </td>
             <td>
               <a href="#" class="btn btn-sm btn-outline-success">Solicitar Cita</a>
