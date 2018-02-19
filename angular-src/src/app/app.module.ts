@@ -13,6 +13,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { FormEmpleadoComponent } from './components/form-empleado/form-empleado.component';
+import { FormVehiculoComponent } from './components/form-vehiculo/form-vehiculo.component';
+import { GarageComponent } from './components/garage/garage.component';
 
 import { ValidateService } from './services/validate.service';
 import { AuthService } from './services/auth.service';
@@ -21,16 +23,16 @@ import { ApiService } from './services/api.service';
 import { FlashMessagesModule } from 'angular2-flash-messages';
 
 import { AuthGuard } from './guards/auth.guard';
-import { FormVehiculoComponent } from './components/form-vehiculo/form-vehiculo.component';
 
 const appRoutes: Routes = [
-  {path:'', component: HomeComponent},
-  {path:'register', component: RegisterComponent},
-  {path:'login', component: LoginComponent},
-  {path:'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
+  {path: '', component: HomeComponent},
+  {path: 'register', component: RegisterComponent},
+  {path: 'login', component: LoginComponent},
+  {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
   {path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
   {path: 'form-empleado', component: FormEmpleadoComponent, canActivate: [AuthGuard]},
-  {path: 'form-vehiculo', component: FormVehiculoComponent, canActivate: [AuthGuard]}
+  {path: 'form-vehiculo', component: FormVehiculoComponent, canActivate: [AuthGuard]},
+  {path: 'garage', component: GarageComponent, canActivate: [AuthGuard]}
 ];
 
 
@@ -45,7 +47,8 @@ const appRoutes: Routes = [
     ProfileComponent,
     FooterComponent,
     FormEmpleadoComponent,
-    FormVehiculoComponent
+    FormVehiculoComponent,
+    GarageComponent
   ],
   imports: [
     BrowserModule,

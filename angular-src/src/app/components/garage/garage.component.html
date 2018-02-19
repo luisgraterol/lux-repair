@@ -1,0 +1,62 @@
+<div class="row">
+  <div class="col mx-0 mx-sm-4 mx-md-5 mx-lg-5 mx-xl-5 mt-5 mb-4">
+    <h3>Garage</h3>
+  </div>
+</div>
+<div class="row main">
+  <!-- Table -->
+  <div class="container">
+    <div class="table-responsive">
+      <table class="table table-hover bg-light text-dark">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Vehículo</th>
+            <th scope="col">Placa</th>
+            <th scope="col">Color</th>
+            <th scope="col">Servicio</th>
+            <th scope="col">Estado</th>
+            <th scope="col">Acciones</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let vehiculo of vehiculos; let i=index">
+            <th *ngIf="vehiculo.Activo" scope="row">{{vehiculo.id}}</th>
+            <td *ngIf="vehiculo.Activo">{{vehiculo.Marca}} {{vehiculo.Modelo}}</td>
+            <td *ngIf="vehiculo.Activo">{{vehiculo.Placa}}</td>
+            <td *ngIf="vehiculo.Activo">{{vehiculo.Color}}</td>
+            <td *ngIf="vehiculo.Activo">
+              <span *ngIf="vehiculo.Servicio == undefined">Sin Servicio</span>
+              <span *ngIf="vehiculo.Servicio != undefined">{{vehiculo.Servicio}}</span>
+            </td>
+            <td *ngIf="vehiculo.Activo">
+              <span *ngIf="vehiculo.Servicio == undefined" class="badge badge-pill badge-primary">Sin Cita</span>
+              <span  *ngIf="vehiculo.Servicio != undefined" class="badge badge-pill badge-success text-white">{{vehiculo.Servicio}}</span>
+            </td>
+            <td *ngIf="vehiculo.Activo">
+              <a href="#" class="btn btn-sm btn-outline-success">Solicitar Cita</a>
+            </td>
+            <td *ngIf="vehiculo.Activo">
+              <button (click)="eliminarVehiculo(i)" class="btn btn-sm btn-outline-danger">Eliminar</button>
+            </td>
+          </tr>
+          <!-- <tr>
+            <th scope="row">1</th>
+            <td>Toyota Corolla</td>
+            <td>AB231LA</td>
+            <td>Azul</td>
+            <td>Cambio de Aceite</td>
+            <td>
+              <span class="badge badge-pill badge-warning text-white">En Cola</span>
+            </td>
+            <td>
+              <a href="#" class="btn btn-sm btn-outline-danger">Cancelar Cita</a>
+            </td>
+            <td></td>
+          </tr> -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

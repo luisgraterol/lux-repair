@@ -1,3 +1,24 @@
 .main {
-    min-height: 35rem;
+    min-height: 42.8rem;
+    max-width: 100vw;
+}
+
+.wrapper {
+    width: 18rem;
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+  .wrapper {
+    width: 24rem;
+  }
+}
+
+hr {
+  height: 1px;
+  width: 100%;
+  z-index: 10000;
+  background: linear-gradient(to right, var(--dark), var(--dark), white, var(--dark), var(--dark));
+  border: 0;
+  margin: 0;
 }

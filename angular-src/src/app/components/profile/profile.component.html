@@ -1,42 +1,44 @@
-<div class="row">
-  <div class="col-6 mx-auto mb-5">
-    <div class="pt-5" *ngIf="user">
-      <!-- Nombre Completo -->
-      <h2 class="page-header pb-3">{{user.Nombre}} {{user.Snombre}} {{user.Apellido}}</h2>
 
-      <!-- Lista de Datos -->
-      <ul class="list-group">
-        <li class="list-group-item d-flex justify-content-left pt-4">
-          <h5 class="pr-3">Usuario:</h5>
-          <p>{{user.Username}}</p>
-        </li>
-        <li class="list-group-item d-flex justify-content-left pt-4">
-          <h5 class="pr-3">Correo:</h5>
-          <p>{{user.Email}}</p>
-        </li>
-        <li class="list-group-item d-flex justify-content-left pt-4">
-          <h5 class="pr-3">Cedula:</h5>
-          <p>{{user.Cedula}}</p>
-        </li>
-        <li *ngIf="this.rol != 'Cliente'" class="list-group-item d-flex justify-content-left pt-4">
-          <h5 class="pr-3">Rol:</h5>
-          <p>{{this.rol}}</p>
-        </li>
-        <li *ngIf="this.rol != 'Cliente' && this.fechaNacimiento != null" class="list-group-item d-flex justify-content-left pt-4">
-          <h5 class="pr-3">Fecha de Nacimiento:</h5>
-          <p>{{formatearFecha()}}</p>
-        </li>
-        <li *ngIf="this.rol != 'Cliente' && this.sexo != null" class="list-group-item d-flex justify-content-left pt-4">
-          <h5 class="pr-3">Sexo:</h5>
-          <p>{{this.sexo}}</p>
-        </li>
-      </ul>  
+<div class="main">
+  <div class="row">
+    <div class="col-11 col-md-8 col-lg-5 mx-auto mb-5">
+      <div class="pt-5" *ngIf="user">
+        <!-- Nombre Completo -->
+        <h2 class="page-header pb-3">{{user.Nombre}} {{user.Snombre}} {{user.Apellido}}</h2>
+
+        <!-- Lista de Datos -->
+        <ul class="list-group">
+          <li class="list-group-item d-flex justify-content-between pt-4">
+            <h5 class="pr-3">Usuario:</h5>
+            <p>{{user.Username}}</p>
+          </li>
+          <li class="list-group-item d-flex justify-content-between pt-4">
+            <h5 class="pr-3">Correo:</h5>
+            <p>{{user.Email}}</p>
+          </li>
+          <li class="list-group-item d-flex justify-content-between pt-4">
+            <h5 class="pr-3">Cedula:</h5>
+            <p>{{user.Cedula}}</p>
+          </li>
+          <li *ngIf="this.rol != 'Cliente'" class="list-group-item d-flex justify-content-between pt-4">
+            <h5 class="pr-3">Rol:</h5>
+            <p>{{this.rol}}</p>
+          </li>
+          <li *ngIf="this.rol != 'Cliente' && this.fechaNacimiento != null" class="list-group-item d-flex justify-content-between pt-4">
+            <h5 class="pr-3">Fecha de Nacimiento:</h5>
+            <p>{{formatearFecha()}}</p>
+          </li>
+          <li *ngIf="this.rol != 'Cliente' && this.sexo != null" class="list-group-item d-flex justify-content-between pt-4">
+            <h5 class="pr-3">Sexo:</h5>
+            <p>{{this.sexo}}</p>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
-</div>
 
-<div *ngIf="rol != 'Cliente'" class="row">
-  <div class="col-4 mx-auto my-auto">
+  <div *ngIf="rol != 'Cliente'" class="row mb-5">
+    <div class="col-11 col-md-6 col-lg-4 mx-auto my-auto">
       <!-- Tarjeta -->
       <div class="card text-center">
         <div class="card-header">
@@ -46,8 +48,9 @@
         <div class="card-body">
           <p *ngIf="completoFormulario()">Si quiere hacer alguna modificación a sus datos personales puede hacerlo aquí.</p>
           <p *ngIf="!completoFormulario()">Nos faltan algunos de sus datos personales. Por favor, tómese un momento para llenarlos.</p>
-          <a class="btn btn-primary"  [routerLink]="['/form-empleado']">Ir al formulario</a>
+          <a class="btn btn-primary" [routerLink]="['/form-empleado']">Ir al formulario</a>
         </div>
       </div>
+    </div>
   </div>
 </div>

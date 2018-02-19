@@ -4,6 +4,13 @@ const connection = require('../config/database');
 // Modelo de Vehiculo
 const Vehiculo = connection.define('Vehiculo', 
 {
+    Cliente: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        validate: {
+            notEmpty: true
+        }
+    },
     Serial: {
         type: Sequelize.STRING,
         allowNull: false,
@@ -11,6 +18,20 @@ const Vehiculo = connection.define('Vehiculo',
 
         validate: {
             isAlphanumeric: true,
+            notEmpty: true
+        }
+    },
+    Marca: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        validate: {
+            notEmpty: true
+        }
+    },
+    Modelo: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        validate: {
             notEmpty: true
         }
     },
@@ -78,12 +99,7 @@ const Vehiculo = connection.define('Vehiculo',
         validate: {
             notEmpty: true
         }
-    },
-    // Foto: {
-    //     type: Sequelize.'fotacha',
-    //     allowNull: true,
-
-    // }
+    }
 },
 {
     timestamps: false,

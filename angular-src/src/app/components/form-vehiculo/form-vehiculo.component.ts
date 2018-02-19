@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
+import { ApiService } from '../../services/api.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { Router } from '@angular/router';
 
@@ -25,6 +26,7 @@ export class FormVehiculoComponent implements OnInit {
   
   constructor(
     private authService: AuthService,
+    private apiService: ApiService,
     private flashMessage: FlashMessagesService,
     private router: Router
   ) { }
@@ -40,22 +42,24 @@ export class FormVehiculoComponent implements OnInit {
     }
 
     // Convertimos el string del año a un entero
-    let Ano = Number(this.ano);
+    const Ano = Number(this.ano);
 
     // Convertimos el string del nro. de puertas a un entero
-    let NroPuertas = Number(this.puertas);
+    const NroPuertas = Number(this.puertas);
 
     // Este dato debe guardarse como un booleano
     let EsUnicoDueno = false;
-    if (this.condicion === 'Nuevo')
+    if (this.condicion === 'Nuevo') {
       EsUnicoDueno = true;
-    
+    }
+
     // Este dato tambien debe guardarse como un booleano
     let EsAutomatico = false;
-    if (this.caja === 'Automático')
+    if (this.caja === 'Automático') {
       EsAutomatico = true;
+    }
 
-    console.log({
+    const data = {
       Marca: this.marca,
       Modelo: this.modelo,
       Ano: Ano,
@@ -67,30 +71,41 @@ export class FormVehiculoComponent implements OnInit {
       EsUnicoDueno: EsUnicoDueno,
       Servicio: this.servicio,
       Detalles: this.detalles,
-    });
+    };
 
-    // LLAMAR METODO DE api.service PARA INSERTAR LOS DATOS EN LA DB
+    console.log(data);
+
+    // Llamar al metodo del API
+    this.apiService.setVehicleData(data).subscribe(response => {
+      if (response.success) {
+        this.flashMessage.show(response.msg, { cssClass: 'custom-success', timeout: 3000 });
+        this.router.navigate(['/dashboard']);
+      } else {
+        this.flashMessage.show(response.msg, { cssClass: 'custom-danger', timeout: 3000 });
+        this.router.navigate(['/form-vehiculo']);
+      }
+    });
   }
 
   // Funcion que retorna false si alguna casilla ha dejado de llenarse
   faltaAlgunaCasilla() {
     return (
-      this.marca == undefined || 
-      this.marca == '' || 
-      this.modelo == undefined || 
-      this.modelo == '' || 
-      this.placa == undefined || 
-      this.placa == '' || 
-      this.serial == undefined || 
-      this.serial == '' || 
-      this.color == undefined || 
-      this.color == '' || 
-      this.ano == undefined || 
-      this.puertas == undefined || 
-      this.condicion == undefined || 
-      this.caja == undefined
-      // this.servicio == undefined || 
-      // this.detalles == undefined || 
+      this.marca === undefined || 
+      this.marca === '' || 
+      this.modelo === undefined || 
+      this.modelo === '' || 
+      this.placa === undefined || 
+      this.placa === '' || 
+      this.serial === undefined ||
+      this.serial === '' ||
+      this.color === undefined ||
+      this.color === '' ||
+      this.ano === undefined ||
+      this.puertas === undefined ||
+      this.condicion === undefined ||
+      this.caja === undefined
+      // this.servicio == undefined ||
+      // this.detalles == undefined ||
       // this.detalles == ''
     );
   }

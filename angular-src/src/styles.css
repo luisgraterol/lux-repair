@@ -8,14 +8,17 @@ html, body {
     background: #f2f2f2;
 }
 
+.alert.flash-message {
+  margin: 0;
+  border-radius: 0;
+}
+
 .alert.flash-message.custom-success {
-    margin: 1rem;
     background: #4aa05f;
 }
 
 .alert.flash-message.custom-danger {
-    margin: 1rem;
-    background: #f57676;
+    background: #dd4f4f;
 }
 
 .alert.flash-message > p {
@@ -26,3 +29,22 @@ html, body {
 .required {
     color: #d12d2d;
 }
+
+.scrolling-wrapper {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.scrolling-wrapper>.card {
+  flex: 0 0 auto;
+  width: 18rem;
+  height: 10rem;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+

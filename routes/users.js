@@ -10,6 +10,8 @@ const User = require('../models/user');
 // Controllers
 const con_User = require('../controllers/user');
 const con_Empleado = require('../controllers/empleado');
+const con_Cliente = require('../controllers/cliente');
+const con_Vehiculo = require('../controllers/vehiculo');
 
 // Sincroniza los cambios en los modelos
 connection.sync({ logging: false })
@@ -80,17 +82,53 @@ router.post('/authenticate', (req, res, next) => {
 });
 
 // Profile
-// Autentica al usuario y retorna un objeto con todos sus datos corriendo la funcion de passport.
+// Autentica al usuario y retorna un objeto de usuario con todos sus datos corriendo la 
+// funcion de passport y insertando los datos en req.user.
 router.get('/profile', passport.authenticate('jwt', {session: false}), (req, res, next) => {
     res.json({ user: req.user });
 });
 
+// Obtiene los vehiculos de un cliente
+router.get('/vehiculos', passport.authenticate('jwt', { session: false }), (req, res, next) => {
+    con_Cliente.getVehiculos(req.user.id, (vehiculos, err) => {
+        if (err) throw err;
+
+        if (vehiculos) {
+            res.json({
+                userId: req.user.id,
+                vehiculos: vehiculos
+            });
+        }
+    });
+});
+
+// Actualiza los datos de un empleado
 router.post('/datos-empleado', (req, res, next) => {
     con_Empleado.actualizarDatos(req.body, (err) => {
         if (err) 
             res.json({ success: false, msg: 'Se produjo un error al actualizar sus datos.' });
         else 
             res.json({ success: true, msg: 'Se actualizaron sus datos exitosamente.' });
+    });
+});
+
+// Registra un vehiculo
+router.post('/registrar-vehiculo', (req, res, next) => {
+    con_Vehiculo.registrar(req.body, (err) => {
+        if (err)
+            res.json({ success: false, msg: 'Se produjo un error al registrar el vehículo, inténtelo de nuevo.' });
+        else
+            res.json({ success: true, msg: 'Se registró el vehículo exitosamente.' });
+    });
+});
+
+// Eliminar un vehiculo
+router.post('/eliminar-vehiculo', (req, res, next) => {
+    con_Vehiculo.eliminar(req.body, (err) => {
+        if (err)
+            res.json({ success: false, msg: 'Se produjo un error al eliminar su vehículo.' });
+        else
+            res.json({ success: true, msg: 'Su vehículo se eliminó con éxito.' });
     });
 });
 
