@@ -10,6 +10,8 @@ import { Router } from '@angular/router';
 })
 export class GarageComponent implements OnInit {
 
+  vehiculos: object[];
+
   constructor (
     private apiService: ApiService,
     private flashMessage: FlashMessagesService,
@@ -17,8 +19,9 @@ export class GarageComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiService.getVehicles().subscribe(vehiculos => {
-      console.log(vehiculos);
+    this.apiService.getVehicles().subscribe(data => {
+      console.log(data);
+      this.vehiculos = data.vehiculos;
     }, err => {
       console.log('Error al pedir los vehiculos desde GarageComponent: ', err);
       return false;

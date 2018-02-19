@@ -10,7 +10,7 @@
       <table class="table table-hover bg-light">
         <thead class="thead-light">
           <tr>
-            <th scope="col">Nro.</th>
+            <th scope="col">ID</th>
             <th scope="col">Vehículo</th>
             <th scope="col">Placa</th>
             <th scope="col">Color</th>
@@ -21,6 +21,22 @@
           </tr>
         </thead>
         <tbody>
+          <tr *ngFor="let vehiculo of vehiculos">
+            <th scope="row">{{vehiculo.id}}</th>
+            <td>{{vehiculo.Marca}} {{vehiculo.Modelo}}</td>
+            <td>{{vehiculo.Placa}}</td>
+            <td>{{vehiculo.Color}}</td>
+            <td>FALTA</td>
+            <td>
+              <span class="badge badge-pill badge-success text-white">FALTA</span>
+            </td>
+            <td>
+              <a href="#" class="btn btn-sm btn-outline-success">Solicitar Cita</a>
+            </td>
+            <td>
+              <a href="#" class="btn btn-sm btn-outline-danger">Eliminar</a>
+            </td>
+          </tr>
           <tr>
             <th scope="row">1</th>
             <td>Toyota Corolla</td>
@@ -34,22 +50,6 @@
               <a href="#" class="btn btn-sm btn-outline-danger">Cancelar Cita</a>
             </td>
             <td></td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Chevrolet Aveo</td>
-            <td>BC567GH</td>
-            <td>Arena</td>
-            <td>Carrocería</td>
-            <td>
-              <span class="badge badge-pill badge-success">Listo</span>
-            </td>
-            <td>
-              <a href="#" class="btn btn-sm btn-outline-success">Solicitar Cita</a>
-            </td>
-            <td>
-              <a href="#" class="btn btn-sm btn-outline-danger">Eliminar</a>
-            </td>
           </tr>
         </tbody>
       </table>
