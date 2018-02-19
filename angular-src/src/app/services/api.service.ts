@@ -9,6 +9,7 @@ export class ApiService {
 
   authToken: any;
   user: any;
+  vehiculos: any;
 
   constructor(private http: Http) { }
 
@@ -49,6 +50,11 @@ export class ApiService {
 
     return this.http.get('http://localhost:3000/users/vehiculos', { headers })
       .map(res => res.json());
+  }
+
+  guardarVehiculos(vehiculos) {
+    localStorage.setItem('vehiculos', JSON.stringify(vehiculos));
+    this.vehiculos = vehiculos;
   }
 
   eliminarVehiculo(id) {
