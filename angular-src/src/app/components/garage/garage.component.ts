@@ -20,7 +20,7 @@ export class GarageComponent implements OnInit {
 
   ngOnInit() {
     this.apiService.getVehicles().subscribe(data => {
-      console.log(data);
+      console.log(data.vehiculos);
       this.vehiculos = data.vehiculos;
       localStorage.setItem('vehiculos', JSON.stringify(data.vehiculos));
     }, err => {
@@ -42,5 +42,9 @@ export class GarageComponent implements OnInit {
         this.flashMessage.show(response.msg, { cssClass: 'custom-danger', timeout: 3000 });
       }
     });
+  }
+
+  cancelarCita(indice) {
+    // FALTA
   }
 }

@@ -25,36 +25,36 @@
             <th *ngIf="vehiculo.Activo" scope="row">{{vehiculo.id}}</th>
             <td *ngIf="vehiculo.Activo">{{vehiculo.Marca}} {{vehiculo.Modelo}}</td>
             <td *ngIf="vehiculo.Activo">{{vehiculo.Placa}}</td>
-            <td *ngIf="vehiculo.Activo">{{vehiculo.Color}}</td>
+            <td *ngIf="vehiculo.Activo">
+              <div *ngIf="vehiculo.Color == 'Amarillo'" class="color color-amarillo mt-1"></div>
+              <div *ngIf="vehiculo.Color == 'Arena'" class="color color-arena mt-1"></div>
+              <div *ngIf="vehiculo.Color == 'Azul'" class="color color-azul mt-1"></div>
+              <div *ngIf="vehiculo.Color == 'Blanco'" class="color color-blanco mt-1"></div>
+              <div *ngIf="vehiculo.Color == 'Gris'" class="color color-gris mt-1"></div>
+              <div *ngIf="vehiculo.Color == 'Negro'" class="color color-negro mt-1"></div>
+              <div *ngIf="vehiculo.Color == 'Plata'" class="color color-plata mt-1"></div>
+              <div *ngIf="vehiculo.Color == 'Rojo'" class="color color-rojo mt-1"></div>
+              <div *ngIf="vehiculo.Color == 'Verde'" class="color color-verde mt-1"></div>
+
+            </td>
             <td *ngIf="vehiculo.Activo">
               <span *ngIf="vehiculo.Servicio == undefined">Sin Servicio</span>
               <span *ngIf="vehiculo.Servicio != undefined">{{vehiculo.Servicio}}</span>
             </td>
             <td *ngIf="vehiculo.Activo">
-              <span *ngIf="vehiculo.Servicio == undefined" class="badge badge-pill badge-primary">Sin Cita</span>
-              <span *ngIf="vehiculo.Servicio != undefined" class="badge badge-pill badge-success text-white">{{vehiculo.Servicio}}</span>
+              <span *ngIf="vehiculo.Estado == undefined" class="badge badge-pill badge-primary">Sin Cita</span>
+              <span *ngIf="vehiculo.Estado == 'En Espera'" class="badge badge-pill badge-warning text-white">{{vehiculo.Estado}}</span>
+              <span *ngIf="vehiculo.Estado == 'En Reparacion'" class="badge badge-pill badge-info text-white">{{vehiculo.Estado}}</span>
+              <span *ngIf="vehiculo.Estado == 'Listo'" class="badge badge-pill badge-success text-white">{{vehiculo.Estado}}</span>
             </td>
             <td *ngIf="vehiculo.Activo">
-              <button (click)="irAOrden(i)" class="btn btn-sm btn-outline-success">Solicitar Cita</button>
+              <button *ngIf="vehiculo.Servicio == undefined" (click)="irAOrden(i)" class="btn btn-sm btn-outline-success">Solicitar Cita</button>
+              <button *ngIf="vehiculo.Servicio != undefined" (click)="cancelarCita(i)" class="btn btn-sm btn-outline-danger">Cancelar Cita</button>
             </td>
             <td *ngIf="vehiculo.Activo">
-              <button (click)="eliminarVehiculo(i)" class="btn btn-sm btn-outline-danger">Eliminar</button>
+              <button *ngIf="vehiculo.Servicio == undefined" (click)="eliminarVehiculo(i)" class="btn btn-sm btn-outline-danger">Eliminar</button>
             </td>
           </tr>
-          <!-- <tr>
-            <th scope="row">1</th>
-            <td>Toyota Corolla</td>
-            <td>AB231LA</td>
-            <td>Azul</td>
-            <td>Cambio de Aceite</td>
-            <td>
-              <span class="badge badge-pill badge-warning text-white">En Cola</span>
-            </td>
-            <td>
-              <a href="#" class="btn btn-sm btn-outline-danger">Cancelar Cita</a>
-            </td>
-            <td></td>
-          </tr> -->
         </tbody>
       </table>
     </div>
