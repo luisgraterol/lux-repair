@@ -3,21 +3,19 @@
   <div class="container py-5 mt-3 mb-5">
     <h2 class="mb-3">Solicitud de Reparación</h2>
     <form (submit)="solicitarOrden()">
-      <div class="form-row">
-          <div class="form-group col-md-3">
-              <label for="servicio">Servicio a Solicitar</label>
-              <select id="servicio" class="form-control" [(ngModel)]="servicio" name="servicio">
-                  <option selected>Revisión General</option>
-                  <option>Cambio de Aceite</option>
-                  <option>Carrocería</option>
-                  <option>Alineación</option>
-                  <option>Otro</option>
-              </select>
-          </div>
-          <div class="form-group col-md-9">
-              <label for="detalles">Detalle de Situación</label>
-              <input type="text" class="form-control" id="detalles" placeholder="Agregue cualquier información adicional que considere pertinente." [(ngModel)]="detalles" name="detalles">
-          </div>
+      <div class="form-group">
+          <label for="servicio">Servicio a Solicitar</label>
+          <select id="servicio" class="form-control" [(ngModel)]="servicio" name="servicio">
+              <option selected>Revisión General</option>
+              <option>Cambio de Aceite</option>
+              <option>Carrocería</option>
+              <option>Alineación</option>
+              <option>Otro</option>
+          </select>
+      </div>
+      <div class="form-group">
+        <label for="detalles">Detalle de Situación</label>
+        <textarea class="form-control" name="detalles" id="detalles" [(ngModel)]="detalles" rows="10" placeholder="Agregue cualquier información adicional que considere pertinente."></textarea>
       </div>
       <div class="form-group">
         <label for="imagen">Imagen</label>

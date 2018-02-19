@@ -32,10 +32,10 @@
             </td>
             <td *ngIf="vehiculo.Activo">
               <span *ngIf="vehiculo.Servicio == undefined" class="badge badge-pill badge-primary">Sin Cita</span>
-              <span  *ngIf="vehiculo.Servicio != undefined" class="badge badge-pill badge-success text-white">{{vehiculo.Servicio}}</span>
+              <span *ngIf="vehiculo.Servicio != undefined" class="badge badge-pill badge-success text-white">{{vehiculo.Servicio}}</span>
             </td>
             <td *ngIf="vehiculo.Activo">
-              <a [routerLink]="['/solicitar-orden']" class="btn btn-sm btn-outline-success">Solicitar Cita</a>
+              <button (click)="irAOrden(i)" class="btn btn-sm btn-outline-success">Solicitar Cita</button>
             </td>
             <td *ngIf="vehiculo.Activo">
               <button (click)="eliminarVehiculo(i)" class="btn btn-sm btn-outline-danger">Eliminar</button>

@@ -29,6 +29,11 @@ export class GarageComponent implements OnInit {
     }); 
   }
 
+  irAOrden(indice) {
+    localStorage.setItem('vehiculo-con-orden', this.vehiculos[indice].id);
+    this.router.navigate(['/solicitar-orden']);
+  }
+
   eliminarVehiculo(indice) {
     this.apiService.eliminarVehiculo(this.vehiculos[indice].id).subscribe(response => {
       if (response.success) {
@@ -38,5 +43,4 @@ export class GarageComponent implements OnInit {
       }
     });
   }
-
 }
