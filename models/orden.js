@@ -70,6 +70,15 @@ const Orden = connection.define('Orden',
         validate: {
             isDate: true
         }
+    },
+    Activa: {
+        type: Sequelize.BOOLEAN,
+        allowNull: false,
+        defaultValue: true,
+
+        validate: {
+            notEmpty: true
+        }
     }
 },
 {
