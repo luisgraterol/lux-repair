@@ -57,7 +57,7 @@ export class ApiService {
     headers.append('Content-Type', 'application/json');
 
     // Hacer la petición, se retorna una promesa
-    return this.http.post('users/datos-empleado', data, { headers: headers })
+    return this.http.post('http://localhost:3000/users/eliminar-vehiculo', {id}, { headers: headers })
       .map(res => res.json());
   }
 

@@ -126,9 +126,9 @@ router.post('/registrar-vehiculo', (req, res, next) => {
 router.post('/eliminar-vehiculo', (req, res, next) => {
     con_Vehiculo.eliminar(req.body, (err) => {
         if (err)
-            res.json({ success: false, msg: 'Su vehículo se eliminó con éxito.' });
+            res.json({ success: false, msg: 'Se produjo un error al eliminar su vehículo.' });
         else
-            res.json({ success: true, msg: 'Se produjo un error al eliminar su vehículo.' });
+            res.json({ success: true, msg: 'Su vehículo se eliminó con éxito.' });
     });
 });
 
