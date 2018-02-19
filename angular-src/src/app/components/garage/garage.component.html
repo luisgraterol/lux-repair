@@ -35,7 +35,7 @@
               <span  *ngIf="vehiculo.Servicio != undefined" class="badge badge-pill badge-success text-white">{{vehiculo.Servicio}}</span>
             </td>
             <td *ngIf="vehiculo.Activo">
-              <a href="#" class="btn btn-sm btn-outline-success">Solicitar Cita</a>
+              <a [routerLink]="['/solicitar-orden']" class="btn btn-sm btn-outline-success">Solicitar Cita</a>
             </td>
             <td *ngIf="vehiculo.Activo">
               <button (click)="eliminarVehiculo(i)" class="btn btn-sm btn-outline-danger">Eliminar</button>
