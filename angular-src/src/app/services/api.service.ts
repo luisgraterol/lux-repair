@@ -9,6 +9,7 @@ export class ApiService {
 
   authToken: any;
   user: any;
+  vehiculos: any;
 
   constructor(private http: Http) { }
 
@@ -58,6 +59,16 @@ export class ApiService {
 
     // Hacer la petición, se retorna una promesa
     return this.http.post('http://localhost:3000/users/eliminar-vehiculo', {id}, { headers: headers })
+      .map(res => res.json());
+  }
+
+  crearOrden(data) {
+    // Settear los encabezados para la petición al API
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+
+    // Hacer la petición, se retorna una promesa
+    return this.http.post('http://localhost:3000/users/solicitar-orden', data, { headers: headers })
       .map(res => res.json());
   }
 

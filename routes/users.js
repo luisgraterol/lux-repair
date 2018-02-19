@@ -12,6 +12,7 @@ const con_User = require('../controllers/user');
 const con_Empleado = require('../controllers/empleado');
 const con_Cliente = require('../controllers/cliente');
 const con_Vehiculo = require('../controllers/vehiculo');
+const con_Orden = require('../controllers/orden');
 
 // Sincroniza los cambios en los modelos
 connection.sync({ logging: false })
@@ -129,6 +130,16 @@ router.post('/eliminar-vehiculo', (req, res, next) => {
             res.json({ success: false, msg: 'Se produjo un error al eliminar su vehículo.' });
         else
             res.json({ success: true, msg: 'Su vehículo se eliminó con éxito.' });
+    });
+});
+
+// Generar una orden
+router.post('/solicitar-orden', (req, res, next) => {
+    con_Orden.solicitar(req.body, (err) => {
+        if (err)
+            res.json({ success: false, msg: 'Se produjo un error al solicitar su orden de reparación.' });
+        else
+            res.json({ success: true, msg: 'Su orden se generó con éxito.' });
     });
 });
 
