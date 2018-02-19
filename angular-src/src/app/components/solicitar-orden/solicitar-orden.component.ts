@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class SolicitarOrdenComponent implements OnInit {
 
+  idVehiculo: number;
   servicio: string;
   detalles: string;
   imagen: any;
@@ -20,7 +21,9 @@ export class SolicitarOrdenComponent implements OnInit {
     private router: Router
   ) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.idVehiculo = Number(localStorage.getItem('vehiculo-con-orden'));
+  }
 
   solicitarOrden() {
     // Chequear que todas las casillas esten llenas
@@ -29,12 +32,22 @@ export class SolicitarOrdenComponent implements OnInit {
       return false;
     } else {
       const data = {
+        idVehiculo: this.idVehiculo,
         Servicio: this.servicio,
         Detalles: this.detalles,
         Imagen: this.imagen
-      }
+      };
 
-      console.log(data);
+      console.log('En el frontend los datos son: ', data);
+
+      this.apiService.crearOrden(data).subscribe(response => {
+        if (response.success) {
+          this.flashMessage.show(response.msg, { cssClass: 'custom-success', timeout: 3000 });
+          this.router.navigate(['/garage']);
+        } else {
+          this.flashMessage.show(response.msg, { cssClass: 'custom-danger', timeout: 3000 });
+        }
+      });
     }
   }
 

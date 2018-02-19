@@ -67,6 +67,16 @@ export class ApiService {
       .map(res => res.json());
   }
 
+  crearOrden(data) {
+    // Settear los encabezados para la petición al API
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+
+    // Hacer la petición, se retorna una promesa
+    return this.http.post('http://localhost:3000/users/solicitar-orden', data, { headers: headers })
+      .map(res => res.json());
+  }
+
   loadToken() {
     const token = localStorage.getItem('id_token');
     this.authToken = token;
