@@ -11,25 +11,43 @@ const Orden = connection.define('Orden',
             notEmpty: true
         }
     },
-    CondicionVehiculo: {
-        type: Sequelize.STRING(1500),
+    Estado: {
+        type: Sequelize.STRING,
+        allowNull: false,
+        defaultValue: 'Sin Cita',
+
+        validate: {
+            notEmpty: true
+        }
+    },
+    Servicio: {
+        type: Sequelize.STRING,
         allowNull: false,
 
         validate: {
             notEmpty: true
         }
     },
-    Motivo: {
-        type: Sequelize.STRING(1500),
+    Detalle: {
+        type: Sequelize.TEXT,
         allowNull: false,
+        defaultValue: 'N/A',
 
         validate: {
             notEmpty: true
         }
     },
-  
+    Evaluacion: {
+        type: Sequelize.TEXT,
+        allowNull: false,
+        defaultValue: 'Por evaluar',
+
+        validate: {
+            notEmpty: true
+        }
+    },
     FechaSolicitud: {
-        type: Sequelize.DATE ,
+        type: Sequelize.DATE,
         allowNull: false,
 
         validate: {
@@ -39,21 +57,17 @@ const Orden = connection.define('Orden',
     },
 
     FechaAdmision: {
-        type: Sequelize.DATE ,
-        allowNull: false,
+        type: Sequelize.DATE,
 
         validate: {
-            isDate: true,
-            notEmpty: true
+            isDate: true
         }
     },
     FechaFinalizacion: {
-        type: Sequelize.DATE ,
-        allowNull: false,
+        type: Sequelize.DATE,
 
         validate: {
-            isDate: true,
-            notEmpty: true
+            isDate: true
         }
     }
 },
