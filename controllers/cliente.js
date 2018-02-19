@@ -50,8 +50,6 @@ controller.getVehiculos = async function (idCliente, callback) {
             }
         }
 
-        console.log('El controlador mando el objeto:', vehiculos);
-
         // Retorna los resultados
         callback(vehiculos, null);
 
