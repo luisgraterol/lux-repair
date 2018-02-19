@@ -17,50 +17,32 @@ controller.registrar = function (data, callback) {
 
     Vehiculo.findOne({ where: { Serial: data.Serial } })
         .then(resultados => {
-            console.log('Los resultados el findOne que revisa si ya existe dicho vehiculo son:\n', resultados);
 
             // Si no se ha registrado ningun vehiculo con esa serial
             if (resultados == null) {
 
                 Marca.findOne({ where: { Nombre: data.Marca } })
                     .then(resultadoMarca => {
-                        console.log('Los resultados del findOne que busca marca es:\n', resultadoMarca.dataValues.id);
-
 
                         Modelo.findOne({ where: { Nombre: data.Modelo } })
                             .then(resultadoModelo => {
-                                console.log('Los resultados del findOne que busca modelo es:\n', resultadoModelo.dataValues.id);
-
+                                
                                 Vehiculo.create(
-                                    {
+                                    {   
+                                        Cliente: data.idCliente,
                                         Serial: data.Serial,
+                                        Marca: resultadoMarca.dataValues.id,
+                                        Modelo: resultadoModelo.dataValues.id,
                                         Placa: data.Placa,
                                         Color: data.Color,
                                         esAutomatico: data.EsAutomatico,
                                         esUnicoDueno: data.EsUnicoDueno,
                                         Ano: data.Ano,
-                                        NroPuertas: data.NroPuertas,
-                                        Marca: resultadoMarca.dataValues.id,
-                                        Modelo: resultadoModelo.dataValues.id
+                                        NroPuertas: data.NroPuertas
                                     }
                                 );
                             });
-                    });
-
-                    /* 
-                    LOGICA DE MANEJO DEL REGISTRO DEL VEHICULO
-                        
-                            1.1 En caso de estar registrada, simplemente se obtiene su ID y se guarda en una variable idMarca.
-                            
-                        
-                            2.1 En caso de estar registrado, simplemente se obtiene su ID y se guarda en una variable idModelo.
-                        
-                        3. Luego, una vez que ya se tienen guardados los ID de la marca y del modelo, se deben insertar los datos
-                        del nuevo vehiculo en la DB.
-
-                        Chequea los docs de Sequelize. El link esta al final del README del proyecto.
-                    */
-               
+                    });               
             }
             else {
                 console.log('ERROR: El vehiculo ya esta registrado en la BD.');
@@ -74,5 +56,22 @@ controller.registrar = function (data, callback) {
         }
         )
 };
+
+controller.eliminar = async function (data, callback) {
+    Vehiculo.update(
+        {
+            Activo: false
+        },
+        {
+            where: { id: data.id }
+        }
+    )
+    .then(result => {
+        callback(null);
+    })
+    .catch(err => {
+        callback(err);
+    });
+}
 
 module.exports = controller;

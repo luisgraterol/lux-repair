@@ -46,11 +46,6 @@ ADD CONSTRAINT `id_Administrador`
 
 -- Setup de Claves Foraneas de la Marca y el Modelo en la tabla Vehiculo
 ALTER TABLE `luxrepairDB`.`Vehiculo` 
-ADD COLUMN `Marca` INT(11) NOT NULL AFTER `Activo`,
-ADD COLUMN `Modelo` INT(11) NOT NULL AFTER `Marca`,
-ADD INDEX `Marca_idx` (`Marca` ASC),
-ADD INDEX `Modelo_idx` (`Modelo` ASC);
-ALTER TABLE `luxrepairDB`.`Vehiculo` 
 ADD CONSTRAINT `Marca`
   FOREIGN KEY (`Marca`)
   REFERENCES `luxrepairDB`.`Marca` (`id`)
@@ -70,6 +65,17 @@ ADD CONSTRAINT `fk_Marca`
   ON DELETE NO ACTION
   ON UPDATE NO ACTION;
   
+-- Setup de Clave Foranea del Vehiculo en la tabla Orden
+ALTER TABLE `luxrepairDB`.`Orden` 
+ADD INDEX `id_Vehiculo_idx` (`Vehiculo` ASC);
+ALTER TABLE `luxrepairDB`.`Orden` 
+ADD CONSTRAINT `id_Vehiculo`
+  FOREIGN KEY (`Vehiculo`)
+  REFERENCES `luxrepairDB`.`Vehiculo` (`id`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
+  
   
 -- Agregar Marcas de Vehiculos
 INSERT INTO Marca (id, Nombre) VALUES (1, 'Alfa Romeo');
@@ -87,7 +93,7 @@ INSERT INTO Marca (id, Nombre) VALUES (12, 'Mazda');
 INSERT INTO Marca (id, Nombre) VALUES (13, 'Mercedez Benz');
 INSERT INTO Marca (id, Nombre) VALUES (14, 'Mitsubishi');
 INSERT INTO Marca (id, Nombre) VALUES (15, 'Nissan');
-INSERT INTO Marca (id, Nombre) VALUES (16, 'Toyoya');
+INSERT INTO Marca (id, Nombre) VALUES (16, 'Toyota');
 INSERT INTO Marca (id, Nombre) VALUES (17, 'Volvo');
 INSERT INTO Marca (id, Nombre) VALUES (999, 'Otros');
 
