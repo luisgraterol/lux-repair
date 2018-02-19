@@ -57,4 +57,21 @@ controller.registrar = function (data, callback) {
         )
 };
 
+controller.eliminar = async function (data, callback) {
+    Vehiculo.update(
+        {
+            Activo: false
+        },
+        {
+            where: { id: data.id }
+        }
+    )
+    .then(result => {
+        callback(null);
+    })
+    .catch(err => {
+        callback(err);
+    });
+}
+
 module.exports = controller;

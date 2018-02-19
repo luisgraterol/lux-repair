@@ -21,27 +21,27 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let vehiculo of vehiculos">
-            <th scope="row">{{vehiculo.id}}</th>
-            <td>{{vehiculo.Marca}} {{vehiculo.Modelo}}</td>
-            <td>{{vehiculo.Placa}}</td>
-            <td>{{vehiculo.Color}}</td>
-            <td>
+          <tr *ngFor="let vehiculo of vehiculos; let i=index">
+            <th *ngIf="vehiculo.Activo" scope="row">{{vehiculo.id}}</th>
+            <td *ngIf="vehiculo.Activo">{{vehiculo.Marca}} {{vehiculo.Modelo}}</td>
+            <td *ngIf="vehiculo.Activo">{{vehiculo.Placa}}</td>
+            <td *ngIf="vehiculo.Activo">{{vehiculo.Color}}</td>
+            <td *ngIf="vehiculo.Activo">
               <span *ngIf="vehiculo.Servicio == undefined">Sin Servicio</span>
               <span *ngIf="vehiculo.Servicio != undefined">{{vehiculo.Servicio}}</span>
             </td>
-            <td>
+            <td *ngIf="vehiculo.Activo">
               <span *ngIf="vehiculo.Servicio == undefined" class="badge badge-pill badge-primary">Sin Cita</span>
               <span  *ngIf="vehiculo.Servicio != undefined" class="badge badge-pill badge-success text-white">{{vehiculo.Servicio}}</span>
             </td>
-            <td>
+            <td *ngIf="vehiculo.Activo">
               <a href="#" class="btn btn-sm btn-outline-success">Solicitar Cita</a>
             </td>
-            <td>
-              <a href="#" class="btn btn-sm btn-outline-danger">Eliminar</a>
+            <td *ngIf="vehiculo.Activo">
+              <button (click)="eliminarVehiculo(i)" class="btn btn-sm btn-outline-danger">Eliminar</button>
             </td>
           </tr>
-          <tr>
+          <!-- <tr>
             <th scope="row">1</th>
             <td>Toyota Corolla</td>
             <td>AB231LA</td>
@@ -54,7 +54,7 @@
               <a href="#" class="btn btn-sm btn-outline-danger">Cancelar Cita</a>
             </td>
             <td></td>
-          </tr>
+          </tr> -->
         </tbody>
       </table>
     </div>

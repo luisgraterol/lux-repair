@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class GarageComponent implements OnInit {
 
-  vehiculos: object[];
+  vehiculos: any[];
 
   constructor (
     private apiService: ApiService,
@@ -25,8 +25,17 @@ export class GarageComponent implements OnInit {
     }, err => {
       console.log('Error al pedir los vehiculos desde GarageComponent: ', err);
       return false;
+    }); 
+  }
+
+  eliminarVehiculo(indice) {
+    this.apiService.eliminarVehiculo(this.vehiculos[indice].id).subscribe(response => {
+      if (response.success) {
+        this.flashMessage.show(response.msg, { cssClass: 'custom-success', timeout: 3000 });
+      } else {
+        this.flashMessage.show(response.msg, { cssClass: 'custom-danger', timeout: 3000 });
+      }
     });
-    
   }
 
 }

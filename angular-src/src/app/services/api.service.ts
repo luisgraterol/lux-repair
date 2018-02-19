@@ -22,7 +22,7 @@ export class ApiService {
     headers.append('Content-Type', 'application/json');
 
     // Hacer la petición, se retorna una promesa
-    return this.http.post('http://localhost:3000/users/datos-empleado', data, { headers: headers })
+    return this.http.post('http://localhost:3000/users/datos-empleado', data, { headers })
       .map(res => res.json());
   }
 
@@ -35,19 +35,29 @@ export class ApiService {
     headers.append('Content-Type', 'application/json');
 
     // Hacer la petición, se retorna una promesa
-    return this.http.post('http://localhost:3000/users/registrar-vehiculo', data, { headers: headers })
+    return this.http.post('http://localhost:3000/users/registrar-vehiculo', data, { headers })
       .map(res => res.json());
   }
 
   getVehicles() {
     let headers = new Headers();
 
-    // Fetches the token of the currently logged in user from localStorage
+    // Busca el token del usuario que esta ingresado en el sistema actualmente
     this.loadToken();
     headers.append('Authorization', this.authToken);
     headers.append('Content-Type', 'application/json');
 
-    return this.http.get('http://localhost:3000/users/vehiculos', { headers: headers })
+    return this.http.get('http://localhost:3000/users/vehiculos', { headers })
+      .map(res => res.json());
+  }
+
+  eliminarVehiculo(id) {
+    // Settear los encabezados para la petición al API
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+
+    // Hacer la petición, se retorna una promesa
+    return this.http.post('http://localhost:3000/users/eliminar-vehiculo', {id}, { headers })
       .map(res => res.json());
   }
 

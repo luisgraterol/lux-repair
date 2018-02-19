@@ -88,9 +88,8 @@ router.get('/profile', passport.authenticate('jwt', {session: false}), (req, res
     res.json({ user: req.user });
 });
 
+// Obtiene los vehiculos de un cliente
 router.get('/vehiculos', passport.authenticate('jwt', { session: false }), (req, res, next) => {
-    console.log('En el backend el request es: ', req.user);
-
     con_Cliente.getVehiculos(req.user.id, (vehiculos, err) => {
         if (err) throw err;
 
@@ -103,6 +102,7 @@ router.get('/vehiculos', passport.authenticate('jwt', { session: false }), (req,
     });
 });
 
+// Actualiza los datos de un empleado
 router.post('/datos-empleado', (req, res, next) => {
     con_Empleado.actualizarDatos(req.body, (err) => {
         if (err) 
@@ -112,12 +112,23 @@ router.post('/datos-empleado', (req, res, next) => {
     });
 });
 
+// Registra un vehiculo
 router.post('/registrar-vehiculo', (req, res, next) => {
     con_Vehiculo.registrar(req.body, (err) => {
         if (err)
             res.json({ success: false, msg: 'Se produjo un error al registrar el vehículo, inténtelo de nuevo.' });
         else
             res.json({ success: true, msg: 'Se registró el vehículo exitosamente.' });
+    });
+});
+
+// Eliminar un vehiculo
+router.post('/eliminar-vehiculo', (req, res, next) => {
+    con_Vehiculo.eliminar(req.body, (err) => {
+        if (err)
+            res.json({ success: false, msg: 'Su vehículo se eliminó con éxito.' });
+        else
+            res.json({ success: true, msg: 'Se produjo un error al eliminar su vehículo.' });
     });
 });
 
