@@ -23,6 +23,7 @@ const Orden = connection.define('Orden',
     Servicio: {
         type: Sequelize.STRING,
         allowNull: false,
+        defaultValue: 'Sin servicio',
 
         validate: {
             notEmpty: true
