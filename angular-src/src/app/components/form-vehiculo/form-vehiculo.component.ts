@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../services/auth.service';
 import { ApiService } from '../../services/api.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { Router } from '@angular/router';
@@ -25,7 +24,6 @@ export class FormVehiculoComponent implements OnInit {
   detalles: string;
   
   constructor(
-    private authService: AuthService,
     private apiService: ApiService,
     private flashMessage: FlashMessagesService,
     private router: Router
