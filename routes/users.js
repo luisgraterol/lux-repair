@@ -140,9 +140,9 @@ router.post('/solicitar-orden', (req, res, next) => {
 
     con_Orden.solicitar(req.body, (err) => {
         if (err)
-            res.json({ success: false, msg: 'Se produjo un error al eliminar su vehículo.' });
+            res.json({ success: false, msg: 'Se produjo un error al solicitar su orden de reparación.' });
         else
-            res.json({ success: true, msg: 'Su vehículo se eliminó con éxito.' });
+            res.json({ success: true, msg: 'Su orden se generó con éxito.' });
     });
 });
 
