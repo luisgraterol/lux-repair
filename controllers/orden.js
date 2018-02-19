@@ -8,11 +8,9 @@ const Orden = require('../models/orden');
 const controller = {};
 
 controller.solicitar = async function (data, callback) {
-
-    console.log('Al controlador llega: ', data);
-
+    
     try {
-        const response = await Orden.create({
+        let response = await Orden.create({
             Vehiculo: data.idVehiculo,
             Estado: 'En Espera',
             Servicio: data.Servicio,
@@ -20,6 +18,7 @@ controller.solicitar = async function (data, callback) {
             Evaluacion: 'Por evaluar',
             FechaSolicitud: obtenerFechaHoy()
         });
+        callback(null);
     } catch (err) {
         console.log(err);
         callback(err);

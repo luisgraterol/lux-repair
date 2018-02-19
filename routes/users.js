@@ -135,9 +135,6 @@ router.post('/eliminar-vehiculo', (req, res, next) => {
 
 // Generar una orden
 router.post('/solicitar-orden', (req, res, next) => {
-
-    console.log('Al backend llega: ', req.body);
-
     con_Orden.solicitar(req.body, (err) => {
         if (err)
             res.json({ success: false, msg: 'Se produjo un error al solicitar su orden de reparación.' });
