@@ -22,15 +22,15 @@
           </li>
           <li *ngIf="this.rol != 'Cliente'" class="list-group-item d-flex justify-content-between pt-4">
             <h5 class="pr-3">Rol:</h5>
-            <p>{{this.rol}}</p>
+            <p>{{rol}}</p>
           </li>
           <li *ngIf="this.rol != 'Cliente' && this.fechaNacimiento != null" class="list-group-item d-flex justify-content-between pt-4">
             <h5 class="pr-3">Fecha de Nacimiento:</h5>
-            <p>{{formatearFecha()}}</p>
+            <p>{{fechaNacimiento}}</p>
           </li>
           <li *ngIf="this.rol != 'Cliente' && this.sexo != null" class="list-group-item d-flex justify-content-between pt-4">
             <h5 class="pr-3">Sexo:</h5>
-            <p>{{this.sexo}}</p>
+            <p>{{sexo}}</p>
           </li>
         </ul>
       </div>
