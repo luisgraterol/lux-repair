@@ -28,6 +28,9 @@ import { ApiService } from './services/api.service';
 // Guards
 import { AuthGuard } from './guards/auth.guard';
 
+// Pipes
+import { DatePipe } from '@angular/common';
+
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'register', component: RegisterComponent},
@@ -67,7 +70,8 @@ const appRoutes: Routes = [
     ValidateService,
     AuthService,
     AuthGuard,
-    ApiService
+    ApiService,
+    DatePipe
   ],
   bootstrap: [AppComponent]
 })

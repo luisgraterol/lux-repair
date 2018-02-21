@@ -12,6 +12,7 @@ export class AuthService {
 
   constructor(private http: Http) { }
 
+  // Registra al usuario
   registerUser(user) {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
@@ -19,6 +20,7 @@ export class AuthService {
       .map(res => res.json());
   }
 
+  // Autentica al usuario
   authenticateUser(user) {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
@@ -26,6 +28,7 @@ export class AuthService {
       .map(res => res.json());
   }
 
+  // Obtiene la informacion del perfil de un usuario
   getProfile() {
     let headers = new Headers();
 
@@ -38,11 +41,7 @@ export class AuthService {
       .map(res => res.json());
   }
 
-  loadToken() {
-    const token = localStorage.getItem('id_token');
-    this.authToken = token;
-  }
-
+  // Guarda la informacion de un usuario
   storeUserData(token, user) {
     localStorage.setItem('id_token', token);
     localStorage.setItem('user', JSON.stringify(user));
@@ -50,14 +49,21 @@ export class AuthService {
     this.user = user;
   }
 
+  // Valida el token del usuario
   loggedIn() {
     return tokenNotExpired('id_token');
   }
 
+  // Hace el logout borrando la informacion del usuario almacenada en localStorage
   logout() {
     this.authToken = null;
     this.user = null;
     localStorage.clear();
+  }
+
+  loadToken() {
+    const token = localStorage.getItem('id_token');
+    this.authToken = token;
   }
 
 }
