@@ -17,7 +17,8 @@ const con_Orden = require('../controllers/orden');
 // Sincroniza los cambios en los modelos
 connection.sync({ logging: false })
 
-// Register
+/* PETICIONES GET */
+// Registra al usuario
 router.post('/register', (req, res, next) => {
     con_User.registrar(req.body, (user, err) => {
         if (err)
@@ -28,7 +29,7 @@ router.post('/register', (req, res, next) => {
     });
 });
 
-// Authenticate
+// Autentica al usuario en el ingreso al sistema
 router.post('/authenticate', (req, res, next) => {
     const username = req.body.username;
     const password = req.body.password;
@@ -70,13 +71,12 @@ router.post('/authenticate', (req, res, next) => {
 });
 
 // Profile
-// Autentica al usuario y retorna un objeto de usuario con todos sus datos corriendo la 
-// funcion de passport y insertando los datos en req.user.
+// Autentica al usuario y retorna un objeto de usuario con todos sus datos corriendo la funcion de passport e insertando los datos en req.user.
 router.get('/profile', passport.authenticate('jwt', {session: false}), (req, res, next) => {
     res.json({ user: req.user });
 });
 
-// Obtiene los vehiculos de un cliente
+// Obtiene los vehiculos de un cliente con todos sus datos
 router.get('/vehiculos', passport.authenticate('jwt', { session: false }), (req, res, next) => {
     con_Cliente.getVehiculos(req.user.id, (vehiculos, err) => {
         if (err) throw err;
@@ -84,12 +84,14 @@ router.get('/vehiculos', passport.authenticate('jwt', { session: false }), (req,
         if (vehiculos) {
             res.json({
                 userId: req.user.id,
-                vehiculos: vehiculos
+                vehiculos
             });
         }
     });
 });
 
+
+/* PETICIONES POST */
 // Actualiza los datos de un empleado
 router.post('/datos-empleado', (req, res, next) => {
     con_Empleado.actualizarDatos(req.body, (err) => {
@@ -100,7 +102,7 @@ router.post('/datos-empleado', (req, res, next) => {
     });
 });
 
-// Registra un vehiculo
+// Registra un vehiculo nuevo
 router.post('/registrar-vehiculo', (req, res, next) => {
     con_Vehiculo.registrar(req.body, (err) => {
         if (err)
@@ -110,7 +112,7 @@ router.post('/registrar-vehiculo', (req, res, next) => {
     });
 });
 
-// Eliminar un vehiculo
+// Desactiva un vehiculo
 router.post('/eliminar-vehiculo', (req, res, next) => {
     con_Vehiculo.eliminar(req.body, (err) => {
         if (err)
@@ -120,7 +122,7 @@ router.post('/eliminar-vehiculo', (req, res, next) => {
     });
 });
 
-// Generar una orden
+// Generar una orden de reparacion
 router.post('/solicitar-orden', (req, res, next) => {
     con_Orden.solicitar(req.body, (err) => {
         if (err)
