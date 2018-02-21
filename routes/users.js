@@ -19,20 +19,7 @@ connection.sync({ logging: false })
 
 // Register
 router.post('/register', (req, res, next) => {
-
-    // Create a non-persistent instance of User (it is persisted in addUser() at 'controllers/user.js')
-    let newUser = User.build({
-        Nombre: req.body.nombre,
-        Snombre: req.body.seg_nombre,
-        Apellido: req.body.apellido,
-        Cedula: req.body.cedula,
-        Email: req.body.email,
-        Username: req.body.username,
-        Password: req.body.password
-    });
-
-    // Custom method implemented in controllers/user.js
-    con_User.addUser(newUser, req.body.rol, (user, err) => {
+    con_User.registrar(req.body, (user, err) => {
         if (err)
             res.json({success: false, msg: 'Failed to register user'});
         else {
@@ -46,7 +33,7 @@ router.post('/authenticate', (req, res, next) => {
     const username = req.body.username;
     const password = req.body.password;
 
-    con_User.getUserByUsername(username, (err, user) => {
+    con_User.getUserByUsername(username, (user, err) => {
         if (err) throw err;
 
         if (!user)

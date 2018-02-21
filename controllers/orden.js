@@ -7,27 +7,27 @@ const Orden = require('../models/orden');
 
 const controller = {};
 
+// Metodo que crea una orden de reparacion para un vehiculo dado
 controller.solicitar = async function (data, callback) {
-    
     try {
         let response = await Orden.create({
             Vehiculo: data.idVehiculo,
             Estado: 'En Espera',
             Servicio: data.Servicio,
             Detalle: data.Detalles,
-            Evaluacion: 'Por evaluar',
+            Evaluacion: 'Por Evaluar',
             FechaSolicitud: obtenerFechaHoy()
         });
         callback(null);
     } catch (err) {
-        console.log(err);
+        console.log('Se produjo un error en el controlador de la orden: ', err);
         callback(err);
     }
 };
 
 module.exports = controller;
 
-
+// Funcion que retorna la fecha presente en un string
 function obtenerFechaHoy() {
     var today = new Date();
     var day = today.getDate();

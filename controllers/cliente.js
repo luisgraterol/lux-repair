@@ -12,23 +12,21 @@ const Orden = require('../models/orden');
 
 const controller = {};
 
+// Metodo que retorna un arreglo de vehiculos con todos los datos pertinentes
 controller.getVehiculos = async function (idCliente, callback) {
     try {
-        let response = await Vehiculo.findAll({where: { Cliente: idCliente }});
-        let vehiculos = [];
+        let response = await Vehiculo.findAll({ where: { Cliente: idCliente } });
 
-        // Construye un objeto con los datos unicamente
-        for (let i=0; i<response.length; i++) {
-            vehiculos.push(response[i].dataValues);
-        }
+        // Construye un arreglo unicamente con los datos necesarios
+        let vehiculos = response.map(resultado => resultado.dataValues);
 
-        // Busca los nombres correspondientes a las marcas de los vehiculos
+        // Busca los nombres de las marcas de los vehiculos
         for (let i = 0; i < vehiculos.length; i++) {
             let response = await Marca.findById(vehiculos[i].Marca);
             vehiculos[i].Marca = response.dataValues.Nombre;
         }
 
-        // Busca los nombres correspondientes a los modelos de los vehiculos
+        // Busca los nombres de los modelos de los vehiculos
         for (let i = 0; i < vehiculos.length; i++) {
             let response = await Modelo.findById(vehiculos[i].Modelo);
             vehiculos[i].Modelo = response.dataValues.Nombre;
@@ -37,22 +35,21 @@ controller.getVehiculos = async function (idCliente, callback) {
         // Agrega los datos de la orden de cada vehiculo, en el caso de tenerla
         for (let i = 0; i < vehiculos.length; i++) {
             let response = await Orden.findOne({
-                where: { 
+                where: {
                     Vehiculo: vehiculos[i].id,
                     Activa: true
                 },
                 attributes: ['Estado', 'Servicio']
             });
 
-            if (response) {
+            if (response) { // Solo agrega los datos si ese vehiculo tiene una orden activa
                 vehiculos[i].Estado = response.dataValues.Estado;
                 vehiculos[i].Servicio = response.dataValues.Servicio;
             }
         }
 
-        // Retorna los resultados
+        // Retorna el arreglo
         callback(vehiculos, null);
-
     } catch (err) {
         callback(null, err);
     }
