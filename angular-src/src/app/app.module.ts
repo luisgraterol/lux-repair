@@ -19,6 +19,8 @@ import { FormEmpleadoComponent } from './components/form-empleado/form-empleado.
 import { FormVehiculoComponent } from './components/form-vehiculo/form-vehiculo.component';
 import { GarageComponent } from './components/garage/garage.component';
 import { SolicitarOrdenComponent } from './components/solicitar-orden/solicitar-orden.component';
+import { ListaReparacionComponent } from './components/lista-reparacion/lista-reparacion.component';
+import { ActualizarOrdenComponent } from './components/actualizar-orden/actualizar-orden.component';
 
 // Servicios
 import { ValidateService } from './services/validate.service';
@@ -40,7 +42,9 @@ const appRoutes: Routes = [
   {path: 'form-empleado', component: FormEmpleadoComponent, canActivate: [AuthGuard]},
   {path: 'form-vehiculo', component: FormVehiculoComponent, canActivate: [AuthGuard]},
   {path: 'garage', component: GarageComponent, canActivate: [AuthGuard]},
-  {path: 'solicitar-orden', component: SolicitarOrdenComponent, canActivate: [AuthGuard]}
+  {path: 'solicitar-orden', component: SolicitarOrdenComponent, canActivate: [AuthGuard]},
+  {path: 'lista-reparacion', component: ListaReparacionComponent, canActivate: [AuthGuard]},
+  {path: 'actualizar-orden', component: ActualizarOrdenComponent, canActivate: [AuthGuard]}
 ];
 
 
@@ -57,7 +61,9 @@ const appRoutes: Routes = [
     FormEmpleadoComponent,
     FormVehiculoComponent,
     GarageComponent,
-    SolicitarOrdenComponent
+    SolicitarOrdenComponent,
+    ListaReparacionComponent,
+    ActualizarOrdenComponent
   ],
   imports: [
     BrowserModule,

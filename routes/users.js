@@ -13,6 +13,7 @@ const con_Empleado = require('../controllers/empleado');
 const con_Cliente = require('../controllers/cliente');
 const con_Vehiculo = require('../controllers/vehiculo');
 const con_Orden = require('../controllers/orden');
+const con_Mecanico = require('../controllers/mecanico');
 
 // Sincroniza los cambios en los modelos
 connection.sync({ logging: false })
@@ -79,6 +80,20 @@ router.get('/profile', passport.authenticate('jwt', {session: false}), (req, res
 // Obtiene los vehiculos de un cliente con todos sus datos
 router.get('/vehiculos', passport.authenticate('jwt', { session: false }), (req, res, next) => {
     con_Cliente.getVehiculos(req.user.id, (vehiculos, err) => {
+        if (err) throw err;
+
+        if (vehiculos) {
+            res.json({
+                userId: req.user.id,
+                vehiculos
+            });
+        }
+    });
+});
+
+// Obtiene los vehiculos asignados a un mecanico
+router.get('/vehiculos-mecanico', passport.authenticate('jwt', { session: false }), (req, res, next) => {
+    con_Mecanico.getVehiculos(req.user.id, (vehiculos, err) => {
         if (err) throw err;
 
         if (vehiculos) {
