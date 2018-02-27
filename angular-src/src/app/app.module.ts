@@ -19,6 +19,8 @@ import { FormEmpleadoComponent } from './components/form-empleado/form-empleado.
 import { FormVehiculoComponent } from './components/form-vehiculo/form-vehiculo.component';
 import { GarageComponent } from './components/garage/garage.component';
 import { SolicitarOrdenComponent } from './components/solicitar-orden/solicitar-orden.component';
+import { ListaRepuestosComponent } from './components/lista-repuestos/lista-repuestos.component';
+import { FormRepuestoComponent } from './components/form-repuesto/form-repuesto.component';
 
 // Servicios
 import { ValidateService } from './services/validate.service';
@@ -40,7 +42,9 @@ const appRoutes: Routes = [
   {path: 'form-empleado', component: FormEmpleadoComponent, canActivate: [AuthGuard]},
   {path: 'form-vehiculo', component: FormVehiculoComponent, canActivate: [AuthGuard]},
   {path: 'garage', component: GarageComponent, canActivate: [AuthGuard]},
-  {path: 'solicitar-orden', component: SolicitarOrdenComponent, canActivate: [AuthGuard]}
+  {path: 'solicitar-orden', component: SolicitarOrdenComponent, canActivate: [AuthGuard]},
+  {path: 'lista-repuestos', component: ListaRepuestosComponent, canActivate: [AuthGuard]},
+  {path: 'form-repuesto', component: FormRepuestoComponent, canActivate: [AuthGuard]}
 ];
 
 
@@ -57,7 +61,9 @@ const appRoutes: Routes = [
     FormEmpleadoComponent,
     FormVehiculoComponent,
     GarageComponent,
-    SolicitarOrdenComponent
+    SolicitarOrdenComponent,
+    ListaRepuestosComponent,
+    FormRepuestoComponent
   ],
   imports: [
     BrowserModule,

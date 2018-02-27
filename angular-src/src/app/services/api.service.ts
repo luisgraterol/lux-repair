@@ -73,4 +73,14 @@ export class ApiService {
     return this.http.post('http://localhost:3000/users/solicitar-orden', data, { headers: headers })
       .map(res => res.json());
   }
+
+  crearRepuesto(data) {
+    // Settear los encabezados para la petición al API
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+
+    // Hacer la petición, se retorna una promesa
+    return this.http.post('http://localhost:3000/users/crear-repuesto', data, { headers })
+      .map(res => res.json());
+  }
 }

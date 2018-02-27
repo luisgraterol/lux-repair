@@ -13,6 +13,8 @@ const con_Empleado = require('../controllers/empleado');
 const con_Cliente = require('../controllers/cliente');
 const con_Vehiculo = require('../controllers/vehiculo');
 const con_Orden = require('../controllers/orden');
+const con_Repuesto = require('../controllers/repuesto');
+
 
 // Sincroniza los cambios en los modelos
 connection.sync({ logging: false })
@@ -129,6 +131,16 @@ router.post('/solicitar-orden', (req, res, next) => {
             res.json({ success: false, msg: 'Se produjo un error al solicitar su orden de reparación.' });
         else
             res.json({ success: true, msg: 'Su orden se generó con éxito.' });
+    });
+});
+
+// Registra un repuesto nuevo
+router.post('/crear-repuesto', (req, res, next) => {
+    con_Repuesto.registrar(req.body, (err) => {
+        if (err)
+            res.json({ success: false, msg: 'Se produjo un error al registrar el repuesto, inténtelo de nuevo.' });
+        else
+            res.json({ success: true, msg: 'Se registró el repuesto exitosamente.' });
     });
 });
 

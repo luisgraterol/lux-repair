@@ -14,6 +14,14 @@ const Repuesto = connection.define('Repuesto',
         }
     },
     Descripcion: {
+        type: Sequelize.STRING,
+        allowNull: false,
+
+        validate: {
+            notEmpty: true
+        }
+    },
+    Detalle: {
         type: Sequelize.TEXT,
         allowNull: false,
 
