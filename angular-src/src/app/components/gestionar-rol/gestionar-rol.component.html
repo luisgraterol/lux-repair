@@ -1,0 +1,36 @@
+<div class="row">
+    <div class="col mx-0 mx-sm-4 mx-md-5 mx-lg-5 mx-xl-5 mt-5 mb-4">
+        <h3>Gestión de Roles</h3>
+    </div>
+</div>
+<div class="row main">
+    <!-- Table -->
+    <div class="container">
+        <div class="table-responsive">
+            <table class="table table-hover bg-light text-dark">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Cedula</th>
+                        <th scope="col">Usuario</th>
+                        <th scope="col">Correo</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let empleado of empleados; let i=index">
+                        <th scope="row">{{empleado.id}}</th>
+                        <td>{{empleado.Nombre}} {{empleado.Apellido}}</td>
+                        <td>{{empleado.Cedula}}</td>
+                        <td>{{empleado.Username}}</td>
+                        <td>{{empleado.Email}}</td>
+                        <td>
+                            <button (click)="irAAsignar(i)" class="btn btn-sm btn-outline-primary">Asignar Rol</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

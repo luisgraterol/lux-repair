@@ -19,6 +19,8 @@ import { FormEmpleadoComponent } from './components/form-empleado/form-empleado.
 import { FormVehiculoComponent } from './components/form-vehiculo/form-vehiculo.component';
 import { GarageComponent } from './components/garage/garage.component';
 import { SolicitarOrdenComponent } from './components/solicitar-orden/solicitar-orden.component';
+import { GestionarRolComponent } from './components/gestionar-rol/gestionar-rol.component';
+import { AsignarRolComponent } from './components/asignar-rol/asignar-rol.component';
 
 // Servicios
 import { ValidateService } from './services/validate.service';
@@ -31,16 +33,25 @@ import { AuthGuard } from './guards/auth.guard';
 // Pipes
 import { DatePipe } from '@angular/common';
 
+
+// Rutas
 const appRoutes: Routes = [
+  // Generales
   {path: '', component: HomeComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'login', component: LoginComponent},
   {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
   {path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
-  {path: 'form-empleado', component: FormEmpleadoComponent, canActivate: [AuthGuard]},
+
+  // Cliente
   {path: 'form-vehiculo', component: FormVehiculoComponent, canActivate: [AuthGuard]},
   {path: 'garage', component: GarageComponent, canActivate: [AuthGuard]},
-  {path: 'solicitar-orden', component: SolicitarOrdenComponent, canActivate: [AuthGuard]}
+  {path: 'solicitar-orden', component: SolicitarOrdenComponent, canActivate: [AuthGuard]},
+
+  // Empleados
+  {path: 'form-empleado', component: FormEmpleadoComponent, canActivate: [AuthGuard]},
+  {path: 'gestionar-rol', component: GestionarRolComponent, canActivate: [AuthGuard]},
+  {path: 'asignar-rol', component: AsignarRolComponent, canActivate: [AuthGuard]}
 ];
 
 
@@ -57,7 +68,9 @@ const appRoutes: Routes = [
     FormEmpleadoComponent,
     FormVehiculoComponent,
     GarageComponent,
-    SolicitarOrdenComponent
+    SolicitarOrdenComponent,
+    AsignarRolComponent,
+    GestionarRolComponent
   ],
   imports: [
     BrowserModule,
