@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-profile',
@@ -16,17 +17,32 @@ export class ProfileComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private datePipe: DatePipe
   ) { }
 
   ngOnInit() {
     this.authService.getProfile().subscribe(profile => 
     {
       this.user = profile.user;
-      // this.rol = profile.user.rol;
+
+      // Guarda el rol con la primera letra en Uppercase
       this.rol = profile.user.rol.charAt(0).toUpperCase() + profile.user.rol.slice(1);
-      this.fechaNacimiento = profile.user.fechaNacimiento;
+
+      // Corrige error en el formato de la fecha
+      let fecha = profile.user.fechaNacimiento;
+      let day = Number(fecha.slice(8, 10)) + 1;
+      let dayString = day.toString();
+
+      if (day < 10) {
+        dayString = '0' + day;
+      }
+
+      // Guarda la fecha formateada
+      this.fechaNacimiento = this.datePipe.transform( fecha.slice(0, 8) + dayString + fecha.slice(10) );
+
       this.sexo = profile.user.sexo;
+
       console.log(this.user);
     }, err => {
       console.log('Error while getting the profile in ProfileComponent: ',err);
@@ -36,58 +52,5 @@ export class ProfileComponent implements OnInit {
 
   completoFormulario() {
     return this.fechaNacimiento && this.sexo;
-  }
-
-  formatearFecha() {
-    let date = new Date(this.fechaNacimiento);
-    let day = date.getDay();
-    let month = date.getMonth();
-    let year = date.getFullYear();
-    let strMonth = '';
-
-    switch (month) {
-      case 0:
-        strMonth = 'enero'
-        break;
-      case 1:
-        strMonth = 'febrero'
-        break;
-      case 2:
-        strMonth = 'marzo'
-        break;
-      case 3:
-        strMonth = 'abril'
-        break;
-      case 4:
-        strMonth = 'mayo'
-        break;
-      case 5:
-        strMonth = 'junio'
-        break;
-      case 6:
-        strMonth = 'julio'
-        break;
-      case 7:
-        strMonth = 'agosto'
-        break;
-      case 8:
-        strMonth = 'septiembre'
-        break;
-      case 9:
-        strMonth = 'octubre'
-        break;
-      case 10:
-        strMonth = 'noviembre'
-        break;
-      case 11:
-        strMonth = 'diciembre'
-        break;
-    
-      default:
-        strMonth = month.toString();
-        break;
-    }
-
-    return `${day} ${strMonth} ${year}`;
   }
 }

@@ -15,7 +15,6 @@ const Mecanico = require('./models/mecanico');
 const Administrador = require('./models/administrador');
 const Vehiculo = require('./models/vehiculo');
 const Orden = require('./models/orden');
-const Servicio = require('./models/servicio');
 const Repuesto = require('./models/repuesto');
 const Marca = require('./models/marca');
 const Modelo = require('./models/modelo');

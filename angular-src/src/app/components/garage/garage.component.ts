@@ -20,12 +20,18 @@ export class GarageComponent implements OnInit {
 
   ngOnInit() {
     this.apiService.getVehicles().subscribe(data => {
-      console.log(data);
+      console.log(data.vehiculos);
       this.vehiculos = data.vehiculos;
+      localStorage.setItem('vehiculos', JSON.stringify(data.vehiculos));
     }, err => {
       console.log('Error al pedir los vehiculos desde GarageComponent: ', err);
       return false;
     }); 
+  }
+
+  irAOrden(indice) {
+    localStorage.setItem('vehiculo-con-orden', this.vehiculos[indice].id);
+    this.router.navigate(['/solicitar-orden']);
   }
 
   eliminarVehiculo(indice) {
@@ -38,4 +44,7 @@ export class GarageComponent implements OnInit {
     });
   }
 
+  cancelarCita(indice) {
+    // FALTA
+  }
 }

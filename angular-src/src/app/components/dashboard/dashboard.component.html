@@ -5,6 +5,8 @@
 </div>
 <div class="row mt-5 pb-5 main">
     <div class="col d-flex justify-content-center">
+
+        <!-- Card Deck del Cliente -->
         <div *ngIf="this.rol === 'cliente'" class="card-deck">
             <div class="card text-center" style="max-width: 18rem; max-height: 24rem;">
                 <img class="img-responsive mx-auto mt-4 mb-2" src="assets/dashboard-cliente/vehiculo-agregar.png" alt="Imagen Agregar Vehiculo" width="130" height="140">
@@ -28,10 +30,42 @@
                 <img class="img-responsive mx-auto mt-4 mb-2" src="assets/dashboard-cliente/resume.png" alt="Imagen Perfil" width="130" height="140">
                 <div class="card-body px-sm-1 px-md-2 px-lg-3 px-xl-3 mt-3">
                     <h5 class="card-title">Mi Perfil</h5>
-                    <p class="card-text">Edita la informacion correspondiente a tu perfil</p>
+                    <p class="card-text">Ve la informacion de tu perfil</p>
                     <a class="btn btn-outline-primary" [routerLink]="['/profile']">Perfil</a>
                 </div>
             </div>
+        </div>
+
+        <!-- Card Deck del Empleado -->
+        <div *ngIf="this.rol === 'empleado'" class="card-deck">
+        <!-- <div class="card text-center" style="max-width: 18rem; max-height: 24rem;">
+            <img class="img-responsive mx-auto mt-4 mb-2" src="assets/dashboard-cliente/vehiculo-agregar.png" alt="Imagen Agregar Vehiculo"
+            width="130" height="140">
+
+            <div class="card-body px-sm-1 px-md-2 px-lg-3 px-xl-3 mt-3">
+            <h5 class="card-title">Registro</h5>
+            <p class="card-text">Registra un nuevo vehiculo para poder solicitar citas.</p>
+            <a [routerLink]="['/form-vehiculo']" class="btn btn-outline-primary mx-0 mx-sm-0 mx-md-0">Registrar</a>
+
+            </div>
+        </div>
+        <div class="card text-center" style="max-width: 18rem; max-height: 24rem;">
+            <img class="img-responsive mx-auto mt-4 mb-2" src="assets/dashboard-cliente/vehiculo-ver.png" alt="Imagen Ver Vehiculos"
+            width="130" height="140">
+            <div class="card-body px-sm-1 px-md-2 px-lg-3 px-xl-3">
+            <h5 class="card-title">Garage</h5>
+            <p class="card-text">Gestiona todas los vehiculos asociados,solicita citas, edita la informacion o eliminalos</p>
+            <a [routerLink]="['/garage']" class="btn btn-outline-primary">Ir al Garage</a>
+            </div>
+        </div> -->
+        <div class="card text-center" style="max-width: 18rem; max-height: 24rem;">
+            <img class="img-responsive mx-auto mt-4 mb-2" src="assets/dashboard-cliente/resume.png" alt="Imagen Perfil" width="130" height="140">
+            <div class="card-body px-sm-1 px-md-2 px-lg-3 px-xl-3 mt-3">
+            <h5 class="card-title">Mi Perfil</h5>
+            <p class="card-text">Edita la informacion correspondiente a tu perfil</p>
+            <a class="btn btn-outline-primary" [routerLink]="['/profile']">Perfil</a>
+            </div>
+        </div>
         </div>
     </div>
 </div>

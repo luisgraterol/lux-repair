@@ -57,21 +57,15 @@ controller.registrar = function (data, callback) {
         )
 };
 
+// Metodo que desactiva el vehiculo sin borrarlo de la base de datos
 controller.eliminar = async function (data, callback) {
-    Vehiculo.update(
-        {
-            Activo: false
-        },
-        {
-            where: { id: data.id }
-        }
-    )
-    .then(result => {
+    try {
+        let response = await Vehiculo.update({ Activo: false }, { where: { id: data.id } });
         callback(null);
-    })
-    .catch(err => {
+    } catch (err) {
+        console.log(err);
         callback(err);
-    });
+    }
 }
 
 module.exports = controller;

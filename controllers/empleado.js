@@ -9,20 +9,22 @@ const Empleado = require('../models/empleado');
 
 const controller = {};
 
-controller.actualizarDatos = function(data, callback) {
-    Empleado.update(
-        {
-            FechaNacimiento: data.fechaNacimiento,
-            Sexo: data.sexo
-        },
-        { where: { id: data.id } }
-    )
-    .then(result => {
+// Medoto que actualiza los datos de un empleado
+controller.actualizarDatos = async function (data, callback) {
+    try {
+        const response = await Empleado.update(
+            {
+                FechaNacimiento: data.fechaNacimiento,
+                Sexo: data.sexo
+            },
+            { where: { id: data.id } }  // Se busca por ID
+        );
+
         callback(null);
-    })
-    .catch(err => {
+    } catch (err) {
+        console.log('Se produjo un error en el controlador de empleado: ',err);
         callback(err);
     }
-)};
+}
 
 module.exports = controller;

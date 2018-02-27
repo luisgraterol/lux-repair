@@ -1,0 +1,29 @@
+<div class="row main p-4 p-md-3">
+  <!-- Form de Registro para Vehiculos -->
+  <div class="container py-5 mt-3 mb-5">
+    <h2 class="mb-3">Solicitud de Reparación</h2>
+    <form (submit)="solicitarOrden()">
+      <div class="form-group">
+          <label for="servicio">Servicio a Solicitar</label>
+          <select id="servicio" class="form-control" [(ngModel)]="servicio" name="servicio">
+              <option selected>Revisión General</option>
+              <option>Cambio de Aceite</option>
+              <option>Carrocería</option>
+              <option>Alineación</option>
+              <option>Otro</option>
+          </select>
+      </div>
+      <div class="form-group">
+        <label for="detalles">Detalle de Situación</label>
+        <textarea class="form-control" name="detalles" id="detalles" [(ngModel)]="detalles" rows="10" placeholder="Agregue cualquier información adicional que considere pertinente."></textarea>
+      </div>
+      <div class="form-group">
+        <label for="imagen">Imagen</label>
+        <input type="file" class="form-control-file" id="imagen" name="imagen">
+      </div>
+      <div class="d-flex justify-content-center">
+        <button type="submit" class="btn btn-primary mt-4">Solicitar</button>
+      </div>
+    </form>
+  </div>
+</div>

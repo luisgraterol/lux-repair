@@ -9,6 +9,7 @@ export class ApiService {
 
   authToken: any;
   user: any;
+  vehiculos: any;
 
   constructor(private http: Http) { }
 
@@ -43,8 +44,10 @@ export class ApiService {
     let headers = new Headers();
 
     // Busca el token del usuario que esta ingresado en el sistema actualmente
-    this.loadToken();
-    headers.append('Authorization', this.authToken);
+    const token = localStorage.getItem('id_token');
+
+    // Settear los encabezados para la petición al API
+    headers.append('Authorization', token);
     headers.append('Content-Type', 'application/json');
 
     return this.http.get('http://localhost:3000/users/vehiculos', { headers })
@@ -61,8 +64,13 @@ export class ApiService {
       .map(res => res.json());
   }
 
-  loadToken() {
-    const token = localStorage.getItem('id_token');
-    this.authToken = token;
+  crearOrden(data) {
+    // Settear los encabezados para la petición al API
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+
+    // Hacer la petición, se retorna una promesa
+    return this.http.post('http://localhost:3000/users/solicitar-orden', data, { headers: headers })
+      .map(res => res.json());
   }
 }
