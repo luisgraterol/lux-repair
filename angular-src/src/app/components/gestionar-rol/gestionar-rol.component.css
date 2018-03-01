@@ -1,0 +1,7 @@
+.main {
+    min-height: 42.5rem;
+}
+
+tr:hover {
+  background: #eaf2ff !important;
+}

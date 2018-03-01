@@ -90,6 +90,19 @@ router.get('/vehiculos', passport.authenticate('jwt', { session: false }), (req,
     });
 });
 
+// Obtiene los empleados sin un rol asignado
+router.get('/empleados', (req, res, next) => {
+    con_Empleado.getEmpleadosSinRol((empleados, err) => {
+        if (err) throw err;
+
+        if (empleados) {
+            res.json({
+                empleados
+            });
+        }
+    });
+});
+
 
 /* PETICIONES POST */
 // Actualiza los datos de un empleado
@@ -129,6 +142,16 @@ router.post('/solicitar-orden', (req, res, next) => {
             res.json({ success: false, msg: 'Se produjo un error al solicitar su orden de reparación.' });
         else
             res.json({ success: true, msg: 'Su orden se generó con éxito.' });
+    });
+});
+
+// Desactiva un vehiculo
+router.post('/asignar-rol', (req, res, next) => {
+    con_Empleado.asignarRol(req.body, (err) => {
+        if (err)
+            res.json({ success: false, msg: 'Se produjo un error al asignar el rol.' });
+        else
+            res.json({ success: true, msg: 'El rol se asignó exitosamente.' });
     });
 });
 
