@@ -87,4 +87,14 @@ export class ApiService {
     return this.http.get('http://localhost:3000/users/empleados', { headers })
       .map(res => res.json());
   }
+
+  asignarRol(data) {
+    // Settear los encabezados para la petición al API
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+
+    // Hacer la petición, se retorna una promesa
+    return this.http.post('http://localhost:3000/users/asignar-rol', data, { headers: headers })
+      .map(res => res.json());
+  }
 }

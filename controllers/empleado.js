@@ -64,4 +64,24 @@ controller.getEmpleadosSinRol = async function (callback) {
     }
 }
 
+controller.asignarRol = async function (data, callback) {
+    try {
+        if (data.rol === 'mecanico') {
+            let response = await Mecanico.create({id: data.id});
+        }
+        else if (data.rol === 'gerente') {
+            let response = await Gerente.create({ id: data.id });
+        }
+        else if (data.rol === 'administrador') {
+            let response = await Administrador.create({ id: data.id });
+        }
+
+        callback(null);
+
+    } catch (err) {
+        console.log('Se produjo un error al asignar el rol: ', err);
+        callback(err);
+    }
+}
+
 module.exports = controller;

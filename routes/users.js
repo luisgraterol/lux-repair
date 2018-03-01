@@ -145,4 +145,14 @@ router.post('/solicitar-orden', (req, res, next) => {
     });
 });
 
+// Desactiva un vehiculo
+router.post('/asignar-rol', (req, res, next) => {
+    con_Empleado.asignarRol(req.body, (err) => {
+        if (err)
+            res.json({ success: false, msg: 'Se produjo un error al asignar el rol.' });
+        else
+            res.json({ success: true, msg: 'El rol se asignó exitosamente.' });
+    });
+});
+
 module.exports = router;

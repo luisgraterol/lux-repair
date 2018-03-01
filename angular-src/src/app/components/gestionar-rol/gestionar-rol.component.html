@@ -3,6 +3,20 @@
         <h3>Gestión de Roles</h3>
     </div>
 </div>
+<div class="row">
+    <div class="col mx-5 my-4">
+        <form>
+            <div class="form-group">
+                <label for="rol">Seleccione el rol que quiere asignar</label>
+                <select class="form-control" id="rol" name="rol" [(ngModel)]="rol">
+                    <option>Administrador</option>
+                    <option>Gerente</option>
+                    <option>Mecánico</option>
+                </select>
+            </div>
+        </form>
+    </div>
+</div>
 <div class="row main">
     <!-- Table -->
     <div class="container">

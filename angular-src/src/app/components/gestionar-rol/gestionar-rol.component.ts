@@ -19,42 +19,7 @@ export class GestionarRolComponent implements OnInit {
     private router: Router
   ) { }
 
-  ngOnInit() {
-  //   this.empleados = [
-  //     {
-  //       id: 21,
-  //       Nombre: 'Roberto',
-  //       Apellido: 'Mendoza',
-  //       Cedula: 22365799,
-  //       Username: 'rmendoza',
-  //       Email: 'rmendoza@me.com'
-  //     },
-  //     {
-  //       id: 21,
-  //       Nombre: 'Roberto',
-  //       Apellido: 'Mendoza',
-  //       Cedula: 22365799,
-  //       Username: 'rmendoza',
-  //       Email: 'rmendoza@me.com'
-  //     },
-  //     {
-  //       id: 21,
-  //       Nombre: 'Roberto',
-  //       Apellido: 'Mendoza',
-  //       Cedula: 22365799,
-  //       Username: 'rmendoza',
-  //       Email: 'rmendoza@me.com'
-  //     },
-  //     {
-  //       id: 21,
-  //       Nombre: 'Roberto',
-  //       Apellido: 'Mendoza',
-  //       Cedula: 22365799,
-  //       Username: 'rmendoza',
-  //       Email: 'rmendoza@me.com'
-  //     }
-  // ];
-  
+  ngOnInit() {  
     this.apiService.getEmpleadosSinRol().subscribe(data => {
       console.log(data.empleados);
       this.empleados = data.empleados;
@@ -66,6 +31,34 @@ export class GestionarRolComponent implements OnInit {
   }
 
   asignarRol(indice) {
-    console.log('Se le quiere asingar el rol de ' + this.rol + ' al empleado de indice ' + indice);
+
+    // Validacion de que se haya seleccionado el rol a asignar
+    if (this.rol == undefined || this.rol == '') {
+      this.flashMessage.show('Por favor, seleccione un rol.', {cssClass: 'custom-danger', timeout: 5000});
+      return false;
+    }
+
+    let rol = this.rol;
+
+    if (rol === 'Mecánico')
+      rol = 'Mecanico'; // Quitamos el tilde en la 'a'
+
+    // Setteamos en minuscula la primera letra
+    rol = rol.charAt(0).toLowerCase() + rol.slice(1);
+
+    const data = {
+      id: this.empleados[indice].id,
+      rol
+    };
+
+    console.log(data);
+
+    this.apiService.asignarRol(data).subscribe(response => {
+      if (response.success) {
+        this.flashMessage.show(response.msg, { cssClass: 'custom-success', timeout: 3000 });
+      } else {
+        this.flashMessage.show(response.msg, { cssClass: 'custom-danger', timeout: 3000 });
+      }
+    });
   }
 }
