@@ -37,8 +37,6 @@ controller.getEmpleadosSinRol = async function (callback) {
         // Construye un arreglo unicamente con los datos necesarios
         let empleados = response.map(resultado => resultado.dataValues.id);
 
-        // console.log('Todos los empleados:', empleados);
-
         // Busca los datos de los empleados de cada rol
         const esAdmin = await Administrador.findAll();
         const esGerente = await Gerente.findAll();
@@ -49,27 +47,20 @@ controller.getEmpleadosSinRol = async function (callback) {
         let gerentes = esGerente.map(resultado => resultado.dataValues.id);
         let mecanicos = esMecanico.map(resultado => resultado.dataValues.id);
 
-        // console.log('Admins: ', admins);
-        // console.log('Gerentes: ', gerentes);
-        // console.log('Mecanicos: ', mecanicos);
-
         // Filtra el arreglo de empleados para solo contener los que no tengan un rol asignado:
         empleados = empleados.filter(empleado => !admins.includes(empleado) && !gerentes.includes(empleado) && !mecanicos.includes(empleado));
-
-        // console.log('Los empleados sin rol son: ', empleados);
 
         const resultadoFinal = await Usuario.findAll({where: { id: empleados }});
 
         // Construye un arreglo unicamente con los datos necesarios
         let usuarios = resultadoFinal.map(resultado => resultado.dataValues);
 
-        console.log('El arreglo retornado es: ', usuarios);
-
         // Retornar el arreglo
         callback(usuarios, null);
 
     } catch (err) {
         console.log('Se produjo un error en el controlador de empleado: ', err);
+        callback(null, err);
     }
 }
 

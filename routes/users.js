@@ -90,6 +90,19 @@ router.get('/vehiculos', passport.authenticate('jwt', { session: false }), (req,
     });
 });
 
+// Obtiene los empleados sin un rol asignado
+router.get('/empleados', (req, res, next) => {
+    con_Empleado.getEmpleadosSinRol((empleados, err) => {
+        if (err) throw err;
+
+        if (empleados) {
+            res.json({
+                empleados
+            });
+        }
+    });
+});
+
 
 /* PETICIONES POST */
 // Actualiza los datos de un empleado
