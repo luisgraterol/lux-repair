@@ -11,6 +11,7 @@ const User = require('../models/user');
 const con_User = require('../controllers/user');
 const con_Empleado = require('../controllers/empleado');
 const con_Cliente = require('../controllers/cliente');
+const con_Gerente = require('../controllers/gerente');
 const con_Vehiculo = require('../controllers/vehiculo');
 const con_Orden = require('../controllers/orden');
 
@@ -98,6 +99,19 @@ router.get('/empleados', (req, res, next) => {
         if (empleados) {
             res.json({
                 empleados
+            });
+        }
+    });
+});
+
+// Obtiene todos los vehiculos activos
+router.get('/vehiculos-gerente', (req, res, next) => {
+    con_Gerente.getVehiculos((vehiculos, err) => {
+        if (err) throw err;
+
+        if (vehiculos) {
+            res.json({
+                vehiculos
             });
         }
     });

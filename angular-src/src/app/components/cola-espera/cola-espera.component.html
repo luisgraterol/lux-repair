@@ -1,0 +1,63 @@
+<div class="row">
+  <div class="col mx-0 mx-sm-4 mx-md-5 mx-lg-5 mx-xl-5 mt-5 mb-4">
+    <h3>Cola de Espera</h3>
+  </div>
+</div>
+<div class="row main">
+  <!-- Table -->
+  <div class="container">
+    <div class="table-responsive">
+      <table class="table table-hover bg-light text-dark">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Vehículo</th>
+            <th scope="col">Placa</th>
+            <th scope="col">Servicio</th>
+            <th scope="col">Estado</th>
+            <th scope="col">Solicitud</th>
+            <th scope="col">Admisión</th>
+            <th scope="col">Acciones</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let vehiculo of vehiculos; let i=index">
+            <th scope="row">{{vehiculo.id}}</th>
+            <td>{{vehiculo.Marca}} {{vehiculo.Modelo}}</td>
+            <td>{{vehiculo.Placa}}</td>
+            <td>
+              <span *ngIf="vehiculo.Servicio == undefined">Sin Servicio</span>
+              <span *ngIf="vehiculo.Servicio != undefined">{{vehiculo.Servicio}}</span>
+            </td>
+            <!-- Estado -->
+            <td>
+              <span *ngIf="vehiculo.Estado == undefined" class="badge badge-pill badge-primary">Sin Cita</span>
+              <span *ngIf="vehiculo.Estado == 'En Espera'" class="badge badge-pill badge-warning text-white">{{vehiculo.Estado}}</span>
+              <span *ngIf="vehiculo.Estado == 'En Reparacion'" class="badge badge-pill badge-info text-white">{{vehiculo.Estado}}</span>
+              <span *ngIf="vehiculo.Estado == 'Listo'" class="badge badge-pill badge-success text-white">{{vehiculo.Estado}}</span>
+            </td>
+            <!-- Fecha de Solicitud -->
+            <td>
+              <span *ngIf="vehiculo.FechaSolicitud != undefined">{{vehiculo.FechaSolicitud | date:'d/M/yy'}}</span>
+              <span *ngIf="vehiculo.FechaSolicitud == undefined">Sin Cita</span>
+            </td>
+            <!-- Fecha de Admision -->
+            <td>
+              <span *ngIf="vehiculo.FechaAdmision != null && vehiculo.FechaAdmision != undefined">{{vehiculo.FechaAdmision | date:'d/M/yy'}}</span>
+              <span *ngIf="vehiculo.FechaAdmision == undefined || vehiculo.FechaAdmision == null">No Admitido</span>
+            </td>
+            <!-- Acciones -->
+            <td class="d-flex justify-content-center">
+              <button (click)="verDetalle(i)" class="editar"><i class="fas fa-pencil-alt"></i></button>
+            </td>
+            <td>
+              <!-- Este sera el boton de Finalizar -->
+              <!-- <button *ngIf="vehiculo.Servicio == undefined" (click)="eliminarVehiculo(i)" class="btn btn-sm btn-outline-danger">Eliminar</button> -->
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
