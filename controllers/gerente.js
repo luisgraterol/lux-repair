@@ -39,7 +39,7 @@ controller.getVehiculos = async function (callback) {
                     Vehiculo: vehiculos[i].id,
                     Activa: true
                 },
-                attributes: ['Estado', 'Servicio', 'FechaSolicitud', 'FechaAdmision']
+                attributes: ['Estado', 'Servicio', 'FechaSolicitud', 'FechaAdmision', 'Detalle']
             });
 
             if (response) { // Solo agrega los datos si ese vehiculo tiene una orden activa
@@ -47,6 +47,7 @@ controller.getVehiculos = async function (callback) {
                 vehiculos[i].Servicio = response.dataValues.Servicio;
                 vehiculos[i].FechaSolicitud = response.dataValues.FechaSolicitud;
                 vehiculos[i].FechaAdmision = response.dataValues.FechaAdmision;
+                vehiculos[i].DetalleOrden = response.dataValues.Detalle;
             }
         }
 

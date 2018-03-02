@@ -169,4 +169,14 @@ router.post('/asignar-rol', (req, res, next) => {
     });
 });
 
+// Desactiva un vehiculo
+router.post('/cliente', (req, res, next) => {
+    con_User.getUserById(req.body.id, (err, cliente) => {
+        if (err)
+            res.json({ success: false, msg: 'Se produjo un error al buscar los datos del dueño.' });
+        else
+            res.json({ success: true, msg: 'Se buscaron los datos del cliente exitosamente.', cliente });
+    });
+});
+
 module.exports = router;
