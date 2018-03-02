@@ -6,6 +6,9 @@ const bcrypt = require('bcryptjs');
 const Usuario = require('../models/user');
 const Cliente = require('../models/cliente');
 const Empleado = require('../models/empleado');
+const Administrador = require('../models/administrador');
+const Gerente = require('../models/gerente');
+const Mecanico = require('../models/mecanico');
 
 const controller = {};
 
@@ -18,9 +21,32 @@ controller.getUserById = async function (id, callback) {
 
         if (empleado) { // Chequea si es un empleado
             // Agregar la informacion adicional al objeto retornado
-            usuario.rol = 'empleado';
             usuario.fechaNacimiento = empleado.dataValues.FechaNacimiento;
             usuario.sexo = empleado.dataValues.Sexo;
+
+            // Chequear si es un administrador
+            let esAdmin = await Administrador.findById(id);
+            if (esAdmin) {
+                usuario.rol = 'administrador';
+                callback(null, usuario);
+            }
+
+            // Chequear si es un gerente
+            let esGerente = await Gerente.findById(id);
+            if (esGerente) {
+                usuario.rol = 'gerente';
+                callback(null, usuario);
+            }
+
+            // Chequear si es un mecanico
+            let esMecanico = await Mecanico.findById(id);
+            if (esMecanico) {
+                usuario.rol = 'mecanico';
+                callback(null, usuario);
+            }
+
+            // Si no se le ha asignado un rol
+            usuario.rol = 'empleado';
 
             // Retornar el objeto
             callback(null, usuario);

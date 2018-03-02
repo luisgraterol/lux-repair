@@ -1,0 +1,18 @@
+.main {
+  min-height: 42.5rem;
+}
+
+tr:hover {
+  background: #eaf2ff !important;
+}
+
+.editar {
+  border: none;
+  background: transparent;
+  color: var(--dark);
+  opacity: 0;
+}
+
+tr:hover .editar {
+  opacity: 1;
+}

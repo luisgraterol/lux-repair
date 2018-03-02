@@ -11,6 +11,7 @@ const User = require('../models/user');
 const con_User = require('../controllers/user');
 const con_Empleado = require('../controllers/empleado');
 const con_Cliente = require('../controllers/cliente');
+const con_Gerente = require('../controllers/gerente');
 const con_Vehiculo = require('../controllers/vehiculo');
 const con_Orden = require('../controllers/orden');
 
@@ -90,6 +91,32 @@ router.get('/vehiculos', passport.authenticate('jwt', { session: false }), (req,
     });
 });
 
+// Obtiene los empleados sin un rol asignado
+router.get('/empleados', (req, res, next) => {
+    con_Empleado.getEmpleadosSinRol((empleados, err) => {
+        if (err) throw err;
+
+        if (empleados) {
+            res.json({
+                empleados
+            });
+        }
+    });
+});
+
+// Obtiene todos los vehiculos activos
+router.get('/vehiculos-gerente', (req, res, next) => {
+    con_Gerente.getVehiculos((vehiculos, err) => {
+        if (err) throw err;
+
+        if (vehiculos) {
+            res.json({
+                vehiculos
+            });
+        }
+    });
+});
+
 
 /* PETICIONES POST */
 // Actualiza los datos de un empleado
@@ -129,6 +156,26 @@ router.post('/solicitar-orden', (req, res, next) => {
             res.json({ success: false, msg: 'Se produjo un error al solicitar su orden de reparación.' });
         else
             res.json({ success: true, msg: 'Su orden se generó con éxito.' });
+    });
+});
+
+// Desactiva un vehiculo
+router.post('/asignar-rol', (req, res, next) => {
+    con_Empleado.asignarRol(req.body, (err) => {
+        if (err)
+            res.json({ success: false, msg: 'Se produjo un error al asignar el rol.' });
+        else
+            res.json({ success: true, msg: 'El rol se asignó exitosamente.' });
+    });
+});
+
+// Desactiva un vehiculo
+router.post('/cliente', (req, res, next) => {
+    con_User.getUserById(req.body.id, (err, cliente) => {
+        if (err)
+            res.json({ success: false, msg: 'Se produjo un error al buscar los datos del dueño.' });
+        else
+            res.json({ success: true, msg: 'Se buscaron los datos del cliente exitosamente.', cliente });
     });
 });
 

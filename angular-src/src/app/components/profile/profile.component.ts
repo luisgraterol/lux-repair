@@ -29,7 +29,8 @@ export class ProfileComponent implements OnInit {
       // Guarda el rol con la primera letra en Uppercase
       this.rol = profile.user.rol.charAt(0).toUpperCase() + profile.user.rol.slice(1);
 
-      if (this.rol !== 'Cliente') {
+      if (this.rol != 'Cliente' && profile.user.sexo != undefined && profile.user.fechaNacimiento != undefined) {
+
         // Corrige error en el formato de la fecha
         let fecha = profile.user.fechaNacimiento;
         let day = Number(fecha.slice(8, 10)) + 1;
@@ -40,7 +41,7 @@ export class ProfileComponent implements OnInit {
         }
 
         // Guarda la fecha formateada
-        this.fechaNacimiento = this.datePipe.transform( fecha.slice(0, 8) + dayString + fecha.slice(10) );
+        this.fechaNacimiento = this.datePipe.transform(fecha.slice(0, 8) + dayString + fecha.slice(10));
 
         this.sexo = profile.user.sexo;
       }
