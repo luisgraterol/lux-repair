@@ -92,6 +92,22 @@ router.get('/vehiculos', passport.authenticate('jwt', { session: false }), (req,
     });
 });
 
+// Obtiene los repuestos
+router.get('/repuestos', passport.authenticate('jwt', { session: false }), (req, res, next) => {
+    console.log('REQ: ', req.user.id)
+
+    con_Repuesto.getRepuestos(req.user.id, (repuestos, err) => {
+        if (err) throw err;
+
+        if (repuestos) {
+            res.json({
+                userId: req.user.id,
+                repuestos
+            });
+        }
+    });
+});
+
 
 /* PETICIONES POST */
 // Actualiza los datos de un empleado

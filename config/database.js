@@ -2,7 +2,7 @@ const Sequelize = require('sequelize');
 
 // Create the connection to the database
 const connection = new Sequelize('luxrepairDB', 'root', 'password', {
-  host: 'localhost',
+  host: '127.0.0.1',
   dialect: 'mysql',
   operatorsAliases: false
 });

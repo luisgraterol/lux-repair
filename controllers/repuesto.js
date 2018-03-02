@@ -26,4 +26,23 @@ controller.registrar = async function (data, callback) {
     }
 }
 
+// Metodo que retorna un arreglo de repuestos con todos los datos pertinentes
+// controller.getRepuestos = function (idCliente, callback) {
+//     Repuesto.findAll().then(resultado => {
+//         let repuestos = resultado.map(repuesto => repuesto.dataValues);
+//     }).catch();
+// };
+
+controller.getRepuestos = async function (idCliente, callback) {
+    try {
+        let response = await Repuesto.findAll();
+        let repuestos = response.map(repuesto => repuesto.dataValues);
+        console.log('Retornaron los sigueintes datos',repuestos);
+        // Retorna el arreglo
+        callback(repuestos, null);
+    } catch (err) {
+        callback(null, err);
+    }
+};
+
 module.exports = controller;

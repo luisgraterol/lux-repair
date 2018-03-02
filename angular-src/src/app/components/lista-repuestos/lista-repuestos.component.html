@@ -27,47 +27,26 @@
           <thead class="thead-light">
             <tr>
               <th scope="col">ID</th>
-              <th scope="col">Vehículo</th>
-              <th scope="col">Placa</th>
-              <th scope="col">Color</th>
-              <th scope="col">Servicio</th>
-              <th scope="col">Estado</th>
+              <th scope="col">Categoria</th>
+              <th scope="col">Descripción</th>
+              <th scope="col">Cantidad</th>
+              <th scope="col">Tipo</th>
+              <th scope="col">Detalles</th>
               <th scope="col">Acciones</th>
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let vehiculo of vehiculos; let i=index">
-              <th *ngIf="vehiculo.Activo" scope="row">{{vehiculo.id}}</th>
-              <td *ngIf="vehiculo.Activo">{{vehiculo.Marca}} {{vehiculo.Modelo}}</td>
-              <td *ngIf="vehiculo.Activo">{{vehiculo.Placa}}</td>
-              <td *ngIf="vehiculo.Activo">
-                <div *ngIf="vehiculo.Color == 'Amarillo'" class="color color-amarillo mt-1"></div>
-                <div *ngIf="vehiculo.Color == 'Arena'" class="color color-arena mt-1"></div>
-                <div *ngIf="vehiculo.Color == 'Azul'" class="color color-azul mt-1"></div>
-                <div *ngIf="vehiculo.Color == 'Blanco'" class="color color-blanco mt-1"></div>
-                <div *ngIf="vehiculo.Color == 'Gris'" class="color color-gris mt-1"></div>
-                <div *ngIf="vehiculo.Color == 'Negro'" class="color color-negro mt-1"></div>
-                <div *ngIf="vehiculo.Color == 'Plata'" class="color color-plata mt-1"></div>
-                <div *ngIf="vehiculo.Color == 'Rojo'" class="color color-rojo mt-1"></div>
-                <div *ngIf="vehiculo.Color == 'Verde'" class="color color-verde mt-1"></div>
-  
+            <tr *ngFor="let repuesto of repuestos; let i=index">
+              <td scope="row">{{repuesto.id}}</td>
+              <td>{{repuesto.Nombre}}</td>
+              <td>{{repuesto.Descripcion}}</td>
+              <td>{{repuesto.Cantidad}}</td>
+              <td>{{repuesto.Tipo}}</td>
+              <td>
+                <button (click)="irAOrden(i)" class="btn btn-sm btn-outline-primary">Ver Detalle</button>
               </td>
-              <td *ngIf="vehiculo.Activo">
-                <span *ngIf="vehiculo.Servicio == undefined">Sin Servicio</span>
-                <span *ngIf="vehiculo.Servicio != undefined">{{vehiculo.Servicio}}</span>
-              </td>
-              <td *ngIf="vehiculo.Activo">
-                <span *ngIf="vehiculo.Estado == undefined" class="badge badge-pill badge-primary">Sin Cita</span>
-                <span *ngIf="vehiculo.Estado == 'En Espera'" class="badge badge-pill badge-warning text-white">{{vehiculo.Estado}}</span>
-                <span *ngIf="vehiculo.Estado == 'En Reparacion'" class="badge badge-pill badge-info text-white">{{vehiculo.Estado}}</span>
-                <span *ngIf="vehiculo.Estado == 'Listo'" class="badge badge-pill badge-success text-white">{{vehiculo.Estado}}</span>
-              </td>
-              <td *ngIf="vehiculo.Activo">
-                <button *ngIf="vehiculo.Servicio == undefined" (click)="irAOrden(i)" class="btn btn-sm btn-outline-success">Solicitar Cita</button>
-                <button *ngIf="vehiculo.Servicio != undefined" (click)="cancelarCita(i)" class="btn btn-sm btn-outline-danger">Cancelar Cita</button>
-              </td>
-              <td *ngIf="vehiculo.Activo">
-                <button *ngIf="vehiculo.Servicio == undefined" (click)="eliminarVehiculo(i)" class="btn btn-sm btn-outline-danger">Eliminar</button>
+              <td>
+                <button (click)="modificarRepuesto(i)" class="btn btn-sm btn-outline-dark">Modificar</button>
               </td>
             </tr>
           </tbody>
