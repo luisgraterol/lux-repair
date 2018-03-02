@@ -37,6 +37,7 @@
 
         <!-- Card Deck del Empleado -->
         <div *ngIf="this.rol !== 'cliente'" class="card-deck">
+            <!-- Administrador -->
             <div *ngIf="this.rol === 'administrador'" class="card text-center" style="max-width: 18rem; max-height: 24rem;">
                 <img class="img-responsive mx-auto mt-4 mb-2" src="assets/dashboard-cliente/resume.png" alt="Imagen Perfil" width="130" height="140">
                 <div class="card-body px-sm-1 px-md-2 px-lg-3 px-xl-3 mt-3">
@@ -45,6 +46,17 @@
                     <a class="btn btn-outline-primary" [routerLink]="['/gestionar-rol']">Gestionar</a>
                 </div>
             </div>
+            <!-- Gerente -->
+            <div *ngIf="this.rol === 'gerente'" class="card text-center" style="max-width: 18rem; max-height: 24rem;">
+                <img class="img-responsive mx-auto mt-4 mb-2" src="assets/dashboard-cliente/resume.png" alt="Imagen Perfil" width="130" height="140">
+                <div class="card-body px-sm-1 px-md-2 px-lg-3 px-xl-3 mt-3">
+                    <h5 class="card-title">Cola de Espera</h5>
+                    <p class="card-text">Gestiona la cola de espera de reparaciones.</p>
+                    <a class="btn btn-outline-primary" [routerLink]="['/cola-espera']">Gestionar</a>
+                </div>
+            </div>
+
+            <!-- Todos los Empleados -->
             <div class="card text-center" style="max-width: 18rem; max-height: 24rem;">
                 <img class="img-responsive mx-auto mt-4 mb-2" src="assets/dashboard-cliente/resume.png" alt="Imagen Perfil" width="130" height="140">
                 <div class="card-body px-sm-1 px-md-2 px-lg-3 px-xl-3 mt-3">
