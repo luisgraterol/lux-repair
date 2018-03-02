@@ -1,36 +1,42 @@
 
 <div class="main">
-  <div class="row">
-    <div class="col-11 col-md-8 col-lg-5 mx-auto mb-5">
-      <div class="pt-5" *ngIf="user">
-        <!-- Nombre Completo -->
-        <h2 class="page-header pb-3">{{user.Nombre}} {{user.Snombre}} {{user.Apellido}}</h2>
 
-        <!-- Lista de Datos -->
+  <div class="row bg-profile mb-4 pt-5 pb-3">
+    <div class="col d-flex flex-column align-items-center">
+      <div class="bg-light circle p-4 mb-4 image">
+        <img class="img-responsive mx-4 mt-4 mb-2" src="assets/detalle-vehiculo/man.png" alt="Imagen Perfil" width="120" height="130">
+      </div>
+      <h2 *ngIf="user != undefined" class="page-header pb-3 text-white font-weight-light">{{user.Nombre}} {{user.Snombre}} {{user.Apellido}}</h2>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-11 col-md-8 mx-auto mb-5">
+      <div *ngIf="user">
         <ul class="list-group">
-          <li class="list-group-item d-flex justify-content-between pt-4">
-            <h5 class="pr-3">Usuario:</h5>
-            <p>{{user.Username}}</p>
+          <li class="list-group-item d-flex justify-content-between">
+            <h5 class="pr-3 my-auto">Usuario:</h5>
+            <p class="lead m-0">{{user.Username}}</p>
           </li>
-          <li class="list-group-item d-flex justify-content-between pt-4">
-            <h5 class="pr-3">Correo:</h5>
-            <p>{{user.Email}}</p>
+          <li class="list-group-item d-flex justify-content-between">
+            <h5 class="pr-3 my-auto">Correo:</h5>
+            <p class="lead m-0">{{user.Email}}</p>
           </li>
-          <li class="list-group-item d-flex justify-content-between pt-4">
-            <h5 class="pr-3">Cedula:</h5>
-            <p>{{user.Cedula}}</p>
+          <li class="list-group-item d-flex justify-content-between">
+            <h5 class="pr-3 my-auto">Cedula:</h5>
+            <p class="lead m-0">{{user.Cedula}}</p>
           </li>
-          <li *ngIf="this.rol != 'Cliente'" class="list-group-item d-flex justify-content-between pt-4">
-            <h5 class="pr-3">Rol:</h5>
-            <p>{{rol}}</p>
+          <li *ngIf="this.rol != 'Cliente'" class="list-group-item d-flex justify-content-between">
+            <h5 class="pr-3 my-auto">Rol:</h5>
+            <p class="lead m-0">{{rol}}</p>
           </li>
-          <li *ngIf="this.rol != 'Cliente' && this.fechaNacimiento != null" class="list-group-item d-flex justify-content-between pt-4">
-            <h5 class="pr-3">Fecha de Nacimiento:</h5>
-            <p>{{fechaNacimiento}}</p>
+          <li *ngIf="this.rol != 'Cliente' && this.fechaNacimiento != null" class="list-group-item d-flex justify-content-between">
+            <h5 class="pr-3 my-auto">Fecha de Nacimiento:</h5>
+            <p class="lead m-0">{{fechaNacimiento}}</p>
           </li>
-          <li *ngIf="this.rol != 'Cliente' && this.sexo != null" class="list-group-item d-flex justify-content-between pt-4">
-            <h5 class="pr-3">Sexo:</h5>
-            <p>{{sexo}}</p>
+          <li *ngIf="this.rol != 'Cliente' && this.sexo != null" class="list-group-item d-flex justify-content-between">
+            <h5 class="pr-3 my-auto">Sexo:</h5>
+            <p class="lead m-0">{{sexo}}</p>
           </li>
         </ul>
       </div>

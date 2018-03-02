@@ -22,8 +22,7 @@ export class ProfileComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.authService.getProfile().subscribe(profile => 
-    {
+    this.authService.getProfile().subscribe(profile => {
       this.user = profile.user;
 
       // Guarda el rol con la primera letra en Uppercase
