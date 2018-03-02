@@ -20,6 +20,8 @@ import { FormVehiculoComponent } from './components/form-vehiculo/form-vehiculo.
 import { GarageComponent } from './components/garage/garage.component';
 import { SolicitarOrdenComponent } from './components/solicitar-orden/solicitar-orden.component';
 import { GestionarRolComponent } from './components/gestionar-rol/gestionar-rol.component';
+import { ColaEsperaComponent } from './components/cola-espera/cola-espera.component';
+import { DetalleVehiculoComponent } from './components/detalle-vehiculo/detalle-vehiculo.component';
 
 // Servicios
 import { ValidateService } from './services/validate.service';
@@ -49,7 +51,13 @@ const appRoutes: Routes = [
 
   // Empleados
   {path: 'form-empleado', component: FormEmpleadoComponent, canActivate: [AuthGuard]},
-  {path: 'gestionar-rol', component: GestionarRolComponent, canActivate: [AuthGuard]}
+
+  // Administrador
+  {path: 'gestionar-rol', component: GestionarRolComponent, canActivate: [AuthGuard]},
+
+  // Gerente
+  {path: 'cola-espera', component: ColaEsperaComponent, canActivate: [AuthGuard]},
+  {path: 'detalle-vehiculo', component: DetalleVehiculoComponent, canActivate: [AuthGuard]}
 ];
 
 
@@ -67,7 +75,9 @@ const appRoutes: Routes = [
     FormVehiculoComponent,
     GarageComponent,
     SolicitarOrdenComponent,
-    GestionarRolComponent
+    GestionarRolComponent,
+    ColaEsperaComponent,
+    DetalleVehiculoComponent
   ],
   imports: [
     BrowserModule,
