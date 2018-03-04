@@ -35,6 +35,9 @@ export class GarageComponent implements OnInit {
   }
 
   eliminarVehiculo(indice) {
+
+    console.log(indice);
+
     this.apiService.eliminarVehiculo(this.vehiculos[indice].id).subscribe(response => {
       if (response.success) {
         this.flashMessage.show(response.msg, { cssClass: 'custom-success', timeout: 3000 });
@@ -42,6 +45,8 @@ export class GarageComponent implements OnInit {
         this.flashMessage.show(response.msg, { cssClass: 'custom-danger', timeout: 3000 });
       }
     });
+
+    this.vehiculos.splice(indice, 1);
   }
 
   cancelarCita(indice) {
