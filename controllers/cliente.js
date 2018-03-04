@@ -15,7 +15,7 @@ const controller = {};
 // Metodo que retorna un arreglo de vehiculos con todos los datos pertinentes
 controller.getVehiculos = async function (idCliente, callback) {
     try {
-        let response = await Vehiculo.findAll({ where: { Cliente: idCliente } });
+        let response = await Vehiculo.findAll({ where: { Cliente: idCliente, Activo: true } });
 
         // Construye un arreglo unicamente con los datos necesarios
         let vehiculos = response.map(resultado => resultado.dataValues);
