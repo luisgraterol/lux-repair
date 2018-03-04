@@ -159,7 +159,7 @@ router.post('/solicitar-orden', (req, res, next) => {
     });
 });
 
-// Desactiva un vehiculo
+// Asignar el rol a un empleado
 router.post('/asignar-rol', (req, res, next) => {
     con_Empleado.asignarRol(req.body, (err) => {
         if (err)
@@ -169,13 +169,23 @@ router.post('/asignar-rol', (req, res, next) => {
     });
 });
 
-// Desactiva un vehiculo
+// Obtiene la informacion de un cliente
 router.post('/cliente', (req, res, next) => {
     con_User.getUserById(req.body.id, (err, cliente) => {
         if (err)
             res.json({ success: false, msg: 'Se produjo un error al buscar los datos del dueño.' });
         else
             res.json({ success: true, msg: 'Se buscaron los datos del cliente exitosamente.', cliente });
+    });
+});
+
+// Asignar la fecha de admision de un vehiculo
+router.post('/fecha-admision', (req, res, next) => {
+    con_Orden.asignarAdmision(req.body, (err) => {
+        if (err)
+            res.json({ success: false, msg: 'Se produjo un error al asignar la fecha de admisión.' });
+        else
+            res.json({ success: true, msg: 'Las fechas de admisión se asignaron exitosamente.' });
     });
 });
 

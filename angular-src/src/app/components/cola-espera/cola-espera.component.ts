@@ -12,6 +12,7 @@ import { DatePipe } from '@angular/common';
 export class ColaEsperaComponent implements OnInit {
 
   vehiculos: any[];
+  fechaAdmision
 
   constructor(
     private apiService: ApiService,
@@ -33,6 +34,9 @@ export class ColaEsperaComponent implements OnInit {
           // Guarda la fecha formateada
           vehiculo.FechaAdmision = this.datePipe.transform(vehiculo.FechaAdmision);
         }
+
+        vehiculo.Chequeado = false;
+        vehiculo.Habilitado = !!vehiculo.Estado;
       });
 
       this.vehiculos = data.vehiculos;
@@ -50,6 +54,53 @@ export class ColaEsperaComponent implements OnInit {
     this.router.navigate(['/detalle-vehiculo']);
   }
 
+  asignarFechaAdmision() {
+    let chequeados = this.vehiculos.filter(vehiculo => vehiculo.Chequeado);
+    
+    if (chequeados.length === 0) {
+      return false;
+    } 
+    else {
+      // Guarda la fecha de admision seleccionada
+      this.vehiculos
+        .filter(vehiculo => vehiculo.Chequeado)
+        .map(vehiculo => {
+          // Valida que se haya elegido una fecha
+          if (this.fechaAdmision != undefined && this.fechaAdmision != '') {
+            vehiculo.FechaAdmision = this.fechaAdmision;
+
+            // Impide cambiar la fecha de admision si ya ha sido asignada
+            vehiculo.Chequeado = false;
+          }
+        });
+
+      // Valida que se haya elegido una fecha
+      if (this.fechaAdmision != undefined && this.fechaAdmision != '') {
+        
+        // Construye un arreglo con los datos necesarios
+        let arreglo = chequeados.map(vehiculo => {
+          return {
+            id: vehiculo.id,
+            fechaAdmision: vehiculo.FechaAdmision
+          }
+        });
+
+        // Le pasa el arreglo al API
+        this.guardarFechas(arreglo);
+      }
+    }
+  }
+
+  guardarFechas(arreglo) {
+    this.apiService.asignarAdmision(arreglo).subscribe(response => {
+      if (response.success) {
+        this.flashMessage.show(response.msg, { cssClass: 'custom-success', timeout: 3000 });
+      } else {
+        this.flashMessage.show(response.msg, { cssClass: 'custom-danger', timeout: 3000 });
+      }
+    });
+  }
+
   // eliminarVehiculo(indice) {
   //   this.apiService.eliminarVehiculo(this.vehiculos[indice].id).subscribe(response => {
   //     if (response.success) {
@@ -59,5 +110,4 @@ export class ColaEsperaComponent implements OnInit {
   //     }
   //   });
   // }
-
 }

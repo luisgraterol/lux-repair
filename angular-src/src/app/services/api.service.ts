@@ -125,4 +125,14 @@ export class ApiService {
     return this.http.post('http://localhost:3000/users/cliente', {id}, { headers })
       .map(res => res.json());
   }
+
+  asignarAdmision(arreglo) {
+    // Settear los encabezados para la petición al API
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+
+    // Hacer la petición, se retorna una promesa
+    return this.http.post('http://localhost:3000/users/fecha-admision', arreglo, { headers: headers })
+      .map(res => res.json());
+  }
 }
