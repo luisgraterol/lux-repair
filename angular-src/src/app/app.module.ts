@@ -19,6 +19,8 @@ import { FormEmpleadoComponent } from './components/form-empleado/form-empleado.
 import { FormVehiculoComponent } from './components/form-vehiculo/form-vehiculo.component';
 import { GarageComponent } from './components/garage/garage.component';
 import { SolicitarOrdenComponent } from './components/solicitar-orden/solicitar-orden.component';
+import { ListaRepuestosComponent } from './components/lista-repuestos/lista-repuestos.component';
+import { FormRepuestoComponent } from './components/form-repuesto/form-repuesto.component';
 import { GestionarRolComponent } from './components/gestionar-rol/gestionar-rol.component';
 import { ColaEsperaComponent } from './components/cola-espera/cola-espera.component';
 import { DetalleVehiculoComponent } from './components/detalle-vehiculo/detalle-vehiculo.component';
@@ -54,6 +56,8 @@ const appRoutes: Routes = [
 
   // Administrador
   {path: 'gestionar-rol', component: GestionarRolComponent, canActivate: [AuthGuard]},
+  {path: 'lista-repuestos', component: ListaRepuestosComponent, canActivate: [AuthGuard]},
+  {path: 'form-repuesto', component: FormRepuestoComponent, canActivate: [AuthGuard]},
 
   // Gerente
   {path: 'cola-espera', component: ColaEsperaComponent, canActivate: [AuthGuard]},
@@ -75,6 +79,8 @@ const appRoutes: Routes = [
     FormVehiculoComponent,
     GarageComponent,
     SolicitarOrdenComponent,
+    ListaRepuestosComponent,
+    FormRepuestoComponent,
     GestionarRolComponent,
     ColaEsperaComponent,
     DetalleVehiculoComponent

@@ -37,6 +37,7 @@
 
         <!-- Card Deck del Empleado -->
         <div *ngIf="this.rol !== 'cliente'" class="card-deck">
+          
             <!-- Administrador -->
             <div *ngIf="this.rol === 'administrador'" class="card text-center" style="max-width: 18rem; max-height: 24rem;">
                 <img class="img-responsive mx-auto mt-4 mb-2" src="assets/dashboard-admin/employees.png" alt="Imagen Perfil" width="130" height="140">
@@ -46,6 +47,15 @@
                     <a class="btn btn-outline-primary" [routerLink]="['/gestionar-rol']">Gestionar</a>
                 </div>
             </div>
+            <div *ngIf="this.rol === 'administrador'" class="card text-center" style="max-width: 18rem; max-height: 24rem;">
+                <img class="img-responsive mx-auto mt-4 mb-2" src="assets/dashboard-admin/repuesto.png" alt="Imagen Repuesto" width="130" height="140">
+                <div class="card-body px-sm-1 px-md-2 px-lg-3 px-xl-3 mt-3">
+                    <h5 class="card-title">Gestionar Repuestos</h5>
+                    <p class="card-text">Gestiona y modifica los repuestos del taller.</p>
+                    <a class="btn btn-outline-primary" [routerLink]="['/lista-repuestos']">Gestionar</a>
+                </div>
+            </div>
+          
             <!-- Gerente -->
             <div *ngIf="this.rol === 'gerente'" class="card text-center" style="max-width: 18rem; max-height: 24rem;">
                 <img class="img-responsive mx-auto mt-4 mb-2" src="assets/dashboard-gerente/cola-espera.png" alt="Imagen Perfil" width="130" height="140">
@@ -65,7 +75,6 @@
                     <a class="btn btn-outline-primary" [routerLink]="['/profile']">Perfil</a>
                 </div>
             </div>
-
         </div>
     </div>
 </div>
