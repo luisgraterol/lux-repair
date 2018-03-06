@@ -1,0 +1,150 @@
+<div class="main">
+  <div class="row">
+    <div class="col mt-3 ml-3">
+      <button (click)="regresar()" class="btn btn-secondary"><i class="fas fa-angle-left pr-1"></i>Regresar</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-11 col-md-10 col-lg-9 mx-auto mb-5 mt-3 py-5 px-5 bg-white border rounded">
+        <!-- Nombre del Vehiculo -->
+        <h2 class="page-header pb-3">{{vehiculo.Marca}} {{vehiculo.Modelo}}</h2>
+
+        <!-- Tabs -->
+        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home"
+              aria-selected="true"><i class="fas fa-car pr-1"></i> Vehiculo</a>
+          </li>
+          <li class="nav-item mx-2">
+            <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile"
+              aria-selected="false"><i class="fas fa-file-alt pr-1"></i> Orden</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact"
+              aria-selected="false"><i class="fas fa-user-circle pr-1"></i> Dueño</a>
+          </li>
+        </ul>
+
+        <!-- Contenido -->
+        <div class="tab-content" id="pills-tabContent">
+          <!-- Info del Vehiculo -->
+          <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+            <div class="container">
+              <div class="row">
+                <div class="col-3 d-flex align-items-center">
+                  <img class="img-responsive rounded mx-auto mt-4 mb-2" src="assets/detalle-vehiculo/car.png" alt="Imagen Vehiculo" width="130" height="140">
+                </div>
+                <div class="col-9">
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                      <span class="lead">Placa: </span>
+                      <p class="lead m-0">{{vehiculo.Placa}}</p>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                      <span class="lead">Color: </span>
+                      <div *ngIf="vehiculo.Color == 'Amarillo'" class="color color-amarillo mt-1 mr-0"></div>
+                      <div *ngIf="vehiculo.Color == 'Arena'" class="color color-arena mt-1 mr-0"></div>
+                      <div *ngIf="vehiculo.Color == 'Azul'" class="color color-azul mt-1 mr-0"></div>
+                      <div *ngIf="vehiculo.Color == 'Blanco'" class="color color-blanco mt-1 mr-0"></div>
+                      <div *ngIf="vehiculo.Color == 'Gris'" class="color color-gris mt-1 mr-0"></div>
+                      <div *ngIf="vehiculo.Color == 'Negro'" class="color color-negro mt-1 mr-0"></div>
+                      <div *ngIf="vehiculo.Color == 'Plata'" class="color color-plata mt-1 mr-0"></div>
+                      <div *ngIf="vehiculo.Color == 'Rojo'" class="color color-rojo mt-1 mr-0"></div>
+                      <div *ngIf="vehiculo.Color == 'Verde'" class="color color-verde mt-1 mr-0"></div>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                      <span class="lead">Año: </span>
+                      <p class="lead m-0">{{vehiculo.Ano}}</p>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                      <span class="lead">Serial: </span>
+                      <p class="lead m-0">{{vehiculo.Serial}}</p>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                      <span class="lead">Caja: </span>
+                      <p *ngIf="vehiculo.EsAutomatico" class="lead m-0">Automático</p>
+                      <p *ngIf="!vehiculo.EsAutomatico" class="lead m-0">Sincrónico</p>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                      <span class="lead">Nro. de Puertas: </span>
+                      <p class="lead m-0">{{vehiculo.NroPuertas}}</p>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                      <span class="lead">¿Es nuevo? </span>
+                      <p *ngIf="vehiculo.EsUnicoDueno" class="lead m-0">Sí</p>
+                      <p *ngIf="!vehiculo.EsUnicoDueno" class="lead m-0">No</p>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Info de la Orden -->
+          <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+            <div class="container">
+              <div class="row">
+                <div class="col-3 d-flex align-items-start">
+                  <img class="img-responsive rounded mx-auto mt-4 mb-2" src="assets/detalle-vehiculo/orden.png" alt="Imagen Orden" width="130"
+                    height="140">
+                </div>
+                <div class="col-9">
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                      <span class="lead">Estado: </span>
+                      <span *ngIf="vehiculo.Estado == undefined" class="badge badge-pill badge-primary font-bigger">Sin Cita</span>
+                      <span *ngIf="vehiculo.Estado == 'En Espera'" class="badge badge-pill badge-warning text-white font-bigger">{{vehiculo.Estado}}</span>
+                      <span *ngIf="vehiculo.Estado == 'En Reparacion'" class="badge badge-pill badge-info text-white font-bigger">{{vehiculo.Estado}}</span>
+                      <span *ngIf="vehiculo.Estado == 'Listo'" class="badge badge-pill badge-success text-white font-bigger">{{vehiculo.Estado}}</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                      <span class="lead">Servicio: </span>
+                      <p *ngIf="vehiculo.Servicio != undefined" class="lead m-0">{{vehiculo.Servicio}}</p>
+                      <p *ngIf="vehiculo.Servicio == undefined" class="lead m-0">No Aplica</p>
+                    </li>
+                    <li class="list-group-item">
+                      <span class="lead mb-4">Detalle: </span>
+                      <p *ngIf="vehiculo.DetalleOrden != undefined" class="text-justify mx-0 mt-3">{{vehiculo.DetalleOrden}}</p>
+                      <p *ngIf="vehiculo.DetalleOrden == undefined" class="text-justify mx-0 mt-3">No Aplica</p>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Info del Dueño -->
+          <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+            <div class="container">
+              <div class="row">
+                <div class="col-3 d-flex align-items-center">
+                  <img class="img-responsive rounded mx-auto mt-4 mb-2" src="assets/detalle-vehiculo/man.png" alt="Imagen Vehiculo" width="130"
+                    height="140">
+                </div>
+                <div *ngIf="dueno != undefined" class="col-9">
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                      <span class="lead">Nombre: </span>
+                      <p class="lead m-0">{{dueno.Nombre}} {{dueno.Apellido}}</p>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                      <span class="lead">Cedula: </span>
+                      <p class="lead m-0">{{dueno.Cedula}}</p>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                      <span class="lead">Usuario: </span>
+                      <p class="lead m-0">{{dueno.Username}}</p>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                      <span class="lead">Correo: </span>
+                      <p class="lead m-0">{{dueno.Email}}</p>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
