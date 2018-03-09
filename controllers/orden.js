@@ -25,6 +25,28 @@ controller.solicitar = async function (data, callback) {
     }
 };
 
+controller.asignarAdmision = async function (data, callback) {
+    try {
+        
+        for (let i=0; i<data.length; i++) {
+            let response = await Orden.update({ FechaAdmision: data[i].fechaAdmision }, 
+                {
+                    where:
+                    {
+                        Vehiculo: data[i].id,
+                        Activa: true
+                    }
+                });
+        }
+
+        callback(null);
+        
+    } catch (err) {
+        console.log('Se produjo un error en el controlador de la orden: ', err);
+        callback(err);
+    }
+}
+
 module.exports = controller;
 
 // Funcion que retorna la fecha presente en un string

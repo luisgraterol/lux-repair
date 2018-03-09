@@ -19,6 +19,11 @@ import { FormEmpleadoComponent } from './components/form-empleado/form-empleado.
 import { FormVehiculoComponent } from './components/form-vehiculo/form-vehiculo.component';
 import { GarageComponent } from './components/garage/garage.component';
 import { SolicitarOrdenComponent } from './components/solicitar-orden/solicitar-orden.component';
+import { ListaRepuestosComponent } from './components/lista-repuestos/lista-repuestos.component';
+import { FormRepuestoComponent } from './components/form-repuesto/form-repuesto.component';
+import { GestionarRolComponent } from './components/gestionar-rol/gestionar-rol.component';
+import { ColaEsperaComponent } from './components/cola-espera/cola-espera.component';
+import { DetalleVehiculoComponent } from './components/detalle-vehiculo/detalle-vehiculo.component';
 import { ListaReparacionComponent } from './components/lista-reparacion/lista-reparacion.component';
 import { ActualizarOrdenComponent } from './components/actualizar-orden/actualizar-orden.component';
 
@@ -33,16 +38,32 @@ import { AuthGuard } from './guards/auth.guard';
 // Pipes
 import { DatePipe } from '@angular/common';
 
+
+// Rutas
 const appRoutes: Routes = [
+  // Generales
   {path: '', component: HomeComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'login', component: LoginComponent},
   {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
   {path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
-  {path: 'form-empleado', component: FormEmpleadoComponent, canActivate: [AuthGuard]},
+
+  // Cliente
   {path: 'form-vehiculo', component: FormVehiculoComponent, canActivate: [AuthGuard]},
   {path: 'garage', component: GarageComponent, canActivate: [AuthGuard]},
   {path: 'solicitar-orden', component: SolicitarOrdenComponent, canActivate: [AuthGuard]},
+
+  // Empleados
+  {path: 'form-empleado', component: FormEmpleadoComponent, canActivate: [AuthGuard]},
+
+  // Administrador
+  {path: 'gestionar-rol', component: GestionarRolComponent, canActivate: [AuthGuard]},
+  {path: 'lista-repuestos', component: ListaRepuestosComponent, canActivate: [AuthGuard]},
+  {path: 'form-repuesto', component: FormRepuestoComponent, canActivate: [AuthGuard]},
+
+  // Gerente
+  {path: 'cola-espera', component: ColaEsperaComponent, canActivate: [AuthGuard]},
+  {path: 'detalle-vehiculo', component: DetalleVehiculoComponent, canActivate: [AuthGuard]}
   {path: 'lista-reparacion', component: ListaReparacionComponent, canActivate: [AuthGuard]},
   {path: 'actualizar-orden', component: ActualizarOrdenComponent, canActivate: [AuthGuard]}
 ];
@@ -62,6 +83,11 @@ const appRoutes: Routes = [
     FormVehiculoComponent,
     GarageComponent,
     SolicitarOrdenComponent,
+    ListaRepuestosComponent,
+    FormRepuestoComponent,
+    GestionarRolComponent,
+    ColaEsperaComponent,
+    DetalleVehiculoComponent,
     ListaReparacionComponent,
     ActualizarOrdenComponent
   ],

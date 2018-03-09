@@ -13,9 +13,9 @@ const Orden = require('../models/orden');
 const controller = {};
 
 // Metodo que retorna un arreglo de vehiculos con todos los datos pertinentes
-controller.getVehiculos = async function (idCliente, callback) {
+controller.getVehiculos = async function (callback) {
     try {
-        let response = await Vehiculo.findAll({ where: { Cliente: idCliente, Activo: true } });
+        let response = await Vehiculo.findAll({ where: { Activo: true } });
 
         // Construye un arreglo unicamente con los datos necesarios
         let vehiculos = response.map(resultado => resultado.dataValues);
@@ -39,12 +39,15 @@ controller.getVehiculos = async function (idCliente, callback) {
                     Vehiculo: vehiculos[i].id,
                     Activa: true
                 },
-                attributes: ['Estado', 'Servicio']
+                attributes: ['Estado', 'Servicio', 'FechaSolicitud', 'FechaAdmision', 'Detalle']
             });
 
             if (response) { // Solo agrega los datos si ese vehiculo tiene una orden activa
                 vehiculos[i].Estado = response.dataValues.Estado;
                 vehiculos[i].Servicio = response.dataValues.Servicio;
+                vehiculos[i].FechaSolicitud = response.dataValues.FechaSolicitud;
+                vehiculos[i].FechaAdmision = response.dataValues.FechaAdmision;
+                vehiculos[i].DetalleOrden = response.dataValues.Detalle;
             }
         }
 

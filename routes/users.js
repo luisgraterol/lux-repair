@@ -11,8 +11,10 @@ const User = require('../models/user');
 const con_User = require('../controllers/user');
 const con_Empleado = require('../controllers/empleado');
 const con_Cliente = require('../controllers/cliente');
+const con_Gerente = require('../controllers/gerente');
 const con_Vehiculo = require('../controllers/vehiculo');
 const con_Orden = require('../controllers/orden');
+const con_Repuesto = require('../controllers/repuesto');
 const con_Mecanico = require('../controllers/mecanico');
 
 // Sincroniza los cambios en los modelos
@@ -91,6 +93,50 @@ router.get('/vehiculos', passport.authenticate('jwt', { session: false }), (req,
     });
 });
 
+
+// Obtiene los repuestos
+router.get('/repuestos', passport.authenticate('jwt', { session: false }), (req, res, next) => {
+    console.log('REQ: ', req.user.id)
+
+    con_Repuesto.getRepuestos(req.user.id, (repuestos, err) => {
+        if (err) throw err;
+
+        if (repuestos) {
+            res.json({
+                userId: req.user.id,
+                repuestos
+            });
+        }
+    });
+});
+
+// Obtiene los empleados sin un rol asignado
+router.get('/empleados', (req, res, next) => {
+    con_Empleado.getEmpleadosSinRol((empleados, err) => {
+        if (err) throw err;
+
+        if (empleados) {
+            res.json({
+                empleados
+            });
+        }
+    });
+});
+
+// Obtiene todos los vehiculos activos
+router.get('/vehiculos-gerente', (req, res, next) => {
+    con_Gerente.getVehiculos((vehiculos, err) => {
+        if (err) throw err;
+
+        if (vehiculos) {
+            res.json({
+                vehiculos
+            });
+        }
+    });
+});
+
+      
 // Obtiene los vehiculos asignados a un mecanico
 router.get('/vehiculos-mecanico', passport.authenticate('jwt', { session: false }), (req, res, next) => {
     con_Mecanico.getVehiculos(req.user.id, (vehiculos, err) => {
@@ -144,6 +190,46 @@ router.post('/solicitar-orden', (req, res, next) => {
             res.json({ success: false, msg: 'Se produjo un error al solicitar su orden de reparación.' });
         else
             res.json({ success: true, msg: 'Su orden se generó con éxito.' });
+    });
+});
+
+// Registra un repuesto nuevo
+router.post('/crear-repuesto', (req, res, next) => {
+    con_Repuesto.registrar(req.body, (err) => {
+        if (err)
+            res.json({ success: false, msg: 'Se produjo un error al registrar el repuesto, inténtelo de nuevo.' });
+        else
+            res.json({ success: true, msg: 'Se registró el repuesto exitosamente.' });
+    });
+});
+
+// Asignar el rol a un empleado
+router.post('/asignar-rol', (req, res, next) => {
+    con_Empleado.asignarRol(req.body, (err) => {
+        if (err)
+            res.json({ success: false, msg: 'Se produjo un error al asignar el rol.' });
+        else
+            res.json({ success: true, msg: 'El rol se asignó exitosamente.' });
+    });
+});
+
+// Obtiene la informacion de un cliente
+router.post('/cliente', (req, res, next) => {
+    con_User.getUserById(req.body.id, (err, cliente) => {
+        if (err)
+            res.json({ success: false, msg: 'Se produjo un error al buscar los datos del dueño.' });
+        else
+            res.json({ success: true, msg: 'Se buscaron los datos del cliente exitosamente.', cliente });
+    });
+});
+
+// Asignar la fecha de admision de un vehiculo
+router.post('/fecha-admision', (req, res, next) => {
+    con_Orden.asignarAdmision(req.body, (err) => {
+        if (err)
+            res.json({ success: false, msg: 'Se produjo un error al asignar la fecha de admisión.' });
+        else
+            res.json({ success: true, msg: 'Las fechas de admisión se asignaron exitosamente.' });
     });
 });
 

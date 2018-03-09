@@ -1,0 +1,57 @@
+<div class="row">
+    <div class="col mx-0 mx-sm-4 mx-md-5 mx-lg-5 mx-xl-5 mt-5 mb-4">
+      <h3>Repuestos</h3>
+    </div>
+  </div>
+
+  <div *ngIf="rol !== 'cliente'" class="row mb-5">
+      <div class="col-11 col-md-6 col-lg-4 mx-auto my-auto">
+        <!-- Tarjeta de Registro -->
+        <div class="card text-center">
+          <div class="card-header">
+            <h5 class="pt-3">Agregar un repuesto</h5>
+          </div>
+          <div class="card-body">
+            <p>Para agregar un repuesto que llego al taller complete el formulario aquí.</p>
+            <a class="btn btn-primary" [routerLink]="['/form-repuesto']">Ir al formulario</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  <div class="row main">
+    <!-- Table -->
+    <div class="container">
+      <div class="table-responsive">
+        <table class="table table-hover bg-light text-dark">
+          <thead class="thead-light">
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Categoria</th>
+              <th scope="col">Descripción</th>
+              <th scope="col">Cantidad</th>
+              <th scope="col">Tipo</th>
+              <th scope="col">Detalles</th>
+              <th scope="col">Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let repuesto of repuestos; let i=index">
+              <td scope="row">{{repuesto.id}}</td>
+              <td>{{repuesto.Nombre}}</td>
+              <td>{{repuesto.Descripcion}}</td>
+              <td>{{repuesto.Cantidad}}</td>
+              <td>{{repuesto.Tipo}}</td>
+              <td>
+                <button (click)="irAOrden(i)" class="btn btn-sm btn-outline-primary">Ver Detalle</button>
+              </td>
+              <td>
+                <button (click)="modificarRepuesto(i)" class="btn btn-sm btn-outline-dark">Modificar</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  
