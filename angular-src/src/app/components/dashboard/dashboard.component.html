@@ -46,8 +46,8 @@
                     <p class="card-text">Gestiona la asignación de roles de trabajo en el taller.</p>
                     <a class="btn btn-outline-primary" [routerLink]="['/gestionar-rol']">Gestionar</a>
                 </div>
-
             </div>
+
             <div *ngIf="this.rol === 'administrador'" class="card text-center" style="max-width: 18rem; max-height: 24rem;">
                 <img class="img-responsive mx-auto mt-4 mb-2" src="assets/dashboard-admin/repuesto.png" alt="Imagen Repuesto" width="130" height="140">
                 <div class="card-body px-sm-1 px-md-2 px-lg-3 px-xl-3 mt-3">
@@ -67,9 +67,8 @@
                 </div>
             </div>
 
-
-            <!-- Todos los Empleados -->
-            <div *ngIf="this.rol !== 'cliente'" class="card text-center" style="max-width: 18rem; max-height: 24rem;">
+            <!-- Mecanico -->
+            <div *ngIf="this.rol === 'mecanico'" class="card text-center" style="max-width: 18rem; max-height: 24rem;">
                 <img class="img-responsive mx-auto mt-4 mb-2" src="assets/dashboard-cliente/resume.png" alt="Imagen Perfil" width="130" height="140">
                 <div class="card-body px-sm-1 px-md-2 px-lg-3 px-xl-3 mt-3">
                 <h5 class="card-title">Gestionar Reparaciones</h5>
@@ -78,6 +77,7 @@
                 </div>
             </div>
 
+            <!-- Todos los Empleados -->
             <div class="card text-center" style="max-width: 18rem; max-height: 24rem;">
                 <img class="img-responsive mx-auto mt-4 mb-2" src="assets/dashboard-cliente/resume.png" alt="Imagen Perfil" width="130" height="140">
                 <div class="card-body px-sm-1 px-md-2 px-lg-3 px-xl-3 mt-3">

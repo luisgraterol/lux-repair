@@ -152,6 +152,9 @@ export class ApiService {
   }
 
   getVehiclesMecanico() {
+
+    let id = JSON.parse(localStorage.getItem('user')).id;
+
     let headers = new Headers();
 
     // Busca el token del usuario que esta ingresado en el sistema actualmente
@@ -161,7 +164,7 @@ export class ApiService {
     headers.append('Authorization', token);
     headers.append('Content-Type', 'application/json');
     
-    return this.http.get('http://localhost:3000/users/vehiculos-mecanico', { headers })
+    return this.http.post('http://localhost:3000/users/vehiculos-mecanico', {id}, { headers })
       .map(res => res.json());
   }
 

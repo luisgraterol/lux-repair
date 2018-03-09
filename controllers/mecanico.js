@@ -20,18 +20,15 @@ controller.getVehiculos = async function (idMecanico, callback) {
 
         let response = await Orden.findAll({where: {Mecanico: idMecanico}});
 
+
+
         // Construye un arreglo unicamente con los datos necesarios
         let idVehiculos = response.map(resultado => resultado.dataValues.Vehiculo);
-
-        console.log('Los ID de los vehiculos asignados a este mecanico son: ', idVehiculos);
 
         let resultado = await Vehiculo.findAll({where: { id: idVehiculos }});
 
         // Construye un arreglo unicamente con los datos necesarios
         let vehiculos = resultado.map(resultado => resultado.dataValues);
-
-        console.log('Los vehiculos asignados a este mecanico son: ', vehiculos);
-
 
         // AGREGAR DATOS ADICIONALES A LOS VEHICULOS
         // Busca los nombres de las marcas de los vehiculos
@@ -68,6 +65,10 @@ controller.getVehiculos = async function (idMecanico, callback) {
         callback(vehiculos, null);
     } catch (err) {
         callback(null, err);
+    }
+    if (response.dataValues === undefined) {
+        console.log('El mecanico no tiene ningun vehiculo.', response.dataValues);
+        return callback([], null);
     }
 };
 
