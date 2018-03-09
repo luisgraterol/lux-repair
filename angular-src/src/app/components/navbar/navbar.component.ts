@@ -12,13 +12,19 @@ import { ElementRef } from '@angular/core/src/linker/element_ref';
 })
 export class NavbarComponent implements OnInit {
 
+  nombre: string;
+
   constructor(
     private authService: AuthService,
     private router: Router,
     private flashMessage: FlashMessagesService
   ) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    let usuario = JSON.parse(localStorage.getItem('user'));
+    if (usuario)
+      this.nombre = usuario.nombre;
+  }
 
   onLogoutClick() {
     this.authService.logout();

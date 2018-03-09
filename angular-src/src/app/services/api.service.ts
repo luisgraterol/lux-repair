@@ -73,4 +73,105 @@ export class ApiService {
     return this.http.post('http://localhost:3000/users/solicitar-orden', data, { headers: headers })
       .map(res => res.json());
   }
+
+  crearRepuesto(data) {
+    // Settear los encabezados para la petición al API
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+
+    // Hacer la petición, se retorna una promesa
+    return this.http.post('http://localhost:3000/users/crear-repuesto', data, { headers })
+      .map(res => res.json());
+  }
+    
+
+  getEmpleadosSinRol() {
+    let headers = new Headers();
+
+    // Busca el token del usuario que esta ingresado en el sistema actualmente
+    const token = localStorage.getItem('id_token');
+
+    // Settear los encabezados para la petición al API
+    headers.append('Authorization', token);
+    headers.append('Content-Type', 'application/json');
+
+    return this.http.get('http://localhost:3000/users/empleados', { headers })
+      .map(res => res.json());
+  }
+
+  asignarRol(data) {
+    // Settear los encabezados para la petición al API
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+
+    // Hacer la petición, se retorna una promesa
+        return this.http.post('http://localhost:3000/users/asignar-rol', data, { headers: headers })
+      .map(res => res.json());
+  }
+    
+  getRepuestos() {
+    let headers = new Headers();
+
+    // Busca el token del usuario que esta ingresado en el sistema actualmente
+    const token = localStorage.getItem('id_token');
+
+    // Settear los encabezados para la petición al API
+    headers.append('Authorization', token);
+    headers.append('Content-Type', 'application/json');
+    
+    return this.http.get('http://localhost:3000/users/repuestos', { headers })
+      .map(res => res.json());
+  }
+
+  getVehiculosGerente() {
+    let headers = new Headers();
+
+    // Busca el token del usuario que esta ingresado en el sistema actualmente
+    const token = localStorage.getItem('id_token');
+
+    // Settear los encabezados para la petición al API
+    headers.append('Authorization', token);
+    headers.append('Content-Type', 'application/json');
+
+    return this.http.get('http://localhost:3000/users/vehiculos-gerente', { headers })
+      .map(res => res.json());
+  }
+
+  getDueno(id) {
+    let headers = new Headers();
+
+    // Busca el token del usuario que esta ingresado en el sistema actualmente
+    const token = localStorage.getItem('id_token');
+
+    // Settear los encabezados para la petición al API
+    headers.append('Authorization', token);
+    headers.append('Content-Type', 'application/json');
+
+    return this.http.post('http://localhost:3000/users/cliente', {id}, { headers })
+      .map(res => res.json());
+  }
+
+  getVehiclesMecanico() {
+    let headers = new Headers();
+
+    // Busca el token del usuario que esta ingresado en el sistema actualmente
+    const token = localStorage.getItem('id_token');
+
+    // Settear los encabezados para la petición al API
+    headers.append('Authorization', token);
+    headers.append('Content-Type', 'application/json');
+    
+    return this.http.get('http://localhost:3000/users/vehiculos-mecanico', { headers })
+      .map(res => res.json());
+  }
+
+  asignarAdmision(arreglo) {
+    // Settear los encabezados para la petición al API
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+
+    // Hacer la petición, se retorna una promesa
+    return this.http.post('http://localhost:3000/users/fecha-admision', arreglo, { headers: headers })
+      .map(res => res.json());
+  }
 }

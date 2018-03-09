@@ -1,0 +1,72 @@
+<div class="row main p-4 p-md-3">
+    <!-- Form de Registro para Vehiculos -->          
+    <div class="container py-5 mt-3 mb-5">
+        <h2 class="mb-3">Registro de Repuesto</h2>
+        <form (submit)="registrarRepuesto()">
+            <div class="form-row">
+              <div class="form-group col-md-4">
+                  <label for="nombre">Categoria</label>
+                  <select id="nombre" class="form-control" [(ngModel)]="nombre" name="nombre">
+                      <option selected>Aceite</option>
+                      <option>Caucho</option>
+                      <option>Rin</option>
+                      <option>Electronicos</option>
+                      <option>Carroceria</option>
+                      <option>Otros</option>
+                  </select>
+              </div>
+              <div class="form-group col-md-4">
+                  <label for="descripcion">Descripción</label>
+                  <input type="text" class="form-control" id="descripcion" placeholder="Ej: PDVSA Semi-Sintetico 15W40W, Pirelli 14'" [(ngModel)]="descripcion" name="descripcion">
+              </div>
+              <div class="form-group col-md-2">
+                  <label for="cantidad">Cantidad</label>
+                  <select id="cantidad" class="form-control" placeholder="1" [(ngModel)]="cantidad" name="cantidad">
+                      <option selected>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                      <option>5</option>
+                      <option>6</option>
+                      <option>7</option>
+                      <option>8</option>
+                      <option>9</option>
+                      <option>10</option>
+                      <option>11</option>
+                      <option>12</option>
+                      <option>15</option>
+                      <option>20</option>
+                      <option>24</option>
+                  </select>
+                </div>
+              <div class="form-group col-md-2">
+                  <legend class="col-form-label">Tipo</legend>
+                  <div class="form-check">
+                      <input class="form-check-input" type="radio" name="tipo" id="tipo1" value="Original" checked [(ngModel)]="tipo" name="tipo">
+                      <label class="form-check-label" for="tipo1">
+                          Original
+                      </label>
+                  </div>
+                  <div class="form-check">
+                      <input class="form-check-input" type="radio" name="tipo" id="tipo2" value="Generico" [(ngModel)]="tipo" name="tipo">
+                      <label class="form-check-label" for="tipo2">
+                          Generico
+                      </label>
+                  </div>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-12">
+                  <label for="detalle">Detalle</label>
+                  <textarea class="form-control" name="detalle" id="detalle" [(ngModel)]="detalle" rows="3" placeholder="Agregue cualquier información adicional que considere pertinente."></textarea>
+                </div>
+            </div>
+  
+            <div class="d-flex justify-content-center">
+                <button type="submit" class="btn btn-primary mt-4">Registrar Repuesto</button>
+            </div>
+            
+            
+        </form>
+    </div>
+</div>
