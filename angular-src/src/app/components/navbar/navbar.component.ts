@@ -22,7 +22,8 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit() {
     let usuario = JSON.parse(localStorage.getItem('user'));
-    this.nombre = usuario.nombre;
+    if (usuario)
+      this.nombre = usuario.nombre;
   }
 
   onLogoutClick() {
