@@ -24,6 +24,8 @@ import { FormRepuestoComponent } from './components/form-repuesto/form-repuesto.
 import { GestionarRolComponent } from './components/gestionar-rol/gestionar-rol.component';
 import { ColaEsperaComponent } from './components/cola-espera/cola-espera.component';
 import { DetalleVehiculoComponent } from './components/detalle-vehiculo/detalle-vehiculo.component';
+import { ListaReparacionComponent } from './components/lista-reparacion/lista-reparacion.component';
+import { ActualizarOrdenComponent } from './components/actualizar-orden/actualizar-orden.component';
 
 // Servicios
 import { ValidateService } from './services/validate.service';
@@ -62,6 +64,8 @@ const appRoutes: Routes = [
   // Gerente
   {path: 'cola-espera', component: ColaEsperaComponent, canActivate: [AuthGuard]},
   {path: 'detalle-vehiculo', component: DetalleVehiculoComponent, canActivate: [AuthGuard]}
+  {path: 'lista-reparacion', component: ListaReparacionComponent, canActivate: [AuthGuard]},
+  {path: 'actualizar-orden', component: ActualizarOrdenComponent, canActivate: [AuthGuard]}
 ];
 
 
@@ -83,7 +87,9 @@ const appRoutes: Routes = [
     FormRepuestoComponent,
     GestionarRolComponent,
     ColaEsperaComponent,
-    DetalleVehiculoComponent
+    DetalleVehiculoComponent,
+    ListaReparacionComponent,
+    ActualizarOrdenComponent
   ],
   imports: [
     BrowserModule,

@@ -15,7 +15,7 @@ const con_Gerente = require('../controllers/gerente');
 const con_Vehiculo = require('../controllers/vehiculo');
 const con_Orden = require('../controllers/orden');
 const con_Repuesto = require('../controllers/repuesto');
-
+const con_Mecanico = require('../controllers/mecanico');
 
 // Sincroniza los cambios en los modelos
 connection.sync({ logging: false })
@@ -93,6 +93,7 @@ router.get('/vehiculos', passport.authenticate('jwt', { session: false }), (req,
     });
 });
 
+
 // Obtiene los repuestos
 router.get('/repuestos', passport.authenticate('jwt', { session: false }), (req, res, next) => {
     console.log('REQ: ', req.user.id)
@@ -129,6 +130,21 @@ router.get('/vehiculos-gerente', (req, res, next) => {
 
         if (vehiculos) {
             res.json({
+                vehiculos
+            });
+        }
+    });
+});
+
+      
+// Obtiene los vehiculos asignados a un mecanico
+router.get('/vehiculos-mecanico', passport.authenticate('jwt', { session: false }), (req, res, next) => {
+    con_Mecanico.getVehiculos(req.user.id, (vehiculos, err) => {
+        if (err) throw err;
+
+        if (vehiculos) {
+            res.json({
+                userId: req.user.id,
                 vehiculos
             });
         }

@@ -1,0 +1,48 @@
+<div class="row main p-4 p-md-3">
+  <!-- Form de Actualizacion de reparacion  -->
+  <div class="container py-5 mt-3 mb-5">
+    <h2 class="mb-3">Actualizar Orden</h2>
+
+    <p class="mr-3">Agregar Repuestos</p>
+    <select id="seleccionado" [(ngModel)]="seleccionado" name="seleccionado">
+        <option selected>Tubo Escape</option>
+        <option>Carrocería</option>
+        <option>Aceite</option>
+        <option>Frenos</option>
+        <option>Otros</option>
+    </select>
+    <button class="btn btn-secondary ml-5" type="button" (click)="agregarRepuesto()">Agregar</button>
+
+    <div class="my-4">
+      <h6>Repuestos Utilizados:</h6>
+      <ul *ngFor="let repuesto of repuestos">
+          <li>
+            <div class="card p-0">
+              <div class="card-body py-2 px-3">{{repuesto}}</div>
+            </div>
+          </li>
+        </ul>
+    </div>
+
+    <form (submit)="actualizarOrden()">
+      <div class="form-group">
+        <label for="estado">Estado de la Reparación</label>
+        <select id="estado" class="form-control" [(ngModel)]="estado" name="estado">
+            <option selected>En Reparacion</option>
+            <option>Listo</option>
+            <option>Otro</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="detalles">Detalles de la Reparación</label>
+        <textarea class="form-control" name="detalles" id="detalles" [(ngModel)]="detalles" rows="10" placeholder="Informe sobre los avances y detalles de la reparación"></textarea>
+      </div>
+      
+      <div class="d-flex justify-content-center">
+        <button type="submit" class="btn btn-primary mt-4">Actualizar</button>
+      </div>
+
+    </form>
+  </div>
+</div>

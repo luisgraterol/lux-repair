@@ -74,7 +74,6 @@ export class ApiService {
       .map(res => res.json());
   }
 
-
   crearRepuesto(data) {
     // Settear los encabezados para la petición al API
     let headers = new Headers();
@@ -149,6 +148,20 @@ export class ApiService {
     headers.append('Content-Type', 'application/json');
 
     return this.http.post('http://localhost:3000/users/cliente', {id}, { headers })
+      .map(res => res.json());
+  }
+
+  getVehiclesMecanico() {
+    let headers = new Headers();
+
+    // Busca el token del usuario que esta ingresado en el sistema actualmente
+    const token = localStorage.getItem('id_token');
+
+    // Settear los encabezados para la petición al API
+    headers.append('Authorization', token);
+    headers.append('Content-Type', 'application/json');
+    
+    return this.http.get('http://localhost:3000/users/vehiculos-mecanico', { headers })
       .map(res => res.json());
   }
 
