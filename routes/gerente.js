@@ -1,9 +1,19 @@
 const express = require('express');
 const router = express.Router();
 
-// Routes are handled here
-router.get('*', (req, res, next) => {
-    res.send('This endpoint is yet to be developed.');
+const GerenteController = require('../controllers/gerente');
+
+// Obtiene todos los vehiculos activos
+router.get('/vehiculos-sin-mecanico', (req, res, next) => {
+    GerenteController.getVehiculosSinMecanico((vehiculos, err) => {
+        if (err) throw err;
+
+        if (vehiculos) {
+            res.json({
+                vehiculos
+            });
+        }
+    });
 });
 
 module.exports = router;
