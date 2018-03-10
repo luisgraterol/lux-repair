@@ -84,8 +84,6 @@ export class ColaEsperaComponent implements OnInit {
         pickedDate.setDate(pickedDate.getDate() + 1);
         pickedDate.setHours(0, 0, 0, 0);
         let today = new Date();
-        console.log('Picked: ', pickedDate);
-        console.log('Today: ', today);
 
         if (pickedDate < today) {
           this.flashMessage.show('La fecha de admisión debe ser después de la fecha de hoy.', { cssClass: 'custom-danger', timeout: 3000 });
