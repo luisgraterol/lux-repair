@@ -51,7 +51,7 @@ controller.getVehiculos = async function (callback) {
             }
         }
 
-        vehiculos.filter(vehiculo => !!vehiculo.Estado);
+        vehiculos = vehiculos.filter(vehiculo => !!vehiculo.Estado);
 
         // Retorna el arreglo
         callback(vehiculos, null);
@@ -69,6 +69,29 @@ controller.getVehiculosSinMecanico = async function (callback) {
         // Construye un arreglo unicamente con los datos necesarios
         let vehiculos = response.map(resultado => resultado.dataValues);
 
+        // Agrega los datos de la orden de cada vehiculo, en el caso de tenerla
+        for (let i = 0; i < vehiculos.length; i++) {
+            let response = await Orden.findOne({
+                where: {
+                    Vehiculo: vehiculos[i].id,
+                    Activa: true
+                }
+            });
+
+            // Filtra los vehiculos
+            if (response) {
+                vehiculos[i].Estado = response.dataValues.Estado;
+                vehiculos[i].Evaluacion = response.dataValues.Evaluacion;
+                vehiculos[i].Servicio = response.dataValues.Servicio;
+                vehiculos[i].FechaSolicitud = response.dataValues.FechaSolicitud;
+                vehiculos[i].FechaAdmision = response.dataValues.FechaAdmision;
+                vehiculos[i].DetalleOrden = response.dataValues.Detalle;
+                vehiculos[i].Mecanico = response.dataValues.Mecanico;
+            }
+        }
+
+        vehiculos = vehiculos.filter(vehiculo => vehiculo.Estado && !vehiculo.Mecanico);
+
         // Busca los nombres de las marcas de los vehiculos
         for (let i = 0; i < vehiculos.length; i++) {
             let response = await Marca.findById(vehiculos[i].Marca);
@@ -80,27 +103,6 @@ controller.getVehiculosSinMecanico = async function (callback) {
             let response = await Modelo.findById(vehiculos[i].Modelo);
             vehiculos[i].Modelo = response.dataValues.Nombre;
         }
-
-        // Agrega los datos de la orden de cada vehiculo, en el caso de tenerla
-        for (let i = 0; i < vehiculos.length; i++) {
-            let response = await Orden.findOne({
-                where: {
-                    Vehiculo: vehiculos[i].id,
-                    Activa: true
-                }
-            });
-
-            if (response) { // Solo agrega los datos si ese vehiculo tiene una orden activa
-                vehiculos[i].Estado = response.dataValues.Estado;
-                vehiculos[i].Evaluacion = response.dataValues.Evaluacion;
-                vehiculos[i].Servicio = response.dataValues.Servicio;
-                vehiculos[i].FechaSolicitud = response.dataValues.FechaSolicitud;
-                vehiculos[i].FechaAdmision = response.dataValues.FechaAdmision;
-                vehiculos[i].DetalleOrden = response.dataValues.Detalle;
-            }
-        }
-
-        vehiculos.filter(vehiculo => vehiculo.Estado);
 
         // Retorna el arreglo
         callback(vehiculos, null);

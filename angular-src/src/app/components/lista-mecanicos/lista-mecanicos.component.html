@@ -9,11 +9,7 @@
       <div class="form-group mr-4">
         <label for="mecanico">Mecánico</label>
         <select id="mecanico" class="form-control" [(ngModel)]="mecanico" name="mecanico">
-          <option>Revisión General</option>
-          <option>Cambio de Aceite</option>
-          <option>Carrocería</option>
-          <option>Alineación</option>
-          <option>Otro</option>
+          <!-- <option *ngFor="mecanico of mecanicos">{{mecanico.Nombre}}</option> -->
         </select>
       </div>
       <button class="btn btn-primary mt-3" type="submit">Asignar</button>

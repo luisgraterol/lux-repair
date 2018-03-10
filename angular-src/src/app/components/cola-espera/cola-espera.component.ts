@@ -62,6 +62,7 @@ export class ColaEsperaComponent implements OnInit {
 
   verDetalle(indice) {
     localStorage.setItem('vehiculo-detalle', indice);
+    localStorage.setItem('ultima-pagina', '/cola-espera');
     this.router.navigate(['/detalle-vehiculo']);
   }
 

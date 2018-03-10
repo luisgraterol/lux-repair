@@ -11,7 +11,8 @@ import { Http, Headers } from '@angular/http';
 })
 export class ListaMecanicosComponent implements OnInit {
 
-  mecanico: any;
+  elegido: object;
+  mecanicos: any;
   vehiculos: any;
 
   constructor(
@@ -19,7 +20,30 @@ export class ListaMecanicosComponent implements OnInit {
     private flashMessage: FlashMessagesService,
     private router: Router,
     private datePipe: DatePipe
-  ) { }
+  ) {
+    this.mecanicos = [
+      {
+        id: 1,
+        Nombre: 'Pepito Perez',
+      },
+      {
+        id: 2,
+        Nombre: 'Pablo De Los Palotes',
+      },
+      {
+        id: 3,
+        Nombre: 'alkdsjaf',
+      },
+      {
+        id: 4,
+        Nombre: ';lkajdsfa`',
+      },
+      {
+        id: 5,
+        Nombre: 'Pepito Perez',
+      },
+    ];
+  }
 
   ngOnInit() {
     let headers = new Headers();
@@ -54,6 +78,12 @@ export class ListaMecanicosComponent implements OnInit {
         console.log('Error al pedir los vehiculos desde ColaEsperaComponent: ', err);
         return false;
       });
+  }
+
+  verDetalle(indice) {
+    localStorage.setItem('vehiculo-detalle', indice);
+    localStorage.setItem('ultima-pagina', '/lista-mecanicos');
+    this.router.navigate(['/detalle-vehiculo']);
   }
 
 }
