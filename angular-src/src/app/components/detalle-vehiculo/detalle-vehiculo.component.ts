@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../../services/api.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { Router } from '@angular/router';
+import { Http, Headers } from '@angular/http';
+import 'rxjs/add/operator/map';
 
 @Component({
   selector: 'app-detalle-vehiculo',
@@ -14,7 +15,7 @@ export class DetalleVehiculoComponent implements OnInit {
   dueno: object;
 
   constructor(
-    private apiService: ApiService,
+    private http: Http,
     private flashMessage: FlashMessagesService,
     private router: Router
   ) { }
@@ -33,18 +34,25 @@ export class DetalleVehiculoComponent implements OnInit {
     // Toma el ID del dueño del vehiculo
     let idCliente = arreglo[indice].Cliente;
 
-    // Busca los datos del dueño
-    this.apiService.getDueno(idCliente).subscribe(response => {
-      if (response.success) {
-        this.dueno = response.cliente;
-        console.log(this.dueno);
-      } else {
-        this.flashMessage.show(response.msg, { cssClass: 'custom-danger', timeout: 3000 });
-      }
-    }, err => {
-      console.log('Error al pedir los datos del dueño desde DetalleVehiculoComponent: ', err);
-      return false;
-    });
+    let headers = new Headers();
+
+    // Settear los encabezados para la petición al API
+    headers.append('Authorization', localStorage.getItem('id_token'));
+    headers.append('Content-Type', 'application/json');
+
+    this.http.post('http://localhost:3000/users/cliente', { idCliente }, { headers })
+      .map(res => res.json())
+      .subscribe(response => {
+        if (response.success) {
+          this.dueno = response.cliente;
+          console.log(this.dueno);
+        } else {
+          this.flashMessage.show(response.msg, { cssClass: 'custom-danger', timeout: 3000 });
+        }
+      }, err => {
+        console.log('Error al pedir los datos del dueño desde DetalleVehiculoComponent: ', err);
+        return false;
+      });
   }
 
   regresar() {

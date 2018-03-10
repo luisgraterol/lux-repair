@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../../services/api.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { Router } from '@angular/router';
+import { Http, Headers } from '@angular/http';
+import 'rxjs/add/operator/map';
 
 @Component({
   selector: 'app-garage',
@@ -13,20 +14,32 @@ export class GarageComponent implements OnInit {
   vehiculos: any[];
 
   constructor (
-    private apiService: ApiService,
+    private http: Http,
     private flashMessage: FlashMessagesService,
     private router: Router
   ) { }
 
   ngOnInit() {
-    this.apiService.getVehicles().subscribe(data => {
-      console.log(data.vehiculos);
-      this.vehiculos = data.vehiculos;
-      localStorage.setItem('vehiculos', JSON.stringify(data.vehiculos));
-    }, err => {
-      console.log('Error al pedir los vehiculos desde GarageComponent: ', err);
-      return false;
-    }); 
+
+    let headers = new Headers();
+
+    // Busca el token del usuario que esta ingresado en el sistema actualmente
+    const token = localStorage.getItem('id_token');
+
+    // Settear los encabezados para la petición al API
+    headers.append('Authorization', token);
+    headers.append('Content-Type', 'application/json');
+
+    this.http.get('http://localhost:3000/users/vehiculos', { headers })
+      .map(res => res.json())
+      .subscribe(data => {
+        console.log(data.vehiculos);
+        this.vehiculos = data.vehiculos;
+        localStorage.setItem('vehiculos', JSON.stringify(data.vehiculos));
+      }, err => {
+        console.log('Error al pedir los vehiculos desde GarageComponent: ', err);
+        return false;
+      }); 
   }
 
   irAOrden(indice) {
@@ -38,14 +51,24 @@ export class GarageComponent implements OnInit {
 
     console.log(indice);
 
-    this.apiService.eliminarVehiculo(this.vehiculos[indice].id).subscribe(response => {
-      if (response.success) {
-        this.flashMessage.show(response.msg, { cssClass: 'custom-success', timeout: 3000 });
-      } else {
-        this.flashMessage.show(response.msg, { cssClass: 'custom-danger', timeout: 3000 });
-      }
-    });
+    // Settear los encabezados para la petición al API
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
 
+    let id = this.vehiculos[indice].id;
+
+    // Hacer la petición, se retorna una promesa
+    this.http.post('http://localhost:3000/users/eliminar-vehiculo', { id }, { headers })
+      .map(res => res.json())
+      .subscribe(response => {
+        if (response.success) {
+          this.flashMessage.show(response.msg, { cssClass: 'custom-success', timeout: 3000 });
+        } else {
+          this.flashMessage.show(response.msg, { cssClass: 'custom-danger', timeout: 3000 });
+        }
+      });
+
+    // Lo elimina de la interfaz sin necesidad de hacer refresh
     this.vehiculos.splice(indice, 1);
   }
 

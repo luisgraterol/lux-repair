@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../../services/api.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { Router } from '@angular/router';
+
+// Http Requests
+import { Http, Headers } from '@angular/http';
+import 'rxjs/add/operator/map';
 
 
 @Component({
@@ -24,7 +27,7 @@ export class FormVehiculoComponent implements OnInit {
   detalles: string;
   
   constructor(
-    private apiService: ApiService,
+    private http: Http,
     private flashMessage: FlashMessagesService,
     private router: Router
   ) { }
@@ -58,6 +61,7 @@ export class FormVehiculoComponent implements OnInit {
     }
 
     const data = {
+      idCliente: JSON.parse(localStorage.getItem('user')).id,
       Marca: this.marca,
       Modelo: this.modelo,
       Ano: Ano,
@@ -73,16 +77,22 @@ export class FormVehiculoComponent implements OnInit {
 
     console.log(data);
 
-    // Llamar al metodo del API
-    this.apiService.setVehicleData(data).subscribe(response => {
-      if (response.success) {
-        this.flashMessage.show(response.msg, { cssClass: 'custom-success', timeout: 3000 });
-        this.router.navigate(['/dashboard']);
-      } else {
-        this.flashMessage.show(response.msg, { cssClass: 'custom-danger', timeout: 3000 });
-        this.router.navigate(['/form-vehiculo']);
-      }
-    });
+    // Settear los encabezados para la petición al API
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+
+    // Hacer la petición, se retorna una promesa
+    this.http.post('http://localhost:3000/users/registrar-vehiculo', data, { headers })
+      .map(res => res.json())
+      .subscribe(response => {
+        if (response.success) {
+          this.flashMessage.show(response.msg, { cssClass: 'custom-success', timeout: 3000 });
+          this.router.navigate(['/dashboard']);
+        } else {
+          this.flashMessage.show(response.msg, { cssClass: 'custom-danger', timeout: 3000 });
+          this.router.navigate(['/form-vehiculo']);
+        }
+      });
   }
 
   // Funcion que retorna false si alguna casilla ha dejado de llenarse

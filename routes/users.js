@@ -136,21 +136,6 @@ router.get('/vehiculos-gerente', (req, res, next) => {
     });
 });
 
-      
-// Obtiene los vehiculos asignados a un mecanico
-router.get('/vehiculos-mecanico', passport.authenticate('jwt', { session: false }), (req, res, next) => {
-    con_Mecanico.getVehiculos(req.user.id, (vehiculos, err) => {
-        if (err) throw err;
-
-        if (vehiculos) {
-            res.json({
-                userId: req.user.id,
-                vehiculos
-            });
-        }
-    });
-});
-
 
 /* PETICIONES POST */
 // Actualiza los datos de un empleado
@@ -215,7 +200,7 @@ router.post('/asignar-rol', (req, res, next) => {
 
 // Obtiene la informacion de un cliente
 router.post('/cliente', (req, res, next) => {
-    con_User.getUserById(req.body.id, (err, cliente) => {
+    con_User.getUserById(req.body.idCliente, (err, cliente) => {
         if (err)
             res.json({ success: false, msg: 'Se produjo un error al buscar los datos del dueño.' });
         else
@@ -230,6 +215,19 @@ router.post('/fecha-admision', (req, res, next) => {
             res.json({ success: false, msg: 'Se produjo un error al asignar la fecha de admisión.' });
         else
             res.json({ success: true, msg: 'Las fechas de admisión se asignaron exitosamente.' });
+    });
+});
+
+// Obtiene los vehiculos asignados a un mecanico
+router.post('/vehiculos-mecanico', (req, res, next) => {
+    con_Mecanico.getVehiculos(req.body.id, (vehiculos, err) => {
+        if (err) throw err;
+
+        if (vehiculos) {
+            res.json({
+                vehiculos
+            });
+        }
     });
 });
 

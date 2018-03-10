@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../../services/api.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { Router } from '@angular/router';
 import { DatePipe } from '@angular/common';
+import { Http, Headers } from '@angular/http';
+import 'rxjs/add/operator/map';
 
 @Component({
   selector: 'app-cola-espera',
@@ -15,38 +16,48 @@ export class ColaEsperaComponent implements OnInit {
   fechaAdmision
 
   constructor(
-    private apiService: ApiService,
+    private http: Http,
     private flashMessage: FlashMessagesService,
     private router: Router,
     private datePipe: DatePipe
   ) {}
 
   ngOnInit() {
-    this.apiService.getVehiculosGerente().subscribe(data => {
+    let headers = new Headers();
 
-      data.vehiculos.map(vehiculo => {
-        if (vehiculo.FechaSolicitud) {
-          // Guarda la fecha formateada
-          vehiculo.FechaSolicitud = this.datePipe.transform(vehiculo.FechaSolicitud);
-        }
+    // Busca el token del usuario que esta ingresado en el sistema actualmente
+    const token = localStorage.getItem('id_token');
 
-        if (vehiculo.FechaAdmision) {
-          // Guarda la fecha formateada
-          vehiculo.FechaAdmision = this.datePipe.transform(vehiculo.FechaAdmision);
-        }
+    // Settear los encabezados para la petición al API
+    headers.append('Authorization', token);
+    headers.append('Content-Type', 'application/json');
 
-        vehiculo.Chequeado = false;
-        vehiculo.Habilitado = !!vehiculo.Estado;
+    this.http.get('http://localhost:3000/users/vehiculos-gerente', { headers })
+      .map(res => res.json())
+      .subscribe(data => {
+        data.vehiculos.map(vehiculo => {
+          if (vehiculo.FechaSolicitud) {
+            // Guarda la fecha formateada
+            vehiculo.FechaSolicitud = this.datePipe.transform(vehiculo.FechaSolicitud);
+          }
+
+          if (vehiculo.FechaAdmision) {
+            // Guarda la fecha formateada
+            vehiculo.FechaAdmision = this.datePipe.transform(vehiculo.FechaAdmision);
+          }
+
+          vehiculo.Chequeado = false;
+          vehiculo.Habilitado = !!vehiculo.Estado;
+        });
+
+        this.vehiculos = data.vehiculos;
+        console.log(this.vehiculos);
+
+        localStorage.setItem('vehiculos', JSON.stringify(data.vehiculos));
+      }, err => {
+        console.log('Error al pedir los vehiculos desde ColaEsperaComponent: ', err);
+        return false;
       });
-
-      this.vehiculos = data.vehiculos;
-      console.log(this.vehiculos);
-
-      localStorage.setItem('vehiculos', JSON.stringify(data.vehiculos));
-    }, err => {
-      console.log('Error al pedir los vehiculos desde ColaEsperaComponent: ', err);
-      return false;
-    });
   }
 
   verDetalle(indice) {
@@ -92,13 +103,20 @@ export class ColaEsperaComponent implements OnInit {
   }
 
   guardarFechas(arreglo) {
-    this.apiService.asignarAdmision(arreglo).subscribe(response => {
-      if (response.success) {
-        this.flashMessage.show(response.msg, { cssClass: 'custom-success', timeout: 3000 });
-      } else {
-        this.flashMessage.show(response.msg, { cssClass: 'custom-danger', timeout: 3000 });
-      }
-    });
+    // Settear los encabezados para la petición al API
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+
+    // Hacer la petición, se retorna una promesa
+    this.http.post('http://localhost:3000/users/fecha-admision', arreglo, { headers })
+      .map(res => res.json())
+      .subscribe(response => {
+        if (response.success) {
+          this.flashMessage.show(response.msg, { cssClass: 'custom-success', timeout: 3000 });
+        } else {
+          this.flashMessage.show(response.msg, { cssClass: 'custom-danger', timeout: 3000 });
+        }
+      });
   }
 
   // eliminarVehiculo(indice) {

@@ -28,9 +28,7 @@ import { ListaReparacionComponent } from './components/lista-reparacion/lista-re
 import { ActualizarOrdenComponent } from './components/actualizar-orden/actualizar-orden.component';
 
 // Servicios
-import { ValidateService } from './services/validate.service';
 import { AuthService } from './services/auth.service';
-import { ApiService } from './services/api.service';
 
 // Guards
 import { AuthGuard } from './guards/auth.guard';
@@ -63,7 +61,7 @@ const appRoutes: Routes = [
 
   // Gerente
   {path: 'cola-espera', component: ColaEsperaComponent, canActivate: [AuthGuard]},
-  {path: 'detalle-vehiculo', component: DetalleVehiculoComponent, canActivate: [AuthGuard]}
+  {path: 'detalle-vehiculo', component: DetalleVehiculoComponent, canActivate: [AuthGuard]},
   {path: 'lista-reparacion', component: ListaReparacionComponent, canActivate: [AuthGuard]},
   {path: 'actualizar-orden', component: ActualizarOrdenComponent, canActivate: [AuthGuard]}
 ];
@@ -99,10 +97,8 @@ const appRoutes: Routes = [
     FlashMessagesModule.forRoot()
   ],
   providers: [
-    ValidateService,
     AuthService,
     AuthGuard,
-    ApiService,
     DatePipe
   ],
   bootstrap: [AppComponent]

@@ -79,6 +79,10 @@ const Orden = connection.define('Orden',
         validate: {
             notEmpty: true
         }
+    },
+    Mecanico: {
+        type: Sequelize.INTEGER,
+        defaultValue: null
     }
 },
 {
