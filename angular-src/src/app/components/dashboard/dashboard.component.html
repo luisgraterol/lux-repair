@@ -40,7 +40,7 @@
           
             <!-- Administrador -->
             <div *ngIf="this.rol === 'administrador'" class="card text-center" style="max-width: 18rem; max-height: 24rem;">
-                <img class="img-responsive mx-auto mt-4 mb-2" src="assets/dashboard-admin/employees.png" alt="Imagen Perfil" width="130" height="140">
+                <img class="img-responsive mx-auto mt-4 mb-2" src="assets/dashboard-admin/employees.png" alt="Imagen Roles" width="130" height="140">
                 <div class="card-body px-sm-1 px-md-2 px-lg-3 px-xl-3 mt-3">
                     <h5 class="card-title">Asignar Roles</h5>
                     <p class="card-text">Gestiona la asignación de roles de trabajo en el taller.</p>
@@ -59,18 +59,27 @@
           
             <!-- Gerente -->
             <div *ngIf="this.rol === 'gerente'" class="card text-center" style="max-width: 18rem; max-height: 24rem;">
-                <img class="img-responsive mx-auto mt-4 mb-2" src="assets/dashboard-gerente/cola-espera.png" alt="Imagen Perfil" width="130" height="140">
+                <img class="img-responsive mx-auto mt-4 mb-2" src="assets/dashboard-gerente/cola-espera.png" alt="Imagen Cola de Espera" width="130" height="140">
                 <div class="card-body px-sm-1 px-md-2 px-lg-3 px-xl-3 mt-3">
                     <h5 class="card-title">Cola de Espera</h5>
                     <p class="card-text">Gestiona la cola de espera de reparaciones.</p>
                     <a class="btn btn-outline-primary" [routerLink]="['/cola-espera']">Gestionar</a>
                 </div>
             </div>
+            <div *ngIf="this.rol === 'gerente'" class="card text-center" style="max-width: 18rem; max-height: 24rem;">
+                <img class="img-responsive mx-auto mt-4 mb-2" src="assets/dashboard-gerente/mecanico.png" alt="Imagen Asignar Mecanicos" width="130"
+                    height="140">
+                <div class="card-body px-sm-1 px-md-2 px-lg-3 px-xl-3 mt-3">
+                    <h5 class="card-title">Mecanicos</h5>
+                    <p class="card-text">Asigna reparaciones a los mecánicos de tu taller.</p>
+                    <a class="btn btn-outline-primary" [routerLink]="['/lista-mecanicos']">Gestionar</a>
+                </div>
+            </div>
 
 
             <!-- Mecanico -->
             <div *ngIf="this.rol === 'mecanico'" class="card text-center" style="max-width: 18rem; max-height: 24rem;">
-                <img class="img-responsive mx-auto mt-4 mb-2" src="assets/dashboard-mecanico/car-repair.png" alt="Imagen Perfil" width="130" height="140">
+                <img class="img-responsive mx-auto mt-4 mb-2" src="assets/dashboard-mecanico/car-repair.png" alt="Imagen Reparaciones" width="130" height="140">
                 <div class="card-body px-sm-1 px-md-2 px-lg-3 px-xl-3 mt-3">
                 <h5 class="card-title">Gestionar Reparaciones</h5>
                 <p class="card-text">Gestiona las reparaciones que te han asignado</p>

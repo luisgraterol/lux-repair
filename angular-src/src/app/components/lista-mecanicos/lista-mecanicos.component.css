@@ -1,0 +1,23 @@
+.main {
+  min-height: 42.5rem;
+}
+
+tr:hover {
+  background: #eaf2ff !important;
+}
+
+.detalle {
+  border: none;
+  background: transparent;
+  color: var(--dark);
+  opacity: 0;
+}
+
+tr:hover .detalle {
+  opacity: 1;
+}
+
+.detalle {
+    cursor: pointer;
+
+}

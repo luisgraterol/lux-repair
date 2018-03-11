@@ -26,6 +26,7 @@ import { ColaEsperaComponent } from './components/cola-espera/cola-espera.compon
 import { DetalleVehiculoComponent } from './components/detalle-vehiculo/detalle-vehiculo.component';
 import { ListaReparacionComponent } from './components/lista-reparacion/lista-reparacion.component';
 import { ActualizarOrdenComponent } from './components/actualizar-orden/actualizar-orden.component';
+import { ListaMecanicosComponent } from './components/lista-mecanicos/lista-mecanicos.component';
 
 // Servicios
 import { AuthService } from './services/auth.service';
@@ -63,7 +64,8 @@ const appRoutes: Routes = [
   {path: 'cola-espera', component: ColaEsperaComponent, canActivate: [AuthGuard]},
   {path: 'detalle-vehiculo', component: DetalleVehiculoComponent, canActivate: [AuthGuard]},
   {path: 'lista-reparacion', component: ListaReparacionComponent, canActivate: [AuthGuard]},
-  {path: 'actualizar-orden', component: ActualizarOrdenComponent, canActivate: [AuthGuard]}
+  {path: 'actualizar-orden', component: ActualizarOrdenComponent, canActivate: [AuthGuard]},
+  {path: 'lista-mecanicos', component: ListaMecanicosComponent, canActivate: [AuthGuard]}
 ];
 
 
@@ -87,7 +89,8 @@ const appRoutes: Routes = [
     ColaEsperaComponent,
     DetalleVehiculoComponent,
     ListaReparacionComponent,
-    ActualizarOrdenComponent
+    ActualizarOrdenComponent,
+    ListaMecanicosComponent
   ],
   imports: [
     BrowserModule,

@@ -56,7 +56,7 @@ export class DetalleVehiculoComponent implements OnInit {
   }
 
   regresar() {
-    this.router.navigate(['/cola-espera']);
+    this.router.navigate([localStorage.getItem('ultima-pagina')]);
   }
 
 }
