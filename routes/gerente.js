@@ -28,4 +28,14 @@ router.post('/asignar-mecanico', (req, res, next) => {
     });
 });
 
+// Finalizar la reparacion de un vehiculo
+router.post('/finalizar', (req, res, next) => {
+    OrdenController.finalizar(req.body, (err) => {
+        if (err)
+            res.json({ success: false, msg: 'Se produjo un error al finalizar la orden.' });
+        else
+            res.json({ success: true, msg: 'Se finalizó la orden exitosamente.' });
+    });
+});
+
 module.exports = router;

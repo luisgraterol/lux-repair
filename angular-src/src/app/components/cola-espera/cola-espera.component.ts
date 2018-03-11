@@ -132,4 +132,34 @@ export class ColaEsperaComponent implements OnInit {
         }
       });
   }
+
+  evaluar(indice) {
+
+  }
+
+  finalizar(indice) {
+    this.vehiculos[indice].Estado = 'Listo';
+
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+
+    this.http.post('http://localhost:3000/gerente/finalizar', {
+      vehiculo: this.vehiculos[indice],
+      gerente: JSON.parse(localStorage.getItem('user'))
+    }, { headers })
+      .map(res => res.json())
+      .subscribe(response => {
+        if (response.success) {
+          this.flashMessage.show(response.msg, { cssClass: 'custom-success', timeout: 3000 });
+        } else {
+          this.vehiculos[indice].Estado = 'Reparado';
+          this.flashMessage.show(response.msg, { cssClass: 'custom-danger', timeout: 3000 });
+        }
+      });
+
+    // Elimina el elemento de la interfaz 2 segundos despues
+    setTimeout(() => {
+      this.vehiculos.splice(indice, 1);
+    }, 1000);
+  }
 }

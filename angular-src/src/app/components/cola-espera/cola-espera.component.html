@@ -48,7 +48,8 @@
               <span *ngIf="vehiculo.Estado == undefined" class="badge badge-pill badge-primary">Sin Cita</span>
               <span *ngIf="vehiculo.Estado == 'En Espera'" class="badge badge-pill badge-warning text-white">{{vehiculo.Estado}}</span>
               <span *ngIf="vehiculo.Estado == 'En Reparacion'" class="badge badge-pill badge-info text-white">{{vehiculo.Estado}}</span>
-              <span *ngIf="vehiculo.Estado == 'Listo'" class="badge badge-pill badge-success text-white">{{vehiculo.Estado}}</span>
+              <span *ngIf="vehiculo.Estado == 'Reparado'" class="badge badge-pill badge-success text-white">{{vehiculo.Estado}}</span>
+              <span *ngIf="vehiculo.Estado == 'Listo'" class="badge badge-pill badge-primary text-white">{{vehiculo.Estado}}</span>
             </td>
             <!-- Fecha de Solicitud -->
             <td>
@@ -63,9 +64,10 @@
             <!-- Acciones -->
             <td class="d-flex justify-content-center">
               <button (click)="verDetalle(i)" class="editar"><i class="fas fa-search"></i></button>
+              <button *ngIf="vehiculo.Evaluacion == 'Por Evaluar'" (click)="evaluar(i)" class="editar ml-3"><i class="fas fa-pencil-alt"></i></button>
             </td>
             <td>
-              <button *ngIf="vehiculo.Evaluacion == 'Por Evaluar'" (click)="evaluar(i)" class="editar"><i class="fas fa-pencil-alt"></i></button>
+              <button *ngIf="vehiculo.Estado == 'Reparado'" (click)="finalizar(i)" class="btn btn-sm btn-outline-dark">Finalizar</button>
             </td>
           </tr>
         </tbody>
