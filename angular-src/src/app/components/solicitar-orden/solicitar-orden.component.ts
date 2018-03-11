@@ -32,14 +32,14 @@ export class SolicitarOrdenComponent implements OnInit {
       this.flashMessage.show('Por favor, llene todas las casillas.', { cssClass: 'custom-danger', timeout: 5000 });
       return false;
     } else {
+      
       const data = {
         idVehiculo: this.idVehiculo,
+        Cliente: JSON.parse(localStorage.getItem('user')),
         Servicio: this.servicio,
         Detalles: this.detalles,
         Imagen: this.imagen
       };
-
-      console.log('En el frontend los datos son: ', data);
 
       // Settear los encabezados para la petición al API
       let headers = new Headers();
