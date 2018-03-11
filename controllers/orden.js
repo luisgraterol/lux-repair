@@ -59,8 +59,6 @@ controller.asignarMecanico = async function (data, callback) {
                             Activa: true
                         }
                 });
-
-            console.log('Se le asigno el mecanico ' + data.id + 'al vehiculo ' + data.vehiculos[i]);
         }
 
         callback(null);
