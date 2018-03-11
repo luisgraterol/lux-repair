@@ -47,6 +47,29 @@ controller.asignarAdmision = async function (data, callback) {
     }
 }
 
+controller.asignarMecanico = async function (data, callback) {
+    try {
+        console.log('Llegamos al controlador con los datos: ', data);
+        for (let i = 0; i < data.vehiculos.length; i++) {
+            let response = await Orden.update({ Mecanico: data.id },
+                {
+                    where:
+                        {
+                            Vehiculo: data.vehiculos[i],
+                            Activa: true
+                        }
+                });
+
+            console.log('Se le asigno el mecanico ' + data.id + 'al vehiculo ' + data.vehiculos[i]);
+        }
+
+        callback(null);
+    } catch (err) {
+        console.log('Se produjo un error en el controlador de la orden: ', err);
+        callback(err);
+    }
+}
+
 module.exports = controller;
 
 // Funcion que retorna la fecha presente en un string

@@ -7,9 +7,9 @@
   <div class="col-3 mx-0 mx-sm-4 mx-md-5 mx-lg-5 mx-xl-5 my-4">
     <form (submit)="asignarMecanico()" class="d-flex align-items-center">
       <div class="form-group mr-4">
-        <label for="mecanico">Mecánico</label>
-        <select id="mecanico" class="form-control" [(ngModel)]="mecanico" name="mecanico">
-          <!-- <option *ngFor="mecanico of mecanicos">{{mecanico.Nombre}}</option> -->
+        <label for="elegido">Mecánico</label>
+        <select id="elegido" class="form-control" [(ngModel)]="elegido" name="elegido">
+          <option *ngFor="let mecanico of mecanicos" [ngValue]="mecanico">{{mecanico.Nombre}}</option>
         </select>
       </div>
       <button class="btn btn-primary mt-3" type="submit">Asignar</button>
@@ -26,11 +26,11 @@
             <th scope="col"></th>
             <th scope="col">ID</th>
             <th scope="col">Vehículo</th>
-            <th scope="col">Placa</th>
             <th scope="col">Servicio</th>
             <th scope="col">Estado</th>
             <th scope="col">Solicitud</th>
             <th scope="col">Admisión</th>
+            <th scope="col">Mecánico</th>
             <th scope="col">Acciones</th>
           </tr>
         </thead>
@@ -41,7 +41,6 @@
             </th>
             <th scope="row">{{vehiculo.id}}</th>
             <td>{{vehiculo.Marca}} {{vehiculo.Modelo}}</td>
-            <td>{{vehiculo.Placa}}</td>
             <td>
               <span *ngIf="vehiculo.Servicio == undefined">Sin Servicio</span>
               <span *ngIf="vehiculo.Servicio != undefined">{{vehiculo.Servicio}}</span>
@@ -62,6 +61,11 @@
             <td>
               <span *ngIf="vehiculo.FechaAdmision != null && vehiculo.FechaAdmision != undefined">{{vehiculo.FechaAdmision | date:'d/M/yy'}}</span>
               <span *ngIf="vehiculo.FechaAdmision == undefined || vehiculo.FechaAdmision == null">No Admitido</span>
+            </td>
+            <!-- Mecanico -->
+            <td>
+              <span *ngIf="vehiculo.Mecanico != null && vehiculo.Mecanico != undefined">{{vehiculo.Mecanico}}</span>
+              <span *ngIf="vehiculo.Mecanico == null || vehiculo.Mecanico == undefined">Ninguno</span>
             </td>
             <!-- Acciones -->
             <td class="d-flex justify-content-center">

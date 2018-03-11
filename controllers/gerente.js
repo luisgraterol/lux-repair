@@ -5,6 +5,7 @@ const bcrypt = require('bcryptjs');
 // Modelos Utilizados
 const User = require('../models/user');
 const Cliente = require('../models/cliente');
+const Mecanico = require('../models/mecanico');
 const Vehiculo = require('../models/vehiculo');
 const Modelo = require('../models/modelo');
 const Marca = require('../models/marca');
@@ -62,7 +63,7 @@ controller.getVehiculos = async function (callback) {
 
 
 // Metodo que retorna un arreglo de vehiculos sin mecanico asignado
-controller.getVehiculosSinMecanico = async function (callback) {
+controller.getVehiculosConMecanico = async function (callback) {
     try {
         let response = await Vehiculo.findAll({ where: { Activo: true } });
 
@@ -78,7 +79,6 @@ controller.getVehiculosSinMecanico = async function (callback) {
                 }
             });
 
-            // Filtra los vehiculos
             if (response) {
                 vehiculos[i].Estado = response.dataValues.Estado;
                 vehiculos[i].Evaluacion = response.dataValues.Evaluacion;
@@ -90,7 +90,7 @@ controller.getVehiculosSinMecanico = async function (callback) {
             }
         }
 
-        vehiculos = vehiculos.filter(vehiculo => vehiculo.Estado && !vehiculo.Mecanico);
+        vehiculos = vehiculos.filter(vehiculo => vehiculo.Estado);
 
         // Busca los nombres de las marcas de los vehiculos
         for (let i = 0; i < vehiculos.length; i++) {
@@ -104,8 +104,19 @@ controller.getVehiculosSinMecanico = async function (callback) {
             vehiculos[i].Modelo = response.dataValues.Nombre;
         }
 
+        let results = await Mecanico.findAll();
+        let ids = results.map(result => result.dataValues.id);
+
+        let usuarios = await User.findAll({ where: { id: ids } });
+        let mecanicos = usuarios.map(usuario => {
+            return {
+                id: usuario.dataValues.id,
+                Nombre: usuario.dataValues.Nombre + ' ' + usuario.dataValues.Apellido
+            }
+        });
+
         // Retorna el arreglo
-        callback(vehiculos, null);
+        callback({vehiculos, mecanicos}, null);
     } catch (err) {
         callback(null, err);
     }
