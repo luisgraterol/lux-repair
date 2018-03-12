@@ -26,7 +26,7 @@ export class ActualizarOrdenComponent implements OnInit {
 registrarVehiculo() {
 
     const data = {
-      Estado:this.estado
+      Estado: this.estado
     };
    
     console.log(data);
@@ -44,7 +44,8 @@ registrarVehiculo() {
     });
   }
   agregarRepuesto() {
-    this.repuestos.push(this.seleccionado);
+    if (this.seleccionado != '' && this.seleccionado != undefined)
+      this.repuestos.push(this.seleccionado);
   }
 
 }
