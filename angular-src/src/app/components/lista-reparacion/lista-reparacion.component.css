@@ -1,0 +1,25 @@
+
+.color {
+    border: 1px solid grey;
+    border-radius: 10px;
+    height: 20px;
+    width: 20px;
+    margin: auto;
+
+}
+
+.color-amarillo { background: yellow; }
+.color-arena { background: rgb(170, 170, 67); }
+.color-azul { background: rgb(0, 119, 255); }
+.color-blanco { background: white; }
+.color-gris { background: rgb(107, 107, 107); }
+.color-negro { background: black; }
+.color-plata { background: rgb(192, 192, 192); }
+.color-rojo { background: red; }
+.color-verde { background: rgb(48, 194, 48); }
+
+.main {
+    min-height: 42.5rem;
+}
+
+tr:hover { background: #eaf2ff !important; }

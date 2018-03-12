@@ -13,13 +13,27 @@ const Orden = require('../models/orden');
 const controller = {};
 
 // Metodo que retorna un arreglo de vehiculos con todos los datos pertinentes
-controller.getVehiculos = async function (callback) {
+controller.getVehiculos = async function (idMecanico, callback) {
     try {
-        let response = await Vehiculo.findAll({ where: { Activo: true } });
+
+        console.log('El ID del mecanico es: ', idMecanico);
+
+        let response = await Orden.findAll({where: {Mecanico: idMecanico}});
 
         // Construye un arreglo unicamente con los datos necesarios
-        let vehiculos = response.map(resultado => resultado.dataValues);
+        let idVehiculos = response.map(resultado => resultado.dataValues.Vehiculo);
 
+        console.log('Los ID de los vehiculos asignados a este mecanico son: ', idVehiculos);
+
+        let resultado = await Vehiculo.findAll({where: { id: idVehiculos }});
+
+        // Construye un arreglo unicamente con los datos necesarios
+        let vehiculos = resultado.map(resultado => resultado.dataValues);
+
+        console.log('Los vehiculos asignados a este mecanico son: ', vehiculos);
+
+
+        // AGREGAR DATOS ADICIONALES A LOS VEHICULOS
         // Busca los nombres de las marcas de los vehiculos
         for (let i = 0; i < vehiculos.length; i++) {
             let response = await Marca.findById(vehiculos[i].Marca);
@@ -38,20 +52,17 @@ controller.getVehiculos = async function (callback) {
                 where: {
                     Vehiculo: vehiculos[i].id,
                     Activa: true
-                }
+                },
+                attributes: ['Estado', 'Servicio']
             });
-            if (!!response) { // Solo agrega los datos si ese vehiculo tiene una orden activa
+
+            if (response) { // Solo agrega los datos si ese vehiculo tiene una orden activa
                 vehiculos[i].Estado = response.dataValues.Estado;
-                vehiculos[i].Evaluacion = response.dataValues.Evaluacion;
                 vehiculos[i].Servicio = response.dataValues.Servicio;
-                vehiculos[i].FechaSolicitud = response.dataValues.FechaSolicitud;
-                vehiculos[i].FechaAdmision = response.dataValues.FechaAdmision;
-                vehiculos[i].DetalleOrden = response.dataValues.Detalle;
             }
         }
 
-        // Filtra los vehiculos que no tienen una orden activa
-        vehiculos = vehiculos.filter(vehiculo => !!vehiculo.Estado);
+        console.log('Los vehiculos con sus datos son: ', vehiculos);
 
         // Retorna el arreglo
         callback(vehiculos, null);

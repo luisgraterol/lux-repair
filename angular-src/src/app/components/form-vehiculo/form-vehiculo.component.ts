@@ -13,7 +13,7 @@ export class FormVehiculoComponent implements OnInit {
 
   marca: string;
   modelo: string;
-  ano: String;
+  ano: string;
   placa: string;
   serial: string;
   color: string;

@@ -62,11 +62,10 @@
             </td>
             <!-- Acciones -->
             <td class="d-flex justify-content-center">
-              <button (click)="verDetalle(i)" class="editar"><i class="fas fa-pencil-alt"></i></button>
+              <button (click)="verDetalle(i)" class="editar"><i class="fas fa-search"></i></button>
             </td>
             <td>
-              <!-- Este sera el boton de Finalizar -->
-              <!-- <button *ngIf="vehiculo.Servicio == undefined" (click)="eliminarVehiculo(i)" class="btn btn-sm btn-outline-danger">Eliminar</button> -->
+              <button *ngIf="vehiculo.Evaluacion == 'Por Evaluar'" (click)="evaluar(i)" class="editar"><i class="fas fa-pencil-alt"></i></button>
             </td>
           </tr>
         </tbody>

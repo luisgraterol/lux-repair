@@ -67,7 +67,10 @@ export class ColaEsperaComponent implements OnInit {
         .map(vehiculo => {
           // Valida que se haya elegido una fecha
           if (this.fechaAdmision != undefined && this.fechaAdmision != '') {
-            vehiculo.FechaAdmision = this.fechaAdmision;
+            let pickedDate = new Date(this.fechaAdmision);
+            pickedDate.setDate(pickedDate.getDate() + 1);
+            pickedDate.setHours(0, 0, 0, 0);
+            vehiculo.FechaAdmision = pickedDate;
 
             // Impide cambiar la fecha de admision si ya ha sido asignada
             vehiculo.Chequeado = false;
@@ -76,6 +79,16 @@ export class ColaEsperaComponent implements OnInit {
 
       // Valida que se haya elegido una fecha
       if (this.fechaAdmision != undefined && this.fechaAdmision != '') {
+
+        let pickedDate = new Date(this.fechaAdmision);
+        pickedDate.setDate(pickedDate.getDate() + 1);
+        pickedDate.setHours(0, 0, 0, 0);
+        let today = new Date();
+
+        if (pickedDate < today) {
+          this.flashMessage.show('La fecha de admisión debe ser después de la fecha de hoy.', { cssClass: 'custom-danger', timeout: 3000 });
+          return false;
+        }
         
         // Construye un arreglo con los datos necesarios
         let arreglo = chequeados.map(vehiculo => {
@@ -101,13 +114,9 @@ export class ColaEsperaComponent implements OnInit {
     });
   }
 
-  // eliminarVehiculo(indice) {
-  //   this.apiService.eliminarVehiculo(this.vehiculos[indice].id).subscribe(response => {
-  //     if (response.success) {
-  //       this.flashMessage.show(response.msg, { cssClass: 'custom-success', timeout: 3000 });
-  //     } else {
-  //       this.flashMessage.show(response.msg, { cssClass: 'custom-danger', timeout: 3000 });
-  //     }
-  //   });
-  // }
+  evaluar(indice) {
+    let vehiculoAEvaluar = this.vehiculos[indice];
+    localStorage.setItem("condicion-entrega", JSON.stringify(vehiculoAEvaluar));
+    this.router.navigate(['condicion-entrega']);
+  }
 }
