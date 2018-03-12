@@ -101,28 +101,28 @@ export class ColaEsperaComponent implements OnInit {
           this.flashMessage.show('La fecha de admisión debe ser después de la fecha de hoy.', { cssClass: 'custom-danger', timeout: 3000 });
           return false;
         }
-        
-        // Construye un arreglo con los datos necesarios
-        let arreglo = chequeados.map(vehiculo => {
-          return {
-            id: vehiculo.id,
-            fechaAdmision: vehiculo.FechaAdmision
-          }
-        });
 
         // Le pasa el arreglo al API
-        this.guardarFechas(arreglo);
+        this.guardarFechas(chequeados);
       }
     }
   }
 
   guardarFechas(arreglo) {
+
+    let data = {
+      gerente: JSON.parse(localStorage.getItem('user')),
+      vehiculos: arreglo
+    };
+
+    console.log(data);
+
     // Settear los encabezados para la petición al API
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
 
     // Hacer la petición, se retorna una promesa
-    this.http.post('http://localhost:3000/users/fecha-admision', arreglo, { headers })
+    this.http.post('http://localhost:3000/users/fecha-admision', data, { headers })
       .map(res => res.json())
       .subscribe(response => {
         if (response.success) {

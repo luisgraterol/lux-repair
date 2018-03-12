@@ -23,36 +23,52 @@ controller.solicitar = async function (data, callback) {
             Evaluacion: 'Por Evaluar',
             FechaSolicitud: obtenerFechaHoy()
         });
+        callback(null);
+    } catch (err) {
+        console.log('Se produjo un error en el controlador de la orden: ', err);
+        callback(err);
+    }
+};
 
-        let resultadoV = await Vehiculo.findById(data.idVehiculo);
-        let vehiculo = resultadoV.dataValues;
+controller.asignarAdmision = async function (data, callback) {
+    try {
+        for (let i=0; i<data.vehiculos.length; i++) {
+            let vehiculo = data.vehiculos[i];
+            let response = await Orden.update({ FechaAdmision: data.vehiculos[i].FechaAdmision }, 
+                {
+                    where:
+                    {
+                        Vehiculo: data.vehiculos[i].id,
+                        Activa: true
+                    }
+                });
+            
+            let buscarCliente = await Usuario.findById(vehiculo.Cliente);
+            let cliente = buscarCliente.dataValues;
 
-        let resultadoMarca = await Marca.findById(vehiculo.Marca);
-        vehiculo.Marca = resultadoMarca.dataValues.Nombre;
+            let fechaFormateada = `${vehiculo.FechaAdmision.substr(8, 2)}-${vehiculo.FechaAdmision.substr(5, 2)}-${vehiculo.FechaAdmision.substr(0,4)}`;
+            // Enviar correo
+            let transporter = nodemailer.createTransport({
+                // @ts-ignore
+                service: 'gmail',
+                port: 587,
+                secure: false, // true for 465, false for other ports
+                auth: {
+                    user: 'luxrepair.app@gmail.com',
+                    pass: 'Luxrepair/1'
+                },
+                tls: {
+                    rejectUnauthorize: false
+                }
+            });
 
-        let resultadoModelo = await Modelo.findById(vehiculo.Modelo);
-        vehiculo.Modelo = resultadoModelo.dataValues.Nombre;
-
-        let transporter = nodemailer.createTransport({
-            // @ts-ignore
-            service: 'gmail',
-            port: 587,
-            secure: false, // true for 465, false for other ports
-            auth: {
-                user: 'luxrepair.app@gmail.com',
-                pass: 'Luxrepair/1'
-            },
-            tls: {
-                rejectUnauthorize: false
-            }
-        });
-
-        // setup email data with unicode symbols
-        let mailOptions = {
-            from: `"LuxRepair Workshops 🚗" <luxrepair.app@gmail.com>`,                                     // sender address
-            to: data.Cliente.email,                                                                         // receiver
-            subject: `Hola, ${data.Cliente.nombre}!`,                                                       // Subject line
-            html: `
+            // setup email data with unicode symbols
+            let mailOptions = 
+            {
+                from: `"${data.gerente.nombre} ${data.gerente.apellido} 🚗" <luxrepair.app@gmail.com>`,    // sender address
+                to: cliente.Email,                                                                         // receiver
+                subject: `Hola, ${cliente.Nombre}!`,                                                       // Subject line
+                html: `
                 <!DOCTYPE html>
                 <html>
                 <head>
@@ -68,17 +84,18 @@ controller.solicitar = async function (data, callback) {
                         <div class="row main text-dark mx-auto">
                             <div class="card rounded mx-auto my-5 p-5 col-12 col-md-8 col-lg-6">
                                 <p class="lead body">
-                                    <span class="bigger">Querido ${data.Cliente.nombre},</span>
+                                    <span class="bigger">Querido ${cliente.Nombre},</span>
                                     <br>
-                                    <br>La solicitud de reparación para su ${vehiculo.Marca} ${vehiculo.Modelo} fue procesada con éxito. El servicio de
-                                    <span class="h5 body">${data.Servicio}</span> solicitado se realizará una vez que se le asigne una fecha de admisión a su vehículo.
+                                    <br>La solicitud de reparación para su ${vehiculo.Marca} ${vehiculo.Modelo} fue procesada con éxito. Se le asignó el día ${fechaFormateada} como fecha de admisión de su vehículo al taller. El servicio de
+                                    <span class="h5 body">${vehiculo.Servicio}</span> solicitado se realizará tan pronto su vehículo llegue.
                                     <br>
                                     Gracias por confiar en nosotros la reparación de su vehículo.
                                     <br>
                                     <br>
                                     Atentamente,
                                 </p>
-                                <h5 class="lead body ml-md-5">LuxRepair Workshops</h5>
+                                <h5 class="lead body ml-md-5">${data.gerente.nombre} ${data.gerente.apellido}</h5>
+                                <p class="h5 ml-md-5">Gerente en LuxRepair Workshops</p>
                             </div>
                             <div class="container">
                                 <h6 class="text-muted text-center">
@@ -111,36 +128,16 @@ controller.solicitar = async function (data, callback) {
                     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
                         crossorigin="anonymous"></script>
                 </body>
-                </html>
-            `
-        };
+                </html>    
+            `};
 
-        // send mail with defined transport object
-        transporter.sendMail(mailOptions, (error, info) => {
-            if (error) {
-                return console.log(error);
-            }
-            console.log('Message sent: %s', info.messageId);
-        });
-        callback(null);
-    } catch (err) {
-        console.log('Se produjo un error en el controlador de la orden: ', err);
-        callback(err);
-    }
-};
-
-controller.asignarAdmision = async function (data, callback) {
-    try {
-        
-        for (let i=0; i<data.length; i++) {
-            let response = await Orden.update({ FechaAdmision: data[i].fechaAdmision }, 
-                {
-                    where:
-                    {
-                        Vehiculo: data[i].id,
-                        Activa: true
-                    }
-                });
+            // send mail with defined transport object
+            transporter.sendMail(mailOptions, (error, info) => {
+                if (error) {
+                    return console.log(error);
+                }
+                console.log('Message sent: %s', info.messageId);
+            });
         }
 
         callback(null);
@@ -175,7 +172,7 @@ controller.asignarMecanico = async function (data, callback) {
 controller.finalizar = async function (data, callback) {
     try {
         // Actualizar la tabla Orden
-        let response = await Orden.update({ Estado: 'Listo', Activa: false }, { 
+        let response = await Orden.update({ Estado: 'Listo', Activa: false, FechaFinalizacion: new Date() }, { 
             where: {
                 Vehiculo: data.vehiculo.id,
                 Activa: true
