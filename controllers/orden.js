@@ -30,6 +30,51 @@ controller.solicitar = async function (data, callback) {
     }
 };
 
+
+controller.actualizarOrden = async function (data, callback) {
+    try {
+        
+        for (let i=0; i<data.length; i++) {
+            let response = await Orden.update({ FechaAdmision: data[i].fechaAdmision }, 
+                {
+                    where:
+                    {
+                        Vehiculo: data[i].id,
+                        Activa: true
+                    }
+                });
+        }
+
+        callback(null);
+        
+    } catch (err) {
+        console.log('Se produjo un error en el controlador de la orden: ', err);
+        callback(err);
+    }
+}
+        
+
+// Metodo que agrega condicion de entrega
+controller.condicionEntrega = async function (data, callback) {
+    try {
+        let response = await Orden.update({
+            Estado: data.Estado,
+            Evaluacion: data.Evaluacion
+        },
+        {
+            where: {
+                Vehiculo: data.id,
+                Activa: true
+        }}
+    );
+        callback(null);
+    } catch (err) {
+        console.log('Se produjo un error en el controlador de la orden: ', err);
+        callback(err);
+    }
+}
+
+
 controller.asignarAdmision = async function (data, callback) {
     try {
         for (let i=0; i<data.vehiculos.length; i++) {

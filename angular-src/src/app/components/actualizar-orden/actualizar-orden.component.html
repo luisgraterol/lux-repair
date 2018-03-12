@@ -3,25 +3,34 @@
   <div class="container py-5 mt-3 mb-5">
     <h2 class="mb-3">Actualizar Orden</h2>
 
-    <p class="mr-3">Agregar Repuestos</p>
-    <select id="seleccionado" [(ngModel)]="seleccionado" name="seleccionado">
-        <option selected>Tubo Escape</option>
-        <option>Carrocería</option>
-        <option>Aceite</option>
-        <option>Frenos</option>
-        <option>Otros</option>
-    </select>
-    <button class="btn btn-secondary ml-5" type="button" (click)="agregarRepuesto()">Agregar</button>
+    <div class="row">
+      <div class="col">
+        <form (submit)="agregarRepuesto()" class="d-flex align-items-center">
+          <div class="form-group mr-4">
+            <label>Fecha de Admisión</label>
+            <select class="form-control" id="seleccionado" [(ngModel)]="seleccionado" name="seleccionado">
+              <option selected>Aceite</option>
+              <option>Carrocería</option>
+              <option>Frenos</option>
+              <option>Tubo Escape</option>
+              <option>Otro</option>
+            </select>
+          </div>
+          <button class="btn btn-secondary mt-3" type="submit">Agregar</button>
+        </form>
+      </div>
+    </div>
 
     <div class="my-4">
-      <h6>Repuestos Utilizados:</h6>
-      <ul *ngFor="let repuesto of repuestos">
-          <li>
-            <div class="card p-0">
-              <div class="card-body py-2 px-3">{{repuesto}}</div>
-            </div>
-          </li>
+      <p>Repuestos Utilizados:</p>
+      <div *ngIf="repuestos.length !== 0">
+        <ul *ngFor="let repuesto of repuestos" class="list-group">
+          <li class="list-group-item">{{repuesto}}</li>
         </ul>
+      </div>
+      <div *ngIf="repuestos.length === 0">
+        <p class="text-muted">No se han agregado repuestos a esta reparación.</p>
+      </div>
     </div>
 
     <form (submit)="actualizarOrden()">
@@ -29,15 +38,12 @@
         <label for="estado">Estado de la Reparación</label>
         <select id="estado" class="form-control" [(ngModel)]="estado" name="estado">
             <option selected>En Reparacion</option>
-            <option>Listo</option>
+            <option>Reparado</option>
             <option>Otro</option>
         </select>
       </div>
 
-      <div class="form-group">
-        <label for="detalles">Detalles de la Reparación</label>
-        <textarea class="form-control" name="detalles" id="detalles" [(ngModel)]="detalles" rows="10" placeholder="Informe sobre los avances y detalles de la reparación"></textarea>
-      </div>
+    
       
       <div class="d-flex justify-content-center">
         <button type="submit" class="btn btn-primary mt-4">Actualizar</button>

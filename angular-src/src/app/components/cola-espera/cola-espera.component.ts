@@ -162,4 +162,10 @@ export class ColaEsperaComponent implements OnInit {
       this.vehiculos.splice(indice, 1);
     }, 1000);
   }
+
+  evaluar(indice) {
+    let vehiculoAEvaluar = this.vehiculos[indice];
+    localStorage.setItem("condicion-entrega", JSON.stringify(vehiculoAEvaluar));
+    this.router.navigate(['condicion-entrega']);
+  }
 }

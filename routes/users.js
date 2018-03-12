@@ -173,10 +173,30 @@ router.post('/solicitar-orden', (req, res, next) => {
             res.json({ success: true, msg: 'Su orden se generó con éxito.' });
     });
 });
+//actualizar orden de reparacion
+router.post('/actualizar-reparacion', (req, res, next) => {
+    con_Empleado.actualizarOrden(req.body, (err) => {
+        if (err) 
+            res.json({ success: false, msg: 'Se produjo un error al actualizar la Orden' });
+        else 
+            res.json({ success: true, msg: 'Se actualizo la orden  exitosamente.' });
+    });
+});
+
 
 // Registra un repuesto nuevo
 router.post('/crear-repuesto', (req, res, next) => {
     con_Repuesto.registrar(req.body, (err) => {
+        if (err)
+            res.json({ success: false, msg: 'Se produjo un error al registrar el repuesto, inténtelo de nuevo.' });
+        else
+            res.json({ success: true, msg: 'Se registró el repuesto exitosamente.' });
+    });
+});
+
+// modifica un repuesto
+router.post('/modificar-repuesto', (req, res, next) => {
+    con_Repuesto.modificarRepuesto(req.body, (err) => {
         if (err)
             res.json({ success: false, msg: 'Se produjo un error al registrar el repuesto, inténtelo de nuevo.' });
         else
@@ -224,6 +244,16 @@ router.post('/vehiculos-mecanico', (req, res, next) => {
                 vehiculos
             });
         }
+    });
+});
+
+// Agrega condicion de entrega
+router.post('/condicion-entrega', (req, res, next) => {
+    con_Orden.condicionEntrega(req.body, (err) => {
+        if (err)
+            res.json({ success: false, msg: 'Se produjo un error al agregar condicion de entrega, inténtelo de nuevo.' });
+        else
+            res.json({ success: true, msg: 'Se agrego condicion de entrega exitosamente.' });
     });
 });
 
