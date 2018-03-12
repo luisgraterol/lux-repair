@@ -1,4 +1,5 @@
-// Modulos
+;
+import { CondicionEntregaComponent } from './condicion-entrega/condicion-entrega.component'// Modulos
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -37,6 +38,7 @@ import { AuthGuard } from './guards/auth.guard';
 
 // Pipes
 import { DatePipe } from '@angular/common';
+import { [condicionEntrega]Component } from './[condicion-entrega]/[condicion-entrega].component';
 
 
 // Rutas
@@ -89,7 +91,8 @@ const appRoutes: Routes = [
     ColaEsperaComponent,
     DetalleVehiculoComponent,
     ListaReparacionComponent,
-    ActualizarOrdenComponent
+    ActualizarOrdenComponent,
+    [condicionEntrega]Component, CondicionEntregaComponent
   ],
   imports: [
     BrowserModule,
