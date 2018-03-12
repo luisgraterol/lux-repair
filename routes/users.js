@@ -136,21 +136,6 @@ router.get('/vehiculos-gerente', (req, res, next) => {
     });
 });
 
-      
-// Obtiene los vehiculos asignados a un mecanico
-router.get('/vehiculos-mecanico', passport.authenticate('jwt', { session: false }), (req, res, next) => {
-    con_Mecanico.getVehiculos(req.user.id, (vehiculos, err) => {
-        if (err) throw err;
-
-        if (vehiculos) {
-            res.json({
-                userId: req.user.id,
-                vehiculos
-            });
-        }
-    });
-});
-
 
 /* PETICIONES POST */
 // Actualiza los datos de un empleado
@@ -192,6 +177,16 @@ router.post('/solicitar-orden', (req, res, next) => {
             res.json({ success: true, msg: 'Su orden se generó con éxito.' });
     });
 });
+//actualizar orden de reparacion
+router.post('/actualizar-reparacion', (req, res, next) => {
+    con_Empleado.actualizarOrden(req.body, (err) => {
+        if (err) 
+            res.json({ success: false, msg: 'Se produjo un error al actualizar la Orden' });
+        else 
+            res.json({ success: true, msg: 'Se actualizo la orden  exitosamente.' });
+    });
+});
+
 
 // Registra un repuesto nuevo
 router.post('/crear-repuesto', (req, res, next) => {
@@ -240,6 +235,19 @@ router.post('/fecha-admision', (req, res, next) => {
             res.json({ success: false, msg: 'Se produjo un error al asignar la fecha de admisión.' });
         else
             res.json({ success: true, msg: 'Las fechas de admisión se asignaron exitosamente.' });
+    });
+});
+
+// Obtiene los vehiculos asignados a un mecanico
+router.post('/vehiculos-mecanico', (req, res, next) => {
+    con_Mecanico.getVehiculos(req.body.id, (vehiculos, err) => {
+        if (err) throw err;
+
+        if (vehiculos) {
+            res.json({
+                vehiculos
+            });
+        }
     });
 });
 
