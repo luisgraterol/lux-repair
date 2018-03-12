@@ -1,5 +1,4 @@
-;
-import { CondicionEntregaComponent } from './condicion-entrega/condicion-entrega.component'// Modulos
+// Modulos
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -27,6 +26,7 @@ import { ColaEsperaComponent } from './components/cola-espera/cola-espera.compon
 import { DetalleVehiculoComponent } from './components/detalle-vehiculo/detalle-vehiculo.component';
 import { ListaReparacionComponent } from './components/lista-reparacion/lista-reparacion.component';
 import { ActualizarOrdenComponent } from './components/actualizar-orden/actualizar-orden.component';
+import { CondicionEntregaComponent } from './components/condicion-entrega/condicion-entrega.component';
 
 // Servicios
 import { ValidateService } from './services/validate.service';
@@ -38,7 +38,6 @@ import { AuthGuard } from './guards/auth.guard';
 
 // Pipes
 import { DatePipe } from '@angular/common';
-import { [condicionEntrega]Component } from './[condicion-entrega]/[condicion-entrega].component';
 
 
 // Rutas
@@ -92,7 +91,7 @@ const appRoutes: Routes = [
     DetalleVehiculoComponent,
     ListaReparacionComponent,
     ActualizarOrdenComponent,
-    [condicionEntrega]Component, CondicionEntregaComponent
+    CondicionEntregaComponent,
   ],
   imports: [
     BrowserModule,
