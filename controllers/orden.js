@@ -287,6 +287,16 @@ controller.finalizar = async function (data, callback) {
     }
 }
 
+controller.cancelar = async function (data, callback) {
+    try {
+        let response = await Orden.update({ Activa: false }, { where: { Vehiculo: data.id, Activa: true } });
+        callback(null);
+    } catch (err) {
+        console.log('Se produjo un error en el controlador de la orden: ', err);
+        callback(err);
+    }
+}
+
 module.exports = controller;
 
 // Funcion que retorna la fecha presente en un string

@@ -1,9 +1,16 @@
 const express = require('express');
 const router = express.Router();
 
+const OrdenController = require('../controllers/orden');
+
 // Routes are handled here
-router.get('*', (req, res, next) => {
-    res.send('This endpoint is yet to be developed.');
+router.post('/cancelar-cita', (req, res, next) => {
+    OrdenController.cancelar(req.body, (err) => {
+        if (err)
+            res.json({ success: false, msg: 'Se produjo un error al cancelar la cita.' });
+        else
+            res.json({ success: true, msg: 'Se canceló la cita exitosamente.' });
+    });
 });
 
 module.exports = router;
