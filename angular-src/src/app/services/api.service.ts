@@ -84,6 +84,15 @@ export class ApiService {
       .map(res => res.json());
   }
     
+  modificarRepuesto(data) {
+    // Settear los encabezados para la petición al API
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+
+    // Hacer la petición, se retorna una promesa
+    return this.http.post('http://localhost:3000/users/modificar-repuesto', data, { headers })
+      .map(res => res.json());
+  }
 
   getEmpleadosSinRol() {
     let headers = new Headers();
@@ -174,4 +183,15 @@ export class ApiService {
     return this.http.post('http://localhost:3000/users/fecha-admision', arreglo, { headers: headers })
       .map(res => res.json());
   }
+
+  condicionEntrega(data) {
+    // Settear los encabezados para la petición al API
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+
+    // Hacer la petición, se retorna una promesa
+    return this.http.post('http://localhost:3000/users/condicion-entrega', data, { headers })
+      .map(res => res.json());
+  }
+
 }

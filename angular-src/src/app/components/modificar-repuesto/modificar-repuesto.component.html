@@ -1,27 +1,27 @@
 <div class="row main p-4 p-md-3">
-    <!-- Form de Registro para Repuestos -->          
+    <!-- Form de Modificacion para Repuestos -->          
     <div class="container py-5 mt-3 mb-5">
-        <h2 class="mb-3">Registro de Repuesto</h2>
-        <form (submit)="registrarRepuesto()">
+        <h2 class="mb-3">Modificación de Repuesto</h2>
+        <form (submit)="modificarRepuesto()">
             <div class="form-row">
-              <div class="form-group col-md-4">
-                  <label for="nombre">Categoria</label>
-                  <select id="nombre" class="form-control" [(ngModel)]="nombre" name="nombre">
-                      <option selected>Aceite</option>
-                      <option>Caucho</option>
-                      <option>Rin</option>
-                      <option>Electronicos</option>
-                      <option>Carroceria</option>
-                      <option>Otros</option>
-                  </select>
-              </div>
-              <div class="form-group col-md-4">
-                  <label for="descripcion">Descripción</label>
-                  <input type="text" class="form-control" id="descripcion" placeholder="Ej: PDVSA Semi-Sintetico 15W40W, Pirelli 14'" [(ngModel)]="descripcion" name="descripcion">
-              </div>
+                <div class="form-group col-md-4">
+                    <label for="nombre">Categoria</label>
+                    <select id="nombre" class="form-control" [(ngModel)]="nombre" name="nombre">
+                        <option selected>Aceite</option>
+                        <option>Caucho</option>
+                        <option>Rin</option>
+                        <option>Electronicos</option>
+                        <option>Carroceria</option>
+                        <option>Otros</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="descripcion">Descripción</label>
+                    <input type="text" class="form-control" id="descripcion" placeholder="Ej: PDVSA Semi-Sintetico 15W40W, Pirelli 14'" [(ngModel)]="descripcion" name="descripcion">
+                </div>
               <div class="form-group col-md-2">
                   <label for="cantidad">Cantidad</label>
-                  <select id="cantidad" class="form-control" placeholder="1" [(ngModel)]="cantidad" name="cantidad">
+                  <select id="cantidad" class="form-control" [(ngModel)]="cantidad" name="cantidad">
                       <option selected>1</option>
                       <option>2</option>
                       <option>3</option>
@@ -34,9 +34,24 @@
                       <option>10</option>
                       <option>11</option>
                       <option>12</option>
+                      <option>13</option>
+                      <option>14</option>
                       <option>15</option>
+                      <option>16</option>
+                      <option>17</option>
+                      <option>18</option>
+                      <option>19</option>
                       <option>20</option>
+                      <option>21</option>
+                      <option>22</option>
+                      <option>23</option>
                       <option>24</option>
+                      <option>25</option>
+                      <option>26</option>
+                      <option>27</option>
+                      <option>28</option>
+                      <option>29</option>
+                      <option>30</option>
                   </select>
                 </div>
               <div class="form-group col-md-2">
@@ -58,14 +73,13 @@
             <div class="form-row">
               <div class="form-group col-md-12">
                   <label for="detalle">Detalle</label>
-                  <textarea class="form-control" name="detalle" id="detalle" [(ngModel)]="detalle" rows="3" placeholder="Agregue cualquier información adicional que considere pertinente."></textarea>
+                  <textarea class="form-control" name="detalle" id="detalle" [(ngModel)]="detalle" rows="3"></textarea>
                 </div>
             </div>
   
             <div class="d-flex justify-content-center">
-                <button type="submit" class="btn btn-primary mt-4">Registrar Repuesto</button>
+                <button type="submit" class="btn btn-primary mt-4">Modificar Repuesto</button>
             </div>
-            
             
         </form>
     </div>

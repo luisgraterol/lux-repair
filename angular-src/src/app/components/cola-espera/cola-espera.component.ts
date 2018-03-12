@@ -113,4 +113,10 @@ export class ColaEsperaComponent implements OnInit {
       }
     });
   }
+
+  evaluar(indice) {
+    let vehiculoAEvaluar = this.vehiculos[indice];
+    localStorage.setItem("condicion-entrega", JSON.stringify(vehiculoAEvaluar));
+    this.router.navigate(['condicion-entrega']);
+  }
 }
