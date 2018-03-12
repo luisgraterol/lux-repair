@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ValidateService } from '../../services/validate.service';
-import { AuthService } from '../../services/auth.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { Router } from '@angular/router';
+
+// HTTP Requests
+import { Http, Headers } from '@angular/http';
+import 'rxjs/add/operator/map';
 
 
 @Component({
@@ -22,9 +24,8 @@ export class RegisterComponent implements OnInit {
   rol: String;
 
   constructor(
-    private validateService: ValidateService, 
+    private http: Http,
     private flashMessage: FlashMessagesService,
-    private authService: AuthService,
     private router: Router
   ) { }
 
@@ -43,27 +44,32 @@ export class RegisterComponent implements OnInit {
     };
 
     // Require all fields
-    if (!this.validateService.validateRegister(user)) {
+    if (user.nombre == undefined || user.apellido == undefined || user.cedula == undefined || user.email == undefined || user.username == undefined || user.password == undefined) {
       this.flashMessage.show('Por favor llene todas las casillas.', { cssClass: 'custom-danger', timeout: 3000 });
       return false;
     }
 
     // Validate Email
-    if (!this.validateService.validateEmail(user.email)) {
+    const regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+    if (!regex.test(user.email.toLowerCase())) {
       this.flashMessage.show('Por favor ingrese una dirección de correo válida.', { cssClass: 'custom-danger', timeout: 5000 });
       return false;
     }
 
     // Register User
-    this.authService.registerUser(user).subscribe(data => {
-      if (data.success) {
-        this.flashMessage.show('Usted fue registrado exitosamente.', { cssClass: 'custom-success', timeout: 3000 });
-        this.router.navigate(['/login']);
-      } else {
-        this.flashMessage.show('Se produjo un error en su registro.', { cssClass: 'custom-danger', timeout: 3000 });
-        this.router.navigate(['/register']);
-      }
-    });
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    this.http.post('http://localhost:3000/users/register', user, { headers: headers })
+      .map(res => res.json())
+      .subscribe(data => {
+        if (data.success) {
+          this.flashMessage.show('Usted fue registrado exitosamente.', { cssClass: 'custom-success', timeout: 3000 });
+          this.router.navigate(['/login']);
+        } else {
+          this.flashMessage.show('Se produjo un error en su registro.', { cssClass: 'custom-danger', timeout: 3000 });
+          this.router.navigate(['/register']);
+        }
+      });
   }
-
 }

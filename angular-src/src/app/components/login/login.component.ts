@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { FlashMessagesService } from 'angular2-flash-messages';
+
+// HTTP Requests
+import { Http, Headers } from '@angular/http';
+import 'rxjs/add/operator/map';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +17,7 @@ export class LoginComponent implements OnInit {
   password: String;
 
   constructor(
-    private authService: AuthService,
+    private http: Http,
     private router: Router,
     private flashMessage: FlashMessagesService
   ) { }
@@ -27,17 +30,23 @@ export class LoginComponent implements OnInit {
       password: this.password
     };
 
-    this.authService.authenticateUser(user).subscribe(data => {
-      if (data.success) {
-        this.authService.storeUserData(data.token, data.user);
-        this.flashMessage.show(`¡Bienvenido, ${data.user.nombre}!`, { cssClass: 'custom-success', timeout: 6000 });
-        this.router.navigate(['dashboard']);
-      } else {
-        this.flashMessage.show(data.msg, { cssClass: 'custom-danger', timeout: 3000 });
-        this.router.navigate(['login']);
-      }
-    });
-
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    this.http.post('http://localhost:3000/users/authenticate', user, { headers })
+      .map(res => res.json())
+      .subscribe(data => {
+        if (data.success) {
+          // Store user data
+          localStorage.setItem('id_token', data.token);
+          localStorage.setItem('user', JSON.stringify(data.user));
+          
+          // Flash Message
+          this.flashMessage.show(`¡Bienvenido, ${data.user.nombre}!`, { cssClass: 'custom-success', timeout: 6000 });
+          this.router.navigate(['dashboard']);
+        } else {
+          this.flashMessage.show(data.msg, { cssClass: 'custom-danger', timeout: 3000 });
+          this.router.navigate(['login']);
+        }
+      });
   }
-
 }

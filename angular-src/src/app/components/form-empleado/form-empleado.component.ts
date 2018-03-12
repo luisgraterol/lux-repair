@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
-import { ApiService } from '../../services/api.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { Router } from '@angular/router';
+
+// Http Requests
+import { Http, Headers } from '@angular/http';
+import 'rxjs/add/operator/map';
 
 @Component({
   selector: 'app-form-empleado',
@@ -15,8 +18,8 @@ export class FormEmpleadoComponent implements OnInit {
   fechaNacimiento: string;
 
   constructor(
+    private http: Http,
     private authService: AuthService,
-    private apiService: ApiService,
     private flashMessage: FlashMessagesService,
     private router: Router
   ) { }
@@ -37,14 +40,29 @@ export class FormEmpleadoComponent implements OnInit {
       return false;
     }
 
-    this.apiService.setEmployeeData({ sexo: this.sexo, fechaNacimiento: this.fechaNacimiento }).subscribe(response => {
-      if (response.success) {
-        this.flashMessage.show(response.msg, { cssClass: 'custom-success', timeout: 3000 });
-        this.router.navigate(['/profile']);
-      } else {
-        this.flashMessage.show(response.msg, { cssClass: 'custom-danger', timeout: 3000 });
-        this.router.navigate(['/form-empleado']);
-      }
+    let data = {
+      id: JSON.parse(localStorage.getItem('user')).id,
+      sexo: this.sexo,
+      fechaNacimiento: this.fechaNacimiento
+    };
+
+    console.log('Datos: ', data);
+
+    // Settear los encabezados para la petición al API
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+
+    // Hacer la petición, se retorna una promesa
+    this.http.post('http://localhost:3000/users/datos-empleado', data, { headers })
+      .map(res => res.json())
+      .subscribe(response => {
+        if (response.success) {
+          this.flashMessage.show(response.msg, { cssClass: 'custom-success', timeout: 3000 });
+          this.router.navigate(['/profile']);
+        } else {
+          this.flashMessage.show(response.msg, { cssClass: 'custom-danger', timeout: 3000 });
+          this.router.navigate(['/form-empleado']);
+        }
     });
   }
 }

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../../services/api.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { Router } from '@angular/router';
+import { Http, Headers } from '@angular/http';
+import 'rxjs/add/operator/map';
 
 @Component({
   selector: 'app-solicitar-orden',
@@ -16,7 +17,7 @@ export class SolicitarOrdenComponent implements OnInit {
   imagen: any;
 
   constructor(
-    private apiService: ApiService,
+    private http: Http,
     private flashMessage: FlashMessagesService,
     private router: Router
   ) { }
@@ -31,23 +32,30 @@ export class SolicitarOrdenComponent implements OnInit {
       this.flashMessage.show('Por favor, llene todas las casillas.', { cssClass: 'custom-danger', timeout: 5000 });
       return false;
     } else {
+      
       const data = {
         idVehiculo: this.idVehiculo,
+        Cliente: JSON.parse(localStorage.getItem('user')),
         Servicio: this.servicio,
         Detalles: this.detalles,
         Imagen: this.imagen
       };
 
-      console.log('En el frontend los datos son: ', data);
+      // Settear los encabezados para la petición al API
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
 
-      this.apiService.crearOrden(data).subscribe(response => {
-        if (response.success) {
-          this.flashMessage.show(response.msg, { cssClass: 'custom-success', timeout: 3000 });
-          this.router.navigate(['/garage']);
-        } else {
-          this.flashMessage.show(response.msg, { cssClass: 'custom-danger', timeout: 3000 });
-        }
-      });
+      // Hacer la petición
+      this.http.post('http://localhost:3000/users/solicitar-orden', data, { headers })
+        .map(res => res.json())
+        .subscribe(response => {
+          if (response.success) {
+            this.flashMessage.show(response.msg, { cssClass: 'custom-success', timeout: 3000 });
+            this.router.navigate(['/garage']);
+          } else {
+            this.flashMessage.show(response.msg, { cssClass: 'custom-danger', timeout: 3000 });
+          }
+        });
     }
   }
 

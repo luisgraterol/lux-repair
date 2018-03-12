@@ -26,7 +26,7 @@
         <a class="nav-link" [routerLink]="['/register']">Register</a>
       </li>
       <li *ngIf="authService.loggedIn()" class="nav-item my-auto" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">
-        <a class="nav-link mr-2" [routerLink]="['/profile']"><i class="fas fa-user-circle pr-1"></i> {{nombre}}</a>
+        <a class="nav-link mr-2" [routerLink]="['/profile']"><i class="fas fa-user-circle fa-lg pr-1"></i> {{nombre}}</a>
       </li>
       <li *ngIf="authService.loggedIn()" class="btn btn-sm btn-outline-secondary">
         <a class="nav-link" (click)="onLogoutClick()" href="#">Logout</a>

@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const passport = require('passport');
 const jwt = require('jsonwebtoken');
-const connection = require('../config/database');
 
 // Models
 const User = require('../models/user');
@@ -16,9 +15,6 @@ const con_Vehiculo = require('../controllers/vehiculo');
 const con_Orden = require('../controllers/orden');
 const con_Repuesto = require('../controllers/repuesto');
 const con_Mecanico = require('../controllers/mecanico');
-
-// Sincroniza los cambios en los modelos
-connection.sync({ logging: false })
 
 /* PETICIONES GET */
 // Registra al usuario
@@ -220,7 +216,7 @@ router.post('/asignar-rol', (req, res, next) => {
 
 // Obtiene la informacion de un cliente
 router.post('/cliente', (req, res, next) => {
-    con_User.getUserById(req.body.id, (err, cliente) => {
+    con_User.getUserById(req.body.idCliente, (err, cliente) => {
         if (err)
             res.json({ success: false, msg: 'Se produjo un error al buscar los datos del dueño.' });
         else

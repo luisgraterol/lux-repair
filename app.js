@@ -6,6 +6,13 @@ const passport = require('passport');
 const mysql = require('mysql');
 const connection = require('./config/database');
 
+// Routes
+const users = require('./routes/users');
+const cliente = require('./routes/cliente');
+const gerente = require('./routes/gerente');
+const admin = require('./routes/admin');
+const mecanico = require('./routes/mecanico');
+
 // Models
 const User = require('./models/user');
 const Empleado = require('./models/empleado');
@@ -19,32 +26,31 @@ const Repuesto = require('./models/repuesto');
 const Marca = require('./models/marca');
 const Modelo = require('./models/modelo');
 
-// Sincroniza los cambios en los modelos
+// Sync changes in models
 connection.sync({ logging: false });
 
+// Create app
 const app = express();
-
-const users = require('./routes/users');
 
 // Port Number
 const port = 3000;
 
-// CORS Middleware
-app.use(cors());
-
 // Set Static Folder
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Body Parser Middleware
+// Middleware
+app.use(cors());
 app.use(bodyParser.json());
-
-// Passport Middleware
 app.use(passport.initialize());
 app.use(passport.session());
-
 require('./config/passport')(passport);
 
+// Router
 app.use('/users', users);
+app.use('/cliente', cliente);
+app.use('/gerente', gerente);
+app.use('/admin', admin);
+app.use('/mecanico', mecanico);
 
 // Index Route
 app.get('/', (req, res) => {

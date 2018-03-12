@@ -27,7 +27,8 @@ export class NavbarComponent implements OnInit {
   }
 
   onLogoutClick() {
-    this.authService.logout();
+    localStorage.clear();
+    this.nombre = undefined;
     this.flashMessage.show('Su sessión ha finalizado.', { cssClass:'custom-success', timeout: 5000 });
     this.router.navigate(['/login']);
     return false;

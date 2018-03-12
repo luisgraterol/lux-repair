@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../../services/api.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { Router } from '@angular/router';
+import { Http, Headers } from '@angular/http';
+import 'rxjs/add/operator/map';
 
 
 @Component({
@@ -18,7 +19,7 @@ export class FormRepuestoComponent implements OnInit {
   detalle: string;
   
   constructor(
-    private apiService: ApiService,
+    private http: Http,
     private flashMessage: FlashMessagesService,
     private router: Router
   ) { }
@@ -46,16 +47,22 @@ export class FormRepuestoComponent implements OnInit {
 
     console.log(data);
 
-    // Llamar al metodo del API
-    this.apiService.crearRepuesto(data).subscribe(response => {
-      if (response.success) {
-        this.flashMessage.show(response.msg, { cssClass: 'custom-success', timeout: 3000 });
-        this.router.navigate(['/lista-repuestos']);
-      } else {
-        this.flashMessage.show(response.msg, { cssClass: 'custom-danger', timeout: 3000 });
-        this.router.navigate(['/form-repuesto']);
-      }
-    });
+    // Settear los encabezados para la petición al API
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+
+    // Hacer la petición, se retorna una promesa
+    this.http.post('http://localhost:3000/users/crear-repuesto', data, { headers })
+      .map(res => res.json())
+      .subscribe(response => {
+        if (response.success) {
+          this.flashMessage.show(response.msg, { cssClass: 'custom-success', timeout: 3000 });
+          this.router.navigate(['/lista-repuestos']);
+        } else {
+          this.flashMessage.show(response.msg, { cssClass: 'custom-danger', timeout: 3000 });
+          this.router.navigate(['/form-repuesto']);
+        }
+      });
   }
 
   // Funcion que retorna false si alguna casilla ha dejado de llenarse

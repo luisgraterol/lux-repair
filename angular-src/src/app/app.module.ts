@@ -27,12 +27,11 @@ import { ColaEsperaComponent } from './components/cola-espera/cola-espera.compon
 import { DetalleVehiculoComponent } from './components/detalle-vehiculo/detalle-vehiculo.component';
 import { ListaReparacionComponent } from './components/lista-reparacion/lista-reparacion.component';
 import { ActualizarOrdenComponent } from './components/actualizar-orden/actualizar-orden.component';
+import { ListaMecanicosComponent } from './components/lista-mecanicos/lista-mecanicos.component';
 import { CondicionEntregaComponent } from './components/condicion-entrega/condicion-entrega.component';
 
 // Servicios
-import { ValidateService } from './services/validate.service';
 import { AuthService } from './services/auth.service';
-import { ApiService } from './services/api.service';
 
 // Guards
 import { AuthGuard } from './guards/auth.guard';
@@ -69,6 +68,7 @@ const appRoutes: Routes = [
   {path: 'detalle-vehiculo', component: DetalleVehiculoComponent, canActivate: [AuthGuard]},
   {path: 'lista-reparacion', component: ListaReparacionComponent, canActivate: [AuthGuard]},
   {path: 'actualizar-orden', component: ActualizarOrdenComponent, canActivate: [AuthGuard]},
+  {path: 'lista-mecanicos', component: ListaMecanicosComponent, canActivate: [AuthGuard]},
   {path: 'condicion-entrega', component: CondicionEntregaComponent, canActivate: [AuthGuard]}
 ];
 
@@ -95,6 +95,7 @@ const appRoutes: Routes = [
     ModificarRepuestoComponent,
     ListaReparacionComponent,
     ActualizarOrdenComponent,
+    ListaMecanicosComponent,
     CondicionEntregaComponent
   ],
   imports: [
@@ -105,10 +106,8 @@ const appRoutes: Routes = [
     FlashMessagesModule.forRoot()
   ],
   providers: [
-    ValidateService,
     AuthService,
     AuthGuard,
-    ApiService,
     DatePipe
   ],
   bootstrap: [AppComponent]
