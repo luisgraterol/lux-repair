@@ -113,4 +113,8 @@ export class ColaEsperaComponent implements OnInit {
       }
     });
   }
+
+  evaluar(indice) {
+    console.log(this.vehiculos[indice])
+  }
 }
