@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../../services/api.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { Router } from '@angular/router';
+import { Http, Headers } from '@angular/http';
+import 'rxjs/add/operator/map';
 
 @Component({
   selector: 'app-actualizar-orden',
@@ -14,7 +15,7 @@ export class ActualizarOrdenComponent implements OnInit {
   seleccionado: string;
 
   constructor(
-    private apiService: ApiService,
+    private http: Http,
     private flashMessage: FlashMessagesService,
     private router: Router
   ) { }
@@ -30,18 +31,24 @@ export class ActualizarOrdenComponent implements OnInit {
     };
    
     console.log(data);
-    // Llamar al metodo del API
-    this.apiService.actualizarOrden(data).subscribe(response => {
-      if (response.success) {
-        console.log(data);
-        this.flashMessage.show(response.msg, { cssClass: 'custom-success', timeout: 3000 });
-        this.router.navigate(['/lista-reparacion']);
-      } else {
-        this.flashMessage.show(response.msg, { cssClass: 'custom-danger', timeout: 3000 });
-        this.router.navigate(['/actualizar-orden']);
-        console.log(data);
-      }
-    });
+
+    // Settear los encabezados para la petición al API
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+
+    this.http.post('http://localhost:3000/mecanico/actualizar-orden', { data }, { headers })
+      .map(res => res.json())
+      .subscribe(response => {
+        if (response.success) {
+          console.log(data);
+          this.flashMessage.show(response.msg, { cssClass: 'custom-success', timeout: 3000 });
+          this.router.navigate(['/lista-reparacion']);
+        } else {
+          this.flashMessage.show(response.msg, { cssClass: 'custom-danger', timeout: 3000 });
+          this.router.navigate(['/actualizar-orden']);
+          console.log(data);
+        }
+      });
   }
 
   agregarRepuesto() {

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../../services/api.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { Router } from '@angular/router';
+import { Http, Headers } from '@angular/http';
+import 'rxjs/add/operator/map';
 
 
 @Component({
@@ -18,7 +19,7 @@ export class CondicionEntregaComponent implements OnInit {
   detalle: string;
   
   constructor(
-    private apiService: ApiService,
+    private http: Http,
     private flashMessage: FlashMessagesService,
     private router: Router
   ) { }
@@ -32,20 +33,30 @@ export class CondicionEntregaComponent implements OnInit {
     this.vehiculo = vehiculo;
     
     // Toma el ID del dueño del vehiculo
-    let idCliente = vehiculo.Cliente;
-    
-    // Busca los datos del dueño
-    this.apiService.getDueno(idCliente).subscribe(response => {
-      if (response.success) {
-        this.dueno = response.cliente;
-        console.log(this.dueno);
-      } else {
-        this.flashMessage.show(response.msg, { cssClass: 'custom-danger', timeout: 3000 });
-      }
-    }, err => {
-      console.log('Error al pedir los datos del dueño desde DetalleVehiculoComponent: ', err);
-      return false;
-    });
+    let id = vehiculo.Cliente;
+
+    let headers = new Headers();
+
+    // Busca el token del usuario que esta ingresado en el sistema actualmente
+    const token = localStorage.getItem('id_token');
+
+    // Settear los encabezados para la petición al API
+    headers.append('Authorization', token);
+    headers.append('Content-Type', 'application/json');
+
+    this.http.post('http://localhost:3000/users/cliente', { id }, { headers })
+      .map(res => res.json())
+      .subscribe(response => {
+        if (response.success) {
+          this.dueno = response.cliente;
+          console.log(this.dueno);
+        } else {
+          this.flashMessage.show(response.msg, { cssClass: 'custom-danger', timeout: 3000 });
+        }
+      }, err => {
+        console.log('Error al pedir los datos del dueño desde CondicionEntregaComponent: ', err);
+        return false;
+      });
   }
 
   regresar() {
@@ -65,17 +76,23 @@ export class CondicionEntregaComponent implements OnInit {
       Estado: "Evaluado",
       Evaluacion: this.entrega
     };
+    
+    // Settear los encabezados para la petición al API
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
 
-    // Llamar al metodo del API
-    this.apiService.condicionEntrega(data).subscribe(response => {
-      if (response.success) {
-        this.flashMessage.show(response.msg, { cssClass: 'custom-success', timeout: 3000 });
-        this.router.navigate(['/cola-espera']);
-      } else {
-        this.flashMessage.show(response.msg, { cssClass: 'custom-danger', timeout: 3000 });
-        this.router.navigate(['/condicion-entrega']);
-      }
-    });
+    // Hacer la petición, se retorna una promesa
+    this.http.post('http://localhost:3000/users/condicion-entrega', data, { headers })
+      .map(res => res.json())
+      .subscribe(response => {
+        if (response.success) {
+          this.flashMessage.show(response.msg, { cssClass: 'custom-success', timeout: 3000 });
+          this.router.navigate(['/cola-espera']);
+        } else {
+          this.flashMessage.show(response.msg, { cssClass: 'custom-danger', timeout: 3000 });
+          this.router.navigate(['/condicion-entrega']);
+        }
+      });
   }
 
 }

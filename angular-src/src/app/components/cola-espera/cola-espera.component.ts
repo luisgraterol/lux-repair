@@ -133,10 +133,6 @@ export class ColaEsperaComponent implements OnInit {
       });
   }
 
-  evaluar(indice) {
-
-  }
-
   finalizar(indice) {
     this.vehiculos[indice].Estado = 'Listo';
 
