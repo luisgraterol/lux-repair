@@ -243,4 +243,14 @@ router.post('/fecha-admision', (req, res, next) => {
     });
 });
 
+// Agrega condicion de entrega
+router.post('/condicion-entrega', (req, res, next) => {
+    con_Orden.condicionEntrega(req.body, (err) => {
+        if (err)
+            res.json({ success: false, msg: 'Se produjo un error al agregar condicion de entrega, inténtelo de nuevo.' });
+        else
+            res.json({ success: true, msg: 'Se agrego condicion de entrega exitosamente.' });
+    });
+});
+
 module.exports = router;

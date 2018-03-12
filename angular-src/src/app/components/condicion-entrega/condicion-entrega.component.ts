@@ -11,8 +11,11 @@ import { Router } from '@angular/router';
 })
 export class CondicionEntregaComponent implements OnInit {
 
-  vehiculo: object;
+  vehiculo: any;
   dueno: object;
+  entrega: string;
+  vista: string;
+  detalle: string;
   
   constructor(
     private apiService: ApiService,
@@ -21,6 +24,8 @@ export class CondicionEntregaComponent implements OnInit {
   ) { }
 
   ngOnInit() { 
+
+    this.entrega = "";
 
     let vehiculo = JSON.parse(localStorage.getItem("condicion-entrega"));
 
@@ -47,52 +52,30 @@ export class CondicionEntregaComponent implements OnInit {
     this.router.navigate(['/cola-espera']);
   }
 
-  // modificarRepuesto() {
+  agregarACondicion(detalle) {
+    this.entrega = this.entrega +" "+ this.vista +": "+ this.detalle +"\n";
+    this.detalle = "";
+    this.vista = "";
+  }
 
-  //   // // Valida que no se haya dejado ninguna casilla vacia
-  //   if (this.faltaAlgunaCasilla()) {
-  //     this.flashMessage.show('Por favor, llene todas las casillas.', { cssClass: 'custom-danger', timeout: 5000 });
-  //     return false;
-  //   }
+  finalizarCondicion() {
 
-  //   // Convertimos el string de la cantidad a un entero
-  //   const cantidad = Number(this.cantidad);
+    const data = {
+      id: this.vehiculo.id,
+      Estado: "Evaluado",
+      Evaluacion: this.entrega
+    };
 
-  //   const data = {
-  //     id: this.id,
-  //     Nombre: this.nombre,
-  //     Descripcion: this.descripcion,
-  //     Cantidad: cantidad,
-  //     Tipo: this.tipo,
-  //     Detalle: this.detalle,
-  //   };
-
-  //   // Llamar al metodo del API
-  //   this.apiService.modificarRepuesto(data).subscribe(response => {
-  //     if (response.success) {
-  //       this.flashMessage.show(response.msg, { cssClass: 'custom-success', timeout: 3000 });
-  //       this.router.navigate(['/lista-repuestos']);
-  //     } else {
-  //       this.flashMessage.show(response.msg, { cssClass: 'custom-danger', timeout: 3000 });
-  //       this.router.navigate(['/modificar-repuesto']);
-  //     }
-  //   });
-  // }
-
-  // // Funcion que retorna false si alguna casilla ha dejado de llenarse
-  // faltaAlgunaCasilla() {
-  //   return (
-  //     this.nombre === undefined || 
-  //     this.nombre === '' || 
-  //     this.descripcion === undefined || 
-  //     this.descripcion === '' || 
-  //     this.cantidad === undefined || 
-  //     this.cantidad === '' || 
-  //     this.tipo === undefined ||
-  //     this.tipo === '' ||
-  //     this.detalle === undefined ||
-  //     this.detalle === ''
-  //   );
-  // }
+    // Llamar al metodo del API
+    this.apiService.condicionEntrega(data).subscribe(response => {
+      if (response.success) {
+        this.flashMessage.show(response.msg, { cssClass: 'custom-success', timeout: 3000 });
+        this.router.navigate(['/cola-espera']);
+      } else {
+        this.flashMessage.show(response.msg, { cssClass: 'custom-danger', timeout: 3000 });
+        this.router.navigate(['/condicion-entrega']);
+      }
+    });
+  }
 
 }
