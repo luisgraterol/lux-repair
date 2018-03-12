@@ -21,11 +21,13 @@ import { GarageComponent } from './components/garage/garage.component';
 import { SolicitarOrdenComponent } from './components/solicitar-orden/solicitar-orden.component';
 import { ListaRepuestosComponent } from './components/lista-repuestos/lista-repuestos.component';
 import { FormRepuestoComponent } from './components/form-repuesto/form-repuesto.component';
+import { ModificarRepuestoComponent } from './components/modificar-repuesto/modificar-repuesto.component';
 import { GestionarRolComponent } from './components/gestionar-rol/gestionar-rol.component';
 import { ColaEsperaComponent } from './components/cola-espera/cola-espera.component';
 import { DetalleVehiculoComponent } from './components/detalle-vehiculo/detalle-vehiculo.component';
 import { ListaReparacionComponent } from './components/lista-reparacion/lista-reparacion.component';
 import { ActualizarOrdenComponent } from './components/actualizar-orden/actualizar-orden.component';
+import { CondicionEntregaComponent } from './components/condicion-entrega/condicion-entrega.component';
 
 // Servicios
 import { ValidateService } from './services/validate.service';
@@ -60,12 +62,14 @@ const appRoutes: Routes = [
   {path: 'gestionar-rol', component: GestionarRolComponent, canActivate: [AuthGuard]},
   {path: 'lista-repuestos', component: ListaRepuestosComponent, canActivate: [AuthGuard]},
   {path: 'form-repuesto', component: FormRepuestoComponent, canActivate: [AuthGuard]},
+  {path: 'modificar-repuesto', component: ModificarRepuestoComponent, canActivate: [AuthGuard]},
 
   // Gerente
   {path: 'cola-espera', component: ColaEsperaComponent, canActivate: [AuthGuard]},
   {path: 'detalle-vehiculo', component: DetalleVehiculoComponent, canActivate: [AuthGuard]},
   {path: 'lista-reparacion', component: ListaReparacionComponent, canActivate: [AuthGuard]},
-  {path: 'actualizar-orden', component: ActualizarOrdenComponent, canActivate: [AuthGuard]}
+  {path: 'actualizar-orden', component: ActualizarOrdenComponent, canActivate: [AuthGuard]},
+  {path: 'condicion-entrega', component: CondicionEntregaComponent, canActivate: [AuthGuard]}
 ];
 
 
@@ -88,8 +92,10 @@ const appRoutes: Routes = [
     GestionarRolComponent,
     ColaEsperaComponent,
     DetalleVehiculoComponent,
+    ModificarRepuestoComponent,
     ListaReparacionComponent,
-    ActualizarOrdenComponent
+    ActualizarOrdenComponent,
+    CondicionEntregaComponent
   ],
   imports: [
     BrowserModule,

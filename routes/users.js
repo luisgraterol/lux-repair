@@ -198,6 +198,16 @@ router.post('/crear-repuesto', (req, res, next) => {
     });
 });
 
+// modifica un repuesto
+router.post('/modificar-repuesto', (req, res, next) => {
+    con_Repuesto.modificarRepuesto(req.body, (err) => {
+        if (err)
+            res.json({ success: false, msg: 'Se produjo un error al registrar el repuesto, inténtelo de nuevo.' });
+        else
+            res.json({ success: true, msg: 'Se registró el repuesto exitosamente.' });
+    });
+});
+
 // Asignar el rol a un empleado
 router.post('/asignar-rol', (req, res, next) => {
     con_Empleado.asignarRol(req.body, (err) => {
@@ -238,6 +248,16 @@ router.post('/vehiculos-mecanico', (req, res, next) => {
                 vehiculos
             });
         }
+    });
+});
+
+// Agrega condicion de entrega
+router.post('/condicion-entrega', (req, res, next) => {
+    con_Orden.condicionEntrega(req.body, (err) => {
+        if (err)
+            res.json({ success: false, msg: 'Se produjo un error al agregar condicion de entrega, inténtelo de nuevo.' });
+        else
+            res.json({ success: true, msg: 'Se agrego condicion de entrega exitosamente.' });
     });
 });
 

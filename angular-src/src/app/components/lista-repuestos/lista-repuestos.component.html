@@ -43,10 +43,12 @@
               <td>{{repuesto.Cantidad}}</td>
               <td>{{repuesto.Tipo}}</td>
               <td>
-                <button (click)="irAOrden(i)" class="btn btn-sm btn-outline-primary">Ver Detalle</button>
+                <!-- <button class="btn btn-sm btn-outline-primary">Ver Detalle</button> -->
+                <a tabindex="0" class="btn btn-sm btn-outline-primary" role="button" data-toggle="popover" data-trigger="focus" title="Detalle de Repuesto" data-content="And here's some amazing content. It's very engaging. Right?">Ver Detalle</a>
+                <!-- <button type="button" class="btn btn-sm btn-outline-primary" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">Ver Detalle</button> -->
               </td>
               <td>
-                <button (click)="modificarRepuesto(i)" class="btn btn-sm btn-outline-dark">Modificar</button>
+                <button (click)="irModificarRepuesto(i)" class="btn btn-sm btn-outline-dark">Modificar</button>
               </td>
             </tr>
           </tbody>
@@ -55,3 +57,12 @@
     </div>
   </div>
   
+  <script>
+    $(function () {
+    $('[data-toggle="popover"]').popover()
+    })
+
+    $('.popover-dismiss').popover({
+    trigger: 'focus'
+    })
+  </script>

@@ -38,18 +38,20 @@ controller.getVehiculos = async function (callback) {
                 where: {
                     Vehiculo: vehiculos[i].id,
                     Activa: true
-                },
-                attributes: ['Estado', 'Servicio', 'FechaSolicitud', 'FechaAdmision', 'Detalle']
+                }
             });
-
-            if (response) { // Solo agrega los datos si ese vehiculo tiene una orden activa
+            if (!!response) { // Solo agrega los datos si ese vehiculo tiene una orden activa
                 vehiculos[i].Estado = response.dataValues.Estado;
+                vehiculos[i].Evaluacion = response.dataValues.Evaluacion;
                 vehiculos[i].Servicio = response.dataValues.Servicio;
                 vehiculos[i].FechaSolicitud = response.dataValues.FechaSolicitud;
                 vehiculos[i].FechaAdmision = response.dataValues.FechaAdmision;
                 vehiculos[i].DetalleOrden = response.dataValues.Detalle;
             }
         }
+
+        // Filtra los vehiculos que no tienen una orden activa
+        vehiculos = vehiculos.filter(vehiculo => !!vehiculo.Estado);
 
         // Retorna el arreglo
         callback(vehiculos, null);

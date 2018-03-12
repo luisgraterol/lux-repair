@@ -20,7 +20,6 @@ export class ListaRepuestosComponent implements OnInit {
 
   ngOnInit() {
     this.apiService.getRepuestos().subscribe(data => {
-      console.log(data.repuestos);
       this.repuestos = data.repuestos;
       localStorage.setItem('repuestos', JSON.stringify(data.repuestos));
     }, err => {
@@ -29,14 +28,10 @@ export class ListaRepuestosComponent implements OnInit {
     }); 
   }
 
-  // modificarRepuesto(indice) {
-  //   this.apiService.modificarRepuesto(this.repuesto[indice].id).subscribe(response => {
-  //     if (response.success) {
-  //       this.flashMessage.show(response.msg, { cssClass: 'custom-success', timeout: 3000 });
-  //     } else {
-  //       this.flashMessage.show(response.msg, { cssClass: 'custom-danger', timeout: 3000 });
-  //     }
-  //   });
-  // }
+  irModificarRepuesto(indice){
+    let repuestoAModificar = this.repuestos[indice];
+    localStorage.setItem("modificar-repuesto", JSON.stringify(repuestoAModificar));
+    this.router.navigate(['modificar-repuesto']);
+  }
 
 }
