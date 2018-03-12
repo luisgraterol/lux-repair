@@ -68,7 +68,8 @@ const appRoutes: Routes = [
   {path: 'cola-espera', component: ColaEsperaComponent, canActivate: [AuthGuard]},
   {path: 'detalle-vehiculo', component: DetalleVehiculoComponent, canActivate: [AuthGuard]},
   {path: 'lista-reparacion', component: ListaReparacionComponent, canActivate: [AuthGuard]},
-  {path: 'actualizar-orden', component: ActualizarOrdenComponent, canActivate: [AuthGuard]}
+  {path: 'actualizar-orden', component: ActualizarOrdenComponent, canActivate: [AuthGuard]},
+  {path: 'condicion-entrega', component: CondicionEntregaComponent, canActivate: [AuthGuard]}
 ];
 
 

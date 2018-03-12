@@ -1,3 +1,107 @@
-<p>
-  condicion-entrega works!
-</p>
+<div class="main">
+    <div class="row">
+      <div class="col mt-3 ml-3">
+        <button (click)="regresar()" class="btn btn-secondary"><i class="fas fa-angle-left pr-1"></i>Regresar</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6 col-md-10 col-lg-9 mx-auto mb-5 mt-3 py-5 px-5 bg-white border rounded">
+          <!-- Nombre del Vehiculo -->
+          <h2 class="page-header">{{vehiculo.Marca}} {{vehiculo.Modelo}}</h2>
+          <h3 class="page-header pb-3">{{dueno.Nombre}} {{dueno.Apellido}}</h3>
+  
+            <!-- Info del Vehiculo -->
+              <div class="container">
+                <div class="row">
+                  <div class="col-6 border">
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <span class="lead">Placa: </span>
+                        <p class="lead m-0">{{vehiculo.Placa}}</p>
+                      </li>
+                      <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <span class="lead">Color: </span>
+                        <div *ngIf="vehiculo.Color == 'Amarillo'" class="color color-amarillo mt-1 mr-0"></div>
+                        <div *ngIf="vehiculo.Color == 'Arena'" class="color color-arena mt-1 mr-0"></div>
+                        <div *ngIf="vehiculo.Color == 'Azul'" class="color color-azul mt-1 mr-0"></div>
+                        <div *ngIf="vehiculo.Color == 'Blanco'" class="color color-blanco mt-1 mr-0"></div>
+                        <div *ngIf="vehiculo.Color == 'Gris'" class="color color-gris mt-1 mr-0"></div>
+                        <div *ngIf="vehiculo.Color == 'Negro'" class="color color-negro mt-1 mr-0"></div>
+                        <div *ngIf="vehiculo.Color == 'Plata'" class="color color-plata mt-1 mr-0"></div>
+                        <div *ngIf="vehiculo.Color == 'Rojo'" class="color color-rojo mt-1 mr-0"></div>
+                        <div *ngIf="vehiculo.Color == 'Verde'" class="color color-verde mt-1 mr-0"></div>
+                      </li>
+                      <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <span class="lead">Año: </span>
+                        <p class="lead m-0">{{vehiculo.Ano}}</p>
+                      </li>
+                      <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <span class="lead">Estado: </span>
+                        <span *ngIf="vehiculo.Estado == undefined" class="badge badge-pill badge-primary font-bigger">Sin Cita</span>
+                        <span *ngIf="vehiculo.Estado == 'En Espera'" class="badge badge-pill badge-warning text-white font-bigger">{{vehiculo.Estado}}</span>
+                        <span *ngIf="vehiculo.Estado == 'En Reparacion'" class="badge badge-pill badge-info text-white font-bigger">{{vehiculo.Estado}}</span>
+                        <span *ngIf="vehiculo.Estado == 'Listo'" class="badge badge-pill badge-success text-white font-bigger">{{vehiculo.Estado}}</span>
+                      </li>
+                      <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <span class="lead">Servicio: </span>
+                        <p *ngIf="vehiculo.Servicio != undefined" class="lead m-0">{{vehiculo.Servicio}}</p>
+                        <p *ngIf="vehiculo.Servicio == undefined" class="lead m-0">No Aplica</p>
+                      </li>
+                      <li class="list-group-item">
+                        <span class="lead mb-4">Detalle: </span>
+                        <p *ngIf="vehiculo.DetalleOrden != undefined" class="text-justify mx-0 mt-3">{{vehiculo.DetalleOrden}}</p>
+                        <p *ngIf="vehiculo.DetalleOrden == undefined" class="text-justify mx-0 mt-3">No Aplica</p>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div class="col-6">
+                    <h2 class="mb-3">Condicion de Entrega</h2>
+                        <form (submit)="asignarCondicion()">
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <label for="vista">Vista</label>
+                                    <select id="vista" class="form-control" [(ngModel)]="vista" name="vista">
+                                        <option selected>Delantera</option>
+                                        <option>Lateral Derecha</option>
+                                        <option>Lateral Izquierda</option>
+                                        <option>Trasera</option>
+                                        <option>Superior</option>
+                                        <option>Inferior</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                            <div class="form-group col-md-12">
+                                <label for="detalle">Detalle</label>
+                                <textarea class="form-control" name="detalle" id="detalle" [(ngModel)]="detalle" rows="2"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="d-flex justify-content-center">
+                                <button type="" class="btn btn-secondary mt-4">Agregar Detalle</button>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <label for="detalle">Detalle</label>
+                                    <textarea class="form-control" name="detalle" id="detalle" [(ngModel)]="detalle" rows="4"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="d-flex justify-content-center">
+                                <button type="submit" class="btn btn-primary mt-4">Finalizar Condicion</button>
+                            </div>
+
+                        </form>
+                  </div>
+
+                </div>
+              </div>
+  
+          </div>
+
+
+          
+      </div>
+    </div>
