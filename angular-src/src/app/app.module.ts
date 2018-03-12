@@ -21,6 +21,7 @@ import { GarageComponent } from './components/garage/garage.component';
 import { SolicitarOrdenComponent } from './components/solicitar-orden/solicitar-orden.component';
 import { ListaRepuestosComponent } from './components/lista-repuestos/lista-repuestos.component';
 import { FormRepuestoComponent } from './components/form-repuesto/form-repuesto.component';
+import { ModificarRepuestoComponent } from './components/modificar-repuesto/modificar-repuesto.component';
 import { GestionarRolComponent } from './components/gestionar-rol/gestionar-rol.component';
 import { ColaEsperaComponent } from './components/cola-espera/cola-espera.component';
 import { DetalleVehiculoComponent } from './components/detalle-vehiculo/detalle-vehiculo.component';
@@ -61,6 +62,7 @@ const appRoutes: Routes = [
   {path: 'gestionar-rol', component: GestionarRolComponent, canActivate: [AuthGuard]},
   {path: 'lista-repuestos', component: ListaRepuestosComponent, canActivate: [AuthGuard]},
   {path: 'form-repuesto', component: FormRepuestoComponent, canActivate: [AuthGuard]},
+  {path: 'modificar-repuesto', component: ModificarRepuestoComponent, canActivate: [AuthGuard]},
 
   // Gerente
   {path: 'cola-espera', component: ColaEsperaComponent, canActivate: [AuthGuard]},
@@ -89,9 +91,10 @@ const appRoutes: Routes = [
     GestionarRolComponent,
     ColaEsperaComponent,
     DetalleVehiculoComponent,
+    ModificarRepuestoComponent,
     ListaReparacionComponent,
     ActualizarOrdenComponent,
-    CondicionEntregaComponent,
+    CondicionEntregaComponent
   ],
   imports: [
     BrowserModule,
