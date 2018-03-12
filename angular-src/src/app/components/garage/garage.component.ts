@@ -20,7 +20,6 @@ export class GarageComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-
     let headers = new Headers();
 
     // Busca el token del usuario que esta ingresado en el sistema actualmente
@@ -48,9 +47,6 @@ export class GarageComponent implements OnInit {
   }
 
   eliminarVehiculo(indice) {
-
-    console.log(indice);
-
     // Settear los encabezados para la petición al API
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
@@ -73,6 +69,17 @@ export class GarageComponent implements OnInit {
   }
 
   cancelarCita(indice) {
-    // FALTA
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+
+    this.http.post('http://localhost:3000/cliente/cancelar-cita', {id: this.vehiculos[indice].id}, { headers })
+      .map(res => res.json())
+      .subscribe(response => {
+        if (response.success) {
+          this.flashMessage.show(response.msg, { cssClass: 'custom-success', timeout: 3000 });
+        } else {
+          this.flashMessage.show(response.msg, { cssClass: 'custom-danger', timeout: 3000 });
+        }
+      });
   }
 }
