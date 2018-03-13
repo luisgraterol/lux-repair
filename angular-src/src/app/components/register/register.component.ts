@@ -60,7 +60,7 @@ export class RegisterComponent implements OnInit {
     // Register User
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    this.http.post('http://localhost:3000/users/register', user, { headers: headers })
+    this.http.post('users/register', user, { headers: headers })
       .map(res => res.json())
       .subscribe(data => {
         if (data.success) {

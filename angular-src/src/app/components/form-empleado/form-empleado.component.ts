@@ -53,7 +53,7 @@ export class FormEmpleadoComponent implements OnInit {
     headers.append('Content-Type', 'application/json');
 
     // Hacer la petición, se retorna una promesa
-    this.http.post('http://localhost:3000/users/datos-empleado', data, { headers })
+    this.http.post('users/datos-empleado', data, { headers })
       .map(res => res.json())
       .subscribe(response => {
         if (response.success) {

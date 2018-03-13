@@ -32,7 +32,7 @@ export class ProfileComponent implements OnInit {
     headers.append('Authorization', localStorage.getItem('id_token'));
     headers.append('Content-Type', 'application/json');
 
-    this.http.get('http://localhost:3000/users/profile', { headers })
+    this.http.get('users/profile', { headers })
       .map(res => res.json())
       .subscribe(profile => {
         this.user = profile.user;
