@@ -752,7 +752,7 @@ var DashboardComponent = /** @class */ (function () {
         // Fetches the token of the currently logged in user from localStorage
         headers.append('Authorization', localStorage.getItem('id_token'));
         headers.append('Content-Type', 'application/json');
-        this.http.get('http://localhost:3000/users/profile', { headers: headers })
+        this.http.get('users/profile', { headers: headers })
             .map(function (res) { return res.json(); })
             .subscribe(function (profile) {
             _this.rol = profile.user.rol;
