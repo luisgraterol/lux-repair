@@ -12,6 +12,31 @@ const Mecanico = require('../models/mecanico');
 
 const controller = {};
 
+// Medoto que actualiza los datos de un usuario
+controller.actualizarDatos = async function (data, callback) {
+    try {
+        const response = await Usuario.update(
+            {
+        Nombre: data.nombre,
+        Snombre: data.seg_nombre,
+        Apellido: data.apellido,
+        Cedula: data.cedula,
+        Email: data.email,
+        Username: data.username,
+        //Password: data.password
+            },
+            { where: { id: data.id } }  // Se busca por ID
+            
+        );
+
+        callback(null);
+    } catch (err) {
+        console.log('Se produjo un error en el controlador de empleado: ',err);
+        callback(err);
+    }
+}
+
+
 // Metodo utilizado para validar el usuario en config/passport.js
 controller.getUserById = async function (id, callback) {
     try {

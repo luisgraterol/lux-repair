@@ -38,6 +38,7 @@ import { AuthGuard } from './guards/auth.guard';
 
 // Pipes
 import { DatePipe } from '@angular/common';
+import { ActualizarDatosComponent } from './components/actualizar-datos/actualizar-datos.component';
 
 
 // Rutas
@@ -53,7 +54,7 @@ const appRoutes: Routes = [
   {path: 'form-vehiculo', component: FormVehiculoComponent, canActivate: [AuthGuard]},
   {path: 'garage', component: GarageComponent, canActivate: [AuthGuard]},
   {path: 'solicitar-orden', component: SolicitarOrdenComponent, canActivate: [AuthGuard]},
-
+  {path:'actualizar-datos',component:ActualizarDatosComponent,canActivate:[AuthGuard]},
   // Empleados
   {path: 'form-empleado', component: FormEmpleadoComponent, canActivate: [AuthGuard]},
 
@@ -98,7 +99,8 @@ const appRoutes: Routes = [
     ListaReparacionComponent,
     ActualizarOrdenComponent,
     ListaMecanicosComponent,
-    CondicionEntregaComponent
+    CondicionEntregaComponent,
+    ActualizarDatosComponent
   ],
   imports: [
     BrowserModule,
