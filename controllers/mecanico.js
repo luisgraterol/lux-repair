@@ -56,6 +56,9 @@ controller.getVehiculos = async function (idMecanico, callback) {
             }
         }
 
+        // Filtra los vehiculos sin ordenes
+        vehiculos = vehiculos.filter(vehiculo => !!vehiculo.Estado);
+
         // Retorna el arreglo
         callback(vehiculos, null);
     } catch (err) {

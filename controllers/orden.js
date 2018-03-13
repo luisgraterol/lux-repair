@@ -9,6 +9,7 @@ const Usuario = require('../models/user');
 const Vehiculo = require('../models/vehiculo');
 const Marca = require('../models/marca');
 const Modelo = require('../models/modelo');
+const Orden_tiene_Rep = require('../models/orden-tiene-repuesto');
 
 const controller = {};
 
@@ -31,18 +32,21 @@ controller.solicitar = async function (data, callback) {
 };
 
 
-controller.actualizarOrden = async function (data, callback) {
+controller.actualizar = async function (data, callback) {
     try {
+        console.log('REPUESTOS: ', data.repuestos);
+        console.log('VEHICULO: ', data.vehiculo);
+        console.log('ESTADO: ', data.estado);
         
-        for (let i=0; i<data.length; i++) {
-            let response = await Orden.update({ FechaAdmision: data[i].fechaAdmision }, 
-                {
-                    where:
-                    {
-                        Vehiculo: data[i].id,
-                        Activa: true
-                    }
-                });
+        let response = await Orden.update({ Estado: data.estado }, { where: { Vehiculo: data.vehiculo, Activa: true } });
+
+        let orden = await Orden.findOne({ where: { Vehiculo: data.vehiculo, Activa: true } });
+
+        for (let i=0; i<data.repuestos.length; i++) {
+            Orden_tiene_Rep.create({
+                Orden: orden.dataValues.id,
+                Repuesto: data.repuestos[i].id
+            });
         }
 
         callback(null);

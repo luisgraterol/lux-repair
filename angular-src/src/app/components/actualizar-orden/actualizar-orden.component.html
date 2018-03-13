@@ -9,11 +9,7 @@
           <div class="form-group mr-4">
             <label>Fecha de Admisión</label>
             <select class="form-control" id="seleccionado" [(ngModel)]="seleccionado" name="seleccionado">
-              <option selected>Aceite</option>
-              <option>Carrocería</option>
-              <option>Frenos</option>
-              <option>Tubo Escape</option>
-              <option>Otro</option>
+              <option *ngFor="let repuesto of repuestos; let i=index" [ngValue]="repuesto">{{repuesto.Descripcion}}</option>
             </select>
           </div>
           <button class="btn btn-secondary mt-3" type="submit">Agregar</button>
@@ -23,12 +19,12 @@
 
     <div class="my-4">
       <p>Repuestos Utilizados:</p>
-      <div *ngIf="repuestos.length !== 0">
-        <ul *ngFor="let repuesto of repuestos" class="list-group">
-          <li class="list-group-item">{{repuesto}}</li>
+      <div *ngIf="repuestosSeleccionados.length !== 0">
+        <ul *ngFor="let repuesto of repuestosSeleccionados" class="list-group">
+          <li class="list-group-item">{{repuesto.Descripcion}}</li>
         </ul>
       </div>
-      <div *ngIf="repuestos.length === 0">
+      <div *ngIf="repuestosSeleccionados.length === 0">
         <p class="text-muted">No se han agregado repuestos a esta reparación.</p>
       </div>
     </div>

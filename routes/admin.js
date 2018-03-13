@@ -1,9 +1,19 @@
 const express = require('express');
 const router = express.Router();
 
-// Routes are handled here
-router.get('*', (req, res, next) => {
-    res.send('This endpoint is yet to be developed.');
+const RepuestoController = require('../controllers/repuesto');
+
+// Obtiene los repuestos disponibles
+router.get('/repuestos', (req, res, next) => {
+    RepuestoController.getRepuestos((data, err) => {
+        if (err) throw err;
+
+        if (data) {
+            res.json({
+                repuestos: data
+            });
+        }
+    });
 });
 
 module.exports = router;

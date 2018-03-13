@@ -16,7 +16,6 @@ const con_Orden = require('../controllers/orden');
 const con_Repuesto = require('../controllers/repuesto');
 const con_Mecanico = require('../controllers/mecanico');
 
-/* PETICIONES GET */
 // Registra al usuario
 router.post('/register', (req, res, next) => {
     con_User.registrar(req.body, (user, err) => {
@@ -231,19 +230,6 @@ router.post('/fecha-admision', (req, res, next) => {
             res.json({ success: false, msg: 'Se produjo un error al asignar la fecha de admisión.' });
         else
             res.json({ success: true, msg: 'Las fechas de admisión se asignaron exitosamente.' });
-    });
-});
-
-// Obtiene los vehiculos asignados a un mecanico
-router.post('/vehiculos-mecanico', (req, res, next) => {
-    con_Mecanico.getVehiculos(req.body.id, (vehiculos, err) => {
-        if (err) throw err;
-
-        if (vehiculos) {
-            res.json({
-                vehiculos
-            });
-        }
     });
 });
 

@@ -25,6 +25,7 @@ const Orden = require('./models/orden');
 const Repuesto = require('./models/repuesto');
 const Marca = require('./models/marca');
 const Modelo = require('./models/modelo');
+const Orden_tiene_Rep = require('./models/orden-tiene-repuesto');
 
 // Sync changes in models
 connection.sync({ logging: false });

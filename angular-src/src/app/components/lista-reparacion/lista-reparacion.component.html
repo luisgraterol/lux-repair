@@ -41,6 +41,7 @@
               <span *ngIf="vehiculo.Servicio != undefined">{{vehiculo.Servicio}}</span>
             </td>
             <td *ngIf="vehiculo.Activo">
+              <span *ngIf="vehiculo.Estado == undefined" class="badge badge-pill badge-primary">Sin Cita</span>
               <span *ngIf="vehiculo.Estado == 'En Espera'" class="badge badge-pill badge-warning text-white">{{vehiculo.Estado}}</span>
               <span *ngIf="vehiculo.Estado == 'Evaluado'" class="badge badge-pill badge-secondary text-white">{{vehiculo.Estado}}</span>
               <span *ngIf="vehiculo.Estado == 'En Reparacion'" class="badge badge-pill badge-info text-white">{{vehiculo.Estado}}</span>

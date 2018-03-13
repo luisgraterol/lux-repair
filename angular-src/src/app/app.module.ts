@@ -63,11 +63,13 @@ const appRoutes: Routes = [
   {path: 'form-repuesto', component: FormRepuestoComponent, canActivate: [AuthGuard]},
   {path: 'modificar-repuesto', component: ModificarRepuestoComponent, canActivate: [AuthGuard]},
 
+  // Mecanico
+  { path: 'actualizar-orden', component: ActualizarOrdenComponent, canActivate: [AuthGuard] },
+  { path: 'lista-reparacion', component: ListaReparacionComponent, canActivate: [AuthGuard] },
+
   // Gerente
   {path: 'cola-espera', component: ColaEsperaComponent, canActivate: [AuthGuard]},
   {path: 'detalle-vehiculo', component: DetalleVehiculoComponent, canActivate: [AuthGuard]},
-  {path: 'lista-reparacion', component: ListaReparacionComponent, canActivate: [AuthGuard]},
-  {path: 'actualizar-orden', component: ActualizarOrdenComponent, canActivate: [AuthGuard]},
   {path: 'lista-mecanicos', component: ListaMecanicosComponent, canActivate: [AuthGuard]},
   {path: 'condicion-entrega', component: CondicionEntregaComponent, canActivate: [AuthGuard]}
 ];

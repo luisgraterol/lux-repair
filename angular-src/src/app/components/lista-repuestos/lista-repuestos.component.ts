@@ -30,7 +30,7 @@ export class ListaRepuestosComponent implements OnInit {
     headers.append('Authorization', token);
     headers.append('Content-Type', 'application/json');
 
-    this.http.get('http://localhost:3000/users/repuestos', { headers })
+    this.http.get('http://localhost:3000/admin/repuestos', { headers })
       .map(res => res.json())
       .subscribe(data => {
         console.log(data.repuestos);

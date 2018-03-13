@@ -31,7 +31,7 @@ export class ListaReparacionComponent implements OnInit {
 
     let id = JSON.parse(localStorage.getItem('user')).id;
 
-    this.http.post('http://localhost:3000/users/vehiculos-mecanico', { id }, { headers })
+    this.http.post('http://localhost:3000/mecanico/vehiculos', { id }, { headers })
       .map(res => res.json())
       .subscribe(data => {
         console.log(data.vehiculos);

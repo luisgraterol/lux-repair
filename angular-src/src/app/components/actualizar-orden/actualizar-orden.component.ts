@@ -12,7 +12,8 @@ import 'rxjs/add/operator/map';
 export class ActualizarOrdenComponent implements OnInit {
   estado: string;
   repuestos: any[];
-  seleccionado: string;
+  repuestosSeleccionados: any[];
+  seleccionado: any;
 
   constructor(
     private http: Http,
@@ -22,13 +23,40 @@ export class ActualizarOrdenComponent implements OnInit {
 
   ngOnInit() {
     this.repuestos = [];
+    this.repuestosSeleccionados = [];
 
+    const token = localStorage.getItem('id_token');
+
+    // Settear los encabezados para la petición al API
+    let headers = new Headers();
+    headers.append('Authorization', token);
+    headers.append('Content-Type', 'application/json');
+
+    this.http.get('http://localhost:3000/mecanico/repuestos', { headers })
+      .map(res => res.json())
+      .subscribe(data => {
+        console.log('Repuestos Totales: ', data.repuestos);
+        this.repuestos = data.repuestos;
+      });
+    
+    this.http.post('http://localhost:3000/mecanico/repuestos-por-vehiculo', { id: Number(localStorage.getItem('vehiculo-a-actualizar')) }, { headers })
+      .map(res => res.json())
+      .subscribe(data => {
+        console.log('Repuestos Previos: ', data.repuestos);
+        this.repuestosSeleccionados = data.repuestos;
+      });
   }
 
   actualizarOrden() {
     const data = {
-      Estado: this.estado
+      estado: this.estado,
+      repuestos: this.repuestosSeleccionados,
+      vehiculo: Number(localStorage.getItem('vehiculo-a-actualizar'))
     };
+
+    // Validacion
+    if (this.estado == undefined || this.repuestosSeleccionados.length == 0)
+      return false;
    
     console.log(data);
 
@@ -36,24 +64,23 @@ export class ActualizarOrdenComponent implements OnInit {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
 
-    this.http.post('http://localhost:3000/mecanico/actualizar-orden', { data }, { headers })
+    this.http.post('http://localhost:3000/mecanico/actualizar-orden', data, { headers })
       .map(res => res.json())
       .subscribe(response => {
         if (response.success) {
-          console.log(data);
           this.flashMessage.show(response.msg, { cssClass: 'custom-success', timeout: 3000 });
           this.router.navigate(['/lista-reparacion']);
         } else {
           this.flashMessage.show(response.msg, { cssClass: 'custom-danger', timeout: 3000 });
-          this.router.navigate(['/actualizar-orden']);
-          console.log(data);
         }
       });
   }
 
-  agregarRepuesto() {
-    if (this.seleccionado != '' && this.seleccionado != undefined)
-      this.repuestos.push(this.seleccionado);
+  agregarRepuesto(indice) {
+
+    if (this.seleccionado != undefined) {
+      this.repuestosSeleccionados.push(this.seleccionado);
+    }
   }
 
 }
