@@ -43,7 +43,7 @@ export class ActualizarDatosComponent implements OnInit {
       cedula: this.cedula,
       username: this.username,
       email: this.email,
-      password: this.password
+      //password: this.password
       
     };
 

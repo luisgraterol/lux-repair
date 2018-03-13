@@ -23,7 +23,7 @@ controller.actualizarDatos = async function (data, callback) {
         Cedula: data.cedula,
         Email: data.email,
         Username: data.username,
-        Password: data.password
+        //Password: data.password
             },
             { where: { id: data.id } }  // Se busca por ID
             
