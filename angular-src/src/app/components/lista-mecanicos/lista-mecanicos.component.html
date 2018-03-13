@@ -37,7 +37,7 @@
         <tbody>
           <tr *ngFor="let vehiculo of vehiculos; let i=index">
             <th scope="row">
-              <input type="checkbox" name="checked" [(ngModel)]="vehiculo.Chequeado">
+              <input type="checkbox" name="checked" [disabled]="vehiculo.Estado == 'Reparado'" [(ngModel)]="vehiculo.Chequeado">
             </th>
             <th scope="row">{{vehiculo.id}}</th>
             <td>{{vehiculo.Marca}} {{vehiculo.Modelo}}</td>
