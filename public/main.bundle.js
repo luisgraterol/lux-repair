@@ -110,6 +110,7 @@ var AppComponent = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__services_auth_service__ = __webpack_require__("../../../../../src/app/services/auth.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__guards_auth_guard__ = __webpack_require__("../../../../../src/app/guards/auth.guard.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__angular_common__ = __webpack_require__("../../../common/esm5/common.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__components_actualizar_datos_actualizar_datos_component__ = __webpack_require__("../../../../../src/app/components/actualizar-datos/actualizar-datos.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -152,6 +153,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 // Pipes
 
+
 // Rutas
 var appRoutes = [
     // Generales
@@ -164,6 +166,7 @@ var appRoutes = [
     { path: 'form-vehiculo', component: __WEBPACK_IMPORTED_MODULE_15__components_form_vehiculo_form_vehiculo_component__["a" /* FormVehiculoComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_29__guards_auth_guard__["a" /* AuthGuard */]] },
     { path: 'garage', component: __WEBPACK_IMPORTED_MODULE_16__components_garage_garage_component__["a" /* GarageComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_29__guards_auth_guard__["a" /* AuthGuard */]] },
     { path: 'solicitar-orden', component: __WEBPACK_IMPORTED_MODULE_17__components_solicitar_orden_solicitar_orden_component__["a" /* SolicitarOrdenComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_29__guards_auth_guard__["a" /* AuthGuard */]] },
+    { path: 'actualizar-datos', component: __WEBPACK_IMPORTED_MODULE_31__components_actualizar_datos_actualizar_datos_component__["a" /* ActualizarDatosComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_29__guards_auth_guard__["a" /* AuthGuard */]] },
     // Empleados
     { path: 'form-empleado', component: __WEBPACK_IMPORTED_MODULE_14__components_form_empleado_form_empleado_component__["a" /* FormEmpleadoComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_29__guards_auth_guard__["a" /* AuthGuard */]] },
     // Administrador
@@ -207,7 +210,8 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_24__components_lista_reparacion_lista_reparacion_component__["a" /* ListaReparacionComponent */],
                 __WEBPACK_IMPORTED_MODULE_25__components_actualizar_orden_actualizar_orden_component__["a" /* ActualizarOrdenComponent */],
                 __WEBPACK_IMPORTED_MODULE_26__components_lista_mecanicos_lista_mecanicos_component__["a" /* ListaMecanicosComponent */],
-                __WEBPACK_IMPORTED_MODULE_27__components_condicion_entrega_condicion_entrega_component__["a" /* CondicionEntregaComponent */]
+                __WEBPACK_IMPORTED_MODULE_27__components_condicion_entrega_condicion_entrega_component__["a" /* CondicionEntregaComponent */],
+                __WEBPACK_IMPORTED_MODULE_31__components_actualizar_datos_actualizar_datos_component__["a" /* ActualizarDatosComponent */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -225,6 +229,115 @@ var AppModule = /** @class */ (function () {
         })
     ], AppModule);
     return AppModule;
+}());
+
+
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/actualizar-datos/actualizar-datos.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/actualizar-datos/actualizar-datos.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"row\">\n  <div class=\"col-8 col-md-8 col-lg-6 mx-auto my-auto\">\n    <!-- Title -->\n    <h2 class=\"mt-4 pt-5 pb-4\">Actualizar Datos</h2>\n\n    <!-- Form -->\n    <form (submit)=\"actualizarDatos()\" class=\"wrapper\">\n\n      <div class=\"row\">\n        <div class=\"col-12 col-md-6\">\n          <div class=\"form-group\">\n            <label>Nombre\n              <span class=\"required\">*</span>\n            </label>\n            <input type=\"text\" [(ngModel)]=\"nombre\" name=\"nombre\" class=\"form-control\">\n          </div>\n        </div>\n        <div class=\"col-12 col-md-6\">\n          <div class=\"form-group\">\n            <label>Segundo Nombre</label>\n            <input type=\"text\" [(ngModel)]=\"seg_nombre\" name=\"seg_nombre\" class=\"form-control\">\n          </div>\n        </div>\n      </div>\n\n      <div class=\"row\">\n        <div class=\"col-12 col-md-6\">\n          <div class=\"form-group\">\n            <label>Apellido <span class=\"required\">*</span></label>\n            <input type=\"text\" [(ngModel)]=\"apellido\" name=\"apellido\" class=\"form-control\">\n          </div>\n        </div>\n        <div class=\"col-12 col-md-6\">\n          <div class=\"form-group\">\n            <label>\n              Cedula\n              <span class=\"required\">*</span>\n            </label>\n            <input type=\"text\" [(ngModel)]=\"cedula\" name=\"cedula\" class=\"form-control\">\n          </div>\n        </div>\n      </div>\n\n      <div class=\"row\">\n        <div class=\"col-12 col-md-6\">\n          <div class=\"form-group\">\n            <label>\n              Usuario\n              <span class=\"required\">*</span>\n            </label>\n            <input type=\"text\" [(ngModel)]=\"username\" name=\"username\" class=\"form-control\">\n          </div>\n        </div>\n        <div class=\"col-12 col-md-6\">\n          <div class=\"form-group\">\n            <label>\n              Correo Electrónico\n              <span class=\"required\">*</span>\n            </label>\n            <input type=\"text\" [(ngModel)]=\"email\" name=\"email\" class=\"form-control\">\n          </div>\n        </div>\n      </div>\n\n     \n\n      <!-- Submit Button -->\n      <div class=\"container\">\n        <div class=\"row pt-4\">\n          <div class=\"col\">\n            <div class=\"d-flex justify-content-center\">\n              <input type=\"submit\" class=\"btn btn-primary\" value=\"Submit\">\n            </div>\n          </div>\n        </div>\n      </div>\n    </form>\n  </div>\n</div>"
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/actualizar-datos/actualizar-datos.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ActualizarDatosComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_auth_service__ = __webpack_require__("../../../../../src/app/services/auth.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angular2_flash_messages__ = __webpack_require__("../../../../angular2-flash-messages/module/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angular2_flash_messages___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_angular2_flash_messages__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__("../../../router/esm5/router.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_http__ = __webpack_require__("../../../http/esm5/http.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_map__ = __webpack_require__("../../../../rxjs/_esm5/add/operator/map.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+// Http Requests
+
+
+var ActualizarDatosComponent = /** @class */ (function () {
+    function ActualizarDatosComponent(http, authService, flashMessage, router) {
+        this.http = http;
+        this.authService = authService;
+        this.flashMessage = flashMessage;
+        this.router = router;
+    }
+    ActualizarDatosComponent.prototype.ngOnInit = function () {
+    };
+    ActualizarDatosComponent.prototype.actualizarDatos = function () {
+        var _this = this;
+        var data = {
+            id: JSON.parse(localStorage.getItem('user')).id,
+            nombre: this.nombre,
+            seg_nombre: this.seg_nombre,
+            apellido: this.apellido,
+            cedula: this.cedula,
+            username: this.username,
+            email: this.email,
+        };
+        console.log('Datos: ', data);
+        // Settear los encabezados para la petición al API
+        var headers = new __WEBPACK_IMPORTED_MODULE_4__angular_http__["Headers"]();
+        headers.append('Content-Type', 'application/json');
+        // Hacer la petición, se retorna una promesa
+        this.http.post('users/datos-clientes', data, { headers: headers })
+            .map(function (res) { return res.json(); })
+            .subscribe(function (response) {
+            if (response.success) {
+                _this.flashMessage.show(response.msg, { cssClass: 'custom-success', timeout: 3000 });
+                _this.router.navigate(['/profile']);
+            }
+            else {
+                _this.flashMessage.show(response.msg, { cssClass: 'custom-danger', timeout: 3000 });
+                _this.router.navigate(['/actualizar-datos']);
+            }
+        });
+    };
+    ActualizarDatosComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: 'app-actualizar-datos',
+            template: __webpack_require__("../../../../../src/app/components/actualizar-datos/actualizar-datos.component.html"),
+            styles: [__webpack_require__("../../../../../src/app/components/actualizar-datos/actualizar-datos.component.css")]
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_4__angular_http__["Http"],
+            __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */],
+            __WEBPACK_IMPORTED_MODULE_2_angular2_flash_messages__["FlashMessagesService"],
+            __WEBPACK_IMPORTED_MODULE_3__angular_router__["a" /* Router */]])
+    ], ActualizarDatosComponent);
+    return ActualizarDatosComponent;
 }());
 
 
@@ -252,7 +365,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/actualizar-orden/actualizar-orden.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row main p-4 p-md-3\">\n  <!-- Form de Actualizacion de reparacion  -->\n  <div class=\"container py-5 mt-3 mb-5\">\n    <h2 class=\"mb-3\">Actualizar Orden</h2>\n\n    <div class=\"row\">\n      <div class=\"col\">\n        <form (submit)=\"agregarRepuesto()\" class=\"d-flex align-items-center\">\n          <div class=\"form-group mr-4\">\n            <label>Fecha de Admisión</label>\n            <select class=\"form-control\" id=\"seleccionado\" [(ngModel)]=\"seleccionado\" name=\"seleccionado\">\n              <option *ngFor=\"let repuesto of repuestos; let i=index\" [ngValue]=\"repuesto\">{{repuesto.Descripcion}}</option>\n            </select>\n          </div>\n          <button class=\"btn btn-secondary mt-3\" type=\"submit\">Agregar</button>\n        </form>\n      </div>\n    </div>\n\n    <div class=\"my-4\">\n      <p>Repuestos Utilizados:</p>\n      <div *ngIf=\"repuestosSeleccionados.length !== 0\">\n        <ul *ngFor=\"let repuesto of repuestosSeleccionados\" class=\"list-group\">\n          <li class=\"list-group-item\">{{repuesto.Descripcion}}</li>\n        </ul>\n      </div>\n      <div *ngIf=\"repuestosSeleccionados.length === 0\">\n        <p class=\"text-muted\">No se han agregado repuestos a esta reparación.</p>\n      </div>\n    </div>\n\n    <form (submit)=\"actualizarOrden()\">\n      <div class=\"form-group\">\n        <label for=\"estado\">Estado de la Reparación</label>\n        <select id=\"estado\" class=\"form-control\" [(ngModel)]=\"estado\" name=\"estado\">\n            <option selected>En Reparacion</option>\n            <option>Reparado</option>\n            <option>Otro</option>\n        </select>\n      </div>\n\n    \n      \n      <div class=\"d-flex justify-content-center\">\n        <button type=\"submit\" class=\"btn btn-primary mt-4\">Actualizar</button>\n      </div>\n\n    </form>\n  </div>\n</div>"
+module.exports = "<div class=\"row main p-4 p-md-3\">\n  <!-- Form de Actualizacion de reparacion  -->\n  <div class=\"container py-5 mt-3 mb-5\">\n    <h2 class=\"mb-3\">Actualizar Orden</h2>\n\n    <div class=\"row\">\n      <div class=\"col\">\n        <form (submit)=\"agregarRepuesto()\" class=\"d-flex align-items-center\">\n          <div class=\"form-group mr-4\">\n            <label>Fecha de Admisión</label>\n            <select class=\"form-control\" id=\"seleccionado\" [(ngModel)]=\"seleccionado\" name=\"seleccionado\">\n              <option *ngFor=\"let repuesto of repuestos; let i=index\" [ngValue]=\"repuesto\">{{repuesto.Descripcion}}</option>\n            </select>\n          </div>\n          <button class=\"btn btn-secondary mt-3\" type=\"submit\">Agregar</button>\n        </form>\n      </div>\n    </div>\n\n    <div class=\"my-4\">\n      <p>Repuestos Utilizados:</p>\n      <div *ngIf=\"repuestosSeleccionados.length !== 0\">\n        <ul *ngFor=\"let repuesto of repuestosSeleccionados\" class=\"list-group\">\n          <li class=\"list-group-item\">{{repuesto.Descripcion}}</li>\n        </ul>\n      </div>\n      <div *ngIf=\"repuestosSeleccionados.length === 0\">\n        <p class=\"text-muted\">No se han agregado repuestos a esta reparación.</p>\n      </div>\n    </div>\n\n    <form (submit)=\"actualizarOrden()\">\n      <div class=\"form-group\">\n        <label for=\"estado\">Estado de la Reparación</label>\n        <select id=\"estado\" class=\"form-control\" [(ngModel)]=\"estado\" name=\"estado\">\n            <option selected>En Reparacion</option>\n            <option>Reparado</option>\n        </select>\n      </div>\n\n    \n      \n      <div class=\"d-flex justify-content-center\">\n        <button type=\"submit\" class=\"btn btn-primary mt-4\">Actualizar</button>\n      </div>\n\n    </form>\n  </div>\n</div>"
 
 /***/ }),
 
@@ -1021,7 +1134,7 @@ var FormEmpleadoComponent = /** @class */ (function () {
         var data = {
             id: JSON.parse(localStorage.getItem('user')).id,
             sexo: this.sexo,
-            fechaNacimiento: this.fechaNacimiento
+            fechaNacimiento: this.fechaNacimiento,
         };
         console.log('Datos: ', data);
         // Settear los encabezados para la petición al API
@@ -2315,7 +2428,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/profile/profile.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\n<div class=\"main\">\n\n  <div class=\"row bg-profile mb-4 pt-5 pb-3\">\n    <div class=\"col d-flex flex-column align-items-center\">\n      <div class=\"bg-light circle p-4 mb-4 image\">\n        <img class=\"img-responsive mx-4 mt-4 mb-2\" src=\"assets/detalle-vehiculo/man.png\" alt=\"Imagen Perfil\" width=\"120\" height=\"130\">\n      </div>\n      <h2 *ngIf=\"user != undefined\" class=\"page-header pb-3 text-white font-weight-light\">{{user.Nombre}} {{user.Snombre}} {{user.Apellido}}</h2>\n    </div>\n  </div>\n\n  <div class=\"row\">\n    <div class=\"col-11 col-md-8 mx-auto mb-5\">\n      <div *ngIf=\"user\">\n        <ul class=\"list-group\">\n          <li class=\"list-group-item d-flex justify-content-between\">\n            <h5 class=\"pr-3 my-auto\">Usuario:</h5>\n            <p class=\"lead m-0\">{{user.Username}}</p>\n          </li>\n          <li class=\"list-group-item d-flex justify-content-between\">\n            <h5 class=\"pr-3 my-auto\">Correo:</h5>\n            <p class=\"lead m-0\">{{user.Email}}</p>\n          </li>\n          <li class=\"list-group-item d-flex justify-content-between\">\n            <h5 class=\"pr-3 my-auto\">Cedula:</h5>\n            <p class=\"lead m-0\">{{user.Cedula}}</p>\n          </li>\n          <li *ngIf=\"this.rol != 'Cliente'\" class=\"list-group-item d-flex justify-content-between\">\n            <h5 class=\"pr-3 my-auto\">Rol:</h5>\n            <p class=\"lead m-0\">{{rol}}</p>\n          </li>\n          <li *ngIf=\"this.rol != 'Cliente' && this.fechaNacimiento != null\" class=\"list-group-item d-flex justify-content-between\">\n            <h5 class=\"pr-3 my-auto\">Fecha de Nacimiento:</h5>\n            <p class=\"lead m-0\">{{fechaNacimiento}}</p>\n          </li>\n          <li *ngIf=\"this.rol != 'Cliente' && this.sexo != null\" class=\"list-group-item d-flex justify-content-between\">\n            <h5 class=\"pr-3 my-auto\">Sexo:</h5>\n            <p class=\"lead m-0\">{{sexo}}</p>\n          </li>\n        </ul>\n      </div>\n    </div>\n  </div>\n\n  <div *ngIf=\"rol != 'Cliente'\" class=\"row mb-5\">\n    <div class=\"col-11 col-md-6 col-lg-4 mx-auto my-auto\">\n      <!-- Tarjeta -->\n      <div class=\"card text-center\">\n        <div class=\"card-header\">\n          <h5 *ngIf=\"completoFormulario()\" class=\"pt-3\">Actualiza tus datos</h5>\n          <h5 *ngIf=\"!completoFormulario()\" class=\"pt-3\">Complete el formulario</h5>\n        </div>\n        <div class=\"card-body\">\n          <p *ngIf=\"completoFormulario()\">Si quiere hacer alguna modificación a sus datos personales puede hacerlo aquí.</p>\n          <p *ngIf=\"!completoFormulario()\">Nos faltan algunos de sus datos personales. Por favor, tómese un momento para llenarlos.</p>\n          <a class=\"btn btn-primary\" [routerLink]=\"['/form-empleado']\">Ir al formulario</a>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n"
+module.exports = "\n<div class=\"main\">\n\n  <div class=\"row bg-profile mb-4 pt-5 pb-3\">\n    <div class=\"col d-flex flex-column align-items-center\">\n      <div class=\"bg-light circle p-4 mb-4 image\">\n        <img class=\"img-responsive mx-4 mt-4 mb-2\" src=\"assets/detalle-vehiculo/man.png\" alt=\"Imagen Perfil\" width=\"120\" height=\"130\">\n      </div>\n      <h2 *ngIf=\"user != undefined\" class=\"page-header pb-3 text-white font-weight-light\">{{user.Nombre}} {{user.Snombre}} {{user.Apellido}}</h2>\n    </div>\n  </div>\n\n  <div class=\"row\">\n    <div class=\"col-11 col-md-8 mx-auto mb-5\">\n      <div *ngIf=\"user\">\n        <ul class=\"list-group\">\n          <li class=\"list-group-item d-flex justify-content-between\">\n            <h5 class=\"pr-3 my-auto\">Usuario:</h5>\n            <p class=\"lead m-0\">{{user.Username}}</p>\n          </li>\n          <li class=\"list-group-item d-flex justify-content-between\">\n            <h5 class=\"pr-3 my-auto\">Correo:</h5>\n            <p class=\"lead m-0\">{{user.Email}}</p>\n          </li>\n          <li class=\"list-group-item d-flex justify-content-between\">\n            <h5 class=\"pr-3 my-auto\">Cedula:</h5>\n            <p class=\"lead m-0\">{{user.Cedula}}</p>\n          </li>\n          <li *ngIf=\"this.rol != 'Cliente'\" class=\"list-group-item d-flex justify-content-between\">\n            <h5 class=\"pr-3 my-auto\">Rol:</h5>\n            <p class=\"lead m-0\">{{rol}}</p>\n          </li>\n          <li *ngIf=\"this.rol != 'Cliente' && this.fechaNacimiento != null\" class=\"list-group-item d-flex justify-content-between\">\n            <h5 class=\"pr-3 my-auto\">Fecha de Nacimiento:</h5>\n            <p class=\"lead m-0\">{{fechaNacimiento}}</p>\n          </li>\n          <li *ngIf=\"this.rol != 'Cliente' && this.sexo != null\" class=\"list-group-item d-flex justify-content-between\">\n            <h5 class=\"pr-3 my-auto\">Sexo:</h5>\n            <p class=\"lead m-0\">{{sexo}}</p>\n          </li>\n        </ul>\n      </div>\n    </div>\n  </div>\n\n  <div *ngIf=\"rol != 'Cliente'\" class=\"row mb-5\">\n    <div class=\"col-11 col-md-6 col-lg-4 mx-auto my-auto\">\n      <!-- Tarjeta -->\n      <div class=\"card text-center\">\n        <div class=\"card-header\">\n          <h5 *ngIf=\"completoFormulario()\" class=\"pt-3\">Actualiza tus datos Laborales</h5>\n          <h5 *ngIf=\"!completoFormulario()\" class=\"pt-3\">Complete el formulario</h5>\n        </div>\n        <div class=\"card-body\">\n          <p *ngIf=\"completoFormulario()\">Si quiere hacer alguna modificación a sus datos Laborales puedes hacerlo aquí.</p>\n          <p *ngIf=\"!completoFormulario()\">Nos faltan algunos de sus datos Laborales. Por favor, tómese un momento para llenarlos.</p>\n          <a class=\"btn btn-primary\" [routerLink]=\"['/form-empleado']\">Ir al formulario</a>\n        </div>\n      </div>\n    </div>\n  </div>\n  <div  class=\"row mb-5\">\n    <div class=\"col-11 col-md-6 col-lg-4 mx-auto my-auto\">\n      <!-- Tarjeta -->\n      <div class=\"card text-center\">\n        <div class=\"card-header\">\n          <h5  class=\"pt-3\">Actualiza tus datos Personales</h5>\n          \n        </div>\n        <div class=\"card-body\">\n          <p >Si quiere hacer alguna modificación a sus datos personales puede hacerlo aquí.</p>\n         \n          <a class=\"btn btn-primary\" [routerLink]=\"['/actualizar-datos']\">Ir al formulario</a>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
