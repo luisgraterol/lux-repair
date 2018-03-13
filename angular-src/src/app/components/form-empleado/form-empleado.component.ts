@@ -16,6 +16,13 @@ export class FormEmpleadoComponent implements OnInit {
 
   sexo: string;
   fechaNacimiento: string;
+  nombre: string;
+  seg_nombre: string;
+  apellido: string;
+  cedula: string;
+  username: string;
+  email: string;
+  password: string;
 
   constructor(
     private http: Http,
@@ -43,7 +50,8 @@ export class FormEmpleadoComponent implements OnInit {
     let data = {
       id: JSON.parse(localStorage.getItem('user')).id,
       sexo: this.sexo,
-      fechaNacimiento: this.fechaNacimiento
+      fechaNacimiento: this.fechaNacimiento,
+
     };
 
     console.log('Datos: ', data);
