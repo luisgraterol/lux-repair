@@ -59,4 +59,20 @@
       </div>
     </div>
   </div>
+  <div *ngIf="this.rol != 'Gerente' && rol != 'Mecanico'&&rol != 'Administrador'" class="row mb-5">
+    <div class="col-11 col-md-6 col-lg-4 mx-auto my-auto">
+      <!-- Tarjeta -->
+      <div class="card text-center">
+        <div class="card-header">
+          <h5  class="pt-3">Actualiza tus datos</h5>
+          
+        </div>
+        <div class="card-body">
+          <p >Si quiere hacer alguna modificación a sus datos personales puede hacerlo aquí.</p>
+         
+          <a class="btn btn-primary" [routerLink]="['/actualizar-datos']">Ir al formulario</a>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

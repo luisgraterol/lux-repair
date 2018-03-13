@@ -144,6 +144,23 @@ router.post('/datos-empleado', (req, res, next) => {
     });
 });
 
+
+
+
+// Actualiza los datos de un cliente
+router.post('/datos-clientes', (req, res, next) => {
+   con_User.actualizarDatos(req.body, (err) => {
+        if (err) 
+            res.json({ success: false, msg: 'Se produjo un error al actualizar sus datos.' });
+        else 
+        
+            res.json({ success: true, msg: 'Se actualizaron sus datos exitosamente.' });
+
+    });
+});
+
+
+
 // Registra un vehiculo nuevo
 router.post('/registrar-vehiculo', (req, res, next) => {
     con_Vehiculo.registrar(req.body, (err) => {
