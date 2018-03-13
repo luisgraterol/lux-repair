@@ -8,14 +8,12 @@ import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
 
 @Component({
-  selector: 'app-form-empleado',
-  templateUrl: './form-empleado.component.html',
-  styleUrls: ['./form-empleado.component.css']
+  selector: 'app-actualizar-datos',
+  templateUrl: './actualizar-datos.component.html',
+  styleUrls: ['./actualizar-datos.component.css']
 })
-export class FormEmpleadoComponent implements OnInit {
+export class ActualizarDatosComponent implements OnInit {
 
-  sexo: string;
-  fechaNacimiento: string;
   nombre: string;
   seg_nombre: string;
   apellido: string;
@@ -23,35 +21,30 @@ export class FormEmpleadoComponent implements OnInit {
   username: string;
   email: string;
   password: string;
+  rol: string;
 
   constructor(
     private http: Http,
     private authService: AuthService,
     private flashMessage: FlashMessagesService,
     private router: Router
-  ) { }
+  ) { 
+    
+  }
 
-  ngOnInit() { }
-
-  agregarDatos() {
-
-    // Validacion de las Casillas
-    if (this.sexo == undefined || this.fechaNacimiento == undefined) {
-      this.flashMessage.show('Por favor llene todas las casillas.', { cssClass: 'custom-danger', timeout: 5000 });
-      return false;
-    }
-
-    // Validar de la Fecha de Nacimiento
-    if (new Date(this.fechaNacimiento) > new Date()) {
-      this.flashMessage.show('La fecha ingresada es invalida.', { cssClass: 'custom-danger', timeout: 5000 });
-      return false;
-    }
-
+  ngOnInit() {
+  }
+  actualizarDatos() {
     let data = {
       id: JSON.parse(localStorage.getItem('user')).id,
-      sexo: this.sexo,
-      fechaNacimiento: this.fechaNacimiento,
-
+      nombre: this.nombre,
+      seg_nombre: this.seg_nombre,
+      apellido: this.apellido,
+      cedula: this.cedula,
+      username: this.username,
+      email: this.email,
+      //password: this.password
+      
     };
 
     console.log('Datos: ', data);
@@ -61,7 +54,7 @@ export class FormEmpleadoComponent implements OnInit {
     headers.append('Content-Type', 'application/json');
 
     // Hacer la petición, se retorna una promesa
-    this.http.post('http://localhost:3000/users/datos-empleado', data, { headers })
+    this.http.post('http://localhost:3000/users/datos-clientes', data, { headers })
       .map(res => res.json())
       .subscribe(response => {
         if (response.success) {
@@ -69,8 +62,12 @@ export class FormEmpleadoComponent implements OnInit {
           this.router.navigate(['/profile']);
         } else {
           this.flashMessage.show(response.msg, { cssClass: 'custom-danger', timeout: 3000 });
-          this.router.navigate(['/form-empleado']);
+          this.router.navigate(['/actualizar-datos']);
         }
     });
   }
-}
+    
+  }
+
+
+
