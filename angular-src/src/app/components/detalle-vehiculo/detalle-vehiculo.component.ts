@@ -21,18 +21,31 @@ export class DetalleVehiculoComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    // Toma el indice del carro a mostrar de localStorage
-    let indice = Number(localStorage.getItem('vehiculo-detalle'));
 
-    // Toma el arreglo entero de vehiculos de localStorage
-    let arreglo = JSON.parse(localStorage.getItem('vehiculos'));
+    let idCliente = '';
 
-    // Guarda la informacion del vehiculo a mostrar
-    this.vehiculo = arreglo[indice];
-    console.log(this.vehiculo);
+    if (localStorage.getItem('lleguePorQR') == 'true') {
 
-    // Toma el ID del dueño del vehiculo
-    let idCliente = arreglo[indice].Cliente;
+      this.vehiculo = JSON.parse(localStorage.getItem('vehiculoQR'));
+      idCliente = JSON.parse(localStorage.getItem('vehiculoQR')).Cliente;
+
+      localStorage.setItem('vehiculo-detalle', '0');
+      localStorage.setItem('ultima-pagina', 'lector-qr');
+
+    } else {
+      // Toma el indice del carro a mostrar de localStorage
+      let indice = Number(localStorage.getItem('vehiculo-detalle'));
+
+      // Toma el arreglo entero de vehiculos de localStorage
+      let arreglo = JSON.parse(localStorage.getItem('vehiculos'));
+
+      // Guarda la informacion del vehiculo a mostrar
+      this.vehiculo = arreglo[indice];
+      console.log(this.vehiculo);
+
+      // Toma el ID del dueño del vehiculo
+      idCliente = arreglo[indice].Cliente;
+    }
 
     let headers = new Headers();
 
