@@ -19,7 +19,18 @@
       </div>
       <div class="form-group">
         <label for="imagen">Imagen</label>
-        <input type="file" class="form-control-file" id="imagen" name="imagen">
+        <!-- <input type="file" class="form-control-file" id="imagen" name="imagen"> -->
+        <image-upload
+           [max]="1" 
+           [preview]="true" 
+           [extensions]="['jpg','png','jpeg']" 
+           [buttonCaption]="'Elegir Imagen'" 
+           [dropBoxMessage]="'¡Suelte su imagen aquí!'" 
+           [clearButtonCaption]="'Eliminar'" 
+           [class]="'img-uploader'"
+           [maxFileSize]="1000000"
+           (uploadFinished)="onUploadFinished($event)"
+        ></image-upload>
       </div>
       <div class="d-flex justify-content-center">
         <button type="submit" class="btn btn-primary mt-4">Solicitar</button>

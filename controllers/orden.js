@@ -17,15 +17,26 @@ const controller = {};
 
 controller.solicitar = async function (data, callback) {
     try {
-        let response = await Orden.create({
-            Vehiculo: data.idVehiculo,
-            Estado: 'En Espera',
-            Servicio: data.Servicio,
-            Detalle: data.Detalles,
-            Evaluacion: 'Por Evaluar',
-            FechaSolicitud: obtenerFechaHoy()
+        cloudinary.uploader.upload(data.Imagen, result => {
+
+            // Manejo del error
+            if (!result) {
+                console.log('Error al montar la imagen del vehiculo en Cloudinary.');
+                return false;
+            }
+
+            Orden.create({
+                Vehiculo: data.idVehiculo,
+                Estado: 'En Espera',
+                Servicio: data.Servicio,
+                Detalle: data.Detalles,
+                Evaluacion: 'Por Evaluar',
+                FechaSolicitud: obtenerFechaHoy(),
+                Imagen: result.secure_url
+            });
+
+            callback(null);
         });
-        callback(null);
     } catch (err) {
         console.log('Se produjo un error en el controlador de la orden: ', err);
         callback(err);
@@ -110,6 +121,7 @@ controller.asignarAdmision = async function (data, callback) {
 
                 if (!result) {
                     console.log('Error al montar el QR en Cloudinary.');
+                    return false;
                 }
 
                 // Enviar correo

@@ -84,7 +84,12 @@ const Orden = connection.define('Orden',
         defaultValue: null
     },
     QR: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING, // URL a Cloudinary
+        allowNull: true,
+        defaultValue: null
+    },
+    Imagen: {
+        type: Sequelize.STRING, // URL a Cloudinary
         allowNull: true,
         defaultValue: null
     }

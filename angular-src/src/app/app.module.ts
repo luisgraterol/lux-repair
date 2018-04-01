@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { FlashMessagesModule } from 'angular2-flash-messages';
 import { NgQrScannerModule } from 'angular2-qrscanner';
+import { ImageUploadModule } from "angular2-image-upload";
 
 // Componentes
 import { AppComponent } from './app.component';
@@ -112,7 +113,8 @@ const appRoutes: Routes = [
     HttpModule,
     RouterModule.forRoot(appRoutes),
     FlashMessagesModule.forRoot(),
-    NgQrScannerModule
+    NgQrScannerModule,
+    ImageUploadModule.forRoot()
   ],
   providers: [
     AuthService,
