@@ -410,6 +410,7 @@ controller.obtener = async function (data, callback) {
         vehiculo.FechaAdmision = orden.FechaAdmision;
         vehiculo.Detalle = orden.Detalle;
         vehiculo.codigoQR = orden.QR;
+        vehiculo.Imagen = orden.Imagen;
 
         if (orden.Activa == '1') {
             vehiculo.OrdenActiva = true;

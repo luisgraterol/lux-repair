@@ -85,8 +85,9 @@
             <div class="container">
               <div class="row">
                 <div class="col-3 d-flex align-items-start">
-                  <img class="img-responsive rounded mx-auto mt-4 mb-2" src="assets/detalle-vehiculo/orden.png" alt="Imagen Orden" width="130"
-                    height="140">
+                  <img *ngIf="this.vehiculo.Imagen == null || this.vehiculo.Imagen == undefined" class="img-responsive rounded mx-auto mt-4 mb-2" src="assets/detalle-vehiculo/orden.png" alt="Imagen Orden" width="130" height="140">
+                  <img *ngIf="this.vehiculo.Imagen != null && this.vehiculo.Imagen != undefined" class="img-fluid rounded mx-auto mt-4 mb-2"
+                    [src]="this.vehiculo.Imagen" alt="Imagen Orden">
                 </div>
                 <div class="col-9">
                   <ul class="list-group list-group-flush">

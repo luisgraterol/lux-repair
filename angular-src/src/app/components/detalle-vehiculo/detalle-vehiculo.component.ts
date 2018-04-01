@@ -48,6 +48,8 @@ export class DetalleVehiculoComponent implements OnInit {
 
       if (arreglo[indice].codigoQR) {
         this.tengoQR = true;
+      } else {
+        this.tengoQR = false;
       }
 
       console.log(this.vehiculo);
