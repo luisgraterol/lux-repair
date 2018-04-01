@@ -38,4 +38,13 @@ router.post('/finalizar', (req, res, next) => {
     });
 });
 
+router.post('/qr', (req, res, next) => {
+    OrdenController.obtener(req.body, (data, err) => {
+        if (err)
+            res.json({ success: false, msg: 'Se produjo un error al obtener la orden a partir del QR.' });
+        else
+            res.json({ success: true, msg: 'Se obtuvo la orden exitosamente.', vehiculo: data });
+    });
+});
+
 module.exports = router;

@@ -5,6 +5,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { FlashMessagesModule } from 'angular2-flash-messages';
+import { NgQrScannerModule } from 'angular2-qrscanner';
+import { ImageUploadModule } from "angular2-image-upload";
 
 // Componentes
 import { AppComponent } from './app.component';
@@ -29,6 +31,8 @@ import { ListaReparacionComponent } from './components/lista-reparacion/lista-re
 import { ActualizarOrdenComponent } from './components/actualizar-orden/actualizar-orden.component';
 import { ListaMecanicosComponent } from './components/lista-mecanicos/lista-mecanicos.component';
 import { CondicionEntregaComponent } from './components/condicion-entrega/condicion-entrega.component';
+import { ActualizarDatosComponent } from './components/actualizar-datos/actualizar-datos.component';
+import { LectorQrComponent } from './components/lector-qr/lector-qr.component';
 
 // Servicios
 import { AuthService } from './services/auth.service';
@@ -38,7 +42,6 @@ import { AuthGuard } from './guards/auth.guard';
 
 // Pipes
 import { DatePipe } from '@angular/common';
-import { ActualizarDatosComponent } from './components/actualizar-datos/actualizar-datos.component';
 
 
 // Rutas
@@ -72,7 +75,8 @@ const appRoutes: Routes = [
   {path: 'cola-espera', component: ColaEsperaComponent, canActivate: [AuthGuard]},
   {path: 'detalle-vehiculo', component: DetalleVehiculoComponent, canActivate: [AuthGuard]},
   {path: 'lista-mecanicos', component: ListaMecanicosComponent, canActivate: [AuthGuard]},
-  {path: 'condicion-entrega', component: CondicionEntregaComponent, canActivate: [AuthGuard]}
+  {path: 'condicion-entrega', component: CondicionEntregaComponent, canActivate: [AuthGuard]},
+  {path: 'lector-qr', component: LectorQrComponent, canActivate: [AuthGuard]}
 ];
 
 
@@ -100,14 +104,17 @@ const appRoutes: Routes = [
     ActualizarOrdenComponent,
     ListaMecanicosComponent,
     CondicionEntregaComponent,
-    ActualizarDatosComponent
+    ActualizarDatosComponent,
+    LectorQrComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     RouterModule.forRoot(appRoutes),
-    FlashMessagesModule.forRoot()
+    FlashMessagesModule.forRoot(),
+    NgQrScannerModule,
+    ImageUploadModule.forRoot()
   ],
   providers: [
     AuthService,

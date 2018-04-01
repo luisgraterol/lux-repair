@@ -13,6 +13,7 @@ export class DetalleVehiculoComponent implements OnInit {
 
   vehiculo: object;
   dueno: object;
+  tengoQR: boolean;
 
   constructor(
     private http: Http,
@@ -21,18 +22,43 @@ export class DetalleVehiculoComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    // Toma el indice del carro a mostrar de localStorage
-    let indice = Number(localStorage.getItem('vehiculo-detalle'));
 
-    // Toma el arreglo entero de vehiculos de localStorage
-    let arreglo = JSON.parse(localStorage.getItem('vehiculos'));
+    let idCliente = '';
 
-    // Guarda la informacion del vehiculo a mostrar
-    this.vehiculo = arreglo[indice];
-    console.log(this.vehiculo);
+    if (localStorage.getItem('lleguePorQR') == 'true') {
 
-    // Toma el ID del dueño del vehiculo
-    let idCliente = arreglo[indice].Cliente;
+      this.tengoQR = true;
+
+      this.vehiculo = JSON.parse(localStorage.getItem('vehiculoQR'));
+      idCliente = JSON.parse(localStorage.getItem('vehiculoQR')).Cliente;
+
+      localStorage.setItem('vehiculo-detalle', '0');
+      localStorage.setItem('ultima-pagina', 'lector-qr');
+
+    } else {
+
+      // Toma el indice del carro a mostrar de localStorage
+      let indice = Number(localStorage.getItem('vehiculo-detalle'));
+
+      // Toma el arreglo entero de vehiculos de localStorage
+      let arreglo = JSON.parse(localStorage.getItem('vehiculos'));
+
+      // Guarda la informacion del vehiculo a mostrar
+      this.vehiculo = arreglo[indice];
+
+      if (arreglo[indice].codigoQR) {
+        this.tengoQR = true;
+      } else {
+        this.tengoQR = false;
+      }
+
+      console.log(this.vehiculo);
+
+      // Toma el ID del dueño del vehiculo
+      idCliente = arreglo[indice].Cliente;
+
+      localStorage.setItem('ultima-pagina', 'cola-espera');
+    }
 
     let headers = new Headers();
 
@@ -56,7 +82,8 @@ export class DetalleVehiculoComponent implements OnInit {
   }
 
   regresar() {
+    localStorage.setItem('lleguePorQR', 'false');
+    localStorage.setItem('vehiculoQR', null);
     this.router.navigate([localStorage.getItem('ultima-pagina')]);
   }
-
 }

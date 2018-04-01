@@ -14,7 +14,7 @@ export class SolicitarOrdenComponent implements OnInit {
   idVehiculo: number;
   servicio: string;
   detalles: string;
-  imagen: any;
+  imagen: string;
 
   constructor(
     private http: Http,
@@ -57,6 +57,11 @@ export class SolicitarOrdenComponent implements OnInit {
           }
         });
     }
+  }
+
+  onUploadFinished(event) {
+    console.log('Upload Event: ', event);
+    this.imagen = event.src;
   }
 
 }
