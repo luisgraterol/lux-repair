@@ -154,4 +154,9 @@
         </div>
     </div>
   </div>
+  <div class="row mt-2 mb-5" *ngIf="this.tengoQR">
+    <div class="col d-flex justify-content-center">
+      <a class="btn btn-primary" [href]="this.vehiculo.codigoQR">Imprimir QR</a>
+    </div>
+  </div>
 </div>

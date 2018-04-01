@@ -48,6 +48,7 @@ controller.getVehiculos = async function (callback) {
                 vehiculos[i].FechaSolicitud = response.dataValues.FechaSolicitud;
                 vehiculos[i].FechaAdmision = response.dataValues.FechaAdmision;
                 vehiculos[i].DetalleOrden = response.dataValues.Detalle;
+                vehiculos[i].codigoQR = response.dataValues.QR;
             }
         }
 

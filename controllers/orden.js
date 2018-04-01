@@ -3,7 +3,7 @@ const Sequelize = require('sequelize');
 const bcrypt = require('bcryptjs');
 const nodemailer = require('nodemailer');
 const cloudinary = require('../config/cloudinary');
-const QR = require('qrcode');
+const qrcode = require('qrcode');
 
 // Modelos Utilizados
 const Orden = require('../models/orden');
@@ -103,8 +103,9 @@ controller.asignarAdmision = async function (data, callback) {
             });
 
             // Generar codigo QR
-            let dataURI = await QR.toDataURL(orden.dataValues.id.toString());
+            let dataURI = await qrcode.toDataURL(orden.dataValues.id.toString());
 
+            // Guardar QR en servicio remoto
             cloudinary.uploader.upload(dataURI, result => {
 
                 if (!result) {
@@ -126,7 +127,7 @@ controller.asignarAdmision = async function (data, callback) {
                     }
                 });
 
-                // setup email data with unicode symbols
+                // Setup email data with unicode symbols
                 let mailOptions =
                     {
                         from: `"${data.gerente.nombre} ${data.gerente.apellido} 🚗" <luxrepair.app@gmail.com>`,    // sender address
@@ -203,13 +204,16 @@ controller.asignarAdmision = async function (data, callback) {
                             </html>`
                     };
 
-                // send mail with defined transport object
+                // Send mail with defined transport object
                 transporter.sendMail(mailOptions, (error, info) => {
                     if (error) {
                         return console.log(error);
                     }
                     console.log('Message sent: %s', info.messageId);
                 });
+
+                // Guardar URL del QR en la BD
+                let response = Orden.update({ QR: result.secure_url }, { where: { id: orden.id } });
             });
 
         }
@@ -393,6 +397,7 @@ controller.obtener = async function (data, callback) {
         vehiculo.FechaSolicitud = orden.FechaSolicitud;
         vehiculo.FechaAdmision = orden.FechaAdmision;
         vehiculo.Detalle = orden.Detalle;
+        vehiculo.codigoQR = orden.QR;
 
         if (orden.Activa == '1') {
             vehiculo.OrdenActiva = true;

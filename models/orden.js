@@ -56,7 +56,6 @@ const Orden = connection.define('Orden',
             notEmpty: true
         }
     },
-
     FechaAdmision: {
         type: Sequelize.DATE,
 
@@ -82,6 +81,11 @@ const Orden = connection.define('Orden',
     },
     Mecanico: {
         type: Sequelize.INTEGER,
+        defaultValue: null
+    },
+    QR: {
+        type: Sequelize.STRING,
+        allowNull: true,
         defaultValue: null
     }
 },

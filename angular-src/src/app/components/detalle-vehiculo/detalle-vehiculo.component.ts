@@ -13,6 +13,7 @@ export class DetalleVehiculoComponent implements OnInit {
 
   vehiculo: object;
   dueno: object;
+  tengoQR: boolean;
 
   constructor(
     private http: Http,
@@ -26,6 +27,8 @@ export class DetalleVehiculoComponent implements OnInit {
 
     if (localStorage.getItem('lleguePorQR') == 'true') {
 
+      this.tengoQR = true;
+
       this.vehiculo = JSON.parse(localStorage.getItem('vehiculoQR'));
       idCliente = JSON.parse(localStorage.getItem('vehiculoQR')).Cliente;
 
@@ -33,6 +36,7 @@ export class DetalleVehiculoComponent implements OnInit {
       localStorage.setItem('ultima-pagina', 'lector-qr');
 
     } else {
+
       // Toma el indice del carro a mostrar de localStorage
       let indice = Number(localStorage.getItem('vehiculo-detalle'));
 
@@ -41,10 +45,17 @@ export class DetalleVehiculoComponent implements OnInit {
 
       // Guarda la informacion del vehiculo a mostrar
       this.vehiculo = arreglo[indice];
+
+      if (arreglo[indice].codigoQR) {
+        this.tengoQR = true;
+      }
+
       console.log(this.vehiculo);
 
       // Toma el ID del dueño del vehiculo
       idCliente = arreglo[indice].Cliente;
+
+      localStorage.setItem('ultima-pagina', 'cola-espera');
     }
 
     let headers = new Headers();
@@ -69,7 +80,8 @@ export class DetalleVehiculoComponent implements OnInit {
   }
 
   regresar() {
+    localStorage.setItem('lleguePorQR', 'false');
+    localStorage.setItem('vehiculoQR', null);
     this.router.navigate([localStorage.getItem('ultima-pagina')]);
   }
-
 }
