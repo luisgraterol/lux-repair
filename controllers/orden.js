@@ -259,6 +259,15 @@ controller.asignarMecanico = async function (data, callback) {
     }
 }
 
+// Metodo que retorna el reporte de los mecanicos 
+controller.getReporteMecanico = async function (callback) {
+    try {
+       
+    } catch (err) {
+        callback(null, err);
+    }
+};
+
 controller.finalizar = async function (data, callback) {
     try {
         // Actualizar la tabla Orden

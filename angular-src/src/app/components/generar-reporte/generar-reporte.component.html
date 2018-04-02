@@ -27,7 +27,26 @@
                   <a class="btn btn-outline-primary" [routerLink]="['/reporte-cliente']">Lista Clientes</a>
               </div>
           </div>
-          
+
+          <div *ngIf="this.rol === 'gerente'" class="card text-center" style="max-width: 18rem; max-height: 24rem;">
+                <img class="img-responsive mx-auto mt-4 mb-2" src="assets/dashboard-gerente/garage.png" alt="Imagen Reporte Modelo" width="130" height="140">
+                <div class="card-body px-sm-1 px-md-2 px-lg-3 px-xl-3 mt-3">
+                    <h5 class="card-title">Reporte por Modelo</h5>
+                    <p class="card-text">Crear un reporte de un  Modelo especifico </p>
+                    <a class="btn btn-outline-primary" [routerLink]="['/reporte-modelo']">Modelos</a>
+                </div>
+            </div>
+            <div *ngIf="this.rol === 'gerente'" class="card text-center" style="max-width: 18rem; max-height: 24rem;">
+                    <img class="img-responsive mx-auto mt-4 mb-2" src="assets/dashboard-gerente/reporte-mecanico.png" alt="Imagen Reporte Mecanico" width="130" height="140">
+                    <div class="card-body px-sm-1 px-md-2 px-lg-3 px-xl-3 mt-3">
+                        <h5 class="card-title">Reporte por Mecanico</h5>
+                        <p class="card-text">Crear un reporte por cada mecanico</p>
+                        <a class="btn btn-outline-primary" [routerLink]="['/reporte-mecanico']">Mecanicos</a>
+                    </div>
+                </div>
+
+
+
       </div>
   </div>
 </div>

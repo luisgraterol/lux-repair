@@ -1,0 +1,19 @@
+<div class="row">
+    <div class="col mx-0 mx-sm-4 mx-md-5 mx-lg-5 mx-xl-5 mt-5 mb-4">
+      <h3>Reportes de Mecánicos</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-3 mx-0 mx-sm-4 mx-md-5 mx-lg-5 mx-xl-5 my-4">
+      <form (submit)="reporteMecanico()" class="d-flex align-items-center">
+        <div class="form-group mr-4">
+          <label for="elegido">Mecánico</label>
+          <select id="elegido" class="form-control" [(ngModel)]="elegido" name="elegido">
+            <option *ngFor="let mecanico of mecanicos" [ngValue]="mecanico">{{mecanico.Nombre}}</option>
+          </select>
+        </div>
+        <button class="btn btn-primary mt-3" type="submit">Generar Reporte</button>
+      </form>
+    </div>
+  </div>
+ 
