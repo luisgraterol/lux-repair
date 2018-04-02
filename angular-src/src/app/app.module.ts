@@ -34,6 +34,9 @@ import { CondicionEntregaComponent } from './components/condicion-entrega/condic
 import { ActualizarDatosComponent } from './components/actualizar-datos/actualizar-datos.component';
 import { LectorQrComponent } from './components/lector-qr/lector-qr.component';
 import { GenerarReporteComponent } from './components/generar-reporte/generar-reporte.component';
+import { ReporteVehiculoComponent } from './components/reporte-vehiculo/reporte-vehiculo.component';
+import { ReporteClienteComponent } from './components/reporte-cliente/reporte-cliente.component';
+
 // Servicios
 import { AuthService } from './services/auth.service';
 
@@ -78,7 +81,9 @@ const appRoutes: Routes = [
   {path: 'lista-mecanicos', component: ListaMecanicosComponent, canActivate: [AuthGuard]},
   {path: 'condicion-entrega', component: CondicionEntregaComponent, canActivate: [AuthGuard]},
   {path: 'lector-qr', component: LectorQrComponent, canActivate: [AuthGuard]},
-  {path: 'generar-reporte', component: GenerarReporteComponent, canActivate: [AuthGuard]}
+  {path: 'generar-reporte', component: GenerarReporteComponent, canActivate: [AuthGuard]},
+  {path: 'reporte-vehiculo', component: ReporteVehiculoComponent, canActivate: [AuthGuard]},
+  {path: 'reporte-cliente', component: ReporteClienteComponent, canActivate: [AuthGuard]}
 ];
 
 
@@ -108,7 +113,9 @@ const appRoutes: Routes = [
     CondicionEntregaComponent,
     ActualizarDatosComponent,
     LectorQrComponent,
-    GenerarReporteComponent
+    GenerarReporteComponent,
+    ReporteVehiculoComponent,
+    ReporteClienteComponent
   ],
   imports: [
     BrowserModule,
