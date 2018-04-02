@@ -260,9 +260,28 @@ controller.asignarMecanico = async function (data, callback) {
 }
 
 // Metodo que retorna el reporte de los mecanicos 
-controller.getReporteMecanico = async function (callback) {
+controller.getReporteMecanico = async function (data,callback) {
     try {
-       
+        console.log('Llegamos al controlador con los datos id mecanico es : ', data);
+        let response = await Orden.findAll({ where: {Mecanico:data.id} });
+
+         // Construye un arreglo unicamente con los datos necesarios
+         let ordenes = response.map(resultado => resultado.dataValues);
+
+
+         if (response) {
+            ordenes[i].Estado = response.dataValues.Estado;
+            ordenes[i].Evaluacion = response.dataValues.Evaluacion;
+            ordenes[i].Servicio = response.dataValues.Servicio;
+            ordenes[i].FechaSolicitud = response.dataValues.FechaSolicitud;
+            ordenes[i].FechaAdmision = response.dataValues.FechaAdmision;
+            ordenes[i].DetalleOrden = response.dataValues.Detalle;
+            ordenes[i].Mecanico = response.dataValues.Mecanico;
+            // Retorna el arreglo
+            console.log('Llegamos al controlador con : ', ordenes);
+        callback({ordenes}, null);
+        
+        }
     } catch (err) {
         callback(null, err);
     }
