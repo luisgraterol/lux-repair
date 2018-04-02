@@ -13,7 +13,7 @@ import 'rxjs/add/operator/map';
 export class ReporteVehiculoComponent implements OnInit {
 
   vehiculos: any[];
-  clientes: any[];
+  dueno: object;
 
   constructor(
     private http: Http,
@@ -49,9 +49,28 @@ export class ReporteVehiculoComponent implements OnInit {
   }
 
   generar(indice) {
-    localStorage.setItem('vehiculo-reporte', indice);
-    localStorage.setItem('ultima-pagina', '/reporte-vehiculo');
-    this.router.navigate(['/detalle-vehiculo']);
+
+    // Guarda el ID del mecanico a asignar
+    let idVehiculo = indice;
+    let headers = new Headers();
+
+    // Busca el token del usuario que esta ingresado en el sistema actualmente
+    const token = localStorage.getItem('id_token');
+
+    // Settear los encabezados para la petición al API
+    headers.append('Authorization', token);
+    headers.append('Content-Type', 'application/json');
+
+    this.http.post('http://localhost:3000/gerente/reporte-vehiculo', { id: idVehiculo }, { headers })
+      .map(res => res.json())
+      .subscribe(response => {
+        if (response.success) {
+          this.flashMessage.show(response.msg, { cssClass: 'custom-success', timeout: 3000 });
+        } else {
+          this.flashMessage.show(response.msg, { cssClass: 'custom-danger', timeout: 3000 });
+        }
+      });
+      
   }
 
 }
