@@ -13,7 +13,7 @@ export class ReporteMecanicoComponent implements OnInit {
   elegido: any;
   mecanicos: any;
   vehiculos: any;
-
+  ordenes:any;
 
   constructor(
     private http: Http,
@@ -89,12 +89,19 @@ export class ReporteMecanicoComponent implements OnInit {
 
     this.http.post('http://localhost:3000/gerente/reporte-mecanico', { id: idMecanico }, { headers })
       .map(res => res.json())
-      .subscribe(response => {
-        if (response.success) {
-          this.flashMessage.show(response.msg, { cssClass: 'custom-success', timeout: 3000 });
-        } else {
-          this.flashMessage.show(response.msg, { cssClass: 'custom-danger', timeout: 3000 });
-        }
+      .subscribe(data => {
+        data.ordenes.map(orden => {
+          
+        });
+
+        this.ordenes = data.ordenes;
+        console.log('Ordenes: ', this.ordenes);
+       
+
+        localStorage.setItem('ordenes', JSON.stringify(data.ordenes));
+      }, err => {
+        console.log('Error al pedir los vehiculos desde ColaEsperaComponent: ', err);
+        return false;
       });
       
   }
