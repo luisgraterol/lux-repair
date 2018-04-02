@@ -33,7 +33,7 @@ import { ListaMecanicosComponent } from './components/lista-mecanicos/lista-meca
 import { CondicionEntregaComponent } from './components/condicion-entrega/condicion-entrega.component';
 import { ActualizarDatosComponent } from './components/actualizar-datos/actualizar-datos.component';
 import { LectorQrComponent } from './components/lector-qr/lector-qr.component';
-
+import { GenerarReporteComponent } from './components/generar-reporte/generar-reporte.component';
 // Servicios
 import { AuthService } from './services/auth.service';
 
@@ -42,6 +42,7 @@ import { AuthGuard } from './guards/auth.guard';
 
 // Pipes
 import { DatePipe } from '@angular/common';
+
 
 
 // Rutas
@@ -76,7 +77,8 @@ const appRoutes: Routes = [
   {path: 'detalle-vehiculo', component: DetalleVehiculoComponent, canActivate: [AuthGuard]},
   {path: 'lista-mecanicos', component: ListaMecanicosComponent, canActivate: [AuthGuard]},
   {path: 'condicion-entrega', component: CondicionEntregaComponent, canActivate: [AuthGuard]},
-  {path: 'lector-qr', component: LectorQrComponent, canActivate: [AuthGuard]}
+  {path: 'lector-qr', component: LectorQrComponent, canActivate: [AuthGuard]},
+  {path: 'generar-reporte', component: GenerarReporteComponent, canActivate: [AuthGuard]}
 ];
 
 
@@ -105,7 +107,8 @@ const appRoutes: Routes = [
     ListaMecanicosComponent,
     CondicionEntregaComponent,
     ActualizarDatosComponent,
-    LectorQrComponent
+    LectorQrComponent,
+    GenerarReporteComponent
   ],
   imports: [
     BrowserModule,
