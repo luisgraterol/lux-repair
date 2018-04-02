@@ -28,13 +28,33 @@ router.post('/asignar-mecanico', (req, res, next) => {
     });
 });
 
-// Asignar la fecha de admision de un vehiculo
+// reporte de un mecanico
 router.post('/reporte-mecanico', (req, res, next) => {
-    OrdenController.getReporteMecanico(req.body, (err) => {
+    OrdenController.getReporteMecanico(req.body, (data,err) => {
         if (err)
-            res.json({ success: false, msg: 'Se produjo un error al hacer el reporte.' });
-        else
-            res.json({ success: true, msg: 'El reporte se  exitosamente.' });
+            res.json({ success: false, msg: 'Se produjo un error al hacer el reporte. '+err });
+          
+        
+        if (data) {
+            res.json({
+                ordenes: data.ordenes
+            });
+        }
+    });
+});
+
+// reporte de un modelo
+router.post('/reporte-modelo', (req, res, next) => {
+    OrdenController.getReporteModelo(req.body, (data,err) => {
+        if (err)
+            res.json({ success: false, msg: 'Se produjo un error al hacer el reporte. '+err });
+          
+        
+        if (data) {
+            res.json({
+                ordenes: data.ordenes
+            });
+        }
     });
 });
 
