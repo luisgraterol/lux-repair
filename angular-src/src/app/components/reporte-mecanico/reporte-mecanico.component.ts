@@ -14,6 +14,7 @@ export class ReporteMecanicoComponent implements OnInit {
   mecanicos: any;
   vehiculos: any;
   ordenes:any;
+  test:string;
 
   constructor(
     private http: Http,
@@ -96,9 +97,20 @@ export class ReporteMecanicoComponent implements OnInit {
 
         this.ordenes = data.ordenes;
         console.log('Ordenes: ', this.ordenes);
+
+
        
 
         localStorage.setItem('ordenes', JSON.stringify(data.ordenes));
+        let array=JSON.parse(data.ordenes);
+        const rows = [array];
+        let csvContent = "data:text/csv;charset=utf-8,";
+        rows.forEach(function(rowArray){
+          let row = rowArray.join(",");
+           csvContent += row + "\r"+"\n";
+        }); 
+        var encodedUri = encodeURI(csvContent);
+        window.open(encodedUri);
       }, err => {
         console.log('Error al pedir los vehiculos desde ColaEsperaComponent: ', err);
         return false;
