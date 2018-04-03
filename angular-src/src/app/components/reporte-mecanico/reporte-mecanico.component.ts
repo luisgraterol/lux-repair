@@ -102,12 +102,13 @@ export class ReporteMecanicoComponent implements OnInit {
        
 
         localStorage.setItem('ordenes', JSON.stringify(data.ordenes));
-        let array=JSON.parse(data.ordenes);
-        const rows = [array];
+     
+
+        const rows = [JSON.stringify(data.ordenes).replace('},','\r'+'\n')];
         let csvContent = "data:text/csv;charset=utf-8,";
         rows.forEach(function(rowArray){
-          let row = rowArray.join(",");
-           csvContent += row + "\r"+"\n";
+          let row = rowArray;
+           csvContent += row ;
         }); 
         var encodedUri = encodeURI(csvContent);
         window.open(encodedUri);
