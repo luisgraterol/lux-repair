@@ -32,8 +32,8 @@
               <span *ngIf="vehiculo.Estado == 'Listo'" class="badge badge-pill badge-primary text-white">{{vehiculo.Estado}}</span>
             </td>
             <!-- Acciones -->
-            <td class="d-flex justify-content-center">
-              <button (click)="generar(i)" class="editar"><i class="fas fa-search"></i></button>
+            <td>
+              <button (click)="generar(i)" class="btn btn-sm btn-outline-success">Generar Reporte</button>
             </td>
           </tr>
         </tbody>
@@ -41,3 +41,4 @@
     </div>
   </div>
 </div>
+
