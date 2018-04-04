@@ -111,7 +111,12 @@ export class ReporteMecanicoComponent implements OnInit {
            csvContent += row ;
         }); 
         var encodedUri = encodeURI(csvContent);
-        window.open(encodedUri);
+        var link = document.createElement("a");
+        link.setAttribute("href", encodedUri);
+        link.setAttribute("download", "Reporte-Mecanico.csv");
+        document.body.appendChild(link); // Required for FF
+
+        link.click(); // This will download the data file named "my_data.csv".
       }, err => {
         console.log('Error al pedir los vehiculos desde ColaEsperaComponent: ', err);
         return false;

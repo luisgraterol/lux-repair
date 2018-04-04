@@ -1,3 +1,18 @@
-<p>
-  reporte-cliente works!
-</p>
+<div class="row">
+  <div class="col mx-0 mx-sm-4 mx-md-5 mx-lg-5 mx-xl-5 mt-5 mb-4">
+    <h3>Reportes de Clientes</h3>
+  </div>
+</div>
+<div class="row">
+  <div class="col-12 mx-0 mx-sm-4 mx-md-5 mx-lg-5 mx-xl-5 my-4">
+    <form (submit)="reporteCliente()" class="d-flex align-items-center">
+      <div class="col-4 form-group mr-4">
+        <label for="elegido">Cliente</label>
+        <select id="elegido" class="form-control" [(ngModel)]="elegido" name="elegido">
+          <option *ngFor="let cliente of clientes" [ngValue]="cliente">{{cliente.Nombre}}</option>
+        </select>
+      </div>
+      <button class="btn btn-outline-success mt-3" type="submit">Generar Reporte</button>
+    </form>
+  </div>
+</div>

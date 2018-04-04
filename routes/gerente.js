@@ -18,6 +18,20 @@ router.get('/vehiculos-y-mecanicos', (req, res, next) => {
     });
 });
 
+// Obtiene todos los vehiculos activos
+router.get('/vehiculos-y-clientes', (req, res, next) => {
+    GerenteController.getVehiculosConCliente((data, err) => {
+        if (err) throw err;
+
+        if (data) {
+            res.json({
+                vehiculos: data.vehiculos,
+                clientes: data.clientes
+            });
+        }
+    });
+});
+
 // Asignar la fecha de admision de un vehiculo
 router.post('/asignar-mecanico', (req, res, next) => {
     OrdenController.asignarMecanico(req.body, (err) => {
@@ -34,6 +48,20 @@ router.post('/reporte-vehiculo', (req, res, next) => {
         if (err)
             res.json({ success: false, msg: 'Se produjo un error al hacer el reporte. '+err });
         
+        if (data) {
+            res.json({
+                ordenes: data.ordenes
+            });
+        }
+    });
+});
+
+// reporte de un cliente
+router.post('/reporte-cliente', (req, res, next) => {
+    OrdenController.getReporteCliente(req.body, (data,err) => {
+        if (err)
+            res.json({ success: false, msg: 'Se produjo un error al hacer el reporte. '+err });
+
         if (data) {
             res.json({
                 ordenes: data.ordenes
