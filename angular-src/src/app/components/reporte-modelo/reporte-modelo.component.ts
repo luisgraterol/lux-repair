@@ -21,9 +21,8 @@ export class ReporteModeloComponent implements OnInit {
 
   ngOnInit() {
   }
-  reporteMecanico() {
-    
 
+  reporteModelo() {
     // Guarda el ID del mecanico a asignar
     let idModelo = this.elegido.id;
     let headers = new Headers();
@@ -35,7 +34,7 @@ export class ReporteModeloComponent implements OnInit {
     headers.append('Authorization', token);
     headers.append('Content-Type', 'application/json');
 
-    this.http.post('http://localhost:3000/gerente/reporte-modelo', { id: idModelo}, { headers })
+    this.http.post('http://localhost:3000/gerente/reporte-modelo', { id: idModelo }, { headers })
       .map(res => res.json())
       .subscribe(data => {
         data.ordenes.map(orden => {

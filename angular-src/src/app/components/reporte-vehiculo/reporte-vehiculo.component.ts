@@ -56,10 +56,10 @@ export class ReporteVehiculoComponent implements OnInit {
 
     // Filtra el arreglo y solo deja los ID de los vehiculos
     let chequeados = this.vehiculos
-    .filter(vehiculo => !!vehiculo.Chequeado)
-    .map(vehiculo => {
-      vehiculo.Chequeado = false;
-      return vehiculo.id
+      .filter(vehiculo => !!vehiculo.Chequeado)
+      .map(vehiculo => {
+        vehiculo.Chequeado = false;
+        return vehiculo.id
     });
 
     // Guarda el ID del vehiculo a buscar
@@ -81,6 +81,11 @@ export class ReporteVehiculoComponent implements OnInit {
 
         this.ordenes = data.ordenes;
         console.log('Ordenes: ', this.ordenes);
+
+        if (this.ordenes.length == 0) {
+          this.flashMessage.show('El vehiculo seleccionado no tiene ninguna orden de reparación', { cssClass: 'custom-danger', timeout: 3000 });
+          return false;
+        }
 
         localStorage.setItem('ordenes', JSON.stringify(data.ordenes));
      
