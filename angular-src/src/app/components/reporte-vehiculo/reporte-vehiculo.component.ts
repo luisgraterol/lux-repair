@@ -14,6 +14,10 @@ export class ReporteVehiculoComponent implements OnInit {
 
   vehiculos: any[];
   dueno: object;
+  elegido: any;
+  mecanicos: any;
+  ordenes:any;
+  test:string;
 
   constructor(
     private http: Http,
@@ -50,8 +54,16 @@ export class ReporteVehiculoComponent implements OnInit {
 
   generar(indice) {
 
-    // Guarda el ID del mecanico a asignar
-    let idVehiculo = indice;
+    // Filtra el arreglo y solo deja los ID de los vehiculos
+    let chequeados = this.vehiculos
+    .filter(vehiculo => !!vehiculo.Chequeado)
+    .map(vehiculo => {
+      vehiculo.Chequeado = false;
+      return vehiculo.id
+    });
+
+    // Guarda el ID del vehiculo a buscar
+    let idVehiculo = indice+1;
     let headers = new Headers();
 
     // Busca el token del usuario que esta ingresado en el sistema actualmente
@@ -63,14 +75,27 @@ export class ReporteVehiculoComponent implements OnInit {
 
     this.http.post('http://localhost:3000/gerente/reporte-vehiculo', { id: idVehiculo }, { headers })
       .map(res => res.json())
-      .subscribe(response => {
-        if (response.success) {
-          this.flashMessage.show(response.msg, { cssClass: 'custom-success', timeout: 3000 });
-        } else {
-          this.flashMessage.show(response.msg, { cssClass: 'custom-danger', timeout: 3000 });
-        }
+      .subscribe(data => {
+        data.ordenes.map(orden => {         
+        });
+
+        this.ordenes = data.ordenes;
+        console.log('Ordenes: ', this.ordenes);
+
+        localStorage.setItem('ordenes', JSON.stringify(data.ordenes));
+     
+        const rows = [JSON.stringify(data.ordenes).replace('},','\r'+'\n').replace('},','\r'+'\n').replace('},','\r'+'\n').replace('},','\r'+'\n').replace('},','\r'+'\n').replace('},','\r'+'\n').replace('},','\r'+'\n').replace('},','\r'+'\n').replace('},','\r'+'\n').replace('},','\r'+'\n').replace('},','\r'+'\n').replace('},','\r'+'\n').replace('},','\r'+'\n').replace('},','\r'+'\n').replace('},','\r'+'\n').replace('},','\r'+'\n').replace('},','\r'+'\n').replace('},','\r'+'\n').replace('},','\r'+'\n')];
+        let csvContent = "data:text/csv;charset=utf-8,";
+        rows.forEach(function(rowArray){
+          let row = rowArray;
+           csvContent += row ;
+        }); 
+        var encodedUri = encodeURI(csvContent);
+        window.open(encodedUri);
+      }, err => {
+        console.log('Error al pedir los vehiculos desde ColaEsperaComponent: ', err);
+        return false;
       });
-      
   }
 
 }
