@@ -104,7 +104,7 @@ export class ReporteMecanicoComponent implements OnInit {
         localStorage.setItem('ordenes', JSON.stringify(data.ordenes));
      
 
-        const rows = [JSON.stringify(data.ordenes).replace('},','\r'+'\n')];
+        const rows = [JSON.stringify(data.ordenes).replace('},',"\r"+"\n").replace('},', "\r"+"\n").replace('},', "\r"+"\n").replace('},', "\r"+"\n").replace('},', "\r"+"\n").replace('},', "\r"+"\n").replace('},',"\r"+"\n").replace('},', "\r"+"\n").replace('},', "\r"+"\n").replace('},', "\r"+"\n").replace('},', "\r"+"\n").replace('},',"\r"+"\n").replace('},', "\r"+"\n").replace('},', "\r"+"\n").replace('},', "\r"+"\n").replace('},', "\r"+"\n").replace('},',"\r"+"\n").replace('},', "\r"+"\n").replace('},', "\r"+"\n").replace('},', "\r"+"\n").replace('},', "\r"+"\n").replace('},',"\r"+"\n").replace('},', "\r"+"\n").replace('},', "\r"+"\n").replace('},', "\r"+"\n").replace('},', "\r"+"\n").replace('},',"\r"+"\n").replace('},', "\r"+"\n").replace('},', "\r"+"\n").replace('},', "\r"+"\n").replace('},', "\r"+"\n").replace('},',"\r"+"\n").replace('},', "\r"+"\n").replace('},', "\r"+"\n").replace('},', "\r"+"\n").replace('},', "\r"+"\n").replace('},',"\r"+"\n").replace('},', "\r"+"\n").replace('},', "\r"+"\n").replace('},', "\r"+"\n").replace('},', "\r"+"\n")];
         let csvContent = "data:text/csv;charset=utf-8,";
         rows.forEach(function(rowArray){
           let row = rowArray;
