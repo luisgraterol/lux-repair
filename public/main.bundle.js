@@ -3042,7 +3042,7 @@ var ReporteClienteComponent = /** @class */ (function () {
             var encodedUri = encodeURI(csvContent);
             var link = document.createElement("a");
             link.setAttribute("href", encodedUri);
-            link.setAttribute("download", "Reporte-Cliente.csv");
+            link.setAttribute("download", "Reporte-Cliente-" + _this.elegido.Nombre + ".csv");
             document.body.appendChild(link); // Required for FF
             link.click(); // This will download the data file named "my_data.csv".
         }, function (err) {
@@ -3196,7 +3196,7 @@ var ReporteMecanicoComponent = /** @class */ (function () {
             var encodedUri = encodeURI(csvContent);
             var link = document.createElement("a");
             link.setAttribute("href", encodedUri);
-            link.setAttribute("download", "Reporte-Mecanico.csv");
+            link.setAttribute("download", "Reporte-Mecanico-" + _this.elegido.Nombre + ".csv");
             document.body.appendChild(link); // Required for FF
             link.click(); // This will download the data file named "my_data.csv".
         }, function (err) {

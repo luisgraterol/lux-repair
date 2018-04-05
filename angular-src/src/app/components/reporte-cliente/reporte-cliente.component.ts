@@ -111,7 +111,7 @@ export class ReporteClienteComponent implements OnInit {
         var encodedUri = encodeURI(csvContent);
         var link = document.createElement("a");
         link.setAttribute("href", encodedUri);
-        link.setAttribute("download", "Reporte-Cliente.csv");
+        link.setAttribute("download", `Reporte-Cliente-${this.elegido.Nombre}.csv`);
         document.body.appendChild(link); // Required for FF
 
         link.click(); // This will download the data file named "my_data.csv".
