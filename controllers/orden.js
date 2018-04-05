@@ -535,7 +535,7 @@ controller.getReporteModelo= async function (data,callback) {
     
         // Retorna el arreglo
         console.log('Llegamos al controlador con : ', results);
-        callback({ordenes}, null);
+        callback({results}, null);
     } catch (err) {
         callback(null, err);
     }

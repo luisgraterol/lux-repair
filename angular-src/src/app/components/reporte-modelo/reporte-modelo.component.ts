@@ -35,7 +35,9 @@ export class ReporteModeloComponent implements OnInit {
     headers.append('Content-Type', 'application/json');
 
     this.http.post('http://localhost:3000/gerente/reporte-modelo', { id: idModelo }, { headers })
-      .map(res => res.json())
+      .map(res => {
+        console.log('res:',res);
+       return  res.json()})
       .subscribe(data => {
         data.ordenes.map(orden => {
           
