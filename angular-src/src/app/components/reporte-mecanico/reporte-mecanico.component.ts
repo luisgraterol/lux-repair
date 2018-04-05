@@ -34,7 +34,7 @@ export class ReporteMecanicoComponent implements OnInit {
     headers.append('Authorization', token);
     headers.append('Content-Type', 'application/json');
 
-    this.http.get('http://localhost:3000/gerente/vehiculos-y-mecanicos', { headers })
+    this.http.get('gerente/vehiculos-y-mecanicos', { headers })
       .map(res => res.json())
       .subscribe(data => {
         data.vehiculos.map(vehiculo => {
@@ -88,7 +88,7 @@ export class ReporteMecanicoComponent implements OnInit {
     headers.append('Authorization', token);
     headers.append('Content-Type', 'application/json');
 
-    this.http.post('http://localhost:3000/gerente/reporte-mecanico', { id: idMecanico }, { headers })
+    this.http.post('gerente/reporte-mecanico', { id: idMecanico }, { headers })
       .map(res => res.json())
       .subscribe(data => {
         data.ordenes.map(orden => {

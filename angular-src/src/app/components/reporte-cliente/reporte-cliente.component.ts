@@ -34,7 +34,7 @@ export class ReporteClienteComponent implements OnInit {
     headers.append('Authorization', token);
     headers.append('Content-Type', 'application/json');
 
-    this.http.get('http://localhost:3000/gerente/vehiculos-y-clientes', { headers })
+    this.http.get('gerente/vehiculos-y-clientes', { headers })
       .map(res => res.json())
       .subscribe(data => {
         data.vehiculos.map(vehiculo => {
@@ -90,7 +90,7 @@ export class ReporteClienteComponent implements OnInit {
     headers.append('Authorization', token);
     headers.append('Content-Type', 'application/json');
 
-    this.http.post('http://localhost:3000/gerente/reporte-cliente', { id: idCliente }, { headers })
+    this.http.post('gerente/reporte-cliente', { id: idCliente }, { headers })
       .map(res => res.json())
       .subscribe(data => {
         data.ordenes.map(orden => {
