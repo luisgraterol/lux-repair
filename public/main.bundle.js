@@ -111,6 +111,7 @@ var AppComponent = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__components_condicion_entrega_condicion_entrega_component__ = __webpack_require__("../../../../../src/app/components/condicion-entrega/condicion-entrega.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__components_actualizar_datos_actualizar_datos_component__ = __webpack_require__("../../../../../src/app/components/actualizar-datos/actualizar-datos.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__components_lector_qr_lector_qr_component__ = __webpack_require__("../../../../../src/app/components/lector-qr/lector-qr.component.ts");
+
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__components_generar_reporte_generar_reporte_component__ = __webpack_require__("../../../../../src/app/components/generar-reporte/generar-reporte.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__components_reporte_vehiculo_reporte_vehiculo_component__ = __webpack_require__("../../../../../src/app/components/reporte-vehiculo/reporte-vehiculo.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__components_reporte_cliente_reporte_cliente_component__ = __webpack_require__("../../../../../src/app/components/reporte-cliente/reporte-cliente.component.ts");
@@ -119,6 +120,7 @@ var AppComponent = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_37__services_auth_service__ = __webpack_require__("../../../../../src/app/services/auth.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_38__guards_auth_guard__ = __webpack_require__("../../../../../src/app/guards/auth.guard.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_39__angular_common__ = __webpack_require__("../../../common/esm5/common.js");
+
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -135,10 +137,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 // Componentes
-
-
-
-
 
 
 
@@ -234,12 +232,14 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_28__components_lista_mecanicos_lista_mecanicos_component__["a" /* ListaMecanicosComponent */],
                 __WEBPACK_IMPORTED_MODULE_29__components_condicion_entrega_condicion_entrega_component__["a" /* CondicionEntregaComponent */],
                 __WEBPACK_IMPORTED_MODULE_30__components_actualizar_datos_actualizar_datos_component__["a" /* ActualizarDatosComponent */],
+
                 __WEBPACK_IMPORTED_MODULE_31__components_lector_qr_lector_qr_component__["a" /* LectorQrComponent */],
                 __WEBPACK_IMPORTED_MODULE_32__components_generar_reporte_generar_reporte_component__["a" /* GenerarReporteComponent */],
                 __WEBPACK_IMPORTED_MODULE_33__components_reporte_vehiculo_reporte_vehiculo_component__["a" /* ReporteVehiculoComponent */],
                 __WEBPACK_IMPORTED_MODULE_34__components_reporte_cliente_reporte_cliente_component__["a" /* ReporteClienteComponent */],
                 __WEBPACK_IMPORTED_MODULE_35__components_reporte_modelo_reporte_modelo_component__["a" /* ReporteModeloComponent */],
                 __WEBPACK_IMPORTED_MODULE_36__components_reporte_mecanico_reporte_mecanico_component__["a" /* ReporteMecanicoComponent */]
+
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -251,9 +251,11 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_7_angular2_image_upload__["a" /* ImageUploadModule */].forRoot()
             ],
             providers: [
+
                 __WEBPACK_IMPORTED_MODULE_37__services_auth_service__["a" /* AuthService */],
                 __WEBPACK_IMPORTED_MODULE_38__guards_auth_guard__["a" /* AuthGuard */],
                 __WEBPACK_IMPORTED_MODULE_39__angular_common__["DatePipe"]
+
             ],
             bootstrap: [__WEBPACK_IMPORTED_MODULE_8__app_component__["a" /* AppComponent */]]
         })
@@ -857,7 +859,9 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/dashboard/dashboard.component.html":
 /***/ (function(module, exports) {
 
+
 module.exports = "<div class=\"row\">\n    <div class=\"col mx-0 mx-sm-4 mx-md-5 mx-lg-5 mx-xl-5 mt-4 mb-2\">\n        <h3>Dashboard</h3>\n    </div>\n</div>\n<div class=\"row mt-5 pb-5 main\">\n    <div class=\"col d-flex justify-content-center\">\n\n        <!-- Card Deck del Cliente -->\n        <div *ngIf=\"this.rol === 'cliente'\" class=\"card-deck\">\n            <div class=\"card text-center\" style=\"max-width: 18rem; max-height: 24rem;\">\n                <img class=\"img-responsive mx-auto mt-4 mb-2\" src=\"assets/dashboard-cliente/vehiculo-agregar.png\" alt=\"Imagen Agregar Vehiculo\" width=\"130\" height=\"140\">\n\n                <div class=\"card-body px-sm-1 px-md-2 px-lg-3 px-xl-3 mt-3\">\n                    <h5 class=\"card-title\">Registro</h5>\n                    <p class=\"card-text\">Registra un nuevo vehiculo para poder solicitar citas.</p>\n                    <a [routerLink]=\"['/form-vehiculo']\" class=\"btn btn-outline-primary mx-0 mx-sm-0 mx-md-0\">Registrar</a>\n                </div>\n            </div>\n            <div class=\"card text-center\" style=\"max-width: 18rem; max-height: 24rem;\">\n                <img class=\"img-responsive mx-auto mt-4 mb-2\" src=\"assets/dashboard-cliente/vehiculo-ver.png\" alt=\"Imagen Ver Vehiculos\" width=\"130\" height=\"140\">\n                <div class=\"card-body px-sm-1 px-md-2 px-lg-3 px-xl-3\">\n                    <h5 class=\"card-title\">Garage</h5>\n                    <p class=\"card-text\">Gestiona todas los vehiculos asociados,solicita citas, edita la informacion o eliminalos</p>\n                    <a [routerLink]=\"['/garage']\" class=\"btn btn-outline-primary\">Ir al Garage</a>\n                </div>\n            </div>\n            <div class=\"card text-center\" style=\"max-width: 18rem; max-height: 24rem;\">\n                <img class=\"img-responsive mx-auto mt-4 mb-2\" src=\"assets/dashboard-cliente/resume.png\" alt=\"Imagen Perfil\" width=\"130\" height=\"140\">\n                <div class=\"card-body px-sm-1 px-md-2 px-lg-3 px-xl-3 mt-3\">\n                    <h5 class=\"card-title\">Mi Perfil</h5>\n                    <p class=\"card-text\">Ve la informacion de tu perfil</p>\n                    <a class=\"btn btn-outline-primary\" [routerLink]=\"['/profile']\">Perfil</a>\n                </div>\n            </div>\n        </div>\n\n        <!-- Card Deck del Empleado -->\n        <div *ngIf=\"this.rol !== 'cliente'\" class=\"card-deck\">\n          \n            <!-- Administrador -->\n            <div *ngIf=\"this.rol === 'administrador'\" class=\"card text-center\" style=\"max-width: 18rem; max-height: 24rem;\">\n                <img class=\"img-responsive mx-auto mt-4 mb-2\" src=\"assets/dashboard-admin/employees.png\" alt=\"Imagen Roles\" width=\"130\" height=\"140\">\n                <div class=\"card-body px-sm-1 px-md-2 px-lg-3 px-xl-3 mt-3\">\n                    <h5 class=\"card-title\">Asignar Roles</h5>\n                    <p class=\"card-text\">Gestiona la asignación de roles de trabajo en el taller.</p>\n                    <a class=\"btn btn-outline-primary\" [routerLink]=\"['/gestionar-rol']\">Gestionar</a>\n                </div>\n            </div>\n\n            <div *ngIf=\"this.rol === 'administrador'\" class=\"card text-center\" style=\"max-width: 18rem; max-height: 24rem;\">\n                <img class=\"img-responsive mx-auto mt-4 mb-2\" src=\"assets/dashboard-admin/repuesto.png\" alt=\"Imagen Repuesto\" width=\"130\" height=\"140\">\n                <div class=\"card-body px-sm-1 px-md-2 px-lg-3 px-xl-3 mt-3\">\n                    <h5 class=\"card-title\">Gestionar Repuestos</h5>\n                    <p class=\"card-text\">Gestiona y modifica los repuestos del taller.</p>\n                    <a class=\"btn btn-outline-primary\" [routerLink]=\"['/lista-repuestos']\">Gestionar</a>\n                </div>\n            </div>\n          \n            <!-- Gerente -->\n            <div *ngIf=\"this.rol === 'gerente'\" class=\"card text-center\" style=\"max-width: 18rem; max-height: 24rem;\">\n                <img class=\"img-responsive mx-auto mt-4 mb-2\" src=\"assets/dashboard-gerente/cola-espera.png\" alt=\"Imagen Cola de Espera\" width=\"130\" height=\"140\">\n                <div class=\"card-body px-sm-1 px-md-2 px-lg-3 px-xl-3 mt-3\">\n                    <h5 class=\"card-title\">Cola de Espera</h5>\n                    <p class=\"card-text\">Gestiona la cola de espera de reparaciones.</p>\n                    <a class=\"btn btn-outline-primary\" [routerLink]=\"['/cola-espera']\">Gestionar</a>\n                </div>\n            </div>\n            <div *ngIf=\"this.rol === 'gerente'\" class=\"card text-center\" style=\"max-width: 18rem; max-height: 24rem;\">\n                <img class=\"img-responsive mx-auto mt-4 mb-2\" src=\"assets/dashboard-gerente/mecanico.png\" alt=\"Imagen Asignar Mecanicos\" width=\"130\"\n                    height=\"140\">\n                <div class=\"card-body px-sm-1 px-md-2 px-lg-3 px-xl-3 mt-3\">\n                    <h5 class=\"card-title\">Mecanicos</h5>\n                    <p class=\"card-text\">Asigna reparaciones a los mecánicos de tu taller.</p>\n                    <a class=\"btn btn-outline-primary\" [routerLink]=\"['/lista-mecanicos']\">Gestionar</a>\n                </div>\n            </div>\n            <div *ngIf=\"this.rol === 'gerente'\" class=\"card text-center\" style=\"max-width: 18rem; max-height: 24rem;\">\n                <img class=\"img-responsive mx-auto mt-5 mb-2\" src=\"assets/dashboard-gerente/qr.png\" alt=\"Imagen Asignar Mecanicos\"\n                    width=\"130\" height=\"120\">\n                <div class=\"card-body px-sm-1 px-md-2 px-lg-3 px-xl-3 mt-3\">\n                    <h5 class=\"card-title\">Lectura de QR</h5>\n                    <p class=\"card-text\">Identifica rápidamente los vehículos que llegan al taller.</p>\n                    <a class=\"btn btn-outline-primary\" [routerLink]=\"['/lector-qr']\">Escanear</a>\n                </div>\n            </div>\n            <div *ngIf=\"this.rol === 'gerente'\" class=\"card text-center\" style=\"max-width: 18rem; max-height: 24rem;\">\n                <img class=\"img-responsive mx-auto mt-4 mb-2\" src=\"assets/dashboard-gerente/reporte.png\" alt=\"Imagen Generar Reporte\" width=\"130\" height=\"140\">\n                <div class=\"card-body px-sm-1 px-md-2 px-lg-3 px-xl-3 mt-3\">\n                    <h5 class=\"card-title\">Generar Reportes</h5>\n                    <p class=\"card-text\">Genera reportes por modelo, mecanico,ect</p>\n                    <a class=\"btn btn-outline-primary\" [routerLink]=\"['/generar-reporte']\">Reportes</a>\n                </div>\n            </div>\n\n\n            <!-- Mecanico -->\n            <div *ngIf=\"this.rol === 'mecanico'\" class=\"card text-center\" style=\"max-width: 18rem; max-height: 24rem;\">\n                <img class=\"img-responsive mx-auto mt-4 mb-2\" src=\"assets/dashboard-mecanico/car-repair.png\" alt=\"Imagen Reparaciones\" width=\"130\" height=\"140\">\n                <div class=\"card-body px-sm-1 px-md-2 px-lg-3 px-xl-3 mt-3\">\n                <h5 class=\"card-title\">Gestionar Reparaciones</h5>\n                <p class=\"card-text\">Gestiona las reparaciones que te han asignado</p>\n                <a class=\"btn btn-outline-primary\" [routerLink]=\"['/lista-reparacion']\">Gestionar</a>\n                </div>\n            </div>\n\n            <!-- Todos los Empleados -->\n            <div class=\"card text-center\" style=\"max-width: 18rem; max-height: 24rem;\">\n                <img class=\"img-responsive mx-auto mt-4 mb-2\" src=\"assets/dashboard-cliente/resume.png\" alt=\"Imagen Perfil\" width=\"130\" height=\"140\">\n                <div class=\"card-body px-sm-1 px-md-2 px-lg-3 px-xl-3 mt-3\">\n                  <h5 class=\"card-title\">Mi Perfil</h5>\n                  <p class=\"card-text\">Edita la informacion correspondiente a tu perfil</p>\n                  <a class=\"btn btn-outline-primary\" [routerLink]=\"['/profile']\">Perfil</a>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>\n"
+
 
 /***/ }),
 
@@ -2934,7 +2938,9 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/reporte-cliente/reporte-cliente.component.html":
 /***/ (function(module, exports) {
 
+
 module.exports = "<div class=\"row\">\n  <div class=\"col mx-0 mx-sm-4 mx-md-5 mx-lg-5 mx-xl-5 mt-5 mb-4\">\n    <h3>Reportes de Clientes</h3>\n  </div>\n</div>\n<div class=\"row main\">\n  <div class=\"col-12 mx-0 mx-sm-4 mx-md-5 mx-lg-5 mx-xl-5 my-4\">\n    <form (submit)=\"reporteCliente()\" class=\"d-flex align-items-center\">\n      <div class=\"col-4 form-group mr-4\">\n        <label for=\"elegido\">Cliente</label>\n        <select id=\"elegido\" class=\"form-control\" [(ngModel)]=\"elegido\" name=\"elegido\">\n          <option *ngFor=\"let cliente of clientes\" [ngValue]=\"cliente\">{{cliente.Nombre}}</option>\n        </select>\n      </div>\n      <button class=\"btn btn-outline-success mt-3\" type=\"submit\">Generar Reporte</button>\n    </form>\n  </div>\n</div>"
+
 
 /***/ }),
 
@@ -3565,6 +3571,10 @@ var SolicitarOrdenComponent = /** @class */ (function () {
                 }
             });
         }
+    };
+    SolicitarOrdenComponent.prototype.onUploadFinished = function (event) {
+        console.log('Upload Event: ', event);
+        this.imagen = event.src;
     };
     SolicitarOrdenComponent.prototype.onUploadFinished = function (event) {
         console.log('Upload Event: ', event);
