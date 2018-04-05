@@ -24,7 +24,7 @@ export class ReporteModeloComponent implements OnInit {
 
   reporteModelo() {
     // Guarda el ID del mecanico a asignar
-    let idModelo = this.elegido.id;
+    let idModelo = this.elegido;
     let headers = new Headers();
 
     // Busca el token del usuario que esta ingresado en el sistema actualmente

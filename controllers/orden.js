@@ -510,3 +510,33 @@ function obtenerFechaHoy() {
 
     return monthString + "/" + dayString + "/" + year + " " + today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
 }
+
+// Metodo que retorna el reporte de los mecanicos 
+controller.getReporteModelo= async function (data,callback) {
+    try {
+        console.log('Llegamos al controlador con los datos id modelo es : ', data);
+       
+        connection.query(`
+        SELECT * FROM luxrepairDB.Orden
+        INNER JOIN Vehiculo ON Orden.Vehiculo = Vehiculo.id
+        INNER JOIN Modelo ON Vehiculo.Modelo = Modelo.id
+        WHERE Modelo.Nombre = ${data.id}
+    `)
+.spread((results, metadata) => {
+    if (results) {
+        console.log(results);
+    }
+    else {
+        console.log('Error en getReporteMecanico.');
+    }
+});
+
+        
+    
+        // Retorna el arreglo
+        console.log('Llegamos al controlador con : ', results);
+        callback({ordenes}, null);
+    } catch (err) {
+        callback(null, err);
+    }
+};
