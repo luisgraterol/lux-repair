@@ -84,6 +84,14 @@
                     <a class="btn btn-outline-primary" [routerLink]="['/lector-qr']">Escanear</a>
                 </div>
             </div>
+            <div *ngIf="this.rol === 'gerente'" class="card text-center" style="max-width: 18rem; max-height: 24rem;">
+                <img class="img-responsive mx-auto mt-4 mb-2" src="assets/dashboard-gerente/reporte.png" alt="Imagen Generar Reporte" width="130" height="140">
+                <div class="card-body px-sm-1 px-md-2 px-lg-3 px-xl-3 mt-3">
+                    <h5 class="card-title">Generar Reportes</h5>
+                    <p class="card-text">Genera reportes por modelo, mecanico,ect</p>
+                    <a class="btn btn-outline-primary" [routerLink]="['/generar-reporte']">Reportes</a>
+                </div>
+            </div>
 
 
             <!-- Mecanico -->

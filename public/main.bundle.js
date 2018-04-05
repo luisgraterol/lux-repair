@@ -111,9 +111,16 @@ var AppComponent = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__components_condicion_entrega_condicion_entrega_component__ = __webpack_require__("../../../../../src/app/components/condicion-entrega/condicion-entrega.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__components_actualizar_datos_actualizar_datos_component__ = __webpack_require__("../../../../../src/app/components/actualizar-datos/actualizar-datos.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__components_lector_qr_lector_qr_component__ = __webpack_require__("../../../../../src/app/components/lector-qr/lector-qr.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__services_auth_service__ = __webpack_require__("../../../../../src/app/services/auth.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__guards_auth_guard__ = __webpack_require__("../../../../../src/app/guards/auth.guard.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__angular_common__ = __webpack_require__("../../../common/esm5/common.js");
+
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__components_generar_reporte_generar_reporte_component__ = __webpack_require__("../../../../../src/app/components/generar-reporte/generar-reporte.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__components_reporte_vehiculo_reporte_vehiculo_component__ = __webpack_require__("../../../../../src/app/components/reporte-vehiculo/reporte-vehiculo.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__components_reporte_cliente_reporte_cliente_component__ = __webpack_require__("../../../../../src/app/components/reporte-cliente/reporte-cliente.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__components_reporte_modelo_reporte_modelo_component__ = __webpack_require__("../../../../../src/app/components/reporte-modelo/reporte-modelo.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_36__components_reporte_mecanico_reporte_mecanico_component__ = __webpack_require__("../../../../../src/app/components/reporte-mecanico/reporte-mecanico.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_37__services_auth_service__ = __webpack_require__("../../../../../src/app/services/auth.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_38__guards_auth_guard__ = __webpack_require__("../../../../../src/app/guards/auth.guard.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_39__angular_common__ = __webpack_require__("../../../common/esm5/common.js");
+
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -154,6 +161,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
 // Servicios
 
 // Guards
@@ -166,29 +174,34 @@ var appRoutes = [
     { path: '', component: __WEBPACK_IMPORTED_MODULE_12__components_home_home_component__["a" /* HomeComponent */] },
     { path: 'register', component: __WEBPACK_IMPORTED_MODULE_11__components_register_register_component__["a" /* RegisterComponent */] },
     { path: 'login', component: __WEBPACK_IMPORTED_MODULE_10__components_login_login_component__["a" /* LoginComponent */] },
-    { path: 'dashboard', component: __WEBPACK_IMPORTED_MODULE_13__components_dashboard_dashboard_component__["a" /* DashboardComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_33__guards_auth_guard__["a" /* AuthGuard */]] },
-    { path: 'profile', component: __WEBPACK_IMPORTED_MODULE_14__components_profile_profile_component__["a" /* ProfileComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_33__guards_auth_guard__["a" /* AuthGuard */]] },
+    { path: 'dashboard', component: __WEBPACK_IMPORTED_MODULE_13__components_dashboard_dashboard_component__["a" /* DashboardComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_38__guards_auth_guard__["a" /* AuthGuard */]] },
+    { path: 'profile', component: __WEBPACK_IMPORTED_MODULE_14__components_profile_profile_component__["a" /* ProfileComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_38__guards_auth_guard__["a" /* AuthGuard */]] },
     // Cliente
-    { path: 'form-vehiculo', component: __WEBPACK_IMPORTED_MODULE_17__components_form_vehiculo_form_vehiculo_component__["a" /* FormVehiculoComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_33__guards_auth_guard__["a" /* AuthGuard */]] },
-    { path: 'garage', component: __WEBPACK_IMPORTED_MODULE_18__components_garage_garage_component__["a" /* GarageComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_33__guards_auth_guard__["a" /* AuthGuard */]] },
-    { path: 'solicitar-orden', component: __WEBPACK_IMPORTED_MODULE_19__components_solicitar_orden_solicitar_orden_component__["a" /* SolicitarOrdenComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_33__guards_auth_guard__["a" /* AuthGuard */]] },
-    { path: 'actualizar-datos', component: __WEBPACK_IMPORTED_MODULE_30__components_actualizar_datos_actualizar_datos_component__["a" /* ActualizarDatosComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_33__guards_auth_guard__["a" /* AuthGuard */]] },
+    { path: 'form-vehiculo', component: __WEBPACK_IMPORTED_MODULE_17__components_form_vehiculo_form_vehiculo_component__["a" /* FormVehiculoComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_38__guards_auth_guard__["a" /* AuthGuard */]] },
+    { path: 'garage', component: __WEBPACK_IMPORTED_MODULE_18__components_garage_garage_component__["a" /* GarageComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_38__guards_auth_guard__["a" /* AuthGuard */]] },
+    { path: 'solicitar-orden', component: __WEBPACK_IMPORTED_MODULE_19__components_solicitar_orden_solicitar_orden_component__["a" /* SolicitarOrdenComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_38__guards_auth_guard__["a" /* AuthGuard */]] },
+    { path: 'actualizar-datos', component: __WEBPACK_IMPORTED_MODULE_30__components_actualizar_datos_actualizar_datos_component__["a" /* ActualizarDatosComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_38__guards_auth_guard__["a" /* AuthGuard */]] },
     // Empleados
-    { path: 'form-empleado', component: __WEBPACK_IMPORTED_MODULE_16__components_form_empleado_form_empleado_component__["a" /* FormEmpleadoComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_33__guards_auth_guard__["a" /* AuthGuard */]] },
+    { path: 'form-empleado', component: __WEBPACK_IMPORTED_MODULE_16__components_form_empleado_form_empleado_component__["a" /* FormEmpleadoComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_38__guards_auth_guard__["a" /* AuthGuard */]] },
     // Administrador
-    { path: 'gestionar-rol', component: __WEBPACK_IMPORTED_MODULE_23__components_gestionar_rol_gestionar_rol_component__["a" /* GestionarRolComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_33__guards_auth_guard__["a" /* AuthGuard */]] },
-    { path: 'lista-repuestos', component: __WEBPACK_IMPORTED_MODULE_20__components_lista_repuestos_lista_repuestos_component__["a" /* ListaRepuestosComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_33__guards_auth_guard__["a" /* AuthGuard */]] },
-    { path: 'form-repuesto', component: __WEBPACK_IMPORTED_MODULE_21__components_form_repuesto_form_repuesto_component__["a" /* FormRepuestoComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_33__guards_auth_guard__["a" /* AuthGuard */]] },
-    { path: 'modificar-repuesto', component: __WEBPACK_IMPORTED_MODULE_22__components_modificar_repuesto_modificar_repuesto_component__["a" /* ModificarRepuestoComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_33__guards_auth_guard__["a" /* AuthGuard */]] },
+    { path: 'gestionar-rol', component: __WEBPACK_IMPORTED_MODULE_23__components_gestionar_rol_gestionar_rol_component__["a" /* GestionarRolComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_38__guards_auth_guard__["a" /* AuthGuard */]] },
+    { path: 'lista-repuestos', component: __WEBPACK_IMPORTED_MODULE_20__components_lista_repuestos_lista_repuestos_component__["a" /* ListaRepuestosComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_38__guards_auth_guard__["a" /* AuthGuard */]] },
+    { path: 'form-repuesto', component: __WEBPACK_IMPORTED_MODULE_21__components_form_repuesto_form_repuesto_component__["a" /* FormRepuestoComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_38__guards_auth_guard__["a" /* AuthGuard */]] },
+    { path: 'modificar-repuesto', component: __WEBPACK_IMPORTED_MODULE_22__components_modificar_repuesto_modificar_repuesto_component__["a" /* ModificarRepuestoComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_38__guards_auth_guard__["a" /* AuthGuard */]] },
     // Mecanico
-    { path: 'actualizar-orden', component: __WEBPACK_IMPORTED_MODULE_27__components_actualizar_orden_actualizar_orden_component__["a" /* ActualizarOrdenComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_33__guards_auth_guard__["a" /* AuthGuard */]] },
-    { path: 'lista-reparacion', component: __WEBPACK_IMPORTED_MODULE_26__components_lista_reparacion_lista_reparacion_component__["a" /* ListaReparacionComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_33__guards_auth_guard__["a" /* AuthGuard */]] },
+    { path: 'actualizar-orden', component: __WEBPACK_IMPORTED_MODULE_27__components_actualizar_orden_actualizar_orden_component__["a" /* ActualizarOrdenComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_38__guards_auth_guard__["a" /* AuthGuard */]] },
+    { path: 'lista-reparacion', component: __WEBPACK_IMPORTED_MODULE_26__components_lista_reparacion_lista_reparacion_component__["a" /* ListaReparacionComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_38__guards_auth_guard__["a" /* AuthGuard */]] },
     // Gerente
-    { path: 'cola-espera', component: __WEBPACK_IMPORTED_MODULE_24__components_cola_espera_cola_espera_component__["a" /* ColaEsperaComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_33__guards_auth_guard__["a" /* AuthGuard */]] },
-    { path: 'detalle-vehiculo', component: __WEBPACK_IMPORTED_MODULE_25__components_detalle_vehiculo_detalle_vehiculo_component__["a" /* DetalleVehiculoComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_33__guards_auth_guard__["a" /* AuthGuard */]] },
-    { path: 'lista-mecanicos', component: __WEBPACK_IMPORTED_MODULE_28__components_lista_mecanicos_lista_mecanicos_component__["a" /* ListaMecanicosComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_33__guards_auth_guard__["a" /* AuthGuard */]] },
-    { path: 'condicion-entrega', component: __WEBPACK_IMPORTED_MODULE_29__components_condicion_entrega_condicion_entrega_component__["a" /* CondicionEntregaComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_33__guards_auth_guard__["a" /* AuthGuard */]] },
-    { path: 'lector-qr', component: __WEBPACK_IMPORTED_MODULE_31__components_lector_qr_lector_qr_component__["a" /* LectorQrComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_33__guards_auth_guard__["a" /* AuthGuard */]] }
+    { path: 'cola-espera', component: __WEBPACK_IMPORTED_MODULE_24__components_cola_espera_cola_espera_component__["a" /* ColaEsperaComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_38__guards_auth_guard__["a" /* AuthGuard */]] },
+    { path: 'detalle-vehiculo', component: __WEBPACK_IMPORTED_MODULE_25__components_detalle_vehiculo_detalle_vehiculo_component__["a" /* DetalleVehiculoComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_38__guards_auth_guard__["a" /* AuthGuard */]] },
+    { path: 'lista-mecanicos', component: __WEBPACK_IMPORTED_MODULE_28__components_lista_mecanicos_lista_mecanicos_component__["a" /* ListaMecanicosComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_38__guards_auth_guard__["a" /* AuthGuard */]] },
+    { path: 'condicion-entrega', component: __WEBPACK_IMPORTED_MODULE_29__components_condicion_entrega_condicion_entrega_component__["a" /* CondicionEntregaComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_38__guards_auth_guard__["a" /* AuthGuard */]] },
+    { path: 'lector-qr', component: __WEBPACK_IMPORTED_MODULE_31__components_lector_qr_lector_qr_component__["a" /* LectorQrComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_38__guards_auth_guard__["a" /* AuthGuard */]] },
+    { path: 'generar-reporte', component: __WEBPACK_IMPORTED_MODULE_32__components_generar_reporte_generar_reporte_component__["a" /* GenerarReporteComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_38__guards_auth_guard__["a" /* AuthGuard */]] },
+    { path: 'reporte-vehiculo', component: __WEBPACK_IMPORTED_MODULE_33__components_reporte_vehiculo_reporte_vehiculo_component__["a" /* ReporteVehiculoComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_38__guards_auth_guard__["a" /* AuthGuard */]] },
+    { path: 'reporte-cliente', component: __WEBPACK_IMPORTED_MODULE_34__components_reporte_cliente_reporte_cliente_component__["a" /* ReporteClienteComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_38__guards_auth_guard__["a" /* AuthGuard */]] },
+    { path: 'reporte-modelo', component: __WEBPACK_IMPORTED_MODULE_35__components_reporte_modelo_reporte_modelo_component__["a" /* ReporteModeloComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_38__guards_auth_guard__["a" /* AuthGuard */]] },
+    { path: 'reporte-mecanico', component: __WEBPACK_IMPORTED_MODULE_36__components_reporte_mecanico_reporte_mecanico_component__["a" /* ReporteMecanicoComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_38__guards_auth_guard__["a" /* AuthGuard */]] }
 ];
 var AppModule = /** @class */ (function () {
     function AppModule() {
@@ -219,7 +232,14 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_28__components_lista_mecanicos_lista_mecanicos_component__["a" /* ListaMecanicosComponent */],
                 __WEBPACK_IMPORTED_MODULE_29__components_condicion_entrega_condicion_entrega_component__["a" /* CondicionEntregaComponent */],
                 __WEBPACK_IMPORTED_MODULE_30__components_actualizar_datos_actualizar_datos_component__["a" /* ActualizarDatosComponent */],
-                __WEBPACK_IMPORTED_MODULE_31__components_lector_qr_lector_qr_component__["a" /* LectorQrComponent */]
+
+                __WEBPACK_IMPORTED_MODULE_31__components_lector_qr_lector_qr_component__["a" /* LectorQrComponent */],
+                __WEBPACK_IMPORTED_MODULE_32__components_generar_reporte_generar_reporte_component__["a" /* GenerarReporteComponent */],
+                __WEBPACK_IMPORTED_MODULE_33__components_reporte_vehiculo_reporte_vehiculo_component__["a" /* ReporteVehiculoComponent */],
+                __WEBPACK_IMPORTED_MODULE_34__components_reporte_cliente_reporte_cliente_component__["a" /* ReporteClienteComponent */],
+                __WEBPACK_IMPORTED_MODULE_35__components_reporte_modelo_reporte_modelo_component__["a" /* ReporteModeloComponent */],
+                __WEBPACK_IMPORTED_MODULE_36__components_reporte_mecanico_reporte_mecanico_component__["a" /* ReporteMecanicoComponent */]
+
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -231,9 +251,11 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_7_angular2_image_upload__["a" /* ImageUploadModule */].forRoot()
             ],
             providers: [
-                __WEBPACK_IMPORTED_MODULE_32__services_auth_service__["a" /* AuthService */],
-                __WEBPACK_IMPORTED_MODULE_33__guards_auth_guard__["a" /* AuthGuard */],
-                __WEBPACK_IMPORTED_MODULE_34__angular_common__["DatePipe"]
+
+                __WEBPACK_IMPORTED_MODULE_37__services_auth_service__["a" /* AuthService */],
+                __WEBPACK_IMPORTED_MODULE_38__guards_auth_guard__["a" /* AuthGuard */],
+                __WEBPACK_IMPORTED_MODULE_39__angular_common__["DatePipe"]
+
             ],
             bootstrap: [__WEBPACK_IMPORTED_MODULE_8__app_component__["a" /* AppComponent */]]
         })
@@ -837,7 +859,9 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/dashboard/dashboard.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\n    <div class=\"col mx-0 mx-sm-4 mx-md-5 mx-lg-5 mx-xl-5 mt-4 mb-2\">\n        <h3>Dashboard</h3>\n    </div>\n</div>\n<div class=\"row mt-5 pb-5 main\">\n    <div class=\"col d-flex justify-content-center\">\n\n        <!-- Card Deck del Cliente -->\n        <div *ngIf=\"this.rol === 'cliente'\" class=\"card-deck\">\n            <div class=\"card text-center\" style=\"max-width: 18rem; max-height: 24rem;\">\n                <img class=\"img-responsive mx-auto mt-4 mb-2\" src=\"assets/dashboard-cliente/vehiculo-agregar.png\" alt=\"Imagen Agregar Vehiculo\" width=\"130\" height=\"140\">\n\n                <div class=\"card-body px-sm-1 px-md-2 px-lg-3 px-xl-3 mt-3\">\n                    <h5 class=\"card-title\">Registro</h5>\n                    <p class=\"card-text\">Registra un nuevo vehiculo para poder solicitar citas.</p>\n                    <a [routerLink]=\"['/form-vehiculo']\" class=\"btn btn-outline-primary mx-0 mx-sm-0 mx-md-0\">Registrar</a>\n                </div>\n            </div>\n            <div class=\"card text-center\" style=\"max-width: 18rem; max-height: 24rem;\">\n                <img class=\"img-responsive mx-auto mt-4 mb-2\" src=\"assets/dashboard-cliente/vehiculo-ver.png\" alt=\"Imagen Ver Vehiculos\" width=\"130\" height=\"140\">\n                <div class=\"card-body px-sm-1 px-md-2 px-lg-3 px-xl-3\">\n                    <h5 class=\"card-title\">Garage</h5>\n                    <p class=\"card-text\">Gestiona todas los vehiculos asociados,solicita citas, edita la informacion o eliminalos</p>\n                    <a [routerLink]=\"['/garage']\" class=\"btn btn-outline-primary\">Ir al Garage</a>\n                </div>\n            </div>\n            <div class=\"card text-center\" style=\"max-width: 18rem; max-height: 24rem;\">\n                <img class=\"img-responsive mx-auto mt-4 mb-2\" src=\"assets/dashboard-cliente/resume.png\" alt=\"Imagen Perfil\" width=\"130\" height=\"140\">\n                <div class=\"card-body px-sm-1 px-md-2 px-lg-3 px-xl-3 mt-3\">\n                    <h5 class=\"card-title\">Mi Perfil</h5>\n                    <p class=\"card-text\">Ve la informacion de tu perfil</p>\n                    <a class=\"btn btn-outline-primary\" [routerLink]=\"['/profile']\">Perfil</a>\n                </div>\n            </div>\n        </div>\n\n        <!-- Card Deck del Empleado -->\n        <div *ngIf=\"this.rol !== 'cliente'\" class=\"card-deck\">\n          \n            <!-- Administrador -->\n            <div *ngIf=\"this.rol === 'administrador'\" class=\"card text-center\" style=\"max-width: 18rem; max-height: 24rem;\">\n                <img class=\"img-responsive mx-auto mt-4 mb-2\" src=\"assets/dashboard-admin/employees.png\" alt=\"Imagen Roles\" width=\"130\" height=\"140\">\n                <div class=\"card-body px-sm-1 px-md-2 px-lg-3 px-xl-3 mt-3\">\n                    <h5 class=\"card-title\">Asignar Roles</h5>\n                    <p class=\"card-text\">Gestiona la asignación de roles de trabajo en el taller.</p>\n                    <a class=\"btn btn-outline-primary\" [routerLink]=\"['/gestionar-rol']\">Gestionar</a>\n                </div>\n            </div>\n\n            <div *ngIf=\"this.rol === 'administrador'\" class=\"card text-center\" style=\"max-width: 18rem; max-height: 24rem;\">\n                <img class=\"img-responsive mx-auto mt-4 mb-2\" src=\"assets/dashboard-admin/repuesto.png\" alt=\"Imagen Repuesto\" width=\"130\" height=\"140\">\n                <div class=\"card-body px-sm-1 px-md-2 px-lg-3 px-xl-3 mt-3\">\n                    <h5 class=\"card-title\">Gestionar Repuestos</h5>\n                    <p class=\"card-text\">Gestiona y modifica los repuestos del taller.</p>\n                    <a class=\"btn btn-outline-primary\" [routerLink]=\"['/lista-repuestos']\">Gestionar</a>\n                </div>\n            </div>\n          \n            <!-- Gerente -->\n            <div *ngIf=\"this.rol === 'gerente'\" class=\"card text-center\" style=\"max-width: 18rem; max-height: 24rem;\">\n                <img class=\"img-responsive mx-auto mt-4 mb-2\" src=\"assets/dashboard-gerente/cola-espera.png\" alt=\"Imagen Cola de Espera\" width=\"130\" height=\"140\">\n                <div class=\"card-body px-sm-1 px-md-2 px-lg-3 px-xl-3 mt-3\">\n                    <h5 class=\"card-title\">Cola de Espera</h5>\n                    <p class=\"card-text\">Gestiona la cola de espera de reparaciones.</p>\n                    <a class=\"btn btn-outline-primary\" [routerLink]=\"['/cola-espera']\">Gestionar</a>\n                </div>\n            </div>\n            <div *ngIf=\"this.rol === 'gerente'\" class=\"card text-center\" style=\"max-width: 18rem; max-height: 24rem;\">\n                <img class=\"img-responsive mx-auto mt-4 mb-2\" src=\"assets/dashboard-gerente/mecanico.png\" alt=\"Imagen Asignar Mecanicos\" width=\"130\"\n                    height=\"140\">\n                <div class=\"card-body px-sm-1 px-md-2 px-lg-3 px-xl-3 mt-3\">\n                    <h5 class=\"card-title\">Mecanicos</h5>\n                    <p class=\"card-text\">Asigna reparaciones a los mecánicos de tu taller.</p>\n                    <a class=\"btn btn-outline-primary\" [routerLink]=\"['/lista-mecanicos']\">Gestionar</a>\n                </div>\n            </div>\n            <div *ngIf=\"this.rol === 'gerente'\" class=\"card text-center\" style=\"max-width: 18rem; max-height: 24rem;\">\n                <img class=\"img-responsive mx-auto mt-5 mb-2\" src=\"assets/dashboard-gerente/qr.png\" alt=\"Imagen Asignar Mecanicos\"\n                    width=\"130\" height=\"120\">\n                <div class=\"card-body px-sm-1 px-md-2 px-lg-3 px-xl-3 mt-3\">\n                    <h5 class=\"card-title\">Lectura de QR</h5>\n                    <p class=\"card-text\">Identifica rápidamente los vehículos que llegan al taller.</p>\n                    <a class=\"btn btn-outline-primary\" [routerLink]=\"['/lector-qr']\">Escanear</a>\n                </div>\n            </div>\n\n\n            <!-- Mecanico -->\n            <div *ngIf=\"this.rol === 'mecanico'\" class=\"card text-center\" style=\"max-width: 18rem; max-height: 24rem;\">\n                <img class=\"img-responsive mx-auto mt-4 mb-2\" src=\"assets/dashboard-mecanico/car-repair.png\" alt=\"Imagen Reparaciones\" width=\"130\" height=\"140\">\n                <div class=\"card-body px-sm-1 px-md-2 px-lg-3 px-xl-3 mt-3\">\n                <h5 class=\"card-title\">Gestionar Reparaciones</h5>\n                <p class=\"card-text\">Gestiona las reparaciones que te han asignado</p>\n                <a class=\"btn btn-outline-primary\" [routerLink]=\"['/lista-reparacion']\">Gestionar</a>\n                </div>\n            </div>\n\n            <!-- Todos los Empleados -->\n            <div class=\"card text-center\" style=\"max-width: 18rem; max-height: 24rem;\">\n                <img class=\"img-responsive mx-auto mt-4 mb-2\" src=\"assets/dashboard-cliente/resume.png\" alt=\"Imagen Perfil\" width=\"130\" height=\"140\">\n                <div class=\"card-body px-sm-1 px-md-2 px-lg-3 px-xl-3 mt-3\">\n                  <h5 class=\"card-title\">Mi Perfil</h5>\n                  <p class=\"card-text\">Edita la informacion correspondiente a tu perfil</p>\n                  <a class=\"btn btn-outline-primary\" [routerLink]=\"['/profile']\">Perfil</a>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>\n"
+
+module.exports = "<div class=\"row\">\n    <div class=\"col mx-0 mx-sm-4 mx-md-5 mx-lg-5 mx-xl-5 mt-4 mb-2\">\n        <h3>Dashboard</h3>\n    </div>\n</div>\n<div class=\"row mt-5 pb-5 main\">\n    <div class=\"col d-flex justify-content-center\">\n\n        <!-- Card Deck del Cliente -->\n        <div *ngIf=\"this.rol === 'cliente'\" class=\"card-deck\">\n            <div class=\"card text-center\" style=\"max-width: 18rem; max-height: 24rem;\">\n                <img class=\"img-responsive mx-auto mt-4 mb-2\" src=\"assets/dashboard-cliente/vehiculo-agregar.png\" alt=\"Imagen Agregar Vehiculo\" width=\"130\" height=\"140\">\n\n                <div class=\"card-body px-sm-1 px-md-2 px-lg-3 px-xl-3 mt-3\">\n                    <h5 class=\"card-title\">Registro</h5>\n                    <p class=\"card-text\">Registra un nuevo vehiculo para poder solicitar citas.</p>\n                    <a [routerLink]=\"['/form-vehiculo']\" class=\"btn btn-outline-primary mx-0 mx-sm-0 mx-md-0\">Registrar</a>\n                </div>\n            </div>\n            <div class=\"card text-center\" style=\"max-width: 18rem; max-height: 24rem;\">\n                <img class=\"img-responsive mx-auto mt-4 mb-2\" src=\"assets/dashboard-cliente/vehiculo-ver.png\" alt=\"Imagen Ver Vehiculos\" width=\"130\" height=\"140\">\n                <div class=\"card-body px-sm-1 px-md-2 px-lg-3 px-xl-3\">\n                    <h5 class=\"card-title\">Garage</h5>\n                    <p class=\"card-text\">Gestiona todas los vehiculos asociados,solicita citas, edita la informacion o eliminalos</p>\n                    <a [routerLink]=\"['/garage']\" class=\"btn btn-outline-primary\">Ir al Garage</a>\n                </div>\n            </div>\n            <div class=\"card text-center\" style=\"max-width: 18rem; max-height: 24rem;\">\n                <img class=\"img-responsive mx-auto mt-4 mb-2\" src=\"assets/dashboard-cliente/resume.png\" alt=\"Imagen Perfil\" width=\"130\" height=\"140\">\n                <div class=\"card-body px-sm-1 px-md-2 px-lg-3 px-xl-3 mt-3\">\n                    <h5 class=\"card-title\">Mi Perfil</h5>\n                    <p class=\"card-text\">Ve la informacion de tu perfil</p>\n                    <a class=\"btn btn-outline-primary\" [routerLink]=\"['/profile']\">Perfil</a>\n                </div>\n            </div>\n        </div>\n\n        <!-- Card Deck del Empleado -->\n        <div *ngIf=\"this.rol !== 'cliente'\" class=\"card-deck\">\n          \n            <!-- Administrador -->\n            <div *ngIf=\"this.rol === 'administrador'\" class=\"card text-center\" style=\"max-width: 18rem; max-height: 24rem;\">\n                <img class=\"img-responsive mx-auto mt-4 mb-2\" src=\"assets/dashboard-admin/employees.png\" alt=\"Imagen Roles\" width=\"130\" height=\"140\">\n                <div class=\"card-body px-sm-1 px-md-2 px-lg-3 px-xl-3 mt-3\">\n                    <h5 class=\"card-title\">Asignar Roles</h5>\n                    <p class=\"card-text\">Gestiona la asignación de roles de trabajo en el taller.</p>\n                    <a class=\"btn btn-outline-primary\" [routerLink]=\"['/gestionar-rol']\">Gestionar</a>\n                </div>\n            </div>\n\n            <div *ngIf=\"this.rol === 'administrador'\" class=\"card text-center\" style=\"max-width: 18rem; max-height: 24rem;\">\n                <img class=\"img-responsive mx-auto mt-4 mb-2\" src=\"assets/dashboard-admin/repuesto.png\" alt=\"Imagen Repuesto\" width=\"130\" height=\"140\">\n                <div class=\"card-body px-sm-1 px-md-2 px-lg-3 px-xl-3 mt-3\">\n                    <h5 class=\"card-title\">Gestionar Repuestos</h5>\n                    <p class=\"card-text\">Gestiona y modifica los repuestos del taller.</p>\n                    <a class=\"btn btn-outline-primary\" [routerLink]=\"['/lista-repuestos']\">Gestionar</a>\n                </div>\n            </div>\n          \n            <!-- Gerente -->\n            <div *ngIf=\"this.rol === 'gerente'\" class=\"card text-center\" style=\"max-width: 18rem; max-height: 24rem;\">\n                <img class=\"img-responsive mx-auto mt-4 mb-2\" src=\"assets/dashboard-gerente/cola-espera.png\" alt=\"Imagen Cola de Espera\" width=\"130\" height=\"140\">\n                <div class=\"card-body px-sm-1 px-md-2 px-lg-3 px-xl-3 mt-3\">\n                    <h5 class=\"card-title\">Cola de Espera</h5>\n                    <p class=\"card-text\">Gestiona la cola de espera de reparaciones.</p>\n                    <a class=\"btn btn-outline-primary\" [routerLink]=\"['/cola-espera']\">Gestionar</a>\n                </div>\n            </div>\n            <div *ngIf=\"this.rol === 'gerente'\" class=\"card text-center\" style=\"max-width: 18rem; max-height: 24rem;\">\n                <img class=\"img-responsive mx-auto mt-4 mb-2\" src=\"assets/dashboard-gerente/mecanico.png\" alt=\"Imagen Asignar Mecanicos\" width=\"130\"\n                    height=\"140\">\n                <div class=\"card-body px-sm-1 px-md-2 px-lg-3 px-xl-3 mt-3\">\n                    <h5 class=\"card-title\">Mecanicos</h5>\n                    <p class=\"card-text\">Asigna reparaciones a los mecánicos de tu taller.</p>\n                    <a class=\"btn btn-outline-primary\" [routerLink]=\"['/lista-mecanicos']\">Gestionar</a>\n                </div>\n            </div>\n            <div *ngIf=\"this.rol === 'gerente'\" class=\"card text-center\" style=\"max-width: 18rem; max-height: 24rem;\">\n                <img class=\"img-responsive mx-auto mt-5 mb-2\" src=\"assets/dashboard-gerente/qr.png\" alt=\"Imagen Asignar Mecanicos\"\n                    width=\"130\" height=\"120\">\n                <div class=\"card-body px-sm-1 px-md-2 px-lg-3 px-xl-3 mt-3\">\n                    <h5 class=\"card-title\">Lectura de QR</h5>\n                    <p class=\"card-text\">Identifica rápidamente los vehículos que llegan al taller.</p>\n                    <a class=\"btn btn-outline-primary\" [routerLink]=\"['/lector-qr']\">Escanear</a>\n                </div>\n            </div>\n            <div *ngIf=\"this.rol === 'gerente'\" class=\"card text-center\" style=\"max-width: 18rem; max-height: 24rem;\">\n                <img class=\"img-responsive mx-auto mt-4 mb-2\" src=\"assets/dashboard-gerente/reporte.png\" alt=\"Imagen Generar Reporte\" width=\"130\" height=\"140\">\n                <div class=\"card-body px-sm-1 px-md-2 px-lg-3 px-xl-3 mt-3\">\n                    <h5 class=\"card-title\">Generar Reportes</h5>\n                    <p class=\"card-text\">Genera reportes por modelo, mecanico,ect</p>\n                    <a class=\"btn btn-outline-primary\" [routerLink]=\"['/generar-reporte']\">Reportes</a>\n                </div>\n            </div>\n\n\n            <!-- Mecanico -->\n            <div *ngIf=\"this.rol === 'mecanico'\" class=\"card text-center\" style=\"max-width: 18rem; max-height: 24rem;\">\n                <img class=\"img-responsive mx-auto mt-4 mb-2\" src=\"assets/dashboard-mecanico/car-repair.png\" alt=\"Imagen Reparaciones\" width=\"130\" height=\"140\">\n                <div class=\"card-body px-sm-1 px-md-2 px-lg-3 px-xl-3 mt-3\">\n                <h5 class=\"card-title\">Gestionar Reparaciones</h5>\n                <p class=\"card-text\">Gestiona las reparaciones que te han asignado</p>\n                <a class=\"btn btn-outline-primary\" [routerLink]=\"['/lista-reparacion']\">Gestionar</a>\n                </div>\n            </div>\n\n            <!-- Todos los Empleados -->\n            <div class=\"card text-center\" style=\"max-width: 18rem; max-height: 24rem;\">\n                <img class=\"img-responsive mx-auto mt-4 mb-2\" src=\"assets/dashboard-cliente/resume.png\" alt=\"Imagen Perfil\" width=\"130\" height=\"140\">\n                <div class=\"card-body px-sm-1 px-md-2 px-lg-3 px-xl-3 mt-3\">\n                  <h5 class=\"card-title\">Mi Perfil</h5>\n                  <p class=\"card-text\">Edita la informacion correspondiente a tu perfil</p>\n                  <a class=\"btn btn-outline-primary\" [routerLink]=\"['/profile']\">Perfil</a>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>\n"
+
 
 /***/ }),
 
@@ -1595,6 +1619,94 @@ var GarageComponent = /** @class */ (function () {
             __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* Router */]])
     ], GarageComponent);
     return GarageComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/generar-reporte/generar-reporte.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".main {\n    min-height: 42.5rem;\n}", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/generar-reporte/generar-reporte.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"row\">\n  <div class=\"col mx-0 mx-sm-4 mx-md-5 mx-lg-5 mx-xl-5 mt-4 mb-2\">\n      <h3>Reportes</h3>\n  </div>\n</div>\n<div class=\"row mt-5 pb-5 main\">\n  <div class=\"col d-flex justify-content-center\">\n\n      <!-- Card Deck del Empleado -->\n      <div *ngIf=\"this.rol !== 'cliente'\" class=\"card-deck\">\n        \n          <!-- Gerente -->\n          <div *ngIf=\"this.rol === 'gerente'\" class=\"card text-center\" style=\"max-width: 18rem; max-height: 24rem;\">\n              <img class=\"img-responsive mx-auto mt-4 mb-2\" src=\"assets/detalle-vehiculo/car.png\" alt=\"Imagen Reporte Vehiculo\" width=\"130\" height=\"140\">\n              <div class=\"card-body px-sm-1 px-md-2 px-lg-3 px-xl-3 mt-3\">\n                  <h5 class=\"card-title\">Reporte de Vehiculo</h5>\n                  <p class=\"card-text\">Selecciona vehiculo para generar reporte.</p>\n                  <a class=\"btn btn-outline-primary\" [routerLink]=\"['/reporte-vehiculo']\">Lista Vehiculos</a>\n              </div>\n          </div>\n          <div *ngIf=\"this.rol === 'gerente'\" class=\"card text-center\" style=\"max-width: 18rem; max-height: 24rem;\">\n              <img class=\"img-responsive mx-auto mt-4 mb-2\" src=\"assets/detalle-vehiculo/man.png\" alt=\"Imagen Reporte Cliente\" width=\"130\"\n                  height=\"140\">\n              <div class=\"card-body px-sm-1 px-md-2 px-lg-3 px-xl-3 mt-3\">\n                  <h5 class=\"card-title\">Reporte de Cliente</h5>\n                  <p class=\"card-text\">Selecciona cliente para generar reporte.</p>\n                  <a class=\"btn btn-outline-primary\" [routerLink]=\"['/reporte-cliente']\">Lista Clientes</a>\n              </div>\n          </div>\n\n          <div *ngIf=\"this.rol === 'gerente'\" class=\"card text-center\" style=\"max-width: 18rem; max-height: 24rem;\">\n                <img class=\"img-responsive mx-auto mt-4 mb-2\" src=\"assets/detalle-vehiculo/orden.png\" alt=\"Imagen Reporte Modelo\" width=\"130\" height=\"140\">\n                <div class=\"card-body px-sm-1 px-md-2 px-lg-3 px-xl-3 mt-3\">\n                    <h5 class=\"card-title\">Reporte por Modelo</h5>\n                    <p class=\"card-text\">Crear un reporte de un  Modelo especifico </p>\n                    <a class=\"btn btn-outline-primary\" [routerLink]=\"['/reporte-modelo']\">Modelos</a>\n                </div>\n            </div>\n            <div *ngIf=\"this.rol === 'gerente'\" class=\"card text-center\" style=\"max-width: 18rem; max-height: 24rem;\">\n                    <img class=\"img-responsive mx-auto mt-4 mb-2\" src=\"assets/dashboard-gerente/mecanico.png\" alt=\"Imagen Reporte Mecanico\" width=\"130\" height=\"140\">\n                    <div class=\"card-body px-sm-1 px-md-2 px-lg-3 px-xl-3 mt-3\">\n                        <h5 class=\"card-title\">Reporte por Mecanico</h5>\n                        <p class=\"card-text\">Crear un reporte por cada mecanico</p>\n                        <a class=\"btn btn-outline-primary\" [routerLink]=\"['/reporte-mecanico']\">Mecanicos</a>\n                    </div>\n                </div>\n\n\n\n      </div>\n  </div>\n</div>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/generar-reporte/generar-reporte.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GenerarReporteComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_auth_service__ = __webpack_require__("../../../../../src/app/services/auth.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("../../../router/esm5/router.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__("../../../http/esm5/http.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map__ = __webpack_require__("../../../../rxjs/_esm5/add/operator/map.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+// HTTP Requests
+
+
+var GenerarReporteComponent = /** @class */ (function () {
+    function GenerarReporteComponent(http, authService, router) {
+        this.http = http;
+        this.authService = authService;
+        this.router = router;
+    }
+    GenerarReporteComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        var headers = new __WEBPACK_IMPORTED_MODULE_3__angular_http__["Headers"]();
+        // Fetches the token of the currently logged in user from localStorage
+        headers.append('Authorization', localStorage.getItem('id_token'));
+        headers.append('Content-Type', 'application/json');
+        this.http.get('http://localhost:3000/users/profile', { headers: headers })
+            .map(function (res) { return res.json(); })
+            .subscribe(function (profile) {
+            _this.rol = profile.user.rol;
+        }, function (err) {
+            console.log('Error while getting the profile: ', err);
+            return false;
+        });
+    };
+    GenerarReporteComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: 'app-generar-reporte',
+            template: __webpack_require__("../../../../../src/app/components/generar-reporte/generar-reporte.component.html"),
+            styles: [__webpack_require__("../../../../../src/app/components/generar-reporte/generar-reporte.component.css")]
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__angular_http__["Http"],
+            __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */],
+            __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* Router */]])
+    ], GenerarReporteComponent);
+    return GenerarReporteComponent;
 }());
 
 
@@ -2805,6 +2917,570 @@ var RegisterComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "../../../../../src/app/components/reporte-cliente/reporte-cliente.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".main {\n    min-height: 42.5rem;\n  }\n  \n  tr:hover {\n    background: #eaf2ff !important;\n  }\n  \n  .editar {\n    border: none;\n    background: transparent;\n    color: var(--dark);\n    opacity: 0;\n  }\n  \n  tr:hover .editar {\n    opacity: 1;\n  }", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/reporte-cliente/reporte-cliente.component.html":
+/***/ (function(module, exports) {
+
+
+module.exports = "<div class=\"row\">\n  <div class=\"col mx-0 mx-sm-4 mx-md-5 mx-lg-5 mx-xl-5 mt-5 mb-4\">\n    <h3>Reportes de Clientes</h3>\n  </div>\n</div>\n<div class=\"row main\">\n  <div class=\"col-12 mx-0 mx-sm-4 mx-md-5 mx-lg-5 mx-xl-5 my-4\">\n    <form (submit)=\"reporteCliente()\" class=\"d-flex align-items-center\">\n      <div class=\"col-4 form-group mr-4\">\n        <label for=\"elegido\">Cliente</label>\n        <select id=\"elegido\" class=\"form-control\" [(ngModel)]=\"elegido\" name=\"elegido\">\n          <option *ngFor=\"let cliente of clientes\" [ngValue]=\"cliente\">{{cliente.Nombre}}</option>\n        </select>\n      </div>\n      <button class=\"btn btn-outline-success mt-3\" type=\"submit\">Generar Reporte</button>\n    </form>\n  </div>\n</div>"
+
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/reporte-cliente/reporte-cliente.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ReporteClienteComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angular2_flash_messages__ = __webpack_require__("../../../../angular2-flash-messages/module/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angular2_flash_messages___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_angular2_flash_messages__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("../../../router/esm5/router.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_common__ = __webpack_require__("../../../common/esm5/common.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_http__ = __webpack_require__("../../../http/esm5/http.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+var ReporteClienteComponent = /** @class */ (function () {
+    function ReporteClienteComponent(http, flashMessage, router, datePipe) {
+        this.http = http;
+        this.flashMessage = flashMessage;
+        this.router = router;
+        this.datePipe = datePipe;
+    }
+    ReporteClienteComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        var headers = new __WEBPACK_IMPORTED_MODULE_4__angular_http__["Headers"]();
+        // Busca el token del usuario que esta ingresado en el sistema actualmente
+        var token = localStorage.getItem('id_token');
+        // Settear los encabezados para la petición al API
+        headers.append('Authorization', token);
+        headers.append('Content-Type', 'application/json');
+        this.http.get('gerente/vehiculos-y-clientes', { headers: headers })
+            .map(function (res) { return res.json(); })
+            .subscribe(function (data) {
+            data.vehiculos.map(function (vehiculo) {
+                if (vehiculo.FechaSolicitud) {
+                    // Guarda la fecha formateada
+                    vehiculo.FechaSolicitud = _this.datePipe.transform(vehiculo.FechaSolicitud);
+                }
+                if (vehiculo.FechaAdmision) {
+                    // Guarda la fecha formateada
+                    vehiculo.FechaAdmision = _this.datePipe.transform(vehiculo.FechaAdmision);
+                }
+                data.clientes.map(function (cliente) {
+                    if (cliente.id == vehiculo.Cliente) {
+                        vehiculo.Cliente = cliente.Nombre;
+                    }
+                });
+            });
+            _this.vehiculos = data.vehiculos;
+            console.log('Vehiculos: ', _this.vehiculos);
+            _this.clientes = data.clientes;
+            console.log('Clientes: ', _this.clientes);
+            localStorage.setItem('vehiculos2', _this.vehiculos);
+            localStorage.setItem('vehiculos', JSON.stringify(data.vehiculos));
+        }, function (err) {
+            console.log('Error al pedir los vehiculos desde ColaEsperaComponent: ', err);
+            return false;
+        });
+    };
+    ReporteClienteComponent.prototype.reporteCliente = function () {
+        var _this = this;
+        // Filtra el arreglo y solo deja los ID de los vehiculos
+        var chequeados = this.vehiculos
+            .filter(function (vehiculo) { return !!vehiculo.Chequeado; })
+            .map(function (vehiculo) {
+            vehiculo.Cliente = _this.elegido.Nombre;
+            vehiculo.Chequeado = false;
+            return vehiculo.id;
+        });
+        // Guarda el ID del cliente a asignar
+        var idCliente = this.elegido.id;
+        var headers = new __WEBPACK_IMPORTED_MODULE_4__angular_http__["Headers"]();
+        // Busca el token del usuario que esta ingresado en el sistema actualmente
+        var token = localStorage.getItem('id_token');
+        // Settear los encabezados para la petición al API
+        headers.append('Authorization', token);
+        headers.append('Content-Type', 'application/json');
+        this.http.post('gerente/reporte-cliente', { id: idCliente }, { headers: headers })
+            .map(function (res) { return res.json(); })
+            .subscribe(function (data) {
+            data.ordenes.map(function (orden) {
+            });
+            _this.ordenes = data.ordenes;
+            console.log('Ordenes: ', _this.ordenes);
+            localStorage.setItem('ordenes', JSON.stringify(data.ordenes));
+            var rows = [JSON.stringify(data.ordenes).replace('},', '\r' + '\n').replace('},', '\r' + '\n').replace('},', '\r' + '\n').replace('},', '\r' + '\n').replace('},', '\r' + '\n').replace('},', '\r' + '\n').replace('},', '\r' + '\n').replace('},', '\r' + '\n').replace('},', '\r' + '\n').replace('},', '\r' + '\n').replace('},', '\r' + '\n').replace('},', '\r' + '\n').replace('},', '\r' + '\n').replace('},', '\r' + '\n')];
+            var csvContent = "data:text/csv;charset=utf-8,";
+            rows.forEach(function (rowArray) {
+                var row = rowArray;
+                csvContent += row;
+            });
+            var encodedUri = encodeURI(csvContent);
+            var link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", "Reporte-Cliente.csv");
+            document.body.appendChild(link); // Required for FF
+            link.click(); // This will download the data file named "my_data.csv".
+        }, function (err) {
+            console.log('Error al pedir los vehiculos desde ColaEsperaComponent: ', err);
+            return false;
+        });
+    };
+    ReporteClienteComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: 'app-reporte-cliente',
+            template: __webpack_require__("../../../../../src/app/components/reporte-cliente/reporte-cliente.component.html"),
+            styles: [__webpack_require__("../../../../../src/app/components/reporte-cliente/reporte-cliente.component.css")]
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_4__angular_http__["Http"],
+            __WEBPACK_IMPORTED_MODULE_1_angular2_flash_messages__["FlashMessagesService"],
+            __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* Router */],
+            __WEBPACK_IMPORTED_MODULE_3__angular_common__["DatePipe"]])
+    ], ReporteClienteComponent);
+    return ReporteClienteComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/reporte-mecanico/reporte-mecanico.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".main {\n    min-height: 42.5rem;\n}", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/reporte-mecanico/reporte-mecanico.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"row\">\n  <div class=\"col mx-0 mx-sm-4 mx-md-5 mx-lg-5 mx-xl-5 mt-5 mb-4\">\n    <h3>Reportes de Mecánicos</h3>\n  </div>\n</div>\n<div class=\"row main\">\n  <div class=\"col-12 mx-0 mx-sm-4 mx-md-5 mx-lg-5 mx-xl-5 my-4\">\n    <form (submit)=\"reporteMecanico()\" class=\"d-flex align-items-center\">\n      <div class=\"col-4 form-group mr-4\">\n        <label for=\"elegido\">Mecánico</label>\n        <select id=\"elegido\" class=\"form-control\" [(ngModel)]=\"elegido\" name=\"elegido\">\n          <option *ngFor=\"let mecanico of mecanicos\" [ngValue]=\"mecanico\">{{mecanico.Nombre}}</option>\n        </select>\n      </div>\n      <button class=\"btn btn-primary mt-3\" type=\"submit\">Generar Reporte</button>\n    </form>\n  </div>\n</div>"
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/reporte-mecanico/reporte-mecanico.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ReporteMecanicoComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angular2_flash_messages__ = __webpack_require__("../../../../angular2-flash-messages/module/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angular2_flash_messages___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_angular2_flash_messages__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("../../../router/esm5/router.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_common__ = __webpack_require__("../../../common/esm5/common.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_http__ = __webpack_require__("../../../http/esm5/http.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+var ReporteMecanicoComponent = /** @class */ (function () {
+    function ReporteMecanicoComponent(http, flashMessage, router, datePipe) {
+        this.http = http;
+        this.flashMessage = flashMessage;
+        this.router = router;
+        this.datePipe = datePipe;
+    }
+    ReporteMecanicoComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        var headers = new __WEBPACK_IMPORTED_MODULE_4__angular_http__["Headers"]();
+        // Busca el token del usuario que esta ingresado en el sistema actualmente
+        var token = localStorage.getItem('id_token');
+        // Settear los encabezados para la petición al API
+        headers.append('Authorization', token);
+        headers.append('Content-Type', 'application/json');
+        this.http.get('gerente/vehiculos-y-mecanicos', { headers: headers })
+            .map(function (res) { return res.json(); })
+            .subscribe(function (data) {
+            data.vehiculos.map(function (vehiculo) {
+                if (vehiculo.FechaSolicitud) {
+                    // Guarda la fecha formateada
+                    vehiculo.FechaSolicitud = _this.datePipe.transform(vehiculo.FechaSolicitud);
+                }
+                if (vehiculo.FechaAdmision) {
+                    // Guarda la fecha formateada
+                    vehiculo.FechaAdmision = _this.datePipe.transform(vehiculo.FechaAdmision);
+                }
+                data.mecanicos.map(function (mecanico) {
+                    if (mecanico.id == vehiculo.Mecanico) {
+                        vehiculo.Mecanico = mecanico.Nombre;
+                    }
+                });
+            });
+            _this.vehiculos = data.vehiculos;
+            console.log('Vehiculos: ', _this.vehiculos);
+            _this.mecanicos = data.mecanicos;
+            console.log('Mecanicos: ', _this.mecanicos);
+            localStorage.setItem('vehiculos', JSON.stringify(data.vehiculos));
+        }, function (err) {
+            console.log('Error al pedir los vehiculos desde ColaEsperaComponent: ', err);
+            return false;
+        });
+    };
+    ReporteMecanicoComponent.prototype.reporteMecanico = function () {
+        var _this = this;
+        // Filtra el arreglo y solo deja los ID de los vehiculos
+        var chequeados = this.vehiculos
+            .filter(function (vehiculo) { return !!vehiculo.Chequeado; })
+            .map(function (vehiculo) {
+            vehiculo.Mecanico = _this.elegido.Nombre;
+            vehiculo.Chequeado = false;
+            return vehiculo.id;
+        });
+        // Guarda el ID del mecanico a asignar
+        var idMecanico = this.elegido.id;
+        var headers = new __WEBPACK_IMPORTED_MODULE_4__angular_http__["Headers"]();
+        // Busca el token del usuario que esta ingresado en el sistema actualmente
+        var token = localStorage.getItem('id_token');
+        // Settear los encabezados para la petición al API
+        headers.append('Authorization', token);
+        headers.append('Content-Type', 'application/json');
+        this.http.post('gerente/reporte-mecanico', { id: idMecanico }, { headers: headers })
+            .map(function (res) { return res.json(); })
+            .subscribe(function (data) {
+            data.ordenes.map(function (orden) {
+            });
+            _this.ordenes = data.ordenes;
+            console.log('Ordenes: ', _this.ordenes);
+            localStorage.setItem('ordenes', JSON.stringify(data.ordenes));
+            var rows = [JSON.stringify(data.ordenes).replace('},', "\r" + "\n").replace('},', "\r" + "\n").replace('},', "\r" + "\n").replace('},', "\r" + "\n").replace('},', "\r" + "\n").replace('},', "\r" + "\n").replace('},', "\r" + "\n").replace('},', "\r" + "\n").replace('},', "\r" + "\n").replace('},', "\r" + "\n").replace('},', "\r" + "\n").replace('},', "\r" + "\n").replace('},', "\r" + "\n").replace('},', "\r" + "\n").replace('},', "\r" + "\n").replace('},', "\r" + "\n").replace('},', "\r" + "\n").replace('},', "\r" + "\n").replace('},', "\r" + "\n").replace('},', "\r" + "\n").replace('},', "\r" + "\n").replace('},', "\r" + "\n").replace('},', "\r" + "\n").replace('},', "\r" + "\n").replace('},', "\r" + "\n").replace('},', "\r" + "\n").replace('},', "\r" + "\n").replace('},', "\r" + "\n").replace('},', "\r" + "\n").replace('},', "\r" + "\n").replace('},', "\r" + "\n").replace('},', "\r" + "\n").replace('},', "\r" + "\n").replace('},', "\r" + "\n").replace('},', "\r" + "\n").replace('},', "\r" + "\n").replace('},', "\r" + "\n").replace('},', "\r" + "\n").replace('},', "\r" + "\n").replace('},', "\r" + "\n").replace('},', "\r" + "\n")];
+            var csvContent = "data:text/csv;charset=utf-8,";
+            rows.forEach(function (rowArray) {
+                var row = rowArray;
+                csvContent += row;
+            });
+            var encodedUri = encodeURI(csvContent);
+            var link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", "Reporte-Mecanico.csv");
+            document.body.appendChild(link); // Required for FF
+            link.click(); // This will download the data file named "my_data.csv".
+        }, function (err) {
+            console.log('Error al pedir los vehiculos desde ColaEsperaComponent: ', err);
+            return false;
+        });
+    };
+    ReporteMecanicoComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: 'app-reporte-mecanico',
+            template: __webpack_require__("../../../../../src/app/components/reporte-mecanico/reporte-mecanico.component.html"),
+            styles: [__webpack_require__("../../../../../src/app/components/reporte-mecanico/reporte-mecanico.component.css")]
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_4__angular_http__["Http"],
+            __WEBPACK_IMPORTED_MODULE_1_angular2_flash_messages__["FlashMessagesService"],
+            __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* Router */],
+            __WEBPACK_IMPORTED_MODULE_3__angular_common__["DatePipe"]])
+    ], ReporteMecanicoComponent);
+    return ReporteMecanicoComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/reporte-modelo/reporte-modelo.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".main {\n    min-height: 42.5rem;\n}", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/reporte-modelo/reporte-modelo.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"row\">\n    <div class=\"col mx-0 mx-sm-4 mx-md-5 mx-lg-5 mx-xl-5 mt-5 mb-4\">\n      <h3>Reportes por Modelo</h3>\n    </div>\n</div>\n<div class=\"row main\">\n  <div class=\"col-12 mx-0 mx-sm-4 mx-md-5 mx-lg-5 mx-xl-5 my-4\">\n    <form (submit)=\"reporteModelo()\" class=\"d-flex align-items-center\">\n        <div class=\"col-4 form-group mr-4\">\n                  <label for=\"modeloV\">Modelo</label>\n                  <select id=\"elegido\" class=\"form-control\" [(ngModel)]=\"elegido\" name=\"elegido\">\n                      <option selected>488</option>\n                      <option>458 Spider</option>\n                      <option>4Runner</option>\n                      <option>Accord</option>\n                      <option>Aventador</option>\n                      <option>Aveo</option>\n                      <option>C-Class</option>\n                      <option>Camaro</option>\n                      <option>Challenger</option>\n                      <option>Charger</option>\n                      <option>Civic</option>\n                      <option>Durango</option>\n                      <option>E-Class</option>\n                      <option>Eclipse Cross</option>\n                      <option>Explorer</option>\n                      <option>F150</option>\n                      <option>FJ Cruiser</option>\n                      <option>Gran Tiger</option>\n                      <option>Giulia</option>\n                      <option>HS</option>\n                      <option>Huracán</option>\n                      <option>IS</option>\n                      <option>J50</option>\n                      <option>LS</option>\n                      <option>Mazda3</option>\n                      <option>Mazda6</option>\n                      <option>Montero</option>\n                      <option>Murano</option>\n                      <option>Mustang</option>\n                      <option>MX-5</option>\n                      <option>Orinoco</option>\n                      <option>Outlander</option>\n                      <option>Pathfinder</option>\n                      <option>R8</option>\n                      <option>Rapide S</option>\n                      <option>Ridgeline</option>\n                      <option>RS 6</option>\n                      <option>S-Class</option>\n                      <option>S90</option>\n                      <option>Sequoia</option>\n                      <option>Silverado</option>\n                      <option>Stelvio Quadrifoglio</option>\n                      <option>Stelvio TI</option>\n                      <option>Tiggo</option>\n                      <option>Titan</option>\n                      <option>TTS</option>\n                      <option>Urus</option>\n                      <option>V40 Cross Country</option>\n                      <option>Vanquish</option>\n                      <option>Vulcan</option>\n                      <option>XC90</option>\n                  </select>\n              </div>\n      <button class=\"btn btn-primary mt-3\" type=\"submit\">Generar Reporte</button>\n    </form>\n  </div>\n</div>\n "
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/reporte-modelo/reporte-modelo.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ReporteModeloComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angular2_flash_messages__ = __webpack_require__("../../../../angular2-flash-messages/module/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angular2_flash_messages___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_angular2_flash_messages__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("../../../router/esm5/router.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_common__ = __webpack_require__("../../../common/esm5/common.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_http__ = __webpack_require__("../../../http/esm5/http.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+var ReporteModeloComponent = /** @class */ (function () {
+    function ReporteModeloComponent(http, flashMessage, router, datePipe) {
+        this.http = http;
+        this.flashMessage = flashMessage;
+        this.router = router;
+        this.datePipe = datePipe;
+    }
+    ReporteModeloComponent.prototype.ngOnInit = function () {
+    };
+    ReporteModeloComponent.prototype.reporteModelo = function () {
+        var _this = this;
+        var headers = new __WEBPACK_IMPORTED_MODULE_4__angular_http__["Headers"]();
+        // Busca el token del usuario que esta ingresado en el sistema actualmente
+        var token = localStorage.getItem('id_token');
+        // Settear los encabezados para la petición al API
+        headers.append('Authorization', token);
+        headers.append('Content-Type', 'application/json');
+        this.http.post('gerente/reporte-modelo', { Modelo: this.elegido }, { headers: headers })
+            .map(function (res) { return res.json(); })
+            .subscribe(function (data) {
+            data.ordenes.map(function (orden) {
+            });
+            _this.ordenes = data.ordenes;
+            console.log('Ordenes: ', _this.ordenes);
+            localStorage.setItem('ordenes', JSON.stringify(data.ordenes));
+            var rows = [JSON.stringify(data.ordenes).replace('},', "\r" + "\n").replace('},', "\r" + "\n").replace('},', "\r" + "\n").replace('},', "\r" + "\n").replace('},', "\r" + "\n").replace('},', "\r" + "\n").replace('},', "\r" + "\n").replace('},', "\r" + "\n").replace('},', "\r" + "\n").replace('},', "\r" + "\n").replace('},', "\r" + "\n").replace('},', "\r" + "\n").replace('},', "\r" + "\n").replace('},', "\r" + "\n").replace('},', "\r" + "\n").replace('},', "\r" + "\n").replace('},', "\r" + "\n").replace('},', "\r" + "\n").replace('},', "\r" + "\n").replace('},', "\r" + "\n").replace('},', "\r" + "\n").replace('},', "\r" + "\n").replace('},', "\r" + "\n").replace('},', "\r" + "\n").replace('},', "\r" + "\n").replace('},', "\r" + "\n").replace('},', "\r" + "\n").replace('},', "\r" + "\n").replace('},', "\r" + "\n").replace('},', "\r" + "\n").replace('},', "\r" + "\n").replace('},', "\r" + "\n").replace('},', "\r" + "\n").replace('},', "\r" + "\n").replace('},', "\r" + "\n").replace('},', "\r" + "\n").replace('},', "\r" + "\n").replace('},', "\r" + "\n").replace('},', "\r" + "\n").replace('},', "\r" + "\n").replace('},', "\r" + "\n")];
+            var csvContent = "data:text/csv;charset=utf-8,";
+            rows.forEach(function (rowArray) {
+                var row = rowArray;
+                csvContent += row;
+            });
+            var encodedUri = encodeURI(csvContent);
+            var link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", "Reporte-Modelo.csv");
+            document.body.appendChild(link); // Required for FF
+            link.click(); // This will download the data file named "my_data.csv".
+        }, function (err) {
+            console.log('Error al pedir los vehiculos desde ColaEsperaComponent: ', err);
+            return false;
+        });
+    };
+    ReporteModeloComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: 'app-reporte-modelo',
+            template: __webpack_require__("../../../../../src/app/components/reporte-modelo/reporte-modelo.component.html"),
+            styles: [__webpack_require__("../../../../../src/app/components/reporte-modelo/reporte-modelo.component.css")]
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_4__angular_http__["Http"],
+            __WEBPACK_IMPORTED_MODULE_1_angular2_flash_messages__["FlashMessagesService"],
+            __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* Router */],
+            __WEBPACK_IMPORTED_MODULE_3__angular_common__["DatePipe"]])
+    ], ReporteModeloComponent);
+    return ReporteModeloComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/reporte-vehiculo/reporte-vehiculo.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".main {\n    min-height: 42.5rem;\n  }\n  \n  tr:hover {\n    background: #eaf2ff !important;\n  }\n  \n  .editar {\n    border: none;\n    background: transparent;\n    color: var(--dark);\n    opacity: 0;\n  }\n  \n  tr:hover .editar {\n    opacity: 1;\n  }", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/reporte-vehiculo/reporte-vehiculo.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"row\">\n  <div class=\"col mx-0 mx-sm-4 mx-md-5 mx-lg-5 mx-xl-5 mt-5 mb-4\">\n    <h3>Lista de Vehiculos</h3>\n  </div>\n</div>\n<div class=\"row main\">\n  <!-- Table -->\n  <div class=\"container\">\n    <div class=\"table-responsive\">\n      <table class=\"table table-hover bg-light text-dark\">\n        <thead class=\"thead-light\">\n          <tr>\n            <th scope=\"col\">ID</th>\n            <th scope=\"col\">Vehículo</th>\n            <th scope=\"col\">Cliente</th>\n            <th scope=\"col\">Estado</th>\n            <th scope=\"col\">Acciones</th>\n          </tr>\n        </thead>\n        <tbody>\n          <tr *ngFor=\"let vehiculo of vehiculos; let i=index\">\n            <th scope=\"row\">{{vehiculo.id}}</th>\n            <td>{{vehiculo.Marca}} {{vehiculo.Modelo}}</td>\n            <td>{{vehiculo.Cliente}}</td>\n            <!-- Estado -->\n            <td>\n              <span *ngIf=\"vehiculo.Estado == undefined\" class=\"badge badge-pill badge-primary\">Sin Cita</span>\n              <span *ngIf=\"vehiculo.Estado == 'En Espera'\" class=\"badge badge-pill badge-warning text-white\">{{vehiculo.Estado}}</span>\n              <span *ngIf=\"vehiculo.Estado == 'Evaluado'\" class=\"badge badge-pill badge-secondary text-white\">{{vehiculo.Estado}}</span>\n              <span *ngIf=\"vehiculo.Estado == 'En Reparacion'\" class=\"badge badge-pill badge-info text-white\">{{vehiculo.Estado}}</span>\n              <span *ngIf=\"vehiculo.Estado == 'Reparado'\" class=\"badge badge-pill badge-success text-white\">{{vehiculo.Estado}}</span>\n              <span *ngIf=\"vehiculo.Estado == 'Listo'\" class=\"badge badge-pill badge-primary text-white\">{{vehiculo.Estado}}</span>\n            </td>\n            <!-- Acciones -->\n            <td>\n              <button (click)=\"generar(i)\" class=\"btn btn-sm btn-outline-success\">Generar Reporte</button>\n            </td>\n          </tr>\n        </tbody>\n      </table>\n    </div>\n  </div>\n</div>\n\n "
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/reporte-vehiculo/reporte-vehiculo.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ReporteVehiculoComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angular2_flash_messages__ = __webpack_require__("../../../../angular2-flash-messages/module/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angular2_flash_messages___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_angular2_flash_messages__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("../../../router/esm5/router.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_common__ = __webpack_require__("../../../common/esm5/common.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_http__ = __webpack_require__("../../../http/esm5/http.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_map__ = __webpack_require__("../../../../rxjs/_esm5/add/operator/map.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+var ReporteVehiculoComponent = /** @class */ (function () {
+    function ReporteVehiculoComponent(http, flashMessage, router, datePipe) {
+        this.http = http;
+        this.flashMessage = flashMessage;
+        this.router = router;
+        this.datePipe = datePipe;
+    }
+    ReporteVehiculoComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        var headers = new __WEBPACK_IMPORTED_MODULE_4__angular_http__["Headers"]();
+        // Busca el token del usuario que esta ingresado en el sistema actualmente
+        var token = localStorage.getItem('id_token');
+        // Settear los encabezados para la petición al API
+        headers.append('Authorization', token);
+        headers.append('Content-Type', 'application/json');
+        this.http.get('users/vehiculos-gerente-cliente', { headers: headers })
+            .map(function (res) { return res.json(); })
+            .subscribe(function (data) {
+            data.vehiculos.map(function (vehiculo) { });
+            _this.vehiculos = data.vehiculos;
+            console.log(_this.vehiculos);
+            localStorage.setItem('vehiculos', JSON.stringify(data.vehiculos));
+        }, function (err) {
+            console.log('Error al pedir los vehiculos desde ReporteVehiculoComponent: ', err);
+            return false;
+        });
+    };
+    ReporteVehiculoComponent.prototype.generar = function (indice) {
+        var _this = this;
+        // Filtra el arreglo y solo deja los ID de los vehiculos
+        var chequeados = this.vehiculos
+            .filter(function (vehiculo) { return !!vehiculo.Chequeado; })
+            .map(function (vehiculo) {
+            vehiculo.Chequeado = false;
+            return vehiculo.id;
+        });
+        // Guarda el ID del vehiculo a buscar
+        var idVehiculo = indice + 1;
+        var headers = new __WEBPACK_IMPORTED_MODULE_4__angular_http__["Headers"]();
+        // Busca el token del usuario que esta ingresado en el sistema actualmente
+        var token = localStorage.getItem('id_token');
+        // Settear los encabezados para la petición al API
+        headers.append('Authorization', token);
+        headers.append('Content-Type', 'application/json');
+        this.http.post('gerente/reporte-vehiculo', { id: idVehiculo }, { headers: headers })
+            .map(function (res) { return res.json(); })
+            .subscribe(function (data) {
+            data.ordenes.map(function (orden) {
+            });
+            _this.ordenes = data.ordenes;
+            console.log('Ordenes: ', _this.ordenes);
+            if (_this.ordenes.length == 0) {
+                _this.flashMessage.show('El vehiculo seleccionado no tiene ninguna orden de reparación', { cssClass: 'custom-danger', timeout: 3000 });
+                return false;
+            }
+            localStorage.setItem('ordenes', JSON.stringify(data.ordenes));
+            var rows = [JSON.stringify(data.ordenes).replace('},', '\r' + '\n').replace('},', '\r' + '\n').replace('},', '\r' + '\n').replace('},', '\r' + '\n').replace('},', '\r' + '\n').replace('},', '\r' + '\n').replace('},', '\r' + '\n').replace('},', '\r' + '\n').replace('},', '\r' + '\n').replace('},', '\r' + '\n').replace('},', '\r' + '\n').replace('},', '\r' + '\n').replace('},', '\r' + '\n').replace('},', '\r' + '\n').replace('},', '\r' + '\n').replace('},', '\r' + '\n').replace('},', '\r' + '\n').replace('},', '\r' + '\n').replace('},', '\r' + '\n')];
+            var csvContent = "data:text/csv;charset=utf-8,";
+            rows.forEach(function (rowArray) {
+                var row = rowArray;
+                csvContent += row;
+            });
+            var encodedUri = encodeURI(csvContent);
+            var link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", "Reporte-Vehiculo.csv");
+            document.body.appendChild(link); // Required for FF
+            link.click(); // This will download the data file named "my_data.csv".
+        }, function (err) {
+            console.log('Error al pedir los vehiculos desde ColaEsperaComponent: ', err);
+            return false;
+        });
+    };
+    ReporteVehiculoComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: 'app-reporte-vehiculo',
+            template: __webpack_require__("../../../../../src/app/components/reporte-vehiculo/reporte-vehiculo.component.html"),
+            styles: [__webpack_require__("../../../../../src/app/components/reporte-vehiculo/reporte-vehiculo.component.css")]
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_4__angular_http__["Http"],
+            __WEBPACK_IMPORTED_MODULE_1_angular2_flash_messages__["FlashMessagesService"],
+            __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* Router */],
+            __WEBPACK_IMPORTED_MODULE_3__angular_common__["DatePipe"]])
+    ], ReporteVehiculoComponent);
+    return ReporteVehiculoComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "../../../../../src/app/components/solicitar-orden/solicitar-orden.component.css":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2895,6 +3571,10 @@ var SolicitarOrdenComponent = /** @class */ (function () {
                 }
             });
         }
+    };
+    SolicitarOrdenComponent.prototype.onUploadFinished = function (event) {
+        console.log('Upload Event: ', event);
+        this.imagen = event.src;
     };
     SolicitarOrdenComponent.prototype.onUploadFinished = function (event) {
         console.log('Upload Event: ', event);

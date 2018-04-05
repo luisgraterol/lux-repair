@@ -33,6 +33,11 @@ import { ListaMecanicosComponent } from './components/lista-mecanicos/lista-meca
 import { CondicionEntregaComponent } from './components/condicion-entrega/condicion-entrega.component';
 import { ActualizarDatosComponent } from './components/actualizar-datos/actualizar-datos.component';
 import { LectorQrComponent } from './components/lector-qr/lector-qr.component';
+import { GenerarReporteComponent } from './components/generar-reporte/generar-reporte.component';
+import { ReporteVehiculoComponent } from './components/reporte-vehiculo/reporte-vehiculo.component';
+import { ReporteClienteComponent } from './components/reporte-cliente/reporte-cliente.component';
+import { ReporteModeloComponent } from './components/reporte-modelo/reporte-modelo.component';
+import { ReporteMecanicoComponent } from './components/reporte-mecanico/reporte-mecanico.component';
 
 // Servicios
 import { AuthService } from './services/auth.service';
@@ -42,6 +47,8 @@ import { AuthGuard } from './guards/auth.guard';
 
 // Pipes
 import { DatePipe } from '@angular/common';
+
+
 
 
 // Rutas
@@ -76,7 +83,12 @@ const appRoutes: Routes = [
   {path: 'detalle-vehiculo', component: DetalleVehiculoComponent, canActivate: [AuthGuard]},
   {path: 'lista-mecanicos', component: ListaMecanicosComponent, canActivate: [AuthGuard]},
   {path: 'condicion-entrega', component: CondicionEntregaComponent, canActivate: [AuthGuard]},
-  {path: 'lector-qr', component: LectorQrComponent, canActivate: [AuthGuard]}
+  {path: 'lector-qr', component: LectorQrComponent, canActivate: [AuthGuard]},
+  {path: 'generar-reporte', component: GenerarReporteComponent, canActivate: [AuthGuard]},
+  {path: 'reporte-vehiculo', component: ReporteVehiculoComponent, canActivate: [AuthGuard]},
+  {path: 'reporte-cliente', component: ReporteClienteComponent, canActivate: [AuthGuard]},
+  {path: 'reporte-modelo', component: ReporteModeloComponent, canActivate: [AuthGuard]},
+  {path: 'reporte-mecanico', component: ReporteMecanicoComponent, canActivate: [AuthGuard]}
 ];
 
 
@@ -105,7 +117,12 @@ const appRoutes: Routes = [
     ListaMecanicosComponent,
     CondicionEntregaComponent,
     ActualizarDatosComponent,
-    LectorQrComponent
+    LectorQrComponent,
+    GenerarReporteComponent,
+    ReporteVehiculoComponent,
+    ReporteClienteComponent,
+    ReporteModeloComponent,
+    ReporteMecanicoComponent
   ],
   imports: [
     BrowserModule,

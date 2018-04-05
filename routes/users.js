@@ -131,6 +131,31 @@ router.get('/vehiculos-gerente', (req, res, next) => {
     });
 });
 
+// Obtiene todos los vehiculos activos sin filtro
+router.get('/vehiculos-gerente-cliente', (req, res, next) => {
+    con_Gerente.getVehiculosSinFiltro((vehiculos, err) => {
+        if (err) throw err;
+
+        if (vehiculos) {
+            res.json({
+                vehiculos
+            });
+        }
+    });
+});
+
+// Obtiene todos los clientes activos
+router.get('/clientes', (req, res, next) => {
+    con_Gerente.getClientes((clientes, err) => {
+        if (err) throw err;
+
+        if (clientes) {
+            res.json({
+                clientes
+            });
+        }
+    });
+});
 
 /* PETICIONES POST */
 // Actualiza los datos de un empleado
