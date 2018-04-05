@@ -23,8 +23,6 @@ export class ReporteModeloComponent implements OnInit {
   }
 
   reporteModelo() {
-    // Guarda el ID del mecanico a asignar
-    let idModelo = this.elegido;
     let headers = new Headers();
 
     // Busca el token del usuario que esta ingresado en el sistema actualmente
@@ -34,10 +32,8 @@ export class ReporteModeloComponent implements OnInit {
     headers.append('Authorization', token);
     headers.append('Content-Type', 'application/json');
 
-    this.http.post('http://localhost:3000/gerente/reporte-modelo', { id: idModelo }, { headers })
-      .map(res => {
-        console.log('res:',res);
-       return  res.json()})
+    this.http.post('http://localhost:3000/gerente/reporte-modelo', { Modelo: this.elegido }, { headers })
+      .map(res => res.json())
       .subscribe(data => {
         data.ordenes.map(orden => {
           

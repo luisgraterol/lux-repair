@@ -88,14 +88,9 @@ router.post('/reporte-mecanico', (req, res, next) => {
 router.post('/reporte-modelo', (req, res, next) => {
     OrdenController.getReporteModelo(req.body, (data,err) => {
         if (err)
-            res.json({ success: false, msg: 'Se produjo un error al hacer el reporte. '+err });
-          
-        
-        if (data) {
-            res.json({
-                ordenes: data.ordenes
-            });
-        }
+            res.json({ success: false, msg: 'Se produjo un error al hacer el reporte. Error: ' + err });
+        else
+            res.json({ success: true, msg: 'Se creo el reporte exitosamente.', ordenes: data });
     });
 });
 
