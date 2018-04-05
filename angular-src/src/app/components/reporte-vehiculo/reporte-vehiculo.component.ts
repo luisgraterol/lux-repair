@@ -36,7 +36,7 @@ export class ReporteVehiculoComponent implements OnInit {
     headers.append('Authorization', token);
     headers.append('Content-Type', 'application/json');
 
-    this.http.get('users/vehiculos-gerente-cliente', { headers })
+    this.http.get('http://localhost:3000/users/vehiculos-gerente-cliente', { headers })
       .map(res => res.json())
       .subscribe(data => {
         data.vehiculos.map(vehiculo => {});
@@ -73,7 +73,7 @@ export class ReporteVehiculoComponent implements OnInit {
     headers.append('Authorization', token);
     headers.append('Content-Type', 'application/json');
 
-    this.http.post('gerente/reporte-vehiculo', { id: idVehiculo }, { headers })
+    this.http.post('http://localhost:3000/gerente/reporte-vehiculo', { id: idVehiculo }, { headers })
       .map(res => res.json())
       .subscribe(data => {
         data.ordenes.map(orden => {         

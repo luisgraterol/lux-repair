@@ -44,7 +44,7 @@ export class CondicionEntregaComponent implements OnInit {
     headers.append('Authorization', token);
     headers.append('Content-Type', 'application/json');
 
-    this.http.post('users/cliente', { id }, { headers })
+    this.http.post('http://localhost:3000/users/cliente', { id }, { headers })
       .map(res => res.json())
       .subscribe(response => {
         if (response.success) {
@@ -82,7 +82,7 @@ export class CondicionEntregaComponent implements OnInit {
     headers.append('Content-Type', 'application/json');
 
     // Hacer la petición, se retorna una promesa
-    this.http.post('users/condicion-entrega', data, { headers })
+    this.http.post('http://localhost:3000/users/condicion-entrega', data, { headers })
       .map(res => res.json())
       .subscribe(response => {
         if (response.success) {

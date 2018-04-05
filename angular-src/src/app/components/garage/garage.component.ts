@@ -29,7 +29,7 @@ export class GarageComponent implements OnInit {
     headers.append('Authorization', token);
     headers.append('Content-Type', 'application/json');
 
-    this.http.get('users/vehiculos', { headers })
+    this.http.get('http://localhost:3000/users/vehiculos', { headers })
       .map(res => res.json())
       .subscribe(data => {
         console.log(data.vehiculos);
@@ -54,7 +54,7 @@ export class GarageComponent implements OnInit {
     let id = this.vehiculos[indice].id;
 
     // Hacer la petición, se retorna una promesa
-    this.http.post('users/eliminar-vehiculo', { id }, { headers })
+    this.http.post('http://localhost:3000/users/eliminar-vehiculo', { id }, { headers })
       .map(res => res.json())
       .subscribe(response => {
         if (response.success) {
@@ -72,7 +72,7 @@ export class GarageComponent implements OnInit {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
 
-    this.http.post('cliente/cancelar-cita', {id: this.vehiculos[indice].id}, { headers })
+    this.http.post('http://localhost:3000/cliente/cancelar-cita', {id: this.vehiculos[indice].id}, { headers })
       .map(res => res.json())
       .subscribe(response => {
         if (response.success) {

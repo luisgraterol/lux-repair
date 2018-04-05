@@ -32,7 +32,7 @@ export class ColaEsperaComponent implements OnInit {
     headers.append('Authorization', token);
     headers.append('Content-Type', 'application/json');
 
-    this.http.get('users/vehiculos-gerente', { headers })
+    this.http.get('http://localhost:3000/users/vehiculos-gerente', { headers })
       .map(res => res.json())
       .subscribe(data => {
         data.vehiculos.map(vehiculo => {
@@ -126,7 +126,7 @@ export class ColaEsperaComponent implements OnInit {
     headers.append('Content-Type', 'application/json');
 
     // Hacer la petición, se retorna una promesa
-    this.http.post('users/fecha-admision', data, { headers })
+    this.http.post('http://localhost:3000/users/fecha-admision', data, { headers })
       .map(res => res.json())
       .subscribe(response => {
         if (response.success) {
@@ -143,7 +143,7 @@ export class ColaEsperaComponent implements OnInit {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
 
-    this.http.post('gerente/finalizar', {
+    this.http.post('http://localhost:3000/gerente/finalizar', {
       vehiculo: this.vehiculos[indice],
       gerente: JSON.parse(localStorage.getItem('user'))
     }, { headers })

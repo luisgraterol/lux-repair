@@ -46,7 +46,7 @@ export class SolicitarOrdenComponent implements OnInit {
       headers.append('Content-Type', 'application/json');
 
       // Hacer la petición
-      this.http.post('users/solicitar-orden', data, { headers })
+      this.http.post('http://localhost:3000/users/solicitar-orden', data, { headers })
         .map(res => res.json())
         .subscribe(response => {
           if (response.success) {

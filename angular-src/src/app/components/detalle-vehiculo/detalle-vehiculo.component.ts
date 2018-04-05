@@ -66,7 +66,7 @@ export class DetalleVehiculoComponent implements OnInit {
     headers.append('Authorization', localStorage.getItem('id_token'));
     headers.append('Content-Type', 'application/json');
 
-    this.http.post('users/cliente', { idCliente }, { headers })
+    this.http.post('http://localhost:3000/users/cliente', { idCliente }, { headers })
       .map(res => res.json())
       .subscribe(response => {
         if (response.success) {

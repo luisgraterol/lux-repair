@@ -32,7 +32,7 @@ export class ListaMecanicosComponent implements OnInit {
     headers.append('Authorization', token);
     headers.append('Content-Type', 'application/json');
 
-    this.http.get('gerente/vehiculos-y-mecanicos', { headers })
+    this.http.get('http://localhost:3000/gerente/vehiculos-y-mecanicos', { headers })
       .map(res => res.json())
       .subscribe(data => {
         data.vehiculos.map(vehiculo => {
@@ -87,7 +87,7 @@ export class ListaMecanicosComponent implements OnInit {
     headers.append('Authorization', token);
     headers.append('Content-Type', 'application/json');
 
-    this.http.post('gerente/asignar-mecanico', { id: idMecanico, vehiculos: chequeados }, { headers })
+    this.http.post('http://localhost:3000/gerente/asignar-mecanico', { id: idMecanico, vehiculos: chequeados }, { headers })
       .map(res => res.json())
       .subscribe(response => {
         if (response.success) {
