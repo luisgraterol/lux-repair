@@ -1889,7 +1889,7 @@ var LectorQrComponent = /** @class */ (function () {
         console.log('Orden: ', this.orden);
         var headers = new __WEBPACK_IMPORTED_MODULE_5__angular_http__["Headers"]();
         headers.append('Content-Type', 'application/json');
-        this.http.post('http://localhost:3000/gerente/qr', { orden: this.orden }, { headers: headers })
+        this.http.post('gerente/qr', { orden: this.orden }, { headers: headers })
             .map(function (res) { return res.json(); })
             .subscribe(function (data) {
             if (data.success) {
