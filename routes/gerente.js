@@ -18,6 +18,20 @@ router.get('/vehiculos-y-mecanicos', (req, res, next) => {
     });
 });
 
+// Obtiene todos los vehiculos activos
+router.get('/vehiculos-y-clientes', (req, res, next) => {
+    GerenteController.getVehiculosConCliente((data, err) => {
+        if (err) throw err;
+
+        if (data) {
+            res.json({
+                vehiculos: data.vehiculos,
+                clientes: data.clientes
+            });
+        }
+    });
+});
+
 // Asignar la fecha de admision de un vehiculo
 router.post('/asignar-mecanico', (req, res, next) => {
     OrdenController.asignarMecanico(req.body, (err) => {
@@ -27,6 +41,60 @@ router.post('/asignar-mecanico', (req, res, next) => {
             res.json({ success: true, msg: 'El mecánico se asignó exitosamente.' });
     });
 });
+
+// reporte de un vehiculo
+router.post('/reporte-vehiculo', (req, res, next) => {
+    OrdenController.getReporteVehiculo(req.body, (data,err) => {
+        if (err)
+            res.json({ success: false, msg: 'Se produjo un error al hacer el reporte. '+err });
+        
+        if (data) {
+            res.json({
+                ordenes: data.ordenes
+            });
+        }
+    });
+});
+
+// reporte de un cliente
+router.post('/reporte-cliente', (req, res, next) => {
+    OrdenController.getReporteCliente(req.body, (data,err) => {
+        if (err)
+            res.json({ success: false, msg: 'Se produjo un error al hacer el reporte. '+err });
+
+        if (data) {
+            res.json({
+                ordenes: data.ordenes
+            });
+        }
+    });
+});
+
+// reporte de un mecanico
+router.post('/reporte-mecanico', (req, res, next) => {
+    OrdenController.getReporteMecanico(req.body, (data,err) => {
+        if (err)
+            res.json({ success: false, msg: 'Se produjo un error al hacer el reporte. '+err });
+
+        if (data) {
+            res.json({
+                ordenes: data.ordenes
+            });
+        }
+    });
+});
+
+// reporte de un modelo
+router.post('/reporte-modelo', (req, res, next) => {
+    OrdenController.getReporteModelo(req.body, (data,err) => {
+        if (err)
+            res.json({ success: false, msg: 'Se produjo un error al hacer el reporte. Error: ' + err });
+        else
+            res.json({ success: true, msg: 'Se creo el reporte exitosamente.', ordenes: data });
+    });
+});
+
+
 
 // Finalizar la reparacion de un vehiculo
 router.post('/finalizar', (req, res, next) => {

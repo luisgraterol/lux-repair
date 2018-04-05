@@ -259,6 +259,83 @@ controller.asignarMecanico = async function (data, callback) {
     }
 }
 
+// Metodo que retorna el reporte de los mecanicos 
+controller.getReporteMecanico = async function (data,callback) {
+    try {
+        console.log('Llegamos al controlador con los datos id mecanico es : ', data);
+        let response = await Orden.findAll({ where: {Mecanico:data.id} });
+
+        // Construye un arreglo unicamente con los datos necesarios
+        let ordenes = response.map(resultado => resultado.dataValues);
+    
+        // Retorna el arreglo
+        console.log('Llegamos al controlador con : ', ordenes);
+        callback({ordenes}, null);
+    } catch (err) {
+        callback(null, err);
+    }
+};
+
+// Metodo que retorna el reporte de los mecanicos 
+controller.getReporteModelo = async function (data, callback) {
+    try {
+        console.log('Llegamos al controlador con los datos id modelo es : ', data);
+
+        connection.query(`
+        SELECT * FROM luxrepairDB.Orden
+        INNER JOIN Vehiculo ON Orden.Vehiculo = Vehiculo.id
+        INNER JOIN Modelo ON Vehiculo.Modelo = Modelo.id
+        WHERE Modelo.Nombre = "${data.Modelo}"
+    `)
+            .spread((results, metadata) => {
+                if (results) {
+                    console.log('Resultados: ', results);
+                }
+                else {
+                    console.log('Error en getReporteMecanico.');
+                }
+                callback(results, null);
+            });
+    
+    } catch (err) {
+        callback(null, err);
+    }
+};
+
+// Metodo que retorna el reporte de los clientes 
+controller.getReporteCliente = async function (data,callback) {
+    try {
+        console.log('Llegamos al controlador con los datos id cliente es : ', data);
+        let response = await Vehiculo.findAll({ where: {Cliente:data.id} });
+
+        // Construye un arreglo unicamente con los datos necesarios
+        let ordenes = response.map(resultado => resultado.dataValues);
+    
+        // Retorna el arreglo
+        console.log('Llegamos al controlador con : ', ordenes);
+        callback({ordenes}, null);
+    } catch (err) {
+        callback(null, err);
+    }
+};
+
+// Metodo que retorna el reporte del vehiculo 
+controller.getReporteVehiculo = async function (data,callback) {
+    try {
+        console.log('Llegamos al controlador con los datos id vehiculo es : ', data);
+        let response = await Orden.findAll({ where: {Vehiculo:data.id} });
+
+        // Construye un arreglo unicamente con los datos necesarios
+        let ordenes = response.map(resultado => resultado.dataValues);
+    
+        // Retorna el arreglo
+        console.log('Llegamos al controlador con : ', ordenes);
+        callback({ordenes}, null);
+    } catch (err) {
+        callback(null, err);
+    }
+};
+
 controller.finalizar = async function (data, callback) {
     try {
         // Actualizar la tabla Orden
@@ -459,3 +536,4 @@ function obtenerFechaHoy() {
 
     return monthString + "/" + dayString + "/" + year + " " + today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
 }
+
