@@ -44,6 +44,19 @@ export class ReporteModeloComponent implements OnInit {
        
 
         localStorage.setItem('ordenes', JSON.stringify(data.ordenes));
+        const rows = [JSON.stringify(data.ordenes).replace('},',"\r"+"\n").replace('},', "\r"+"\n").replace('},', "\r"+"\n").replace('},', "\r"+"\n").replace('},', "\r"+"\n").replace('},', "\r"+"\n").replace('},',"\r"+"\n").replace('},', "\r"+"\n").replace('},', "\r"+"\n").replace('},', "\r"+"\n").replace('},', "\r"+"\n").replace('},',"\r"+"\n").replace('},', "\r"+"\n").replace('},', "\r"+"\n").replace('},', "\r"+"\n").replace('},', "\r"+"\n").replace('},',"\r"+"\n").replace('},', "\r"+"\n").replace('},', "\r"+"\n").replace('},', "\r"+"\n").replace('},', "\r"+"\n").replace('},',"\r"+"\n").replace('},', "\r"+"\n").replace('},', "\r"+"\n").replace('},', "\r"+"\n").replace('},', "\r"+"\n").replace('},',"\r"+"\n").replace('},', "\r"+"\n").replace('},', "\r"+"\n").replace('},', "\r"+"\n").replace('},', "\r"+"\n").replace('},',"\r"+"\n").replace('},', "\r"+"\n").replace('},', "\r"+"\n").replace('},', "\r"+"\n").replace('},', "\r"+"\n").replace('},',"\r"+"\n").replace('},', "\r"+"\n").replace('},', "\r"+"\n").replace('},', "\r"+"\n").replace('},', "\r"+"\n")];
+        let csvContent = "data:text/csv;charset=utf-8,";
+        rows.forEach(function(rowArray){
+          let row = rowArray;
+           csvContent += row ;
+        }); 
+        var encodedUri = encodeURI(csvContent);
+        var link = document.createElement("a");
+        link.setAttribute("href", encodedUri);
+        link.setAttribute("download", "Reporte-Modelo.csv");
+        document.body.appendChild(link); // Required for FF
+
+        link.click(); // This will download the data file named "my_data.csv".
       }, err => {
         console.log('Error al pedir los vehiculos desde ColaEsperaComponent: ', err);
         return false;
