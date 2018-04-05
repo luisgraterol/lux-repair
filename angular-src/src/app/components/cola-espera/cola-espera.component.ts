@@ -84,6 +84,10 @@ export class ColaEsperaComponent implements OnInit {
             pickedDate.setHours(0, 0, 0, 0);
             vehiculo.FechaAdmision = pickedDate;
 
+            if (pickedDate < new Date()) {
+              vehiculo.FechaAdmision = null;
+            }
+
             // Impide cambiar la fecha de admision si ya ha sido asignada
             vehiculo.Chequeado = false;
           }
@@ -98,7 +102,7 @@ export class ColaEsperaComponent implements OnInit {
         let today = new Date();
 
         if (pickedDate < today) {
-          this.flashMessage.show('La fecha de admisión debe ser después de la fecha de hoy.', { cssClass: 'custom-danger', timeout: 3000 });
+          this.flashMessage.show('La fecha de admisión no puede ser anterior a la fecha de hoy.', { cssClass: 'custom-danger', timeout: 3000 });
           return false;
         }
 

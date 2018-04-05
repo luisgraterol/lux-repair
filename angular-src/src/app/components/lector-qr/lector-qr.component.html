@@ -1,0 +1,17 @@
+<div class="row main">
+  <div class="col-12">
+    <h2 class="mt-4 mb-5 ml-5">Lector de Código QR</h2>
+  </div>
+  <div class="col-6 mx-auto">
+    <qr-scanner class="mt-3"
+      [debug]="false" 
+      [canvasWidth]="1080" 
+      [canvasHeight]="720" 
+      [stopAfterScan]="true" 
+      [updateTime]="250">
+    </qr-scanner>
+    <div class="d-flex justify-content-center mt-4 mb-5">
+      <button (click)="escanear()" class="btn btn-primary mx-auto">Escanear</button>
+    </div>
+  </div>
+</div>
