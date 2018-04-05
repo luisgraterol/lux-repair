@@ -279,24 +279,27 @@ controller.getReporteMecanico = async function (data,callback) {
 // Metodo que retorna el reporte de los mecanicos 
 controller.getReporteModelo = async function (data, callback) {
     try {
-        console.log('Llegamos al controlador con los datos id modelo es : ', data);
 
-        connection.query(`
-        SELECT * FROM luxrepairDB.Orden
-        INNER JOIN Vehiculo ON Orden.Vehiculo = Vehiculo.id
-        INNER JOIN Modelo ON Vehiculo.Modelo = Modelo.id
-        WHERE Modelo.Nombre = "${data.Modelo}"
-    `)
-            .spread((results, metadata) => {
-                if (results) {
-                    console.log('Resultados: ', results);
-                }
-                else {
-                    console.log('Error en getReporteMecanico.');
-                }
-                callback(results, null);
-            });
-    
+        let responseModelo = await Modelo.findOne({ where: { Nombre: data.Modelo } });
+        let idModelo = responseModelo.dataValues.id;
+
+        let responseVehiculos = await Vehiculo.findAll({ where: { Modelo: idModelo } });
+        let vehiculos = responseVehiculos.map(vehiculo => vehiculo.dataValues);
+        vehiculos = vehiculos.map(vehiculo => {
+            vehiculo.Modelo = data.Modelo;
+            return vehiculo;
+        });
+
+        let ordenes = [];
+
+        for (let i = 0; i < vehiculos.length; i++) {
+            let responseOrden = await Orden.findAll({ where: { Vehiculo: vehiculos[i].id } });
+            let ordenesNuevas = responseOrden.map(orden => orden.dataValues);
+            ordenes = [...ordenes, ...ordenesNuevas];
+        }
+
+        callback(await ordenes, null);
+
     } catch (err) {
         callback(null, err);
     }
