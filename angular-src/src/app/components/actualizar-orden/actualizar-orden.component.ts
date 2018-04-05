@@ -32,14 +32,14 @@ export class ActualizarOrdenComponent implements OnInit {
     headers.append('Authorization', token);
     headers.append('Content-Type', 'application/json');
 
-    this.http.get('http://localhost:3000/mecanico/repuestos', { headers })
+    this.http.get('mecanico/repuestos', { headers })
       .map(res => res.json())
       .subscribe(data => {
         console.log('Repuestos Totales: ', data.repuestos);
         this.repuestos = data.repuestos;
       });
     
-    this.http.post('http://localhost:3000/mecanico/repuestos-por-vehiculo', { id: Number(localStorage.getItem('vehiculo-a-actualizar')) }, { headers })
+    this.http.post('mecanico/repuestos-por-vehiculo', { id: Number(localStorage.getItem('vehiculo-a-actualizar')) }, { headers })
       .map(res => res.json())
       .subscribe(data => {
         console.log('Repuestos Previos: ', data.repuestos);
@@ -64,7 +64,7 @@ export class ActualizarOrdenComponent implements OnInit {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
 
-    this.http.post('http://localhost:3000/mecanico/actualizar-orden', data, { headers })
+    this.http.post('mecanico/actualizar-orden', data, { headers })
       .map(res => res.json())
       .subscribe(response => {
         if (response.success) {

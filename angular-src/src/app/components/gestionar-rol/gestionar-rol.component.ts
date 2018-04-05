@@ -30,7 +30,7 @@ export class GestionarRolComponent implements OnInit {
     headers.append('Authorization', token);
     headers.append('Content-Type', 'application/json');
 
-    return this.http.get('http://localhost:3000/users/empleados', { headers })
+    return this.http.get('users/empleados', { headers })
       .map(res => res.json())
       .subscribe(data => {
         console.log(data.empleados);
@@ -70,7 +70,7 @@ export class GestionarRolComponent implements OnInit {
     headers.append('Content-Type', 'application/json');
 
     // Hacer la petición, se retorna una promesa
-    return this.http.post('http://localhost:3000/users/asignar-rol', data, { headers: headers })
+    return this.http.post('users/asignar-rol', data, { headers: headers })
       .map(res => res.json())
       .subscribe(response => {
         if (response.success) {

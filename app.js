@@ -34,7 +34,7 @@ connection.sync({ logging: false });
 const app = express();
 
 // Port Number
-const port = 3000;
+const port = process.env.PORT || 8080;
 
 // Set Static Folder
 app.use(express.static(path.join(__dirname, 'public')));
