@@ -3306,11 +3306,11 @@ var ReporteModeloComponent = /** @class */ (function () {
             var encodedUri = encodeURI(csvContent);
             var link = document.createElement("a");
             link.setAttribute("href", encodedUri);
-            link.setAttribute("download", "Reporte-Modelo.csv");
+            link.setAttribute("download", "Reporte-Modelo-" + _this.elegido + ".csv");
             document.body.appendChild(link); // Required for FF
             link.click(); // This will download the data file named "my_data.csv".
         }, function (err) {
-            console.log('Error al pedir los vehiculos desde ColaEsperaComponent: ', err);
+            console.log('Error al pedir los vehiculos desde ReporteModeloComponent: ', err);
             return false;
         });
     };
